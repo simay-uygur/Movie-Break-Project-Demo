@@ -15,6 +15,7 @@ public class SignIn extends Application {
     private Stage stage ;
     @Override
     public void start(Stage stage) throws IOException {
+        //System.out.println("entered");
         FXMLLoader fxmlLoader = new FXMLLoader(SignUp.class.getResource("signUp.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
@@ -30,7 +31,7 @@ public class SignIn extends Application {
     public static void initialize() {
         try{
             FileInputStream serviceAccount =
-                    new FileInputStream("C:\\Users\\perha\\IdeaProjects\\demo\\serviceAccountKey.json");
+                    new FileInputStream("Movie-Break-Project-Demo\\Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))

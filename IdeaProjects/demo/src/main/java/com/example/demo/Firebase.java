@@ -13,49 +13,27 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Firebase {
+    private boolean accExists = false ;
     HashMap<String, String> users ;
-    private static int id ;
+    private int id ;
     private  User u ;
     DatabaseReference db ;
-    /*private static Scanner sc ;
-    public static void main(String[] args) {
-        initialize();
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference("user");
-        sc = new Scanner(System.in) ;
-        System.out.print("Enter Name:");
-        String name = sc.nextLine() ;
-        System.out.print("Enter pass:");
-        String pass = sc.nextLine() ;
-        User user = new User(name , pass) ;
-        User user2 = new User("popka" , "4723471") ;
-        Map<String , String> users = new HashMap<>();
-        users.put(user.getName() , user.getPass()) ;
-        users.put(user2.getName() , user2.getPass()) ;
-
-        db.child("user").setValueAsync(users);
-    }*/
-
-    public Firebase(String name , String pass)
+    
+    public Firebase()
     {
-        u = new User(name , pass) ;
         db = FirebaseDatabase.getInstance().getReference("users") ;
-        initId();
     }
 
     public void push()
     {
-        /*DatabaseReference user = db.push() ;
-        user.child(u.getName()).setValueAsync(u.getPass()) ;
-        user.setValueAsync(u.toString()) ;*/
-        DatabaseReference idS = db.child("ID-Counter") ;
-        idS.setValueAsync(""+(id)) ;
-        DatabaseReference user = db.child(""+id);
+        DatabaseReference user = db.child(u.getID());
         user.child("Username").setValueAsync(u.getName()) ;
         user.child("Password").setValueAsync(u.getPass()) ;
-        id++ ;
+        DatabaseReference idS = db.child("ID-Counter") ;
+        idS.setValueAsync(Integer.parseInt(u.getID())+1) ;
     }
 
-    public void hasAcc()
+    public void hasAcc(String name , String pass)
     {
         users = new HashMap<>() ;
         db.addValueEventListener(new ValueEventListener() {
@@ -63,21 +41,17 @@ public class Firebase {
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
-                    /*if  (
-                            userSnapshot.child("Username").getValue().equals(u.getName()) &&
-                            userSnapshot.child("Password").getValue().equals(u.getPass())
+                    if  (
+                            userSnapshot.child("Username").getValue().equals(name) &&
+                            userSnapshot.child("Password").getValue().equals(pass)
                         )
                     {
-                        System.out.println(userSnapshot.toString());
+                        setAcc();
                         return;
                     }
-                    else
-                    {
-                        System.out.println("New account?");
-                        return;
-                    }*/
-                    users.put(userSnapshot.getKey() , ""+userSnapshot.child("Username").getValue()) ;
                 }
+                System.out.println("New account?");
+                return;
             }
 
             @Override
@@ -89,22 +63,39 @@ public class Firebase {
         j.showUsers(users);
     }
 
-    public static void initId()
+    public void setAcc()
+    {
+        accExists = true ;
+    }
+
+    public boolean getB()
+    {
+        return  accExists ;
+    }
+
+    public void initId()
     {
         System.out.println("runned");
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                id = Integer.parseInt(snapshot.getKey());
-                System.out.println(snapshot.getValue());
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Object value = dataSnapshot.getValue();
+
+                id = Integer.parseInt(""+value) ;
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                System.out.println("loh");
+            public void onCancelled(DatabaseError databaseError) {
+                System.err.println("Error: " + databaseError.getMessage());
             }
         });
+
     }
 
+
+    public void createUser(String userName , String pass , String id)
+    {
+        u = new User(userName , pass , id) ;
+    }
 }

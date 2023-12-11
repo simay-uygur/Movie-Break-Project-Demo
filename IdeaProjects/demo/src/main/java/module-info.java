@@ -7,6 +7,8 @@ module com.example.demo {
     requires com.google.api.apicommon;
     requires google.cloud.core;
     requires com.google.auth;
+    requires okhttp3;
+    requires com.fasterxml.jackson.databind;
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;
 }

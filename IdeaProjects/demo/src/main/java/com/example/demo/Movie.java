@@ -21,9 +21,8 @@ public class Movie {
         return name ;
     }
 
-    public String getGenre() 
-    {
-        return genre ;
+    public String getGenre(){
+        return genre;
     }
 
     public int getId() {

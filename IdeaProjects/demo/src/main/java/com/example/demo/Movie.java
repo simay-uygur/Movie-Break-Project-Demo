@@ -21,9 +21,16 @@ public class Movie {
         return name ;
     }
 
-    public String toString() 
-    {
-        return id +":"+name +":"+ genre ; 
+
+    public int getId() {
+        return id;
     }
     
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String toString(){
+        return "Name: "+ name+ " id: "+ id+ "genre: "+ genre;
+    }
 }

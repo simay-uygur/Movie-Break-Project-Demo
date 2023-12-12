@@ -15,7 +15,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 
-// ... (import statements for HTTP, JSON libraries)
 
 public class MovieService {
 
@@ -27,14 +26,12 @@ public class MovieService {
     }
 
     public static void fetchAndStoreMovieData(int movieId) throws IOException {
-        // Make HTTP request to TMDB API
         String apiUrl = TMDB_API_URL + movieId + "?api_key=" + TMDB_API_KEY;
         String jsonResponse = makeHttpRequest(apiUrl);
 
-        // Parse JSON response
         Movie movie = parseJsonResponse(jsonResponse);
+        System.out.println(movie);
 
-        // Store in Firebase Realtime Database
         storeMovieInDatabase(movie);
     }
 
@@ -43,10 +40,11 @@ public class MovieService {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://api.themoviedb.org/3/configuration")
+        //https://api.themoviedb.org/3/configuration
+                .url(apiUrl)
                 .get()
-                .addHeader("accept", "application/json")
-                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmM1Y2Y1YzFmMjQ4YjcwNWJlNTczODNlZTc5MDZhZSIsInN1YiI6IjY1Nzc3NzczYmJlMWRkMDBhYzdkMmJiNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GM-DfhStzBQvUN5nfEQqaWhN44hDaVnrkxFRxqF0BSY")
+                //.addHeader("accept", "application/json")
+                //.addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmM1Y2Y1YzFmMjQ4YjcwNWJlNTczODNlZTc5MDZhZSIsInN1YiI6IjY1Nzc3NzczYmJlMWRkMDBhYzdkMmJiNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GM-DfhStzBQvUN5nfEQqaWhN44hDaVnrkxFRxqF0BSY")
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
@@ -82,19 +80,19 @@ public class MovieService {
 
     private static void storeMovieInDatabase(Movie movie) {
         try {
-            FileInputStream serviceAccount = new FileInputStream("demo\\serviceAccountKey.json");
-
+        if (FirebaseApp.getApps().isEmpty()) { // Check if FirebaseApp is already initialized
+            FileInputStream serviceAccount = new FileInputStream("Movie-Break-Project-Demo\\Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
             FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com/")
-                    .build();
+                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com/")
+                .build();
             FirebaseApp.initializeApp(options);
-            System.out.println(movie.toString());
-            DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies").push();
-            moviesRef.child(movie.getTitle()).setValueAsync(movie);
-            //get title olayını anlamadım daha
+        }
+        DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies");
+        moviesRef.child(String.valueOf(movie.getId())).setValueAsync(movie); // Using movie ID as the key
         } catch (Exception e) {
             e.printStackTrace();
         }
+     
     }
-}
+}    

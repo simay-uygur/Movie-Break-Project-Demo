@@ -135,7 +135,7 @@ public class HelloController{
 
     public void changeIn(ActionEvent e) throws IOException
     {
-        root = FXMLLoader.load(getClass().getResource("SignIn.fxml")) ;
+        root = FXMLLoader.load(getClass().getResource("signIn.fxml")) ;
         stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
         scene = new Scene(root) ;
         stage.setScene(scene);
@@ -143,7 +143,7 @@ public class HelloController{
     }
 
     public void changeUp(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
+        root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
         scene = new Scene(root) ;
         stage.setScene(scene);

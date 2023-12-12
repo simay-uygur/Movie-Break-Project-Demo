@@ -10,7 +10,7 @@ public class Movie {
     String genre;
     Image image;
     int year;
-    int id ;
+    private int id ;
     public Movie(int id, String name, String genre) {
         this.id = id ;
         this.name = name ;
@@ -21,9 +21,20 @@ public class Movie {
         return name ;
     }
 
-    public String toString() 
+    public String getGenre() 
     {
-        return id +":"+name +":"+ genre ; 
+        return genre ;
+    }
+
+    public int getId() {
+        return id;
     }
     
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String toString(){
+        return "Name: "+ name+ " id: "+ id+ "genre: "+ genre;
+    }
 }

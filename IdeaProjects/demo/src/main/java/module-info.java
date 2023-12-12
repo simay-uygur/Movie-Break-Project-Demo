@@ -8,8 +8,9 @@ module com.example.demo {
     requires google.cloud.core;
     requires com.google.auth;
     requires java.net.http;
-    requires com.fasterxml.jackson.databind ;
-    requires okhttp3 ;
-    opens com.example.demo to javafx.fxml;
+    requires com.fasterxml.jackson.databind;
+    requires okhttp3;
+
+    opens com.example.demo to javafx.fxml, firebase.admin; // Open to Firebase
     exports com.example.demo;
 }

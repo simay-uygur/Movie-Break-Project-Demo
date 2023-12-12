@@ -11,6 +11,7 @@ public class Movie {
     int year;
 
     public Movie(int id, String name, String genre) {
+        
     }
 
     public String getTitle() {

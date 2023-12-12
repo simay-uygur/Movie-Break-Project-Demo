@@ -23,7 +23,7 @@ public class MovieService {
 
     public static void main(String[] args) throws IOException {
         initializeFirebase();
-        fetchAndStoreMovieData(135397); // Replace 123 with an actual movie ID
+        fetchAndStoreMovieData(140607); // Replace 123 with an actual movie ID
     }
 
     public static void fetchAndStoreMovieData(int movieId) throws IOException {
@@ -73,10 +73,9 @@ public class MovieService {
     private static String getGenreFromJson(JsonNode jsonNode) {
         StringBuilder genres = new StringBuilder();
         JsonNode genresArray = jsonNode.path("genres");
-        for (JsonNode genre : genresArray) {
-            genres.append(genre.path("name").asText()).append(", ");
-        }
-        return genres.length() > 0 ? genres.substring(0, genres.length() - 2) : "";
+        genres.append(genresArray.get(0).path("name").asText());
+           
+        return genres.length() > 0 ? genres.substring(0, genres.length()) : "";
     }
 
     private static void initializeFirebase() {
@@ -97,9 +96,7 @@ public class MovieService {
     private static void storeMovieInDatabase(Movie movie) {
         try {
             DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies").push();
-            moviesRef.setValueAsync(movie.getTitle())
-                .get();
-            moviesRef.setValueAsync(movie.getId())
+            moviesRef.setValueAsync(movie)
                 .get(); // Wait for the operation to complete
             System.out.println("Movie data saved successfully.");
         } catch (Exception e) {

@@ -26,8 +26,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HelloController{
-    private int direction ;
-    private ArrayList<String> films ;
     private static int id;
     private Scene scene ;
     private Stage stage ;
@@ -90,66 +88,16 @@ public class HelloController{
         initId();
     }
 
-    public void movieInit()
-    {
-        films = new ArrayList<>();
-        for (int i = 0 ; i < 100 ; i++)
-        {
-            StackPane pane = new StackPane(new Label("huy")) ;
-            pane.setMinHeight(100);
-            pane.setMinWidth(100);
-            pane.setStyle("-fx-background-color: #c0c0c0;");
-            movies.getChildren().add(pane) ;
-        }
-        /*one = new StackPane() ;
-        one.getChildren().add(new Label(films.get(index))) ;
-        two.getChildren().add(new Label(films.get(index+1))) ;
-        two = new StackPane() ;
-        three.getChildren().add(new Label(films.get(index+2))) ;
-        three = new StackPane() ;
-        four.getChildren().add(new Label(films.get(index+3))) ;
-        four = new StackPane() ;
-        five.getChildren().add(new Label(films.get(index+4))) ;
-        five = new StackPane() ;
-        six.getChildren().add(new Label(films.get(index+5))) ;
-        six = new StackPane() ;*/
-    }
-
-    public void shift(ActionEvent e)
-    {
-        if (e.getSource() == lArrow)
-        {
-            direction ++ ;
-        }
-        else
-        {
-            direction -- ;
-        }
-        double scrollValue = direction * movies.getWidth();
-        movies.setTranslateX(movies.getTranslateX() + scrollValue);
-        System.out.println(direction);
-    }
-
     public void check(ActionEvent e) throws IOException {
         fb.hasAcc(userN.getText() , pass.getText() );
         if (fb.getB())
         {
-            movies = new HBox() ;
-            movies.setSpacing(100);
-            movieInit();
             fb.createUser(userN.getText() , pass.getText() , ""+(id));
             root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
             stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
             scene = new Scene(root) ;
             stage.setScene(scene);
             stage.show();
-        }
-    }
-
-    public void showUsers(HashMap<String , String> users)
-    {
-        for (int i = 0 ; i < users.size() ; i++) {
-            label.setText(users.get(i).toString());
         }
     }
 
@@ -216,10 +164,5 @@ public class HelloController{
         scene = new Scene(root) ;
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void setImg()
-    {
-        image.setImage(new Image(getClass().getResourceAsStream("logo.jpg")));
     }
 }

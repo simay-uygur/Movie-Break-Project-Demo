@@ -22,6 +22,7 @@ public class MovieService {
     private static final String TMDB_API_URL = "https://api.themoviedb.org/3/movie/";
 
     public static void main(String[] args) throws IOException {
+        initializeFirebase();
         fetchAndStoreMovieData(135397); // Replace 123 with an actual movie ID
     }
 
@@ -78,21 +79,30 @@ public class MovieService {
         return genres.length() > 0 ? genres.substring(0, genres.length() - 2) : "";
     }
 
-    private static void storeMovieInDatabase(Movie movie) {
+    private static void initializeFirebase() {
         try {
-        if (FirebaseApp.getApps().isEmpty()) { // Check if FirebaseApp is already initialized
-            FileInputStream serviceAccount = new FileInputStream("Movie-Break-Project-Demo\\Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
+            FileInputStream serviceAccount = new FileInputStream("demo\\serviceAccountKey.json");
+
             FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com/")
-                .build();
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com/")
+                    .build();
             FirebaseApp.initializeApp(options);
-        }
-        DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies");
-        moviesRef.child(String.valueOf(movie.getId())).setValueAsync(movie); // Using movie ID as the key
         } catch (Exception e) {
             e.printStackTrace();
+            System.err.println("Failed to initialize Firebase: " + e.getMessage());
         }
-     
+    }
+
+    private static void storeMovieInDatabase(Movie movie) {
+        try {
+            DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies").push();
+            moviesRef.setValueAsync(movie)
+                .get(); // Wait for the operation to complete
+            System.out.println("Movie data saved successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Failed to save movie data to Firebase: " + e.getMessage());
+        }
     }
 }    

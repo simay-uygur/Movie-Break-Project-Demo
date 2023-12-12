@@ -13,6 +13,8 @@ import okhttp3.OkHttpClient;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -23,18 +25,28 @@ public class MovieService {
 
     public static void main(String[] args) throws IOException {
         initializeFirebase();
-        fetchAndStoreMovieData(140607); // Replace 123 with an actual movie ID
+        String searchQuery = "action"; 
+        fetchAndStoreMovies(searchQuery); // Replace 123 with an actual movie ID
+        searchQuery = "thriller";
+        fetchAndStoreMovies(searchQuery);
+
     }
 
-    public static void fetchAndStoreMovieData(int movieId) throws IOException {
-        String apiUrl = TMDB_API_URL + movieId + "?api_key=" + TMDB_API_KEY;
+    public static void fetchAndStoreMovies(String searchQuery) throws IOException {
+        String apiUrl = "https://api.themoviedb.org/3/search/movie" +
+                "?api_key=" + TMDB_API_KEY +
+                "&query=" + searchQuery;
+
         String jsonResponse = makeHttpRequest(apiUrl);
 
-        Movie movie = parseJsonResponse(jsonResponse);
-        System.out.println(movie);
-
-        storeMovieInDatabase(movie);
+        List<Movie> movies = parseSearchResults(jsonResponse, searchQuery);
+        System.out.println(movies);
+        for (Movie movie : movies) {
+            //if(movie.getTitle().con)
+            storeMovieInDatabase(movie);
+        }
     }
+
 
     private static String makeHttpRequest(String apiUrl) throws IOException {
         // Implement HTTP request logic using a library
@@ -53,6 +65,7 @@ public class MovieService {
         }
     }
 
+    /* 
     private static Movie parseJsonResponse(String jsonResponse) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -68,7 +81,7 @@ public class MovieService {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 
     private static String getGenreFromJson(JsonNode jsonNode) {
         StringBuilder genres = new StringBuilder();
@@ -103,5 +116,27 @@ public class MovieService {
             e.printStackTrace();
             System.err.println("Failed to save movie data to Firebase: " + e.getMessage());
         }
+    }
+
+    private static List<Movie> parseSearchResults(String jsonResponse, String searchQ) {
+        List<Movie> movies = new ArrayList<>();
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(jsonResponse);
+
+            JsonNode results = jsonNode.path("results");
+
+            for (JsonNode movieNode : results) {
+                int id = movieNode.path("id").asInt();
+                String title = movieNode.path("original_title").asText();
+                Movie movie = new Movie(id, title, searchQ); 
+                movies.add(movie);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return movies;
     }
 }    

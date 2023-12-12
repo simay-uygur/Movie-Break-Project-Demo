@@ -50,15 +50,15 @@ public class MovieService {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-        .url("https://api.themoviedb.org/3/configuration")
-        .get()
-        .addHeader("accept", "application/json")
-        .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmM1Y2Y1YzFmMjQ4YjcwNWJlNTczODNlZTc5MDZhZSIsInN1YiI6IjY1Nzc3NzczYmJlMWRkMDBhYzdkMmJiNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GM-DfhStzBQvUN5nfEQqaWhN44hDaVnrkxFRxqF0BSY")
-        .build();
+            .url("https://api.themoviedb.org/3/configuration")
+            .get()
+            .addHeader("accept", "application/json")
+            .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmM1Y2Y1YzFmMjQ4YjcwNWJlNTczODNlZTc5MDZhZSIsInN1YiI6IjY1Nzc3NzczYmJlMWRkMDBhYzdkMmJiNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GM-DfhStzBQvUN5nfEQqaWhN44hDaVnrkxFRxqF0BSY")
+            .build();
 
         Response response = client.newCall(request).execute();
 
-        return ""; // Replace with actual response
+
     }
 
     private static Movie parseJsonResponse(String jsonResponse) {

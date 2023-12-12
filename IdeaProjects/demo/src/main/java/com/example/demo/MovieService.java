@@ -97,7 +97,9 @@ public class MovieService {
     private static void storeMovieInDatabase(Movie movie) {
         try {
             DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies").push();
-            moviesRef.setValueAsync(movie)
+            moviesRef.setValueAsync(movie.getTitle())
+                .get();
+            moviesRef.setValueAsync(movie.getId())
                 .get(); // Wait for the operation to complete
             System.out.println("Movie data saved successfully.");
         } catch (Exception e) {

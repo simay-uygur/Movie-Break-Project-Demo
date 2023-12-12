@@ -87,7 +87,6 @@ public class MovieService {
         StringBuilder genres = new StringBuilder();
         JsonNode genresArray = jsonNode.path("genres");
         genres.append(genresArray.get(0).path("name").asText());
-           
         return genres.length() > 0 ? genres.substring(0, genres.length()) : "";
     }
 
@@ -108,9 +107,8 @@ public class MovieService {
 
     private static void storeMovieInDatabase(Movie movie) {
         try {
-            DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies").push();
-            moviesRef.setValueAsync(movie)
-                .get(); // Wait for the operation to complete
+            DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies");
+            moviesRef.child(movie.takeId()+"").setValueAsync(movie).get() ;
             System.out.println("Movie data saved successfully.");
         } catch (Exception e) {
             e.printStackTrace();

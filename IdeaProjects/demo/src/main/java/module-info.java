@@ -11,6 +11,6 @@ module com.example.demo {
     requires com.fasterxml.jackson.databind;
     requires okhttp3;
 
-    opens com.example.demo to javafx.fxml, firebase.admin; // Open to Firebase
+    opens com.example.demo to javafx.fxml, firebase.admin;
     exports com.example.demo;
 }

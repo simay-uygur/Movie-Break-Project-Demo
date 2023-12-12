@@ -35,7 +35,6 @@ public class Firebase {
 
     public void hasAcc(String name , String pass)
     {
-        users = new HashMap<>() ;
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -59,8 +58,6 @@ public class Firebase {
 
             }
         });
-        HelloController j = new HelloController() ;
-        j.showUsers(users);
     }
 
     public void setAcc()
@@ -75,7 +72,6 @@ public class Firebase {
 
     public void initId()
     {
-        System.out.println("runned");
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

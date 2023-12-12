@@ -25,7 +25,7 @@ public class Movie {
         return genre;
     }
 
-    public int getId() {
+    public int takeId() {
         return id;
     }
     

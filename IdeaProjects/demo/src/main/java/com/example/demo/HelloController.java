@@ -138,7 +138,7 @@ public class HelloController{
             movies.setSpacing(100);
             movieInit();
             fb.createUser(userN.getText() , pass.getText() , ""+(id));
-            root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
+            root = FXMLLoader.load(getClass().getResource("IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\mainPage.fxml"));
             stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
             scene = new Scene(root) ;
             stage.setScene(scene);
@@ -187,7 +187,7 @@ public class HelloController{
 
     public void changeIn(ActionEvent e) throws IOException
     {
-        root = FXMLLoader.load(getClass().getResource("SignIn.fxml")) ;
+        root = FXMLLoader.load(getClass().getResource("signIn.fxml")) ;
         stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
         scene = new Scene(root) ;
         stage.setScene(scene);
@@ -195,7 +195,7 @@ public class HelloController{
     }
 
     public void changeUp(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
+        root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
         scene = new Scene(root) ;
         stage.setScene(scene);

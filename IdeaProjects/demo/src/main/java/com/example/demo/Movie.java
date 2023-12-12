@@ -21,12 +21,11 @@ public class Movie {
         return name ;
     }
 
-    public String getGenre() 
-    {
-        return genre ;
+    public String getGenre(){
+        return genre;
     }
 
-    public int getId() {
+    public int takeId() {
         return id;
     }
     

@@ -7,6 +7,7 @@ module com.example.demo {
     requires com.google.api.apicommon;
     requires google.cloud.core;
     requires com.google.auth;
+    requires java.net.http;
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;
 }

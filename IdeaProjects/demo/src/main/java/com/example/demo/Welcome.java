@@ -31,7 +31,7 @@ public class Welcome extends Application {
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com")
+                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com/")
                     .build();
             FirebaseApp.initializeApp(options);
         } catch (Exception e) {

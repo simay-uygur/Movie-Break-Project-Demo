@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class Firebase {
     private boolean accExists = false ;
     HashMap<String, String> users ;
-    private int id ;
     private  User u ;
     DatabaseReference db ;
     
@@ -24,13 +23,13 @@ public class Firebase {
         db = FirebaseDatabase.getInstance().getReference("users") ;
     }
 
-    public void push()
+    public void push(String username , String password , int id)
     {
-        DatabaseReference user = db.child(u.getID());
-        user.child("Username").setValueAsync(u.getName()) ;
-        user.child("Password").setValueAsync(u.getPass()) ;
+        DatabaseReference user = db.child(""+id);
+        user.child("Username").setValueAsync(username) ;
+        user.child("Password").setValueAsync(password) ;
         DatabaseReference idS = db.child("ID-Counter") ;
-        idS.setValueAsync(Integer.parseInt(u.getID())+1) ;
+        idS.setValueAsync(id+1) ;
     }
 
     public void hasAcc(String name , String pass)
@@ -70,28 +69,14 @@ public class Firebase {
         return  accExists ;
     }
 
-    public void initId()
-    {
-        DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
-        data.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Object value = dataSnapshot.getValue();
-
-                id = Integer.parseInt(""+value) ;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.err.println("Error: " + databaseError.getMessage());
-            }
-        });
-
-    }
-
-
     public void createUser(String userName , String pass , String id)
     {
-        u = new User(userName , pass , id) ;
+        u = new User(userName , pass , id , this) ;
+    }
+
+    public void addFriend(String userId , String friendID) 
+    {
+        DatabaseReference friend = db.child(userId) ;
+        friend.child("Friends").setValueAsync(friendID) ;
     }
 }

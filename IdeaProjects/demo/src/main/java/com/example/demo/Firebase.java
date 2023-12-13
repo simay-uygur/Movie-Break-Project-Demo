@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.HelloController;
+import com.example.demo.GUIController;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -32,7 +32,7 @@ public class Firebase {
         idS.setValueAsync(id+1) ;
     }
 
-    public void hasAcc(String name , String pass)
+    public boolean hasAcc(String name , String pass)
     {
         db.addValueEventListener(new ValueEventListener() {
             @Override
@@ -57,6 +57,7 @@ public class Firebase {
 
             }
         });
+        return accExists;
     }
 
     public void setAcc()

@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
       <Pane prefHeight="400.0" prefWidth="309.0">
          <children>
             <Button fx:id="backIn" mnemonicParsing="false" onAction="#backToMain" prefHeight="40.0" prefWidth="65.0" text="Return" />
             <PasswordField fx:id="pass" layoutX="25.0" layoutY="175.0" prefHeight="25.0" prefWidth="256.0" promptText="Password" />
             <TextField fx:id="userN" layoutX="25.0" layoutY="110.0" prefHeight="25.0" prefWidth="256.0" promptText="Username" />
-            <Button fx:id="insert" layoutX="107.0" layoutY="244.0" mnemonicParsing="false" onAction="#check" prefHeight="51.0" prefWidth="93.0" text="Sign In" />
+            <Button fx:id="signIn" layoutX="107.0" layoutY="244.0" mnemonicParsing="false" onAction="#check" prefHeight="51.0" prefWidth="93.0" text="Sign In" />
          </children>
       </Pane>
    </children>

@@ -27,41 +27,41 @@ import java.util.HashMap;
 
 public class HelloController{
     private static int id;
-    private Scene scene ;
-    private Stage stage ;
-    private Parent root ;
+    private Scene scene;
+    private Stage stage;
+    private Parent root;
     Firebase fb = new Firebase();
     @FXML
-    private Button insert ;
+    private Button insert;
 
     @FXML
-    private Button backIn ;
+    private Button backIn;
 
     @FXML
-    private  Button backUp ;
+    private  Button backUp;
 
     @FXML
-    private TextField pass ;
+    private TextField pass;
     @FXML
-    private TextField userN ;
+    private TextField userN;
 
     @FXML
-    private VBox friends ;
+    private VBox friends;
 
     @FXML
-    private Label label ;
+    private Label label;
 
     @FXML
-    private Button in ;
+    private Button in;
 
     @FXML
-    private Button up ;
+    private Button up;
 
     @FXML
-    private ImageView image ;
+    private ImageView image;
 
     @FXML
-    private HBox movies ;
+    private HBox movies;
     @FXML
     private  Button lArrow;
 
@@ -69,17 +69,17 @@ public class HelloController{
     private  Button rArrow;
 
     @FXML
-    private StackPane one ;
+    private StackPane one;
     @FXML
-    private StackPane two ;
+    private StackPane two;
     @FXML
-    private StackPane three ;
+    private StackPane three;
     @FXML
-    private StackPane four ;
+    private StackPane four;
     @FXML
-    private StackPane five ;
+    private StackPane five;
     @FXML
-    private StackPane six ;
+    private StackPane six;
 
 
 
@@ -94,8 +94,8 @@ public class HelloController{
         {
             fb.createUser(userN.getText() , pass.getText() , ""+(id));
             root = FXMLLoader.load(getClass().getResource("IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\mainPage.fxml"));
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
-            scene = new Scene(root) ;
+            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
@@ -110,11 +110,11 @@ public class HelloController{
                 if (dataSnapshot.exists()) 
                 {
                     Object value = dataSnapshot.getValue();
-                    takeId(value) ;
+                    takeUserID(value);
                 }
                 else 
                 {
-                    takeId(0) ;
+                    takeUserID(0);
                 }
             }
 
@@ -125,17 +125,18 @@ public class HelloController{
         });
     }
 
-    public void takeId(Object value)
+    public void takeUserID(Object value)
     {
         id = Integer.parseInt(""+value) ;
-        fb.push(userN.getText() , pass.getText() , id);
-        id++ ;
+        fb.createUser(userN.getText() , pass.getText() , ""+(id));
+        id++;
+        fb.userPush();
     }
 
     public void changeIn(ActionEvent e) throws IOException
     {
-        root = FXMLLoader.load(getClass().getResource("signIn.fxml")) ;
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
+        root = FXMLLoader.load(getClass().getResource("signIn.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root) ;
         stage.setScene(scene);
         stage.show();
@@ -143,24 +144,24 @@ public class HelloController{
 
     public void changeUp(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
-        scene = new Scene(root) ;
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void changeMainPage(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
-        scene = new Scene(root) ;
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void backToMain(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
-        scene = new Scene(root) ;
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

@@ -27,6 +27,8 @@ public class Firebase {
     {
         userDB = FirebaseDatabase.getInstance().getReference("users");
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
+        users = new HashMap<>() ;
+        takeAllData();
     }
 
     public void userPush()
@@ -46,24 +48,20 @@ public class Firebase {
         chatIDs.setValueAsync(Integer.parseInt(c.getID()) + 1);
     }
 
-    public void hasAcc(String name, String pass)
+    public boolean hasAcc(String name, String pass)
+    {
+        return users.containsKey(name) && users.containsKey(pass) ;
+    }
+
+    public void takeAllData()
     {
         userDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
-                    if  (
-                            userSnapshot.child("Username").getValue().equals(name) &&
-                            userSnapshot.child("Password").getValue().equals(pass)
-                        )
-                    {
-                        setAcc();
-                        return;
-                    }
+                    users.put(""+userSnapshot.child("Username").getValue(),""+userSnapshot.child("Password").getValue()) ;
                 }
-                System.out.println("New account?");
-                return;
             }
 
             @Override
@@ -119,11 +117,11 @@ public class Firebase {
 
     public void createUser(String userName, String pass, String ID)
     {
-        u = new User(userName, pass, ID);
+        u = new User(userName, pass, ID , this);
     }
 
-    public void createChat(ArrayList<Message> messages, String ID, ArrayList<User> users)
+    /*public void createChat(ArrayList<Message> messages, String ID, ArrayList<User> users)
     {
         c = new Chat(messages, ID, users);
-    }
+    }*/
 }

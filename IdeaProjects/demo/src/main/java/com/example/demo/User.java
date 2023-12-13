@@ -1,18 +1,22 @@
+package com.example.demo;
+
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 
-public class User implements Search{
+public class User{
     Controller controller;
     String userName;
     String password;
     String userID;
+    Firebase fb ;
     ArrayList<String> favMoviesIDs;
     ArrayList<String> friendsIDs;
     ArrayList<String> chatIDs;
     ArrayList<String> sessionIDs;
 
-    public User(String userName, String password, String userID)
+    public User(String userName, String password, String userID , Firebase fb)
     {
+        setFirebase(fb);
         setUserName(userName);
         setPassword(password);
         setID(userID);
@@ -21,6 +25,11 @@ public class User implements Search{
     public void setUserName(String userName)
     {
         this.userName = userName;
+    }
+
+    public void setFirebase(Firebase fb)
+    {
+        this.fb = fb ;
     }
 
     public String getName()
@@ -50,7 +59,7 @@ public class User implements Search{
 
     public ArrayList<String> getFriendsIDs()
     {
-        return this.friendsIDs;
+        return friendsIDs;
     }
 
     public void addFriendID(String userID)
@@ -61,7 +70,8 @@ public class User implements Search{
     public void addFriend(String userID)
     {
         addFriendID(userID);
-        controller.createChat();
+        
+        //controller.createChat();
     }
 
     public void removeFriend(String userID)
@@ -104,8 +114,8 @@ public class User implements Search{
         setPassword(newPassword);
     }
 
-    public ArrayList<Integer> search(String input)
+    /*public ArrayList<Integer> search(String input)
     {
         return;
-    }
+    }*/
 }

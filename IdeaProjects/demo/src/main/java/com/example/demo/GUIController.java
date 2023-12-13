@@ -89,8 +89,7 @@ public class GUIController{
     }
 
     public void check(ActionEvent e) throws IOException {
-        fb.hasAcc(userN.getText() , pass.getText() );
-        if (fb.getB())
+        if (fb.hasAcc(userN.getText() , pass.getText() ))
         {
             fb.createUser(userN.getText() , pass.getText() , ""+(id));
             root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));

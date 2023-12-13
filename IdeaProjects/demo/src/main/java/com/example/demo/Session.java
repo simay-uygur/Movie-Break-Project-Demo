@@ -3,7 +3,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle.Control;
 
-public class Session implements Search {
+public class Session{
     Controller controller;
     Chat chat;
     Date start;

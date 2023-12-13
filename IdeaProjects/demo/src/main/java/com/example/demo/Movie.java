@@ -10,12 +10,14 @@ public class Movie {
     String genre;
     Image image;
     int year;
+    String posterPath;
     private int id ;
 
-    public Movie(int id, String name, String genre) {
+    public Movie(int id, String name, String genre,String posterPath) {
         this.id = id ;
         this.name = name ;
         this.genre = genre ;
+        this.posterPath = posterPath;
     }
 
     public String getTitle() {
@@ -35,6 +37,6 @@ public class Movie {
     }
 
     public String toString() {
-        return "Name: "+ name+ " id: "+ id+ "genre: "+ genre;
+        return "Name: "+ name+ " id: "+ id+ "genre: "+ genre + "posterpath"+ posterPath;
     }
 }

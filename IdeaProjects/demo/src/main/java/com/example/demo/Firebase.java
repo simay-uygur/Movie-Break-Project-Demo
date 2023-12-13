@@ -5,6 +5,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
+import com.google.firebase.messaging.Message;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -13,28 +14,41 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Firebase {
-    private boolean accExists = false ;
-    HashMap<String, String> users ;
-    private  User u ;
-    DatabaseReference db ;
+    private boolean accExists = false;
+    HashMap<String, String> users;
+    private int userID;
+    private int chatID;
+    private User u;
+    private Chat c;
+    DatabaseReference userDB;
+    DatabaseReference chatDB;
     
     public Firebase()
     {
-        db = FirebaseDatabase.getInstance().getReference("users") ;
+        userDB = FirebaseDatabase.getInstance().getReference("users");
+        chatDB = FirebaseDatabase.getInstance().getReference("chats");
     }
 
-    public void push(String username , String password , int id)
+    public void userPush()
     {
-        DatabaseReference user = db.child(""+id);
-        user.child("Username").setValueAsync(username) ;
-        user.child("Password").setValueAsync(password) ;
-        DatabaseReference idS = db.child("ID-Counter") ;
-        idS.setValueAsync(id+1) ;
+        DatabaseReference user = userDB.child(u.getID());
+        user.child("Username").setValueAsync(u.getName());
+        user.child("Password").setValueAsync(u.getPassword());
+        DatabaseReference userIDs = userDB.child("ID-Counter");
+        userIDs.setValueAsync(Integer.parseInt(u.getID()) + 1);
     }
 
-    public void hasAcc(String name , String pass)
+    public void chatPush()
     {
-        db.addValueEventListener(new ValueEventListener() {
+        DatabaseReference chat = chatDB.child(c.getID());
+        chat.child("messages").setValueAsync(c.getMessages());
+        DatabaseReference chatIDs = chatDB.child("ID-Counter");
+        chatIDs.setValueAsync(Integer.parseInt(c.getID()) + 1);
+    }
+
+    public void hasAcc(String name, String pass)
+    {
+        userDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
@@ -61,22 +75,55 @@ public class Firebase {
 
     public void setAcc()
     {
-        accExists = true ;
+        accExists = true;
     }
 
     public boolean getB()
     {
-        return  accExists ;
+        return accExists;
     }
 
-    public void createUser(String userName , String pass , String id)
+    public void initUserID()
     {
-        u = new User(userName , pass , id , this) ;
+        DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
+        data.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Object value = dataSnapshot.getValue();
+                userID = Integer.parseInt("" + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.err.println("Error: " + databaseError.getMessage());
+            }
+        });
     }
 
-    public void addFriend(String userId , String friendID) 
+    public void initChatID()
     {
-        DatabaseReference friend = db.child(userId) ;
-        friend.child("Friends").setValueAsync(friendID) ;
+        DatabaseReference data = FirebaseDatabase.getInstance().getReference("chats/ID-Counter");
+        data.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Object value = dataSnapshot.getValue();
+                chatID = Integer.parseInt("" + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.err.println("Error: " + databaseError.getMessage());
+            }
+        });
+    }
+
+    public void createUser(String userName, String pass, String ID)
+    {
+        u = new User(userName, pass, ID);
+    }
+
+    public void createChat(ArrayList<Message> messages, String ID, ArrayList<User> users)
+    {
+        c = new Chat(messages, ID, users);
     }
 }

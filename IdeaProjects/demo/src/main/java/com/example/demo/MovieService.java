@@ -16,27 +16,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class MovieService 
 {
+
     private final static String letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm?!:;() " ; 
     private static final String TMDB_API_KEY = "66c5cf5c1f248b705be57383ee7906ae";
     private static final String TMDB_API_URL = "https://api.themoviedb.org/3/movie/";
 
     public static void main(String[] args) throws IOException {
         initializeFirebase();
-        String genreId = "28"; 
-        fetchAndStoreMovies(genreId); // Replace 123 with an actual movie ID
+        String searchQuery = "action"; 
+        fetchAndStoreMovies(searchQuery); // Replace 123 with an actual movie ID
+        searchQuery = "thriller";
+        fetchAndStoreMovies(searchQuery);
 
     }
 
-    public static void fetchAndStoreMovies(String genreId) throws IOException {
+    public static void fetchAndStoreMovies(String searchQuery) throws IOException {
         String apiUrl = "https://api.themoviedb.org/3/search/movie" +
                 "?api_key=" + TMDB_API_KEY +
-                "&with_genres="  + genreId;
+                "&query=" + searchQuery;
 
         String jsonResponse = makeHttpRequest(apiUrl);
-        System.out.println(jsonResponse);
-        List<Movie> movies = parseSearchResults(jsonResponse, genreId);
+
+        List<Movie> movies = parseSearchResults(jsonResponse, searchQuery);
         //System.out.println(movies);
         for (Movie movie : movies) {
             //if(movie.getTitle().con)
@@ -89,7 +94,7 @@ public class MovieService
 
     private static void initializeFirebase() {
         try {
-            FileInputStream serviceAccount = new FileInputStream("Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
+            FileInputStream serviceAccount = new FileInputStream("demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -126,23 +131,23 @@ public class MovieService
             for (JsonNode movieNode : results) {
                 int id = movieNode.path("id").asInt();
                 String title = movieNode.path("original_title").asText();
-                
+                if (correctTitle(title)) 
+                {
                     Movie movie = new Movie(id, title, searchQ); 
                     movies.add(movie);
-                
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return movies;
     }
 
-    public static boolean correctTitle(String title) 
-    {
+    public static boolean correctTitle(String title) {
         for (int i = 0 ; i < title.length() - 1 ; i++)
         {
-            if (!letters.contains(title.substring(i, i+1))) return false ;
+            if (!letters.contains(title.substring(i, i+1))) 
+            return false ;
         }
         return true ;
     }

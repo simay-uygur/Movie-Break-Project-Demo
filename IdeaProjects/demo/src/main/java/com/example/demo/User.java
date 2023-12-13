@@ -1,39 +1,111 @@
-package com.example.demo;
+import java.lang.ModuleLayer.Controller;
+import java.util.ArrayList;
 
-public class User
-{
-    private String name ;
-    private String pass ;
-    private String id ;
+public class User implements Search{
+    Controller controller;
+    String userName;
+    String password;
+    String userID;
+    ArrayList<String> favMoviesIDs;
+    ArrayList<String> friendsIDs;
+    ArrayList<String> chatIDs;
+    ArrayList<String> sessionIDs;
 
-    private Firebase fb ;
-    public User(String name, String pass , String id , Firebase fb)
+    public User(String userName, String password, String userID)
     {
-        this.name = name ;
-        this.pass = pass ;
-        this.id = id ;
-        this.fb = fb ;
+        setUserName(userName);
+        setPassword(password);
+        setID(userID);
     }
 
-    public String getPass()
+    public void setUserName(String userName)
     {
-        return  pass ;
+        this.userName = userName;
     }
 
     public String getName()
     {
-        return  name ;
+        return userName;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setID(String userID)
+    {
+        this.userID = userID;
     }
 
     public String getID()
     {
-        return id ;
+        return userID;
     }
 
-    public String toString() {return  name +":"+pass ;}
-
-    public void addFriend(String friendId) 
+    public ArrayList<String> getFriendsIDs()
     {
-        fb.addFriend(id, friendId);
+        return this.friendsIDs;
+    }
+
+    public void addFriendID(String userID)
+    {
+        friendsIDs.add(userID);
+    }
+
+    public void addFriend(String userID)
+    {
+        addFriendID(userID);
+        controller.createChat();
+    }
+
+    public void removeFriend(String userID)
+    {
+        friendsIDs.remove(userID);
+    }
+
+    public ArrayList<String> getFavMoviesIDs()
+    {
+        return this.favMoviesIDs;
+    }
+
+    public void addFavMovie(String movieID)
+    {
+        favMoviesIDs.add(movieID);
+    }
+
+    public void removeFavMovie(String movieID)
+    {
+        favMoviesIDs.remove(movieID);
+    }
+
+    public ArrayList<String> getChatIDs()
+    {
+        return this.chatIDs;
+    }
+
+    public ArrayList<String> getSessionIDs()
+    {
+        return this.sessionIDs;
+    }
+
+    public void changeUserName (String newUserName)
+    {
+        setUserName(newUserName);
+    }
+
+    public void changePassword (String newPassword)
+    {
+        setPassword(newPassword);
+    }
+
+    public ArrayList<Integer> search(String input)
+    {
+        return;
     }
 }

@@ -27,7 +27,7 @@ public class Welcome extends Application {
     public static void initialize() {
         try{
             FileInputStream serviceAccount =
-                    new FileInputStream("C:\\Users\\emira\\OneDrive\\Masaüstü\\java_with_vs\\CS102\\Projem\\Projem\\IdeaProjects\\demo\\serviceAccountKey.json");
+                    new FileInputStream("Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))

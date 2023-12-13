@@ -18,8 +18,10 @@ import java.util.List;
 
 
 
-public class MovieService {
+public class MovieService 
+{
 
+    private final static String letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm?!:;() " ; 
     private static final String TMDB_API_KEY = "66c5cf5c1f248b705be57383ee7906ae";
     private static final String TMDB_API_URL = "https://api.themoviedb.org/3/movie/";
 
@@ -40,7 +42,7 @@ public class MovieService {
         String jsonResponse = makeHttpRequest(apiUrl);
 
         List<Movie> movies = parseSearchResults(jsonResponse, searchQuery);
-        System.out.println(movies);
+        //System.out.println(movies);
         for (Movie movie : movies) {
             //if(movie.getTitle().con)
             storeMovieInDatabase(movie);
@@ -109,6 +111,7 @@ public class MovieService {
         try {
             DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies");
             moviesRef.child(movie.takeId()+"").setValueAsync(movie).get() ;
+            System.out.println(movie);
             System.out.println("Movie data saved successfully.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,13 +131,25 @@ public class MovieService {
             for (JsonNode movieNode : results) {
                 int id = movieNode.path("id").asInt();
                 String title = movieNode.path("original_title").asText();
-                Movie movie = new Movie(id, title, searchQ); 
-                movies.add(movie);
+                if (correctTitle(title)) 
+                {
+                    Movie movie = new Movie(id, title, searchQ); 
+                    movies.add(movie);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return movies;
+    }
+
+    public static boolean correctTitle(String title) 
+    {
+        for (int i = 0 ; i < title.length() - 1 ; i++)
+        {
+            if (!letters.contains(title.substring(i, i+1))) return false ;
+        }
+        return true ;
     }
 }    

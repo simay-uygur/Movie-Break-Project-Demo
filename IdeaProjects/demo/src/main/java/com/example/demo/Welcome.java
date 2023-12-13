@@ -18,7 +18,7 @@ public class Welcome extends Application {
 
     public void start(Stage stage) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("welcomePage.fxml")) ;
+        Parent root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
         Scene scene = new Scene(root) ;
         stage.setScene(scene);
         stage.show();
@@ -27,11 +27,11 @@ public class Welcome extends Application {
     public static void initialize() {
         try{
             FileInputStream serviceAccount =
-                    new FileInputStream("Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
+                    new FileInputStream("IdeaProjects\\demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com/")
+                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com")
                     .build();
             FirebaseApp.initializeApp(options);
         } catch (Exception e) {

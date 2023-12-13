@@ -1,4 +1,3 @@
-import java.lang.ModuleLayer.Controller;
 import java.time.LocalTime;
 
 /**
@@ -10,6 +9,13 @@ public class Message {
     String text;
     LocalTime time;
     int userID;
+
+    public Message (String text, int userID, LocalTime time)
+    {
+        this.text = text;
+        this.userID = userID;
+        setTime();
+    }
 
     /*
      *  it returns the current hour and the minute in which this 
@@ -26,5 +32,15 @@ public class Message {
         int hour = time.getHour();
         int minute = time.getMinute();
         return hour + ":" + minute;
+    }
+
+    public int getUserID()
+    {
+        return this.userID;
+    }
+
+    public String getText()
+    {
+        return this.text;
     }
 }

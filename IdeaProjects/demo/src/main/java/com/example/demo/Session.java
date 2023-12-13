@@ -10,7 +10,7 @@ public class Session implements Search {
     Date finish;
     int sessionID;
     int quota;
-    Movie movie;
+    private int movieID ;
     String name;
     TimeTask timer;
 

@@ -16,8 +16,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class MovieService 
 {
+
     private final static String letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm?!:;() " ; 
     private static final String TMDB_API_KEY = "66c5cf5c1f248b705be57383ee7906ae";
     private static final String TMDB_API_URL = "https://api.themoviedb.org/3/movie/";
@@ -53,8 +56,8 @@ public class MovieService
         "&with_genres=" + genreId;
 
         String jsonResponse = makeHttpRequest(apiUrl);
-        System.out.println(jsonResponse);
-        List<Movie> movies = parseSearchResults(jsonResponse, genreId);
+
+        List<Movie> movies = parseSearchResults(jsonResponse, searchQuery);
         //System.out.println(movies);
         for (Movie movie : movies) {
             //if(movie.getTitle().con)
@@ -177,20 +180,19 @@ public class MovieService
                 }                               
                     Movie movie = new Movie(id, title, searchQ); 
                     movies.add(movie);
-                
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return movies;
     }
 
-    public static boolean correctTitle(String title) 
-    {
+    public static boolean correctTitle(String title) {
         for (int i = 0 ; i < title.length() - 1 ; i++)
         {
-            if (!letters.contains(title.substring(i, i+1))) return false ;
+            if (!letters.contains(title.substring(i, i+1))) 
+            return false ;
         }
         return true ;
     }

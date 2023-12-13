@@ -32,7 +32,7 @@ public class GUIController{
     private Parent root ;
     Firebase fb = new Firebase();
     @FXML
-    private Button signIn ;
+    private Button insert ;
 
     @FXML
     private Button backIn ;
@@ -46,12 +46,42 @@ public class GUIController{
     private TextField userN ;
 
     @FXML
-    private TextField pass1 ;
-    @FXML
-    private TextField userN1 ;
+    private VBox friends ;
 
     @FXML
     private Label label ;
+
+    @FXML
+    private Button in ;
+
+    @FXML
+    private Button up ;
+
+    @FXML
+    private ImageView image ;
+
+    @FXML
+    private HBox movies ;
+    @FXML
+    private  Button lArrow;
+
+    @FXML
+    private  Button rArrow;
+
+    @FXML
+    private StackPane one ;
+    @FXML
+    private StackPane two ;
+    @FXML
+    private StackPane three ;
+    @FXML
+    private StackPane four ;
+    @FXML
+    private StackPane five ;
+    @FXML
+    private StackPane six ;
+
+
 
     public void insert(ActionEvent e)
     {
@@ -59,9 +89,10 @@ public class GUIController{
     }
 
     public void check(ActionEvent e) throws IOException {
-        if (fb.hasAcc(userN.getText() , pass.getText())) 
+        fb.hasAcc(userN.getText() , pass.getText() );
+        if (fb.getB())
         {
-            root = FXMLLoader.load(getClass().getResource("IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\mainPage.fxml"));
+            fb.createUser(userN.getText() , pass.getText() , ""+(id));
             root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
             stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
             scene = new Scene(root) ;

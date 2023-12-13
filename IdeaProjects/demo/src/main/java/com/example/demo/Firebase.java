@@ -32,7 +32,7 @@ public class Firebase {
         idS.setValueAsync(id+1) ;
     }
 
-    public boolean hasAcc(String name , String pass)
+    public void hasAcc(String name , String pass)
     {
         db.addValueEventListener(new ValueEventListener() {
             @Override
@@ -57,7 +57,6 @@ public class Firebase {
 
             }
         });
-        return accExists;
     }
 
     public void setAcc()

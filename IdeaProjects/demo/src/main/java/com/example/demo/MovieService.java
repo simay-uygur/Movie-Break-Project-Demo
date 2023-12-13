@@ -24,15 +24,33 @@ public class MovieService
 
     public static void main(String[] args) throws IOException {
         initializeFirebase();
-        String genreId = "28"; 
-        fetchAndStoreMovies(genreId); // Replace 123 with an actual movie ID
+        String genreId = "28"; // Aksiyon türünün ID'si
+        fetchAndStoreMovies(genreId);
+        genreId = "12"; //Adventure
+        fetchAndStoreMovies(genreId);
+        genreId = "16"; // Animation
+        fetchAndStoreMovies(genreId);
+        genreId = "35"; //Comedy
+        fetchAndStoreMovies(genreId);
+        genreId = "80"; //Crime
+        fetchAndStoreMovies(genreId);
+        genreId = "18" ; //Drama
+        fetchAndStoreMovies(genreId);
+        genreId = "10749"; //Romance
+        fetchAndStoreMovies(genreId);
+        genreId = "878"; //Science Fiction
+        fetchAndStoreMovies(genreId);
+        genreId = "27"; //horror
+        fetchAndStoreMovies(genreId);
+        genreId = "99"; //docummentary
+        fetchAndStoreMovies(genreId);
 
     }
 
     public static void fetchAndStoreMovies(String genreId) throws IOException {
-        String apiUrl = "https://api.themoviedb.org/3/search/movie" +
-                "?api_key=" + TMDB_API_KEY +
-                "&with_genres="  + genreId;
+        String apiUrl = "https://api.themoviedb.org/3/discover/movie" +
+        "?api_key=" + TMDB_API_KEY +
+        "&with_genres=" + genreId;
 
         String jsonResponse = makeHttpRequest(apiUrl);
         System.out.println(jsonResponse);
@@ -89,7 +107,7 @@ public class MovieService
 
     private static void initializeFirebase() {
         try {
-            FileInputStream serviceAccount = new FileInputStream("Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
+            FileInputStream serviceAccount = new FileInputStream("IdeaProjects\\demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -126,7 +144,37 @@ public class MovieService
             for (JsonNode movieNode : results) {
                 int id = movieNode.path("id").asInt();
                 String title = movieNode.path("original_title").asText();
-                
+                if(searchQ.equals("28")){
+                    searchQ = "action";
+                }
+                if(searchQ.equals("12")){
+                    searchQ = "adventure";
+                }
+                if(searchQ.equals("16")){
+                    searchQ = "animation";
+                }
+                if(searchQ.equals("35")){
+                    searchQ = "comedy";
+                }
+                if(searchQ.equals("80")){
+                    searchQ = "crime";
+                }
+                if(searchQ.equals("18")){
+                    searchQ = "drama";
+                }
+                if(searchQ.equals("10749")){
+                    searchQ = "romance";
+                }
+
+                if(searchQ.equals("878")){
+                    searchQ = "science fiction";
+                }
+                if(searchQ.equals("27")){
+                    searchQ = "horror";
+                } 
+                if(searchQ.equals("99")){
+                    searchQ = "documentary";
+                }                               
                     Movie movie = new Movie(id, title, searchQ); 
                     movies.add(movie);
                 

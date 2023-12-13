@@ -19,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -60,28 +61,8 @@ public class GUIController{
     @FXML
     private ImageView image;
 
-    @FXML
-    private HBox movies;
-    @FXML
-    private  Button lArrow;
-
-    @FXML
-    private  Button rArrow;
-
-    @FXML
-    private StackPane one;
-    @FXML
-    private StackPane two;
-    @FXML
-    private StackPane three;
-    @FXML
-    private StackPane four;
-    @FXML
-    private StackPane five;
-    @FXML
-    private StackPane six;
-
-
+    @FXML 
+    private Label message ;
 
     public void insert(ActionEvent e)
     {
@@ -127,9 +108,18 @@ public class GUIController{
     public void takeUserID(Object value)
     {
         id = Integer.parseInt(""+value) ;
-        fb.createUser(userN.getText() , pass.getText() , ""+(id));
-        id++;
-        fb.userPush();
+        if (fb.userPush(userN.getText() , pass.getText() , id)) 
+        {
+            message.setVisible(true);
+            message.setText("You are signed up");
+            message.setTextFill(Color.rgb(34,139,34));
+        }
+        else 
+        {
+            message.setVisible(true);
+            message.setText("Username already exists");
+            message.setTextFill(Color.rgb(139,0,0));
+        }
     }
 
     public void changeIn(ActionEvent e) throws IOException

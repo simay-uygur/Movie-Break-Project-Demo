@@ -31,13 +31,19 @@ public class Firebase {
         takeAllData();
     }
 
-    public void userPush()
+    public boolean userPush(String name , String password , int id)
     {
-        DatabaseReference user = userDB.child(u.getID());
-        user.child("Username").setValueAsync(u.getName());
-        user.child("Password").setValueAsync(u.getPassword());
-        DatabaseReference userIDs = userDB.child("ID-Counter");
-        userIDs.setValueAsync(Integer.parseInt(u.getID()) + 1);
+        System.out.println(users);
+        if (!users.containsKey(name)) 
+        {
+            DatabaseReference user = userDB.child(""+id);
+            user.child("Username").setValueAsync(name);
+            user.child("Password").setValueAsync(password);
+            DatabaseReference userIDs = userDB.child("ID-Counter");
+            userIDs.setValueAsync(id + 1);
+            return true ;
+        }
+        return false ;
     }
 
     public void chatPush()
@@ -124,4 +130,6 @@ public class Firebase {
     {
         c = new Chat(messages, ID, users);
     }*/
+
+    //public void add()
 }

@@ -11,6 +11,7 @@ public class Movie {
     Image image;
     int year;
     private int id ;
+
     public Movie(int id, String name, String genre) {
         this.id = id ;
         this.name = name ;
@@ -21,7 +22,7 @@ public class Movie {
         return name ;
     }
 
-    public String getGenre(){
+    public String getGenre() {
         return genre;
     }
 
@@ -33,7 +34,7 @@ public class Movie {
         this.id = id;
     }
 
-    public String toString(){
+    public String toString() {
         return "Name: "+ name+ " id: "+ id+ "genre: "+ genre;
     }
 }

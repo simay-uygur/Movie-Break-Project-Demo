@@ -128,9 +128,8 @@ public class HelloController{
     public void takeId(Object value)
     {
         id = Integer.parseInt(""+value) ;
-        fb.createUser(userN.getText() , pass.getText() , ""+(id));
+        fb.push(userN.getText() , pass.getText() , id);
         id++ ;
-        fb.push();
     }
 
     public void changeIn(ActionEvent e) throws IOException

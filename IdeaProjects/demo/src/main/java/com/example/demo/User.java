@@ -8,13 +8,15 @@ public class User {
     String userName;
     String password;
     String userID;
+    Firebase fb ;
     ArrayList<String> favMoviesIDs;
     ArrayList<String> friendsIDs;
     ArrayList<String> chatIDs;
     ArrayList<String> sessionIDs;
 
-    public User(String userName, String password, String userID)
+    public User(String userName, String password, String userID , Firebase fb)
     {
+        setFirebase(fb);
         setUserName(userName);
         setPassword(password);
         setID(userID);
@@ -23,6 +25,11 @@ public class User {
     public void setUserName(String userName)
     {
         this.userName = userName;
+    }
+
+    public void setFirebase(Firebase fb)
+    {
+        this.fb = fb ;
     }
 
     public String getName()
@@ -52,7 +59,7 @@ public class User {
 
     public ArrayList<String> getFriendsIDs()
     {
-        return this.friendsIDs;
+        return friendsIDs;
     }
 
     public void addFriendID(String userID)

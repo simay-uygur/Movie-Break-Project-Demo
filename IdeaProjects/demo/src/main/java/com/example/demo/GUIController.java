@@ -61,6 +61,7 @@ public class GUIController{
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText() , pass.getText())) 
         {
+            root = FXMLLoader.load(getClass().getResource("IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\mainPage.fxml"));
             root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
             stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
             scene = new Scene(root) ;
@@ -118,7 +119,7 @@ public class GUIController{
     }
 
     public void changeMainPage(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\mainPage.fxml"));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
         scene = new Scene(root) ;
         stage.setScene(scene);

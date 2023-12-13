@@ -1,6 +1,5 @@
 package com.example.demo;
 
-
 import javafx.scene.image.Image;
 
 public class Movie {
@@ -26,6 +25,10 @@ public class Movie {
 
     public String getGenre() {
         return genre;
+    }
+
+    public String getPath(){
+        return posterPath;
     }
 
     public int takeId() {

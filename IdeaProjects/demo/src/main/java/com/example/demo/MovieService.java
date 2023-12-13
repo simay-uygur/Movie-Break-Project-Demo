@@ -190,8 +190,8 @@ public class MovieService
                 if(searchQ.equals("99")){
                     searchQ = "documentary";
                 }                               
-                    Movie movie = new Movie(id, title, searchQ, posterPath); 
-                    movies.add(movie);
+                Movie movie = new Movie(id, title, searchQ, posterPath); 
+                movies.add(movie);
                 
             }
         } catch (Exception e) {

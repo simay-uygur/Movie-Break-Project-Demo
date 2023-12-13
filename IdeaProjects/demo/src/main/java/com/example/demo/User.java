@@ -1,7 +1,9 @@
+package com.example.demo;
+
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 
-public class User implements Search{
+public class User {
     Controller controller;
     String userName;
     String password;
@@ -61,7 +63,7 @@ public class User implements Search{
     public void addFriend(String userID)
     {
         addFriendID(userID);
-        controller.createChat();
+        //controller.createChat();
     }
 
     public void removeFriend(String userID)
@@ -104,8 +106,9 @@ public class User implements Search{
         setPassword(newPassword);
     }
 
+    /* 
     public ArrayList<Integer> search(String input)
     {
         return;
-    }
+    }*/
 }

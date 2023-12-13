@@ -94,6 +94,7 @@ public class GUIController{
         {
             fb.createUser(userN.getText() , pass.getText() , ""+(id));
             root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
+            loadMoviePoster();
             stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
             scene = new Scene(root) ;
             stage.setScene(scene);
@@ -165,4 +166,24 @@ public class GUIController{
         stage.setScene(scene);
         stage.show();
     }
+
+    public void loadMoviePoster() {
+        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/1060090/path"); 
+        displayMoviePoster(movieRef.child("path").getKey() );
+    }
+
+    public void displayMoviePoster(String posterPath) {
+        System.out.println(posterPath);
+        try {
+            if (posterPath != null && !posterPath.isEmpty()) {
+                Image posterImage = new Image(posterPath);
+                image.setImage(posterImage); // 'image' is the name of your ImageView component.
+            } else {
+                System.err.println("posterPath is empty or null.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading and displaying the image: " + e.getMessage());
+        }
+    }  
+    
 }

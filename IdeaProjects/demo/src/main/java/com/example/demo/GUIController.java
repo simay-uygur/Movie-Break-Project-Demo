@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class GUIController{
     private static int id;
     private Scene scene;
@@ -142,6 +143,7 @@ public class GUIController{
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        //display();
         stage.show();
     }
 

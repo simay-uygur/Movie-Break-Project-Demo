@@ -16,7 +16,6 @@ import java.util.Scanner;
 
 public class Firebase {
     private boolean accExists = false;
-    //LinkedHashMap<String, LinkedHashMap<String,String>> users;
     ArrayList<String> users ;
     private int userID;
     private int chatID;
@@ -28,9 +27,7 @@ public class Firebase {
     public Firebase()
     {
         userDB = FirebaseDatabase.getInstance().getReference("users");
-        //userQ = userDB.orderByChild()
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
-        //users = new LinkedHashMap<>() ;
         users = new ArrayList<>() ;
         takeAllData();
     }
@@ -53,7 +50,6 @@ public class Firebase {
     {
         for (String toCheck : users) 
         {
-            System.out.println(toCheck + ":" + name);
             if (toCheck.substring(toCheck.indexOf("|")+1, toCheck.lastIndexOf("|")).equals(name)) return true ;
         }
         return false ;
@@ -70,7 +66,7 @@ public class Firebase {
     public boolean hasAcc(String name, String pass)
     {
         int ID = indexOf(name, pass) ;
-        if (ID != -1) 
+        if (ID > -1) 
         {
             createUser(name, pass, ""+ID);
             return true ;
@@ -82,7 +78,6 @@ public class Firebase {
     {
         for (String toCheck : users) 
         {
-            System.out.println(toCheck + ":" + name+"|"+pass);
             if (toCheck.substring(toCheck.indexOf("|")+1).equals(name+"|"+pass)) 
                 return Integer.parseInt(toCheck.substring(0, toCheck.indexOf("|"))) ;
         }
@@ -97,9 +92,7 @@ public class Firebase {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
                     String personalData = userSnapshot.getKey() + "|" + userSnapshot.child("Username").getValue() + "|" + userSnapshot.child("Password").getValue() ;
-                    //users.put( userSnapshot.getKey(), (LinkedHashMap<String, String>) new LinkedHashMap<>().put(""+userSnapshot.child("Username").getValue(),""+userSnapshot.child("Password").getValue())) ;
                     users.add(personalData) ;
-                    System.out.println(users);
                 }
             }
 
@@ -156,7 +149,6 @@ public class Firebase {
 
     public void createUser(String userName, String pass, String ID)
     {
-        System.out.println(userName + pass + ID);
         u = new User(userName, pass , ID , this);
     }
 
@@ -168,8 +160,6 @@ public class Firebase {
     public void add(String userId , String path , String id) 
     {
         DatabaseReference user = userDB.child(userId).child(path) ;
-        System.out.println("your info"+u);
-        System.out.println(user);
-        user.child(path.substring(0, path.length()-1)).setValueAsync(id) ;
+        user.child(id).setValueAsync("") ;
     }
 }

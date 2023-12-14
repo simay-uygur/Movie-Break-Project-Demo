@@ -20,7 +20,7 @@ public class User {
         setUserName(userName);
         setPassword(password);
         setID(userID);
-        addFriend(""+0);
+        addFriend(""+2);
     }
 
     public void setUserName(String userName)

@@ -77,26 +77,34 @@ public class GUIController{
 
     public void insert(ActionEvent e)
     {
-        DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
-        data.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) 
-                {
-                    Object value = dataSnapshot.getValue();
-                    takeUserID(value);
+        if (userN.getText().equals("") || pass.getText().equals("")) 
+        {
+            message.setText("Empty Password or Username");
+            message.setFill(Color.rgb(139,0,0));
+        }
+        else
+        {
+            DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
+            data.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) 
+                    {
+                        Object value = dataSnapshot.getValue();
+                        takeUserID(value);
+                    }
+                    else 
+                    {
+                        takeUserID(0);
+                    }
                 }
-                else 
-                {
-                    takeUserID(0);
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.err.println("Error: " + databaseError.getMessage());
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    System.err.println("Error: " + databaseError.getMessage());
+                }
+            });
+        }
     }
 
     public void check(ActionEvent e) throws IOException {

@@ -59,14 +59,17 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <BorderPane fx:id="pane6" prefHeight="200.0" prefWidth="200.0">
                <bottom>
-                  <Label prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
+                  <Label fx:id="label6" prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view6" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
             <BorderPane fx:id="check8" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
@@ -77,24 +80,33 @@
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view8" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+            <BorderPane fx:id="pane9" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                <bottom>
-                  <Label prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
+                  <Label fx:id="label9" prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view9" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+            <BorderPane fx:id="pane10" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                <bottom>
-                  <Label prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
+                  <Label fx:id="label10" prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view10" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
          </children>
       </GridPane>
@@ -110,7 +122,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <BorderPane fx:id="pane1" prefHeight="200.0" prefWidth="200.0">
                <bottom>
                   <Label fx:id="label1" prefHeight="27.0" prefWidth="185.0" BorderPane.alignment="CENTER">
                      <font>
@@ -118,8 +130,11 @@
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <BorderPane fx:id="pane2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <bottom>
                   <Label fx:id="label2" prefHeight="27.0" prefWidth="185.0" BorderPane.alignment="CENTER">
                      <font>
@@ -127,17 +142,23 @@
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+            <BorderPane fx:id="pane4" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                <bottom>
-                  <Label prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
+                  <Label fx:id="label4" prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <BorderPane fx:id="pane3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <bottom>
                   <Label fx:id="label5" prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
                      <font>
@@ -145,8 +166,11 @@
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+            <BorderPane fx:id="pane5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                <bottom>
                   <Label fx:id="perhat" prefHeight="27.0" prefWidth="185.0" text="L" BorderPane.alignment="CENTER">
                      <font>
@@ -154,6 +178,9 @@
                      </font>
                   </Label>
                </bottom>
+               <center>
+                  <ImageView fx:id="view5" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
          </children>
       </GridPane>

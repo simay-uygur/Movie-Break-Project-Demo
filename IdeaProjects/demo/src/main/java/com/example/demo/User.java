@@ -13,14 +13,14 @@ public class User {
     ArrayList<String> friendsIDs;
     ArrayList<String> chatIDs;
     ArrayList<String> sessionIDs;
-
+    MovieService mService ;
     public User(String userName, String password, String userID , Firebase fb)
     {
+        mService = new MovieService() ;
         setFirebase(fb);
         setUserName(userName);
         setPassword(password);
         setID(userID);
-        addFriend(""+2);
     }
 
     public void setUserName(String userName)

@@ -1,5 +1,13 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import javafx.scene.image.Image;
 
 public class Movie {
@@ -11,7 +19,6 @@ public class Movie {
     int year;
     String posterPath;
     private int id ;
-
     public Movie(int id, String name, String genre,String posterPath) {
         this.id = id ;
         this.name = name ;
@@ -40,6 +47,8 @@ public class Movie {
     }
 
     public String toString() {
-        return "Name: "+ name+ " id: "+ id+ "genre: "+ genre + "posterpath"+ posterPath;
+        return "Name: "+ name+ " id: "+ id+ " genre: "+ genre + " posterpath "+ posterPath;
     }
+
+    
 }

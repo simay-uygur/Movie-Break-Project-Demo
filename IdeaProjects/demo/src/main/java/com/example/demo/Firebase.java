@@ -17,6 +17,8 @@ import java.util.Scanner;
 public class Firebase {
     private boolean accExists = false;
     ArrayList<String> users ;
+    ArrayList<Movie> movies ;
+    DatabaseReference films ;
     private int userID;
     private int chatID;
     private User u;
@@ -26,9 +28,12 @@ public class Firebase {
     Query userQ ;
     public Firebase()
     {
+        films = FirebaseDatabase.getInstance().getReference("movies");
         userDB = FirebaseDatabase.getInstance().getReference("users");
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
         users = new ArrayList<>() ;
+        movies = new ArrayList<>() ;
+        takeAllMovieData();
         takeAllData();
     }
 
@@ -102,6 +107,30 @@ public class Firebase {
             }
         });
     }
+    public void takeAllMovieData() 
+    {
+        films.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+               for (DataSnapshot movie : snapshot.getChildren()) 
+               {
+                    movies.add(new Movie(
+                                    Integer.parseInt(movie.getKey()),
+                                    ""+movie.child("title").getValue(), 
+                                    ""+movie.child("genre").getValue(), 
+                                    ""+movie.child("path").getValue())
+                                ) ;
+               }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.out.println("Something went wrong :(");
+            }
+            
+        });
+    }
 
     public void setAcc()
     {
@@ -149,6 +178,8 @@ public class Firebase {
 
     public void createUser(String userName, String pass, String ID)
     {
+        System.out.println(movies);
+        System.out.println(users);
         u = new User(userName, pass , ID , this);
     }
 

@@ -5,8 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.OkHttpClient;
@@ -23,7 +27,7 @@ public class MovieService
     private static final String TMDB_API_URL = "https://api.themoviedb.org/3/movie/";
     // TMDb'nin resimler için temel URL'i
     private static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
-    public static void main(String[] args) throws IOException {
+    /*public static void main(String[] args) throws IOException {
         initializeFirebase();
         String genreId = "28"; // Aksiyon türünün ID'si
         fetchAndStoreMovies(genreId);
@@ -44,9 +48,10 @@ public class MovieService
         genreId = "27"; //horror
         fetchAndStoreMovies(genreId);
         genreId = "99"; //docummentary
-        fetchAndStoreMovies(genreId);*/
+        fetchAndStoreMovies(genreId);
 
-    }
+    }*/
+
     // Poster yolu ve temel URL'i birleştiren fonksiyon
 
     // TMDb'nin resimler için temel URL'i
@@ -124,7 +129,7 @@ public class MovieService
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com/")
+                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com")
                     .build();
             FirebaseApp.initializeApp(options);
         } catch (Exception e) {
@@ -208,4 +213,19 @@ public class MovieService
         }
         return true ;
     }
+
+    
+    
+
+    /*public void addIt(int id , Object t , Object g , Object p)
+    {
+        Movie m = new Movie(id, ""+t, ""+g, ""+p) ;
+        movies.add(m) ;
+        //System.out.println(movies);
+    }
+
+    public void sss()
+    {
+        takeAllData();
+    }*/
 }    

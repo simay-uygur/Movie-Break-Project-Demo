@@ -70,9 +70,12 @@ public class GUIController{
     }
 
     public void check(ActionEvent e) throws IOException {
-        if (fb.hasAcc(userN.getText() , pass.getText() ))
+        String name = userN.getText() ;
+        String passw = pass.getText() ;
+        System.out.println(id);
+        if (fb.hasAcc(name , passw))
         {
-            fb.createUser(userN.getText() , pass.getText() , ""+(id));
+            fb.createUser(name , passw , ""+(id));
             root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
             loadMoviePoster();
             stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
@@ -175,4 +178,6 @@ public class GUIController{
         }
     }  
     
+
+
 }

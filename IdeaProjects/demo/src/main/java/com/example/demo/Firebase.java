@@ -10,31 +10,34 @@ import com.google.firebase.messaging.Message;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Firebase {
     private boolean accExists = false;
-    HashMap<String, String> users;
+    //LinkedHashMap<String, LinkedHashMap<String,String>> users;
+    ArrayList<String> users ;
     private int userID;
     private int chatID;
     private User u;
     private Chat c;
     DatabaseReference userDB;
     DatabaseReference chatDB;
-    
+    Query userQ ;
     public Firebase()
     {
         userDB = FirebaseDatabase.getInstance().getReference("users");
+        //userQ = userDB.orderByChild()
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
-        users = new HashMap<>() ;
+        //users = new LinkedHashMap<>() ;
+        users = new ArrayList<>() ;
         takeAllData();
     }
 
     public boolean userPush(String name , String password , int id)
     {
-        System.out.println(users);
-        if (!users.containsKey(name)) 
+        if (!accountExists(name)) 
         {
             DatabaseReference user = userDB.child(""+id);
             user.child("Username").setValueAsync(name);
@@ -42,6 +45,16 @@ public class Firebase {
             DatabaseReference userIDs = userDB.child("ID-Counter");
             userIDs.setValueAsync(id + 1);
             return true ;
+        }
+        return false ;
+    }
+
+    public boolean accountExists(String name) 
+    {
+        for (String toCheck : users) 
+        {
+            System.out.println(toCheck + ":" + name);
+            if (toCheck.substring(toCheck.indexOf("|")+1, toCheck.lastIndexOf("|")).equals(name)) return true ;
         }
         return false ;
     }
@@ -56,7 +69,24 @@ public class Firebase {
 
     public boolean hasAcc(String name, String pass)
     {
-        return users.containsKey(name) && users.containsKey(pass) ;
+        int ID = indexOf(name, pass) ;
+        if (ID != -1) 
+        {
+            createUser(name, pass, ""+ID);
+            return true ;
+        }
+        return false ;
+    }
+
+    public int indexOf(String name , String pass)
+    {
+        for (String toCheck : users) 
+        {
+            System.out.println(toCheck + ":" + name+"|"+pass);
+            if (toCheck.substring(toCheck.indexOf("|")+1).equals(name+"|"+pass)) 
+                return Integer.parseInt(toCheck.substring(0, toCheck.indexOf("|"))) ;
+        }
+        return -1 ;
     }
 
     public void takeAllData()
@@ -66,7 +96,10 @@ public class Firebase {
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
-                    users.put(""+userSnapshot.child("Username").getValue(),""+userSnapshot.child("Password").getValue()) ;
+                    String personalData = userSnapshot.getKey() + "|" + userSnapshot.child("Username").getValue() + "|" + userSnapshot.child("Password").getValue() ;
+                    //users.put( userSnapshot.getKey(), (LinkedHashMap<String, String>) new LinkedHashMap<>().put(""+userSnapshot.child("Username").getValue(),""+userSnapshot.child("Password").getValue())) ;
+                    users.add(personalData) ;
+                    System.out.println(users);
                 }
             }
 
@@ -123,7 +156,8 @@ public class Firebase {
 
     public void createUser(String userName, String pass, String ID)
     {
-        u = new User(userName, pass, ID , this);
+        System.out.println(userName + pass + ID);
+        u = new User(userName, pass , ID , this);
     }
 
     /*public void createChat(ArrayList<Message> messages, String ID, ArrayList<User> users)
@@ -131,5 +165,11 @@ public class Firebase {
         c = new Chat(messages, ID, users);
     }*/
 
-    //public void add()
+    public void add(String userId , String path , String id) 
+    {
+        DatabaseReference user = userDB.child(userId).child(path) ;
+        System.out.println("your info"+u);
+        System.out.println(user);
+        user.child(path.substring(0, path.length()-1)).setValueAsync(id) ;
+    }
 }

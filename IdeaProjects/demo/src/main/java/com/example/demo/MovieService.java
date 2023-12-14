@@ -180,7 +180,6 @@ public class MovieService
                 if(searchQ.equals("10749")){
                     searchQ = "romance";
                 }
-
                 if(searchQ.equals("878")){
                     searchQ = "science fiction";
                 }

@@ -20,6 +20,7 @@ public class User {
         setUserName(userName);
         setPassword(password);
         setID(userID);
+        addFriend(""+0);
     }
 
     public void setUserName(String userName)
@@ -67,9 +68,11 @@ public class User {
         friendsIDs.add(userID);
     }
 
-    public void addFriend(String userID)
+    public void addFriend(String friendID)
     {
-        addFriendID(userID);
+        //addFriendID(friendID);
+        System.out.println(userID);
+        fb.add(userID, "Friends", friendID);
         //controller.createChat();
     }
 

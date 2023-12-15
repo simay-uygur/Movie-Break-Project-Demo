@@ -182,7 +182,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="439.0" layoutY="86.0" mnemonicParsing="false" text="Favorite Films">
+            <Button alignment="CENTER_RIGHT" layoutX="418.0" layoutY="86.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="167.0" text="Favorite Films" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -218,6 +218,11 @@
                   </ImageView>
                </graphic>
             </Label>
+            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="424.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/heart_symbol.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

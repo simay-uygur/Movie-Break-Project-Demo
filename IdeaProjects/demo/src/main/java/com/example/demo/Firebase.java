@@ -188,8 +188,12 @@ public class Firebase {
 
     public void add(String userId , String path , String id) 
     {
-        DatabaseReference user = userDB.child(userId).child(path) ;
-        user.child(id).setValueAsync("") ;
+        DatabaseReference user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ;
+        switch(path)
+        {
+            case "Friends" : DatabaseReference friend = userDB.child(id).child(path) ; friend.child(userId).setValueAsync("") ; break ;
+            case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
+        }
     }
 
     public User getUser(){

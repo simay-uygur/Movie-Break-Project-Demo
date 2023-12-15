@@ -149,12 +149,14 @@ public class MovieService
 
                 String genreName = mapGenreIdToName(searchQ); // Convert genre ID to name
 
-                Movie movie = new Movie(id, title, genreName, posterPath);
-                movies.add(movie);
-
-                movieIds.add(Integer.toString(id)); // Collect movie IDs
-                if (!posterPath.isEmpty())
-                    imageUrls.add(posterPath); // Collect image URLs if available
+                if(correctTitle(title)){
+                    Movie movie = new Movie(id, title, genreName, posterPath);
+                    movies.add(movie);
+                    movieIds.add(Integer.toString(id)); // Collect movie IDs
+                    if (!posterPath.isEmpty())
+                        imageUrls.add(posterPath);
+                    }
+                
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -216,18 +218,4 @@ public class MovieService
         return true ;
     }
 
-    
-    
-
-    /*public void addIt(int id , Object t , Object g , Object p)
-    {
-        Movie m = new Movie(id, ""+t, ""+g, ""+p) ;
-        movies.add(m) ;
-        //System.out.println(movies);
-    }
-
-    public void sss()
-    {
-        takeAllData();
-    }*/
 }    

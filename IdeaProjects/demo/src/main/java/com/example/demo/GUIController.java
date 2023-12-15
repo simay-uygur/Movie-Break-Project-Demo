@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -199,13 +200,13 @@ public class GUIController{
     } 
     //refreshFriend
     public void refreshMovie() {
-        String[] ids = {"238", "240", "5833", "8871", "10908"};
+        String[] ids = {"155", "240", "238", "8871", "10908"};
         movieIDs = ids;
         helperChange(movieIDs);
     }
 
-    public void displayImage(ActionEvent e){
-        String[] ids = {"156022", "299054", "360920", "414906", "459003"};
+    public void displayImage(MouseEvent e){
+        String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
         helperChange(movieIDs);
     }
@@ -220,13 +221,12 @@ public class GUIController{
         String imagePath = "IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\movieImages\\" + movieId + ".jpg";
         try {
             File imageFile = new File(imagePath);
-            img = ImageIO.read(imageFile);  // Directly assign to 'img'
+            img = ImageIO.read(imageFile);  
             System.out.println("image is assigned");
             System.out.println("path is "+ imagePath);
 
         } catch (IOException e) {
-            System.err.println("Error loading image: " + e.getMessage());  // More informative error message
-            // Optionally, you can return a default image in case of an error
+            System.err.println("Error loading image: " + e.getMessage());  
         }
         return img;
     }
@@ -332,7 +332,7 @@ public class GUIController{
         stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
         scene = new Scene(root) ;
         stage.setScene(scene);
-        //stage.setFullScreen(true);
+        stage.setFullScreen(true);
         stage.show();
     }
 

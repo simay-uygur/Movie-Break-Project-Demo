@@ -7,10 +7,12 @@ module com.example.demo {
     requires com.google.api.apicommon;
     requires google.cloud.core;
     requires com.google.auth;
-    requires java.net.http;
     requires com.fasterxml.jackson.databind;
     requires okhttp3;
-
-    opens com.example.demo to javafx.fxml, firebase.admin; // Open to Firebase
+    requires java.desktop;
+    requires java.net.http;
+    requires javafx.swing; 
+    
+    opens com.example.demo to javafx.fxml, firebase.admin;
     exports com.example.demo;
 }

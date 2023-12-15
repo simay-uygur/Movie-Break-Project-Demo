@@ -14,11 +14,9 @@ import java.io.IOException;
 
 public class Welcome extends Application {
 
-    @Override
-
     public void start(Stage stage) throws IOException
     {
-        Parent root = FXMLLoader.load(getClass().getResource("welcomePage.fxml")) ;
+        Parent root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
         Scene scene = new Scene(root) ;
         stage.setScene(scene);
         stage.show();
@@ -27,7 +25,7 @@ public class Welcome extends Application {
     public static void initialize() {
         try{
             FileInputStream serviceAccount =
-                    new FileInputStream("demo\\serviceAccountKey.json");
+                    new FileInputStream("IdeaProjects\\demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))

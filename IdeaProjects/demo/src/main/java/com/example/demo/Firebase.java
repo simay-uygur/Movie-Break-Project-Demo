@@ -178,8 +178,6 @@ public class Firebase {
 
     public void createUser(String userName, String pass, String ID)
     {
-        System.out.println(movies);
-        System.out.println(users);
         u = new User(userName, pass , ID , this);
     }
 

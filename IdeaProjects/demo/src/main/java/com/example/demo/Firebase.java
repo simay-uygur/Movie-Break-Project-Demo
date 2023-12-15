@@ -191,4 +191,12 @@ public class Firebase {
         DatabaseReference user = userDB.child(userId).child(path) ;
         user.child(id).setValueAsync("") ;
     }
+
+    public User getUser(){
+        System.out.println(u);
+        return u;
+    }
+    public String getCurrentID(){
+        return u.getID();
+    }
 }

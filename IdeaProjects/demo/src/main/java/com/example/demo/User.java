@@ -21,6 +21,7 @@ public class User {
         setUserName(userName);
         setPassword(password);
         setID(userID);
+        addFriend(""+0);
     }
 
     public void setUserName(String userName)

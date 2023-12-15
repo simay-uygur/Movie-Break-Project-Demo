@@ -352,10 +352,4 @@ public class GUIController{
         stage.show();
     }
 
-    public void displayImage(ActionEvent e) 
-    {
-
-    }
-    
-
 }

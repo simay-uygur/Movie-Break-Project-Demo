@@ -80,7 +80,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="46.0">
                      <image>
-                        <Image url="@images/nickname%20symbol.jpeg" />
+                        <Image url="@images/nickname_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -107,11 +107,6 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button layoutX="439.0" layoutY="86.0" mnemonicParsing="false" text="Favorite Films">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
             <Button layoutX="700.0" layoutY="86.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="55.0">
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="38.0">
@@ -127,11 +122,21 @@
                <graphic>
                   <ImageView fitHeight="114.0" fitWidth="126.0">
                      <image>
-                        <Image url="@images/nickname%20symbol.jpeg" />
+                        <Image url="@images/nickname_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Label>
+            <Button alignment="CENTER_RIGHT" layoutX="418.0" layoutY="86.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="167.0" text="Favorite Films" textAlignment="RIGHT">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="424.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/heart_symbol.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <BorderPane layoutY="216.0" prefHeight="383.0" prefWidth="878.0">
@@ -163,7 +168,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -181,7 +186,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -193,7 +198,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -205,7 +210,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -217,7 +222,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>

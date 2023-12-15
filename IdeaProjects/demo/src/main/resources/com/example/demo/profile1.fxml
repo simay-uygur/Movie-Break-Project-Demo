@@ -34,7 +34,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="60.0">
                      <image>
-                        <Image url="@Görseller/WhatsApp%20Image%202023-12-12%20at%2020.43.18%20(1).jpeg" />
+                        <Image url="@images/chat%20symbol.jpeg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -43,7 +43,7 @@
                <graphic>
                   <ImageView fitHeight="44.0" fitWidth="50.0">
                      <image>
-                        <Image url="@Görseller/WhatsApp%20Image%202023-12-12%20at%2020.43.18%20(3).jpeg" />
+                        <Image url="@images/home%20symbol.jpeg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -52,7 +52,7 @@
                <graphic>
                   <ImageView fitHeight="51.0" fitWidth="59.0">
                      <image>
-                        <Image url="@Görseller/WhatsApp%20Image%202023-12-12%20at%2020.43.18%20(4).jpeg" />
+                        <Image url="@images/logout%20symbol.jpeg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -61,7 +61,7 @@
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="60.0">
                      <image>
-                        <Image url="@Görseller/WhatsApp%20Image%202023-12-12%20at%2020.43.18.jpeg" />
+                        <Image url="@images/calendar%20symbol.jpeg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -71,7 +71,7 @@
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="27.0">
                      <image>
-                        <Image url="@Görseller/WhatsApp%20Image%202023-12-12%20at%2020.43.18%20(7).jpeg" />
+                        <Image url="@images/search_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -80,7 +80,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="46.0">
                      <image>
-                        <Image url="@Görseller/WhatsApp%20Image%202023-12-12%20at%2020.43.17.jpeg" />
+                        <Image url="@images/nickname_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -182,7 +182,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="439.0" layoutY="86.0" mnemonicParsing="false" text="Favorite Films">
+            <Button alignment="CENTER_RIGHT" layoutX="418.0" layoutY="86.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="167.0" text="Favorite Films" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -201,7 +201,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="38.0">
                      <image>
-                        <Image url="@Görseller/settings.png" />
+                        <Image url="@images/settings.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -213,11 +213,16 @@
                <graphic>
                   <ImageView fitHeight="114.0" fitWidth="126.0">
                      <image>
-                        <Image url="@Görseller/WhatsApp%20Image%202023-12-12%20at%2020.43.17.jpeg" />
+                        <Image url="@images/nickname_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Label>
+            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="424.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/heart_symbol.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

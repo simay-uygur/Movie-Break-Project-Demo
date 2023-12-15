@@ -5,7 +5,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,16 +35,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.List;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 
-
-public class GUIController{
+public class GUIController {
     private static int id;
     private Scene scene;
     private Stage stage;
@@ -51,7 +57,7 @@ public class GUIController{
     private Button backIn;
 
     @FXML
-    private  Button backUp;
+    private Button backUp;
 
     @FXML
     private TextField pass;
@@ -74,7 +80,7 @@ public class GUIController{
     private Button up;
 
     @FXML
-    private ImageView profilePhoto ;
+    private ImageView profilePhoto;
 
     @FXML
     private Label label1;
@@ -82,67 +88,67 @@ public class GUIController{
     @FXML
     private ImageView view1;
 
-    @FXML 
+    @FXML
     private Label label2;
 
     @FXML
     private ImageView view2;
 
-    @FXML 
+    @FXML
     private Label label3;
 
     @FXML
     private ImageView view3;
 
-    @FXML 
+    @FXML
     private Label label4;
 
     @FXML
     private ImageView view4;
 
-    @FXML 
+    @FXML
     private Label label5;
 
     @FXML
     private ImageView view5;
 
-    @FXML 
+    @FXML
     private Label label6;
 
     @FXML
     private ImageView view6;
 
-    @FXML 
+    @FXML
     private Label label7;
 
     @FXML
     private ImageView view7;
 
-    @FXML 
+    @FXML
     private Label label8;
 
     @FXML
     private ImageView view8;
 
-    @FXML 
+    @FXML
     private Label label9;
 
     @FXML
     private ImageView view9;
 
-    @FXML 
+    @FXML
     private Label label10;
 
     @FXML
     private ImageView view10;
 
-    @FXML 
+    @FXML
     private Label mslabel1;
 
     @FXML
     private ImageView msview1;
 
-    @FXML 
+    @FXML
     private Label mslabel2;
 
     @FXML
@@ -159,42 +165,64 @@ public class GUIController{
 
     @FXML
     private Text message;
-
+    
+    @FXML
+    private ListView<Movie> searchResultsListView; 
+    // Sonuçları göstermek için bir ListView bileşeni
+    @FXML
+    private ObservableList<Integer> movieIds;
     private String user;
-
     private String[] movieIDs = new String[5];
-
-    public void helperChange(String[] ids){
+    //movie searchlemek için
+    public List<Movie> performSearch(String searchText) {
+        String trimmedSearchText = searchText.trim().toLowerCase();
+        // Başlayan filmleri bulmak için bir filtre kullanın
+        List<Movie> searchResults = fb.movies.stream()
+                .filter(movie -> movie.getTitle().toLowerCase().startsWith(trimmedSearchText))
+                .collect(Collectors.toList());
+        return searchResults;
+    }
+    //moviesearchlemek için
+    @FXML
+    private void handleSearch(ActionEvent event) {
+        String searchText = textFieldSearch.getText().trim();
+        if (!searchText.isEmpty()) {
+            List<Movie> searchResults = performSearch(searchText);
+            movieIds = FXCollections.observableArrayList();
+            for (Movie movie : searchResults) {
+                movieIds.add(movie.getId());
+            }
+            // Sonuçları arayüzde gösterme kodu
+            searchResultsListView.getItems().setAll(searchResults);
+        }
+    }
+    public void helperChange(String[] ids) {
         CompletableFuture<String> ctitle = new CompletableFuture<>();
         String title = "";
         for (int i = 0; i < ids.length; i++) {
             BufferedImage cposter = loadMoviePoster(ids[i]);
             ctitle = loadMovieName(ids[i]);
             title = ctitle.join();
-            if(i==0){
+            if (i == 0) {
                 Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view1.setImage(posterImage);
                 label1.setText(title);
-            }
-            else if(i==1){
+            } else if (i == 1) {
                 Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view2.setImage(posterImage);
-                label2.setText(title); 
-            }
-            else if (i==2){
+                label2.setText(title);
+            } else if (i == 2) {
                 Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view3.setImage(posterImage);
-                label3.setText(title); 
-            }
-            else if (i==3){
+                label3.setText(title);
+            } else if (i == 3) {
                 Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view4.setImage(posterImage);
-                label4.setText(title); 
-            }
-            else {
+                label4.setText(title);
+            } else {
                 Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view5.setImage(posterImage);
-                label5.setText(title); 
+                label5.setText(title);
             }
         }
     } 
@@ -211,26 +239,27 @@ public class GUIController{
         helperChange(movieIDs);
     }
 
-    public void displaying(){
+    public void displaying() {
         label1.setText("dskjfjö");
         label2.setText("vdjvkm");
     }
 
     public BufferedImage loadMoviePoster(String movieId) {
         BufferedImage img = null;
-        String imagePath = "IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\movieImages\\" + movieId + ".jpg";
+        String imagePath = "IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\movieImages\\" + movieId
+                + ".jpg";
         try {
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);  
             System.out.println("image is assigned");
-            System.out.println("path is "+ imagePath);
+            System.out.println("path is " + imagePath);
 
         } catch (IOException e) {
             System.err.println("Error loading image: " + e.getMessage());  
         }
         return img;
     }
-    
+
     public CompletableFuture<String> loadMovieName(String movieId) {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/" + movieId + "/title");
 
@@ -253,28 +282,20 @@ public class GUIController{
 
         return future;
     }
-    
 
-    public void insert(ActionEvent e)
-    {
-        if (userN.getText().equals("") || pass.getText().equals("")) 
-        {
+    public void insert(ActionEvent e) {
+        if (userN.getText().equals("") || pass.getText().equals("")) {
             message.setText("Empty Password or Username");
             message.setFill(Color.rgb(139, 0, 0));
-        }
-        else
-        {
+        } else {
             DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
             data.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) 
-                    {
+                    if (dataSnapshot.exists()) {
                         Object value = dataSnapshot.getValue();
                         takeUserID(value);
-                    }
-                    else 
-                    {
+                    } else {
                         takeUserID(0);
                     }
                 }
@@ -287,41 +308,34 @@ public class GUIController{
         }
     }
 
-
     public void check(ActionEvent e) throws IOException {
-        if (fb.hasAcc(userN.getText() , pass.getText() ))
-        {
+        if (fb.hasAcc(userN.getText(), pass.getText())) {
             changeMainPage(e);
         }
     }
 
-    public void takeUserID(Object value)
-    {
-        id = Integer.parseInt(""+value) ;
-        if (fb.userPush(userN.getText() , pass.getText() , id)) 
-        {
+    public void takeUserID(Object value) {
+        id = Integer.parseInt("" + value);
+        if (fb.userPush(userN.getText(), pass.getText(), id)) {
             message.setText("You are signed up");
-            message.setFill(Color.rgb(34,139,34));
-        }
-        else 
-        {
+            message.setFill(Color.rgb(34, 139, 34));
+        } else {
             message.setText("You are signed up");
-            message.setFill(Color.rgb(139,0,0));
+            message.setFill(Color.rgb(139, 0, 0));
         }
     }
 
-    public void changeIn(ActionEvent e) throws IOException
-    {
+    public void changeIn(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("signIn.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root) ;
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void changeUp(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -329,8 +343,8 @@ public class GUIController{
 
     public void changeMainPage(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
-        scene = new Scene(root) ;
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
@@ -338,16 +352,15 @@ public class GUIController{
 
     public void backToMain(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void openProfileSettings(ActionEvent e) throws IOException 
-    {
+    public void openProfileSettings(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("profilePage.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

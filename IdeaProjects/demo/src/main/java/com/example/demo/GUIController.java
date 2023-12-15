@@ -72,9 +72,6 @@ public class GUIController{
     @FXML
     private Button up;
 
-    @FXML
-    private Label message ;
-
     @FXML 
     private Text message ;
 
@@ -126,21 +123,13 @@ public class GUIController{
         id = Integer.parseInt(""+value) ;
         if (fb.userPush(userN.getText() , pass.getText() , id)) 
         {
-            message.setVisible(true);
             message.setText("You are signed up");
             message.setFill(Color.rgb(34,139,34));
         }
         else 
         {
-            message.setVisible(true);
             message.setText("Username already exists");
             message.setFill(Color.rgb(139,0,0));
-            Alert alert = new Alert(AlertType.INFORMATION);
-            
-            alert.setTitle("Mesaj Başliği");
-            alert.setHeaderText(null);
-            alert.setContentText("Bu bir bilgilendirme mesajidir.");
-            alert.showAndWait();
         }
     }
 
@@ -158,7 +147,6 @@ public class GUIController{
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        //display();
         stage.show();
     }
 
@@ -179,14 +167,7 @@ public class GUIController{
         stage.show();
     }
 
-    public void openProfileSettings(ActionEvent e) throws IOException 
-    {
-        root = FXMLLoader.load(getClass().getResource("profilePage.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    
 
     public void setProfImg() 
     {

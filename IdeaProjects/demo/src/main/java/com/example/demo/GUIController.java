@@ -72,14 +72,187 @@ public class GUIController{
     @FXML
     private Button up;
 
-    @FXML
-    private Label message ;
-
-    @FXML 
-    private Text message ;
 
     @FXML
     private ImageView profilePhoto ;
+
+    @FXML
+    private Label label1;
+
+    @FXML
+    private ImageView view1;
+
+    @FXML 
+    private Label label2;
+
+    @FXML
+    private ImageView view2;
+
+    @FXML 
+    private Label label3;
+
+    @FXML
+    private ImageView view3;
+
+    @FXML 
+    private Label label4;
+
+    @FXML
+    private ImageView view4;
+
+    @FXML 
+    private Label label5;
+
+    @FXML
+    private ImageView view5;
+
+    @FXML 
+    private Label label6;
+
+    @FXML
+    private ImageView view6;
+
+    @FXML 
+    private Label label7;
+
+    @FXML
+    private ImageView view7;
+
+    @FXML 
+    private Label label8;
+
+    @FXML
+    private ImageView view8;
+
+    @FXML 
+    private Label label9;
+
+    @FXML
+    private ImageView view9;
+
+    @FXML 
+    private Label label10;
+
+    @FXML
+    private ImageView view10;
+
+    @FXML 
+    private Label mslabel1;
+
+    @FXML
+    private ImageView msview1;
+
+    @FXML 
+    private Label mslabel2;
+
+    @FXML
+    private ImageView msview2;
+
+    @FXML
+    private Button movierefreshbutton;
+
+    @FXML
+    private TextField textFieldSearch;
+
+    @FXML
+    private Text message;
+
+    private String user;
+
+    private String[] movieIDs = new String[5];
+
+    public void helperChange(String[] ids){
+        CompletableFuture<String> ctitle = new CompletableFuture<>();
+        String title = "";
+        for (int i = 0; i < ids.length; i++) {
+            BufferedImage cposter = loadMoviePoster(ids[i]);
+            ctitle = loadMovieName(ids[i]);
+            title = ctitle.join();
+            if(i==0){
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view1.setImage(posterImage);
+                label1.setText(title);
+            }
+            else if(i==1){
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view2.setImage(posterImage);
+                label2.setText(title); 
+            }
+            else if (i==2){
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view3.setImage(posterImage);
+                label3.setText(title); 
+            }
+            else if (i==3){
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view4.setImage(posterImage);
+                label4.setText(title); 
+            }
+            else {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view5.setImage(posterImage);
+                label5.setText(title); 
+            }
+        }
+    } 
+    
+    public void refreshMovie() {
+        String[] ids = {"238", "155", "5833", "8871", "10908"};
+        movieIDs = ids;
+        helperChange(movieIDs);
+    }
+
+    public void displayImage(ActionEvent e){
+        //movieIDs =fb.getUser().recomIds();
+        String[] ids = {"156022", "299054", "335977", "360920", "414906"};
+        movieIDs = ids;
+        helperChange(movieIDs);
+    }
+
+    public void displaying(){
+        label1.setText("dskjfjö");
+        label2.setText("vdjvkm");
+    }
+
+    public BufferedImage loadMoviePoster(String movieId) {
+        BufferedImage img = null;
+        String imagePath = "IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\movieImages\\" + movieId + ".jpg";
+        try {
+            File imageFile = new File(imagePath);
+            img = ImageIO.read(imageFile);  // Directly assign to 'img'
+            System.out.println("image is assigned");
+            System.out.println("path is "+ imagePath);
+
+        } catch (IOException e) {
+            System.err.println("Error loading image: " + e.getMessage());  // More informative error message
+            // Optionally, you can return a default image in case of an error
+        }
+        return img;
+    }
+    
+    public CompletableFuture<String> loadMovieName(String movieId) {
+        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/" + movieId + "/title");
+
+        CompletableFuture<String> future = new CompletableFuture<>();
+
+        movieRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String movietitle = dataSnapshot.getValue(String.class);
+                if (movietitle != null) {
+                    future.complete(movietitle);
+                } else {
+                    future.completeExceptionally(new Exception("title not found"));
+                }
+            }
+
+            public void onCancelled(DatabaseError databaseError) {
+                future.completeExceptionally(new Exception(databaseError.getMessage()));
+            }
+        });
+
+        return future;
+    }
+    
 
     public void insert(ActionEvent e)
     {
@@ -193,60 +366,6 @@ public class GUIController{
         Circle c = new Circle(50) ;
         profilePhoto.setClip(c); 
     }
-    public void loadMoviePoster() {
-        /*DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/1060090/path"); 
-        movieRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String posterPath = dataSnapshot.getValue(String.class);
-                displayMoviePoster(posterPath);
-            }
-            public void onCancelled(DatabaseError databaseError) {
-                System.err.println("Error: " + databaseError.getMessage());
-            }
-        });*/
-    }
+    
 
-    
-        /*public void check(ActionEvent e) throws IOException {
-        if (fb.hasAcc(userN.getText() , pass.getText() ))
-        {
-            /*System.out.println("artik");
-            fb.createUser(userN.getText() , pass.getText() , ""+(id));
-            root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            //display();
-           //oot = loader.load();
-            //GUIController controller = loader.getController(); // Get the controller associated with mainPage.fxml
-            //controller.loadMoviePoster(); // Call the method to load the movie poster
-
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            System.out.println(Label.getText());
-            display();// 
-            fb.createUser(userN.getText() , pass.getText() , ""+(id));
-            //display();
-            root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
-            scene = new Scene(root) ;
-            stage.setScene(scene);
-            stage.show();
-        }
-    }*/
-    /*public void check(ActionEvent e) throws IOException {
-        if (fb.hasAcc(userN.getText(), pass.getText())) {
-            fb.createUser(userN.getText(), pass.getText(), "" + (id));
-    
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("mainPage.fxml"));
-            loader.setController(this);
-            root = loader.load();
-    
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }*/
-    
 }

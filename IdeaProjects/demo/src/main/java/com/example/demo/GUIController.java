@@ -72,7 +72,6 @@ public class GUIController{
     @FXML
     private Button up;
 
-
     @FXML
     private ImageView profilePhoto ;
 
@@ -152,6 +151,9 @@ public class GUIController{
     private Button movierefreshbutton;
 
     @FXML
+    private Button friendrefreshbutton;
+
+    @FXML
     private TextField textFieldSearch;
 
     @FXML
@@ -195,16 +197,15 @@ public class GUIController{
             }
         }
     } 
-    
+    //refreshFriend
     public void refreshMovie() {
-        String[] ids = {"238", "155", "5833", "8871", "10908"};
+        String[] ids = {"238", "240", "5833", "8871", "10908"};
         movieIDs = ids;
         helperChange(movieIDs);
     }
 
     public void displayImage(ActionEvent e){
-        //movieIDs =fb.getUser().recomIds();
-        String[] ids = {"156022", "299054", "335977", "360920", "414906"};
+        String[] ids = {"156022", "299054", "360920", "414906", "459003"};
         movieIDs = ids;
         helperChange(movieIDs);
     }
@@ -331,7 +332,7 @@ public class GUIController{
         stage = (Stage)((Node)e.getSource()).getScene().getWindow() ;
         scene = new Scene(root) ;
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
         stage.show();
     }
 

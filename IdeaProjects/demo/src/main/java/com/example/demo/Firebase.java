@@ -195,4 +195,12 @@ public class Firebase {
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
         }
     }
+
+    public User getUser(){
+        System.out.println(u);
+        return u;
+    }
+    public String getCurrentID(){
+        return u.getID();
+    }
 }

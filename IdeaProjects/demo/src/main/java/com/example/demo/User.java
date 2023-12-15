@@ -117,6 +117,21 @@ public class User {
         setPassword(newPassword);
     }
 
+    public String[] recomIds(){
+        String[] x = new String[5];
+        x[0] = "844416";
+        x[1] = "845844";
+        x[2] = "854648";
+        x[3] = "857879";
+        x[4] = "870358";
+        return x;
+    }
+
+    public String toString()
+    {
+        return "user name is "+userName + password + userID ;
+    }
+
     /* 
     public ArrayList<Integer> search(String input)
     {

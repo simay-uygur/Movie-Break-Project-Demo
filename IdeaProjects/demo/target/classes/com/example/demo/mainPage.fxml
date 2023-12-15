@@ -146,11 +146,20 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label layoutX="20.0" layoutY="1.0" prefHeight="54.0" prefWidth="520.0" text="Your Movie Recommendations">
+                        <Label layoutX="20.0" layoutY="5.0" prefHeight="54.0" prefWidth="520.0" text="Your Movie Recommendations">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Label>
+                        <Button layoutX="1400.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/refresh%20symbol.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -200,11 +209,20 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label layoutX="24.0" prefHeight="54.0" prefWidth="520.0" text="Your Friend Recommendations">
+                        <Label layoutX="24.0" layoutY="5.0" prefHeight="54.0" prefWidth="520.0" text="Your Friend Recommendations">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Label>
+                        <Button layoutX="1400.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/refresh%20symbol.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </AnchorPane>
               </items>

@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
       <Pane layoutX="8.0" layoutY="-1.0" prefHeight="90.0" prefWidth="1536.0" AnchorPane.bottomAnchor="774.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -31,7 +30,7 @@
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0">
                      <image>
-                        <Image url="@images/home%20symbol.jpeg" />
+                        <Image url="@images/home_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -40,7 +39,7 @@
                <graphic>
                   <ImageView fitHeight="75.0" fitWidth="80.0">
                      <image>
-                        <Image url="@images/logout%20symbol.jpeg" />
+                        <Image url="@images/logout_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -49,7 +48,7 @@
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="100.0">
                      <image>
-                        <Image url="@images/calendar%20symbol.jpeg" />
+                        <Image url="@images/calendar_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -84,7 +83,7 @@
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0">
                      <image>
-                        <Image url="@images/chat%20symbol.jpeg" />
+                        <Image url="@images/chat_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -199,7 +198,7 @@
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
-                  <Image url="@leftArrow.png" />
+                  <Image url="@images/left_arrow.png" />
                </image>
             </ImageView>
          </graphic>
@@ -208,7 +207,7 @@
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
-                  <Image url="@rightArrow.png" />
+                  <Image url="@images/right_arrow.png" />
                </image>
             </ImageView>
          </graphic>

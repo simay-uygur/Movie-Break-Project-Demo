@@ -83,7 +83,7 @@ public class GUIController{
         if (userN.getText().equals("") || pass.getText().equals("")) 
         {
             message.setText("Empty Password or Username");
-            message.setFill(Color.rgb(139,0,0));
+            message.setFill(Color.rgb(139, 0, 0));
         }
         else
         {
@@ -123,14 +123,12 @@ public class GUIController{
         id = Integer.parseInt(""+value) ;
         if (fb.userPush(userN.getText() , pass.getText() , id)) 
         {
-            message.setVisible(true);
             message.setText("You are signed up");
             message.setFill(Color.rgb(34,139,34));
         }
         else 
         {
-            message.setVisible(true);
-            message.setText("Username already exists");
+            message.setText("You are signed up");
             message.setFill(Color.rgb(139,0,0));
         }
     }
@@ -177,6 +175,14 @@ public class GUIController{
         stage.setScene(scene);
         stage.show();
     }
+
+    public void displayImage(ActionEvent e) 
+    {
+
+    }
+
+
+
     public void loadMoviePoster() {
         /*DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/1060090/path"); 
         movieRef.addListenerForSingleValueEvent(new ValueEventListener() {

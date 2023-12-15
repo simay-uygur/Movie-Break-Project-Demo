@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,9 +29,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.concurrent.CompletableFuture;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import javafx.embed.swing.SwingFXUtils;
 
 
 public class GUIController{
@@ -50,6 +54,7 @@ public class GUIController{
 
     @FXML
     private TextField pass;
+
     @FXML
     private TextField ar;
     @FXML
@@ -68,7 +73,7 @@ public class GUIController{
     private Button up;
 
     @FXML
-    private ImageView image;
+    private Label message ;
 
     @FXML 
     private Text message ;
@@ -107,6 +112,7 @@ public class GUIController{
             });
         }
     }
+
 
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText() , pass.getText() ))

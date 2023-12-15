@@ -80,7 +80,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="46.0">
                      <image>
-                        <Image url="@images/nickname%20symbol.jpeg" />
+                        <Image url="@images/nickname_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -127,7 +127,7 @@
                <graphic>
                   <ImageView fitHeight="114.0" fitWidth="126.0">
                      <image>
-                        <Image url="@images/nickname%20symbol.jpeg" />
+                        <Image url="@images/nickname_symbol.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -163,7 +163,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -181,7 +181,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -193,7 +193,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -205,7 +205,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -217,7 +217,7 @@
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="62.0">
                            <image>
-                              <Image url="@images/nickname%20symbol.jpeg" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>

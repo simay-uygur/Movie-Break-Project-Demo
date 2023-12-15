@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #971d34;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="400.0" fitWidth="600.0">
+            <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="22.0">
                <image>
                   <Image url="@images/Logo.png" />
                </image>

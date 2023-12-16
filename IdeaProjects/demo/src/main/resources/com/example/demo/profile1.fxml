@@ -352,7 +352,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ComboBox fx:id="menu" layoutX="820.0" layoutY="6.0" prefHeight="76.0" prefWidth="145.0" promptText="Select Search Type" />
+                  <ComboBox fx:id="menu" layoutX="820.0" layoutY="6.0" onShowing="#callSearchComboBox" prefHeight="76.0" prefWidth="145.0" promptText="Select Search Type" />
                   <Button layoutX="488.0" layoutY="6.0" mnemonicParsing="false" onAction="#openSearchPage" prefHeight="76.0" prefWidth="332.0" text="Go to Search Page">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0">

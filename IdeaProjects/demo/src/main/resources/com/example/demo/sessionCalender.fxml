@@ -24,7 +24,6 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -102,16 +101,6 @@
                   <Font size="22.0" />
                </font>
             </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
                <font>
                   <Font size="22.0" />
@@ -133,11 +122,6 @@
                </font>
             </TextArea>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="2">
                <font>
                   <Font size="22.0" />
                </font>
@@ -164,11 +148,8 @@
             <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
             <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
             <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
             <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
             <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
             <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
             <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
@@ -230,7 +211,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ComboBox fx:id="menu" layoutX="820.0" layoutY="6.0" prefHeight="76.0" prefWidth="145.0" promptText="Select Search Type" />
+                  <ComboBox fx:id="menu" layoutX="820.0" layoutY="6.0" onShowing="#callSearchComboBox" prefHeight="76.0" prefWidth="145.0" promptText="Select Search Type" />
                   <Button layoutX="488.0" layoutY="6.0" mnemonicParsing="false" onAction="#openSearchPage" prefHeight="76.0" prefWidth="332.0" text="Go to Search Page">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0">

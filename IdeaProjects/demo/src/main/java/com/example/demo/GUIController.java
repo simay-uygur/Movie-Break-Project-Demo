@@ -15,6 +15,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -46,7 +47,7 @@ public class GUIController {
     private Scene scene;
     private Stage stage;
     private Parent root;
-    private int searchc=0;
+    private int searchc = 0;
     private ArrayList<Movie> moviesStore;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
@@ -239,7 +240,7 @@ public class GUIController {
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
-        System.out.println("id" +movieIDs.toString());
+        //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
         int c = currentUser.recommend().size()%5 ;
         for (int i = index ; i < 5 + index && i < currentUser.recommend().size() ; i++) 
@@ -267,10 +268,6 @@ public class GUIController {
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
         helperChange(movieIDs);
-        if(searchc == 0){
-            menu.getItems().addAll("Friend Search","Movie Search","Session Search");
-        }
-        searchc = 1;
     }
 
     public BufferedImage loadMoviePoster(String movieId) {
@@ -280,11 +277,11 @@ public class GUIController {
         try {
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);  
-            System.out.println("image is assigned");
+            //System.out.println("image is assigned");
             System.out.println("path is " + imagePath);
 
         } catch (IOException e) {
-            System.err.println("Error loading image: " + e.getMessage());  
+            //System.err.println("Error loading image: " + e.getMessage());  
         }
         return img;
     }
@@ -329,7 +326,7 @@ public class GUIController {
                 }
 
                 public void onCancelled(DatabaseError databaseError) {
-                    System.err.println("Error: " + databaseError.getMessage());
+                    //System.err.println("Error: " + databaseError.getMessage());
                 }
             });
         }
@@ -354,6 +351,7 @@ public class GUIController {
     }
 
     public void changeIn(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("signIn.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -362,6 +360,7 @@ public class GUIController {
     }
 
     public void changeUp(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -370,6 +369,7 @@ public class GUIController {
     }
 
     public void changeMainPage(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -379,6 +379,7 @@ public class GUIController {
     }
 
     public void backToMain(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -387,6 +388,7 @@ public class GUIController {
     }
 
     public void openProfileSettings(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("profile3.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -396,6 +398,7 @@ public class GUIController {
     }
 
     public void openCalender(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("sessionCalender.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -405,6 +408,7 @@ public class GUIController {
     }
 
     public void openChat(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("chat.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -413,6 +417,7 @@ public class GUIController {
         stage.show();
     }
     public void openSearchPage(ActionEvent e) throws IOException {
+        searchc=0;
         if(menu.getValue() == "Friend Search"){
             root = FXMLLoader.load(getClass().getResource("userSearchPage.fxml"));
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -442,6 +447,7 @@ public class GUIController {
         }
     }
     public void openProfile1(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("profile1.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -450,6 +456,7 @@ public class GUIController {
         stage.show();
     }
     public void openProfile2(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("profile2.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -458,6 +465,7 @@ public class GUIController {
         stage.show();
     }
     public void openProfile3(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("profile3.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -470,5 +478,10 @@ public class GUIController {
     {
         // push all datas here.
         System.exit(1);
+    }
+    public void callSearchComboBox(Event e){
+        if (menu.getItems().isEmpty()) {
+            menu.getItems().addAll("Friend Search", "Movie Search", "Session Search");
+        }
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -214,7 +215,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Button layoutX="1400.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                        <Button fx:id="movierefreshbutton" layoutX="1400.0" layoutY="5.0" mnemonicParsing="false" onAction="#refreshMovie" prefHeight="46.0" prefWidth="52.0">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -228,17 +229,17 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <GridPane layoutX="667.0" layoutY="66.4" prefHeight="314.0" prefWidth="1534.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
+                        <GridPane layoutX="667.0" layoutY="66.4" prefHeight="250.0" prefWidth="1534.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.79998779296875" minWidth="10.0" prefWidth="303.79998779296875" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.20001220703125" minWidth="10.0" prefWidth="310.20001220703125" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="311.9999755859375" minHeight="10.0" prefHeight="258.7999267578125" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="179.200048828125" minHeight="10.0" prefHeight="54.80007324218752" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="311.9999755859375" minHeight="10.0" prefHeight="174.6" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="179.200048828125" minHeight="10.0" prefHeight="47.400000000000006" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Pane prefHeight="200.0" prefWidth="200.0">
@@ -333,7 +334,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Button layoutX="1403.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                        <Button fx:id="friendrefreshbutton" layoutX="1403.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -351,18 +352,18 @@
       </BorderPane>
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
          <items>
-            <Pane prefHeight="88.0" prefWidth="1520.0">
+            <Pane onMouseEntered="#callSearchComboBox" prefHeight="88.0" prefWidth="1520.0">
                <children>
                   <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
                      <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                        <ImageView fitHeight="80.0" fitWidth="80.0" onDragDetected="#changeMainPage">
                            <image>
                               <Image url="@images/home_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
+                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="88.0" prefWidth="96.0">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="80.0">
                            <image>
@@ -371,7 +372,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="125.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                  <Button layoutX="125.0" mnemonicParsing="false" onAction="#openCalender" prefHeight="90.0" prefWidth="90.0">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="100.0">
                            <image>
@@ -379,18 +380,6 @@
                            </image>
                         </ImageView>
                      </graphic>
-                  </Button>
-                  <Button layoutX="512.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="414.0" text="   Go to Search Pages">
-                     <graphic>
-                        <ImageView fitHeight="54.0" fitWidth="60.0">
-                           <image>
-                              <Image url="@images/search_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
                   </Button>
                   <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="89.0" prefWidth="332.0" text="Nickname">
                      <font>
@@ -404,7 +393,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="265.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                  <Button layoutX="265.0" mnemonicParsing="false" onAction="#openChat" prefHeight="90.0" prefWidth="90.0">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
@@ -413,13 +402,19 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <MenuButton layoutX="926.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Friend Search" />
-                        <MenuItem mnemonicParsing="false" text="Movie Search" />
-                        <MenuItem mnemonicParsing="false" text="Session Search" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="menu" layoutX="820.0" layoutY="6.0" onShowing="#callSearchComboBox" prefHeight="76.0" prefWidth="145.0" promptText="Select Search Type" />
+                  <Button layoutX="488.0" layoutY="6.0" mnemonicParsing="false" onAction="#openSearchPage" prefHeight="76.0" prefWidth="332.0" text="Go to Search Page">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0">
+                           <image>
+                              <Image url="@images/search_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </items>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,83 +18,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="97.0" prefWidth="1536.0" AnchorPane.bottomAnchor="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <items>
-            <Pane prefHeight="88.0" prefWidth="1520.0">
-               <children>
-                  <MenuButton layoutX="968.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Friend Search" />
-                        <MenuItem mnemonicParsing="false" text="Movie Search" />
-                        <MenuItem mnemonicParsing="false" text="Session Search" />
-                     </items>
-                  </MenuButton>
-                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@images/home_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
-                     <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@images/logout_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="125.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="100.0">
-                           <image>
-                              <Image url="@images/calendar_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <TextField layoutX="482.0" layoutY="28.0" prefHeight="40.0" prefWidth="392.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Button layoutX="892.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="76.0">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="60.0">
-                           <image>
-                              <Image url="@images/search_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="nicknamePage" layoutX="1033.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="81.0" prefWidth="362.0" text="Nickname">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="68.0" fitWidth="68.0">
-                           <image>
-                              <Image url="@images/nickname_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="265.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@images/chat_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </Pane>
-         </items>
-      </ToolBar>
       <ListView layoutY="102.0" prefHeight="762.0" prefWidth="330.0" />
       <Button layoutX="253.0" layoutY="796.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
          <graphic>
@@ -285,5 +206,74 @@
       <Line endX="-16.5" endY="-31.0" layoutX="1535.0" layoutY="622.0" startX="-16.5" startY="-150.19998168945312" />
       <Line endX="-16.5" endY="-39.399993896484375" layoutX="1536.0" layoutY="476.0" startX="-16.5" startY="-158.60000610351562" />
       <Line endX="-19.5999755859375" endY="-6.0" layoutX="1538.0" layoutY="765.0" startX="-19.5999755859375" startY="-137.199951171875" />
+      <ToolBar prefHeight="97.0" prefWidth="1536.0">
+         <items>
+            <Pane prefHeight="88.0" prefWidth="1520.0">
+               <children>
+                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="90.0" prefWidth="90.0">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" onDragDetected="#changeMainPage">
+                           <image>
+                              <Image url="@images/home_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="88.0" prefWidth="96.0">
+                     <graphic>
+                        <ImageView fitHeight="75.0" fitWidth="80.0">
+                           <image>
+                              <Image url="@images/logout_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="125.0" mnemonicParsing="false" onAction="#openCalender" prefHeight="90.0" prefWidth="90.0">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="100.0">
+                           <image>
+                              <Image url="@images/calendar_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="89.0" prefWidth="332.0" text="Nickname">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="68.0" fitWidth="68.0">
+                           <image>
+                              <Image url="@images/nickname_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="265.0" mnemonicParsing="false" onAction="#openChat" prefHeight="90.0" prefWidth="90.0">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                           <image>
+                              <Image url="@images/chat_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ComboBox fx:id="menu" layoutX="820.0" layoutY="6.0" onShowing="#callSearchComboBox" prefHeight="76.0" prefWidth="145.0" promptText="Select Search Type" />
+                  <Button layoutX="488.0" layoutY="6.0" mnemonicParsing="false" onAction="#openSearchPage" prefHeight="76.0" prefWidth="332.0" text="Go to Search Page">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0">
+                           <image>
+                              <Image url="@images/search_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </items>
+      </ToolBar>
    </children>
 </AnchorPane>

@@ -1,4 +1,5 @@
 package com.example.demo;
+import javafx.scene.control.MenuItem;
 import com.example.demo.Firebase.FirebaseDataCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -11,15 +12,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -45,6 +49,7 @@ private User currentUser ;
     private Scene scene;
     private Stage stage;
     private Parent root;
+    private int searchc = 0;
     private ArrayList<Movie> moviesStore;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
@@ -52,6 +57,9 @@ private User currentUser ;
             moviesStore = movies;
         }
     });
+    
+    @FXML
+    private ComboBox<String> menu;
 
     @FXML
     private Button insert;
@@ -183,8 +191,9 @@ private User currentUser ;
 
     @FXML
     private ObservableList<Integer> movieIds;
+    
     private String user;
-
+    private int index = 5;
     private String[] movieIDs = new String[5];
     //movie searchlemek için
     public List<Movie> performMovieSearch(String searchText) {
@@ -257,24 +266,35 @@ private User currentUser ;
     } 
     //refreshFriend
     //public void refreshFriend(){}
-    public void refreshMovie() {
-        //String[] ids = {"155", "240", "238", "8871", "10908"};
-        //movieIDs = ids;
-        fb.getUser().recomIds();
-      //  movieIDs = fb.getUser().getrecomArray();
-        System.out.println("id" +movieIDs.toString());
-        helperChange(movieIDs);
+    public void refreshMovie(ActionEvent e) {
+        //System.out.println("id" +movieIDs.toString());
+        int counter = 0 ;
+        int c = currentUser.recommend().size()%5 ;
+        for (int i = index ; i < 5 + index && i < currentUser.recommend().size() ; i++) 
+        {
+            movieIDs[counter] = currentUser.recommend().get(i) ;
+            counter ++ ; 
+        }
+        index += counter ;
+        if (index == currentUser.recommend().size() && c > 0) 
+        { 
+            String[] shortM = new String[c] ;
+            for (int i = 0 ; i < c ; i++) 
+            {
+                shortM[i] = movieIDs[i] ;
+            }
+            helperChange(shortM);
+        }
+        else 
+        {
+            helperChange(movieIDs);
+        }
     }
+
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
         helperChange(movieIDs);
-    }
-
-
-    public void displaying() {
-        label1.setText("dskjfjö");
-        label2.setText("vdjvkm");
     }
 
     public BufferedImage loadMoviePoster(String movieId) {
@@ -284,11 +304,11 @@ private User currentUser ;
         try {
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);  
-            System.out.println("image is assigned");
+            //System.out.println("image is assigned");
             System.out.println("path is " + imagePath);
 
         } catch (IOException e) {
-            System.err.println("Error loading image: " + e.getMessage());  
+            //System.err.println("Error loading image: " + e.getMessage());  
         }
         return img;
     }
@@ -326,14 +346,14 @@ private User currentUser ;
                     }
                 }
                 public void onCancelled(DatabaseError databaseError) {
-                    System.err.println("Error: " + databaseError.getMessage());
+                    //System.err.println("Error: " + databaseError.getMessage());
                 }
             });
         }
     }
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
-            System.out.println("Is stored" + moviesStore);
+            currentUser = fb.getUser() ;
             changeMainPage(e);
             System.out.println(Arrays.toString(fb.getUser().recomIds()));
         }
@@ -349,6 +369,7 @@ private User currentUser ;
         }
     }
     public void changeIn(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("signIn.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -357,6 +378,7 @@ private User currentUser ;
     }
 
     public void changeUp(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -364,6 +386,7 @@ private User currentUser ;
         stage.show();
     }
     public void changeMainPage(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -372,6 +395,7 @@ private User currentUser ;
         stage.show();
     }
     public void backToMain(ActionEvent e) throws IOException {
+        searchc=0;
         root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -379,14 +403,100 @@ private User currentUser ;
         stage.show();
     }
     public void openProfileSettings(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("profilePage.fxml"));
+        searchc=0;
+        root = FXMLLoader.load(getClass().getResource("profile3.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.show();
     }
+
+    public void openCalender(ActionEvent e) throws IOException {
+        searchc=0;
+        root = FXMLLoader.load(getClass().getResource("sessionCalender.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void openChat(ActionEvent e) throws IOException {
+        searchc=0;
+        root = FXMLLoader.load(getClass().getResource("chat.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+    public void openSearchPage(ActionEvent e) throws IOException {
+        searchc=0;
+        if(menu.getValue() == "Friend Search"){
+            root = FXMLLoader.load(getClass().getResource("userSearchPage.fxml"));
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.show();
+        }
+        else if(menu.getValue() == "Movie Search"){
+            root = FXMLLoader.load(getClass().getResource("movieSearchPage.fxml"));
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.show();
+        }
+        else if(menu.getValue() == "Session Search"){
+            root = FXMLLoader.load(getClass().getResource("sessionSearchPage.fxml"));
+            stage = (Stage)((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.show();
+        }
+        else {
+            menu.setPromptText("Select Type First");
+        }
+    }
+    public void openProfile1(ActionEvent e) throws IOException {
+        searchc=0;
+        root = FXMLLoader.load(getClass().getResource("profile1.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+    public void openProfile2(ActionEvent e) throws IOException {
+        searchc=0;
+        root = FXMLLoader.load(getClass().getResource("profile2.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+    public void openProfile3(ActionEvent e) throws IOException {
+        searchc=0;
+        root = FXMLLoader.load(getClass().getResource("profile3.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
     public void exit(ActionEvent e) 
     {
+        // push all datas here.
         System.exit(1);
+    }
+    public void callSearchComboBox(Event e){
+        if (menu.getItems().isEmpty()) {
+            menu.getItems().addAll("Friend Search", "Movie Search", "Session Search");
+        }
     }
 }

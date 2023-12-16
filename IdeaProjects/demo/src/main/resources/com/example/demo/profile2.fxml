@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
@@ -35,7 +34,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button alignment="CENTER_RIGHT" layoutX="986.0" layoutY="99.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="181.0" text="Favorite Films" textAlignment="RIGHT">
+            <Button alignment="CENTER_RIGHT" layoutX="986.0" layoutY="99.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="43.0" prefWidth="181.0" text="Favorite Films" textAlignment="RIGHT">
                <font>
                   <Font size="20.0" />
                </font>
@@ -45,7 +44,7 @@
                   <Image url="@images/heart_symbol.png" />
                </image>
             </ImageView>
-            <Button layoutX="1384.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="55.0">
+            <Button layoutX="1384.0" layoutY="100.0" mnemonicParsing="false" onAction="#openProfile3" prefHeight="40.0" prefWidth="55.0">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="38.0">
                      <image>
@@ -54,7 +53,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER_RIGHT" layoutX="1205.0" layoutY="98.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="139.0" text="Friends" textAlignment="RIGHT">
+            <Button alignment="CENTER_RIGHT" layoutX="1205.0" layoutY="98.0" mnemonicParsing="false" onAction="#openProfile2" prefHeight="43.0" prefWidth="139.0" text="Friends" textAlignment="RIGHT">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -77,7 +76,6 @@
             <Line endX="1536.0" layoutY="141.0" />
          </children>
       </Pane>
-      <ToolBar prefHeight="97.0" prefWidth="1536.0" />
       <BorderPane layoutX="-5.0" layoutY="250.0" prefHeight="383.0" prefWidth="938.0">
          <top>
             <GridPane maxHeight="500.0" maxWidth="800.0" prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
@@ -247,16 +245,16 @@
          <items>
             <Pane prefHeight="88.0" prefWidth="1520.0">
                <children>
-                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="90.0" prefWidth="90.0">
                      <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                        <ImageView fitHeight="80.0" fitWidth="80.0" onDragDetected="#changeMainPage">
                            <image>
                               <Image url="@images/home_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
+                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="88.0" prefWidth="96.0">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="80.0">
                            <image>
@@ -265,7 +263,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="125.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                  <Button layoutX="125.0" mnemonicParsing="false" onAction="#openCalender" prefHeight="90.0" prefWidth="90.0">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="100.0">
                            <image>
@@ -273,18 +271,6 @@
                            </image>
                         </ImageView>
                      </graphic>
-                  </Button>
-                  <Button layoutX="512.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="414.0" text="   Go to Search Pages">
-                     <graphic>
-                        <ImageView fitHeight="54.0" fitWidth="60.0">
-                           <image>
-                              <Image url="@images/search_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
                   </Button>
                   <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="89.0" prefWidth="332.0" text="Nickname">
                      <font>
@@ -298,7 +284,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="265.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                  <Button layoutX="265.0" mnemonicParsing="false" onAction="#openChat" prefHeight="90.0" prefWidth="90.0">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
@@ -307,13 +293,19 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <MenuButton layoutX="926.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Friend Search" />
-                        <MenuItem mnemonicParsing="false" text="Movie Search" />
-                        <MenuItem mnemonicParsing="false" text="Session Search" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="menu" layoutX="820.0" layoutY="6.0" onShowing="#callSearchComboBox" prefHeight="76.0" prefWidth="145.0" promptText="Select Search Type" />
+                  <Button layoutX="488.0" layoutY="6.0" mnemonicParsing="false" onAction="#openSearchPage" prefHeight="76.0" prefWidth="332.0" text="Go to Search Page">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0">
+                           <image>
+                              <Image url="@images/search_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </items>

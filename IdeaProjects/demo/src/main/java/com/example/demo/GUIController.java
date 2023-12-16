@@ -1,5 +1,5 @@
 package com.example.demo;
-
+import javafx.scene.control.MenuItem;
 import com.example.demo.Firebase.FirebaseDataCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,6 +46,7 @@ public class GUIController {
     private Scene scene;
     private Stage stage;
     private Parent root;
+    private int searchc=0;
     private ArrayList<Movie> moviesStore;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
@@ -53,9 +54,10 @@ public class GUIController {
             moviesStore = movies;
         }
     });
-    @FXML
-    private ComboBox searchOptions;
     
+    @FXML
+    private ComboBox<String> menu;
+
     @FXML
     private Button insert;
 
@@ -174,8 +176,6 @@ public class GUIController {
     
     @FXML
     private ListView<Movie> searchResultsListView; 
-    @FXML
-    private MenuButton searchChooser;
     // Sonuçları göstermek için bir ListView bileşeni
     @FXML
     private ObservableList<Integer> movieIds;
@@ -266,6 +266,10 @@ public class GUIController {
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
         helperChange(movieIDs);
+        if(searchc == 0){
+            menu.getItems().addAll("Friend Search","Movie Search","Session Search");
+        }
+        searchc = 1;
     }
 
 
@@ -388,7 +392,7 @@ public class GUIController {
     }
 
     public void openProfileSettings(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("profile1.fxml"));
+        root = FXMLLoader.load(getClass().getResource("profile3.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -413,8 +417,53 @@ public class GUIController {
         stage.setFullScreen(true);
         stage.show();
     }
-    public void openSearch(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("chat.fxml"));
+    public void openSearchPage(ActionEvent e) throws IOException {
+        if(menu.getValue() == "Friend Search"){
+            root = FXMLLoader.load(getClass().getResource("userSearchPage.fxml"));
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.show();
+        }
+        else if(menu.getValue() == "Movie Search"){
+            root = FXMLLoader.load(getClass().getResource("movieSearchPage.fxml"));
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.show();
+        }
+        else if(menu.getValue() == "Session Search"){
+            root = FXMLLoader.load(getClass().getResource("sessionSearchPage.fxml"));
+            stage = (Stage)((Node) e.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setFullScreen(true);
+            stage.show();
+        }
+        else {
+            menu.setPromptText("Select Type First");
+        }
+    }
+    public void openProfile1(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("profile1.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+    public void openProfile2(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("profile2.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+    public void openProfile3(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("profile3.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -424,6 +473,7 @@ public class GUIController {
 
     public void exit(ActionEvent e) 
     {
+        // push all datas here.
         System.exit(1);
     }
 }

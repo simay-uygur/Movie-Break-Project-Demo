@@ -261,7 +261,7 @@
          <items>
             <Pane prefHeight="88.0" prefWidth="1520.0">
                <children>
-                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="90.0" prefWidth="90.0">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
@@ -270,7 +270,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
+                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="88.0" prefWidth="96.0">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="80.0">
                            <image>

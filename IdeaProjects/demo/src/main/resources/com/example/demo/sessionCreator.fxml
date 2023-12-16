@@ -12,10 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="45.0" layoutY="33.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0">
+      <Button layoutX="45.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="100.0" prefWidth="100.0">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="80.0">
                <image>

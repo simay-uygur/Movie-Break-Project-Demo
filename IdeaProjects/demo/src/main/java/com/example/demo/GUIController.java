@@ -249,7 +249,7 @@ public class GUIController {
         }
         index += counter ;
         if (index == currentUser.recommend().size() && c > 0) 
-        {
+        { 
             String[] shortM = new String[c] ;
             for (int i = 0 ; i < c ; i++) 
             {
@@ -262,6 +262,7 @@ public class GUIController {
             helperChange(movieIDs);
         }
     }
+
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
@@ -270,12 +271,6 @@ public class GUIController {
             menu.getItems().addAll("Friend Search","Movie Search","Session Search");
         }
         searchc = 1;
-    }
-
-
-    public void displaying() {
-        label1.setText("dskjfjö");
-        label2.setText("vdjvkm");
     }
 
     public BufferedImage loadMoviePoster(String movieId) {

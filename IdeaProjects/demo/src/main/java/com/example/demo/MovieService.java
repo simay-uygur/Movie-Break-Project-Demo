@@ -68,7 +68,6 @@ public class MovieService
         genreId = "99"; //docummentary
         fetchAndStoreMovies(genreId);
         */
-
         String saveDirectory = "IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\movieImages\\";
         for (int i = 0; i < imageUrls.size(); i++) {
             String imageUrl = imageUrls.get(i);
@@ -77,7 +76,6 @@ public class MovieService
             downloadImage(imageUrl, movieId, saveDirectory);
         }
     }
-
     public static void fetchAndStoreMovies(String genreId) throws IOException {
         String apiUrl = "https://api.themoviedb.org/3/discover/movie" +
         "?api_key=" + TMDB_API_KEY +
@@ -92,7 +90,6 @@ public class MovieService
             storeMovieInDatabase(movie);
         }
     }
-
     private static String makeHttpRequest(String apiUrl) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
@@ -100,15 +97,13 @@ public class MovieService
                 .url(apiUrl)
                 .get()
                 .build();
-
         try (Response response = client.newCall(request).execute()) {
             return response.body().string();
         }
     }
-
     private static void initializeFirebase() {
         try {
-            FileInputStream serviceAccount = new FileInputStream("Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
+            FileInputStream serviceAccount = new FileInputStream("IdeaProjects\\demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -120,7 +115,6 @@ public class MovieService
             System.err.println("Failed to initialize Firebase: " + e.getMessage());
         }
     }
-
     private static void storeMovieInDatabase(Movie movie) {
         try {
             DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies");
@@ -132,8 +126,6 @@ public class MovieService
             System.err.println("Failed to save movie data to Firebase: " + e.getMessage());
         }
     }
-
-
     public static List<Movie> parseSearchResults(String jsonResponse, String searchQ) {
         List<Movie> movies = new ArrayList<>();
 
@@ -156,7 +148,6 @@ public class MovieService
                     if (!posterPath.isEmpty())
                         imageUrls.add(posterPath);
                     }
-                
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -164,7 +155,6 @@ public class MovieService
 
         return movies;
     }
-
     private static String mapGenreIdToName(String genreId) {
         switch (genreId) {
             case "28": return "action";
@@ -180,18 +170,15 @@ public class MovieService
             default: return genreId; // Return the original ID if it doesn't match
         }
     }
-
     private static String getFullImageUrl(String partialPath) {
         return "https://image.tmdb.org/t/p/w500" + partialPath;
     }
-
     public static void downloadImage(String imageUrl, String movieId, String saveDirectory) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(imageUrl))
                 .GET()
                 .build();
-
         try {
             HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
 
@@ -208,7 +195,6 @@ public class MovieService
             e.printStackTrace();
         }
     }
-
     public static boolean correctTitle(String title) 
     {
         for (int i = 0 ; i < title.length() - 1 ; i++)
@@ -217,5 +203,4 @@ public class MovieService
         }
         return true ;
     }
-
 }    

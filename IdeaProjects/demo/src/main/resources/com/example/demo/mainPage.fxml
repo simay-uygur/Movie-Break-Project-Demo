@@ -214,7 +214,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Button layoutX="1400.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                        <Button fx:id="movierefreshbutton" layoutX="1400.0" layoutY="5.0" mnemonicParsing="false" onAction="#refreshMovie" prefHeight="46.0" prefWidth="52.0">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -333,7 +333,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Button layoutX="1403.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                        <Button fx:id="friendrefreshbutton" layoutX="1403.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

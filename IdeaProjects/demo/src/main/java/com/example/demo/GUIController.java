@@ -172,7 +172,9 @@ public class GUIController {
     // Sonuçları göstermek için bir ListView bileşeni
     @FXML
     private ObservableList<Integer> movieIds;
+    
     private String user;
+    private int index = 5;
     private String[] movieIDs = new String[5];
     //movie searchlemek için
     public List<Movie> performSearch(String searchText) {
@@ -229,14 +231,29 @@ public class GUIController {
     } 
     //refreshFriend
     //public void refreshFriend(){}
-    public void refreshMovie() {
-
-        //String[] ids = {"155", "240", "238", "8871", "10908"};
-        //movieIDs = ids;
-        fb.getUser().recomIds();
-        //movieIDs = fb.getUser().getrecomArray();
+    public void refreshMovie(ActionEvent e) {
         System.out.println("id" +movieIDs.toString());
-        helperChange(movieIDs);
+        int counter = 0 ;
+        int c = currentUser.recommend().size()%5 ;
+        for (int i = index ; i < 5 + index && i < currentUser.recommend().size() ; i++) 
+        {
+            movieIDs[counter] = currentUser.recommend().get(i) ;
+            counter ++ ; 
+        }
+        index += counter ;
+        if (index == currentUser.recommend().size() && c > 0) 
+        {
+            String[] shortM = new String[c] ;
+            for (int i = 0 ; i < c ; i++) 
+            {
+                shortM[i] = movieIDs[i] ;
+            }
+            helperChange(shortM);
+        }
+        else 
+        {
+            helperChange(movieIDs);
+        }
     }
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
@@ -315,7 +332,6 @@ public class GUIController {
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
             currentUser = fb.getUser() ;
-            
             changeMainPage(e);
         }
     }

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -225,6 +226,7 @@
                            </graphic>
                         </Button>
                         <Line endX="1413.39990234375" endY="-3.814697265625E-6" layoutX="121.0" layoutY="59.0" startX="-120.99999237060547" startY="-3.814697265625E-6" />
+                        <TextField fx:id="textFieldSearch" layoutX="597.0" layoutY="20.0" onAction="#handleSearch" prefHeight="26.0" prefWidth="322.0" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -244,7 +246,7 @@
                            <children>
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Button alignment="TOP_LEFT" mnemonicParsing="false">
+                                    <Button fx:id="b1" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#printingList">
                                        <graphic>
                                           <ImageView fitHeight="159.0" fitWidth="194.0">
                                              <image>
@@ -381,7 +383,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="89.0" prefWidth="332.0" text="Nickname">
+                  <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="89.0" prefWidth="332.0" text="Nickname">
                      <font>
                         <Font size="30.0" />
                      </font>

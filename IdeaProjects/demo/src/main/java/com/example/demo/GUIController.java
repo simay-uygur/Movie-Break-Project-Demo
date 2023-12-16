@@ -180,30 +180,32 @@ private User currentUser ;
     
     @FXML
     private ListView<Movie> searchResultsListView; 
-    // Sonuçları göstermek için bir ListView bileşeni
-    private List<User> usersStore; // Kullanıcıları tutacak bir liste
+
+    private List<User> usersStore; 
 
     @FXML
-    private TextField userSearchTextField; // Kullanıcı araması için metin alanı
+    private TextField userSearchTextField; 
 
     @FXML
-    private ListView<User> userSearchResultsListView; // Kullanıcı arama sonuçlarını gösterecek ListView bileşeni
-
+    private ObservableList<String> movieIds;
+    
     @FXML
-    private ObservableList<Integer> movieIds;
+    private Button b1;
     
     private String user;
     private int index = 5;
+    private int sCounterMovie = 0;
     private String[] movieIDs = new String[5];
     //movie searchlemek için
+
     public List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
-        // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<Movie> searchResults = moviesStore.stream()
             .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
         return searchResults;
     }
+
     @FXML
     private void handleMovieSearch(ActionEvent event) {
         String searchText = textFieldSearch.getText().trim();
@@ -211,15 +213,13 @@ private User currentUser ;
             List<Movie> searchResults = performMovieSearch(searchText);
             movieIds = FXCollections.observableArrayList();
             for (Movie movie : searchResults) {
-                movieIds.add(movie.getId());
+                movieIds.add(""+movie.getId());
             }
-            // Sonuçları arayüzde gösterme kodu
-            searchResultsListView.getItems().setAll(searchResults);
         }
     }
+
     public List<User> performUserSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
-        // Arama teriminin kullanıcı adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<User> searchResults = usersStore.stream()
             .filter(user -> user.getName().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
@@ -231,9 +231,9 @@ private User currentUser ;
         String searchText = userSearchTextField.getText().trim();
         if (!searchText.isEmpty()) {
             List<User> searchResults = performUserSearch(searchText);
-            userSearchResultsListView.getItems().setAll(searchResults);
         }
     }
+
     public void helperChange(String[] ids) {
         CompletableFuture<String> ctitle = new CompletableFuture<>();
         String title = "";
@@ -264,10 +264,10 @@ private User currentUser ;
             }
         }
     } 
+
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
-        //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
         int c = currentUser.recommend().size()%5 ;
         for (int i = index ; i < 5 + index && i < currentUser.recommend().size() ; i++) 
@@ -291,9 +291,18 @@ private User currentUser ;
         }
     }
 
+
+    private void updateSearchids(){
+        for(int a = 0; a<5; a++ ){
+            movieIDs[a] = movieIds.get(a+sCounterMovie);
+        }
+        sCounterMovie++;
+    }
+
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
+        updateSearchids();
         helperChange(movieIDs);
     }
 

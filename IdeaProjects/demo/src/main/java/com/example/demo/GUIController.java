@@ -39,7 +39,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;4
+import java.util.List;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;

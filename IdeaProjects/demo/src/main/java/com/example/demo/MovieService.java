@@ -181,7 +181,6 @@ public class MovieService
                 .build();
         try {
             HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
-
             if (response.statusCode() == 200) {
                 String fileName = movieId + ".jpg";
                 System.out.println("filename = "+ fileName);

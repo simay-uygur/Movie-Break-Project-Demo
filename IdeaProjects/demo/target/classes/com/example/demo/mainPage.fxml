@@ -25,13 +25,6 @@
               <items>
                   <Pane prefHeight="88.0" prefWidth="1520.0">
                      <children>
-                        <MenuButton layoutX="968.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Friend Search" />
-                              <MenuItem mnemonicParsing="false" text="Movie Search" />
-                              <MenuItem mnemonicParsing="false" text="Session Search" />
-                           </items>
-                        </MenuButton>
                         <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
                            <graphic>
                               <ImageView fitHeight="80.0" fitWidth="80.0">
@@ -56,19 +49,18 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <TextField layoutX="482.0" layoutY="28.0" prefHeight="40.0" prefWidth="392.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font></TextField>
-                        <Button layoutX="892.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0">
+                        <Button layoutX="512.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="414.0" text="   Go to Search Pages">
                            <graphic>
-                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                              <ImageView fitHeight="54.0" fitWidth="60.0">
                                  <image>
                                     <Image url="@images/search_symbol.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Button>
-                        <Button fx:id="nicknamePage" layoutX="1033.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="81.0" prefWidth="362.0" text="Nickname">
+                           </graphic>
+                           <font>
+                              <Font size="24.0" />
+                           </font></Button>
+                        <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="89.0" prefWidth="332.0" text="Nickname">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -89,6 +81,13 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <MenuButton layoutX="926.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Friend Search" />
+                              <MenuItem mnemonicParsing="false" text="Movie Search" />
+                              <MenuItem mnemonicParsing="false" text="Session Search" />
+                           </items>
+                        </MenuButton>
                      </children>
                   </Pane>
               </items>
@@ -215,7 +214,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Button fx:id="movierefreshbutton" layoutX="1400.0" layoutY="10.0" mnemonicParsing="false" onAction="#refreshMovie" prefHeight="46.0" prefWidth="52.0">
+                        <Button layoutX="1400.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -224,6 +223,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Line endX="1413.39990234375" endY="-3.814697265625E-6" layoutX="121.0" layoutY="59.0" startX="-120.99999237060547" startY="-3.814697265625E-6" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -333,7 +333,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Button fx:id="friendrefreshbutton" layoutX="1400.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                        <Button layoutX="1403.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -342,6 +342,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Line endX="1444.39990234375" endY="1.9073486328125E-5" layoutX="90.0" layoutY="59.0" startX="-100.0" />
                      </children>
                   </AnchorPane>
               </items>

@@ -55,7 +55,7 @@
                   <Image url="@images/heart_symbol.png" />
                </image>
             </ImageView>
-            <Button layoutX="1384.0" layoutY="100.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="40.0" prefWidth="55.0">
+            <Button layoutX="1384.0" layoutY="100.0" mnemonicParsing="false" onAction="#openProfile3" prefHeight="40.0" prefWidth="55.0">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="38.0">
                      <image>

@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
-
 public class Firebase {
     private boolean accExists = false;
     ArrayList<String> users ;
@@ -31,6 +30,7 @@ public class Firebase {
         userDB = FirebaseDatabase.getInstance().getReference("users");
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
         users = new ArrayList<>() ;
+        //user = new User(, getCurrentID(), getCurrentID(), null)
         movies = new ArrayList<>() ;
         takeAllMovieData();
         takeAllData();

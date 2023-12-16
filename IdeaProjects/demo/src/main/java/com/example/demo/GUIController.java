@@ -49,7 +49,7 @@ private User currentUser ;
     private Scene scene;
     private Stage stage;
     private Parent root;
-
+private int searchc = 0;
     private ArrayList<Movie> moviesStore;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override

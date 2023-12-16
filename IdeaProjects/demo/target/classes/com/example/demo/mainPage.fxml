@@ -226,7 +226,7 @@
                            </graphic>
                         </Button>
                         <Line endX="1413.39990234375" endY="-3.814697265625E-6" layoutX="121.0" layoutY="59.0" startX="-120.99999237060547" startY="-3.814697265625E-6" />
-                        <TextField fx:id="textFieldSearch" layoutX="597.0" layoutY="20.0" onAction="#handleSearch" prefHeight="26.0" prefWidth="322.0" />
+                        <TextField fx:id="textFieldSearch" layoutX="597.0" layoutY="20.0" onAction="#handleMovieSearch" prefHeight="26.0" prefWidth="322.0" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -246,7 +246,7 @@
                            <children>
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="b1" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#printingList">
+                                    <Button fx:id="b1" alignment="TOP_LEFT" mnemonicParsing="false">
                                        <graphic>
                                           <ImageView fitHeight="159.0" fitWidth="194.0">
                                              <image>

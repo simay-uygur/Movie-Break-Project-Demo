@@ -49,7 +49,7 @@ private User currentUser ;
     private Scene scene;
     private Stage stage;
     private Parent root;
-    private int searchc = 0;
+
     private ArrayList<Movie> moviesStore;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
@@ -150,6 +150,7 @@ private User currentUser ;
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
+        // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<Movie> searchResults = moviesStore.stream()
             .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
@@ -253,17 +254,21 @@ private User currentUser ;
 
     public List<User> performUserSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
+        // Arama teriminin kullanıcı adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<User> searchResults = usersStore.stream()
             .filter(user -> user.getName().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
         return searchResults;
     }
-    
     @FXML
     private void handleUserSearch(ActionEvent event) {
         String searchText = userSearchTextField.getText().trim();
         if (!searchText.isEmpty()) {
             List<User> searchResults = performUserSearch(searchText);
+            userIds = FXCollections.observableArrayList();
+            for (User user : searchResults) {
+                userIds.add(""+user.getID());
+            }
         }
         //kallanı yok neden
     }
@@ -333,6 +338,7 @@ private User currentUser ;
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
+        //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
         int c = currentUser.recommend().size()%5 ;
         for (int i = index ; i < 5 + index && i < currentUser.recommend().size() ; i++) 
@@ -355,15 +361,6 @@ private User currentUser ;
             helperChange1(movieIDs);
         }
     }
-
-
-    private void updateSearchids(){
-        for(int a = 0; a<5; a++ ){
-            movieIDs[a] = movieIds.get(a+sCounterMovie);
-        }
-        sCounterMovie++;
-    }
-
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
@@ -483,7 +480,6 @@ private User currentUser ;
         stage.setFullScreen(true);
         stage.show();
     }
-
     public void openCalender(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("sessionCalender.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -492,7 +488,6 @@ private User currentUser ;
         stage.setFullScreen(true);
         stage.show();
     }
-
     public void openChat(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("chat.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

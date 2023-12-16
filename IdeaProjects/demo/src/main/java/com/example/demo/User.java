@@ -48,8 +48,6 @@ public class User {
         addMovie(""+726209);
         addMovie(""+897087);
         setFavGenres();
-        System.out.println(favGenres);
-        System.out.println(recommendedMovies);
     }
     
 
@@ -127,42 +125,6 @@ public class User {
         friendsIDs.remove(userID);
     }
 
-    /*public void setFavGenres()
-    {
-        ArrayList genres = new ArrayList<>() ;
-        for (int i = 0 ; i < favMoviesIDs.size() ; i++) 
-        {
-            for (Movie movie : movies) 
-            {
-                if ((""+movie.takeId()).equals(favMoviesIDs.get(i))) genres.add(movie.getGenre()) ;
-            }
-        }
-        favGenres = findMaxes(genres) ;
-        System.out.println(favGenres);
-        movies.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (int i = 0 ; i < favMoviesIDs.size() ; i++)
-                {
-                    for (DataSnapshot movie : snapshot.getChildren())
-                    {
-                        if (favMoviesIDs.get(i).equals(""+movie.child("genre").getValue())) 
-                            genres.add(movie.child("genre").getValue());
-                    }
-                }
-                favGenres = findMaxes(genres) ;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'onCancelled'");
-            }
-            
-        });
-    }*/
-
     public void setFavGenres() {
         ArrayList<String> genres = new ArrayList<>();
         
@@ -231,13 +193,14 @@ public class User {
         setPassword(newPassword);
     }
 
-    public void recomIds(){
-        
-        recomms[0] = "844416";
-        recomms[1] = "845844";
-        recomms[2] = "854648";
-        recomms[3] = "857879";
-        recomms[4] = "870358";
+    public String[] recomIds(){
+        String[] x = new String[5];
+        x[0] = "844416";
+        x[1] = "845844";
+        x[2] = "854648";
+        x[3] = "857879";
+        x[4] = "870358";
+        return x;
     }
 
     public void recommendMovies() 
@@ -261,25 +224,6 @@ public class User {
     {
         recommendedMovies.add(""+id) ;
     }
-
-    /*public void findGenre(String id) 
-    {
-        String genre = ""+movies.child(id).child("genres") ;
-        favMovies.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot movie : snapshot.)
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'onCancelled'");
-            }
-            
-        })
-    }*/
 
     public String toString()
     {

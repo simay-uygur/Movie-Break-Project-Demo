@@ -48,6 +48,7 @@ public class User {
         addMovie(""+726209);
         addMovie(""+897087);
         setFavGenres();
+        recomIds();
     }
     
 

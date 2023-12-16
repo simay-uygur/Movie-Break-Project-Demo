@@ -1,11 +1,11 @@
 package com.example.demo;
-
 import com.example.demo.Firebase.FirebaseDataCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+//import io.grpc.netty.shaded.io.netty.util.internal.SystemPropertyUtil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,7 +34,8 @@ import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.List;4
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
@@ -48,9 +49,10 @@ private User currentUser ;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
-                        moviesStore = movies;
+            moviesStore = movies;
         }
     });
+
     @FXML
     private Button insert;
 
@@ -65,6 +67,7 @@ private User currentUser ;
 
     @FXML
     private TextField ar;
+
     @FXML
     private TextField userN;
 
@@ -170,31 +173,56 @@ private User currentUser ;
     @FXML
     private ListView<Movie> searchResultsListView; 
     // Sonuçları göstermek için bir ListView bileşeni
+    private List<User> usersStore; // Kullanıcıları tutacak bir liste
+
+    @FXML
+    private TextField userSearchTextField; // Kullanıcı araması için metin alanı
+
+    @FXML
+    private ListView<User> userSearchResultsListView; // Kullanıcı arama sonuçlarını gösterecek ListView bileşeni
+
     @FXML
     private ObservableList<Integer> movieIds;
     private String user;
+
     private String[] movieIDs = new String[5];
     //movie searchlemek için
-    public List<Movie> performSearch(String searchText) {
+    public List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
-        // Başlayan filmleri bulmak için bir filtre kullanın
-        List<Movie> searchResults = fb.movies.stream()
-                .filter(movie -> movie.getTitle().toLowerCase().startsWith(trimmedSearchText))
-                .collect(Collectors.toList());
+        // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
+        List<Movie> searchResults = moviesStore.stream()
+            .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
+            .collect(Collectors.toList());
         return searchResults;
     }
-    //moviesearchlemek için
     @FXML
-    private void handleSearch(ActionEvent event) {
+    private void handleMovieSearch(ActionEvent event) {
         String searchText = textFieldSearch.getText().trim();
         if (!searchText.isEmpty()) {
-            List<Movie> searchResults = performSearch(searchText);
+            List<Movie> searchResults = performMovieSearch(searchText);
             movieIds = FXCollections.observableArrayList();
             for (Movie movie : searchResults) {
                 movieIds.add(movie.getId());
             }
             // Sonuçları arayüzde gösterme kodu
             searchResultsListView.getItems().setAll(searchResults);
+        }
+    }
+    public List<User> performUserSearch(String searchText) {
+        String trimmedSearchText = searchText.trim().toLowerCase();
+        // Arama teriminin kullanıcı adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
+        List<User> searchResults = usersStore.stream()
+            .filter(user -> user.getName().toLowerCase().contains(trimmedSearchText))
+            .collect(Collectors.toList());
+        return searchResults;
+    }
+    
+    @FXML
+    private void handleUserSearch(ActionEvent event) {
+        String searchText = userSearchTextField.getText().trim();
+        if (!searchText.isEmpty()) {
+            List<User> searchResults = performUserSearch(searchText);
+            userSearchResultsListView.getItems().setAll(searchResults);
         }
     }
     public void helperChange(String[] ids) {
@@ -230,7 +258,6 @@ private User currentUser ;
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie() {
-
         //String[] ids = {"155", "240", "238", "8871", "10908"};
         //movieIDs = ids;
         fb.getUser().recomIds();
@@ -265,12 +292,9 @@ private User currentUser ;
         }
         return img;
     }
-
     public CompletableFuture<String> loadMovieName(String movieId) {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/" + movieId + "/title");
-
         CompletableFuture<String> future = new CompletableFuture<>();
-
         movieRef.addListenerForSingleValueEvent(new ValueEventListener() {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String movietitle = dataSnapshot.getValue(String.class);
@@ -280,15 +304,12 @@ private User currentUser ;
                     future.completeExceptionally(new Exception("title not found"));
                 }
             }
-
             public void onCancelled(DatabaseError databaseError) {
                 future.completeExceptionally(new Exception(databaseError.getMessage()));
             }
         });
-
         return future;
     }
-
     public void insert(ActionEvent e) {
         if (userN.getText().equals("") || pass.getText().equals("")) {
             message.setText("Empty Password or Username");
@@ -304,21 +325,19 @@ private User currentUser ;
                         takeUserID(0);
                     }
                 }
-
                 public void onCancelled(DatabaseError databaseError) {
                     System.err.println("Error: " + databaseError.getMessage());
                 }
             });
         }
     }
-
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
             System.out.println("Is stored" + moviesStore);
             changeMainPage(e);
+            System.out.println(Arrays.toString(fb.getUser().recomIds()));
         }
     }
-
     public void takeUserID(Object value) {
         id = Integer.parseInt("" + value);
         if (fb.userPush(userN.getText(), pass.getText(), id)) {
@@ -329,7 +348,6 @@ private User currentUser ;
             message.setFill(Color.rgb(139, 0, 0));
         }
     }
-
     public void changeIn(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("signIn.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -345,7 +363,6 @@ private User currentUser ;
         stage.setScene(scene);
         stage.show();
     }
-
     public void changeMainPage(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -354,7 +371,6 @@ private User currentUser ;
         stage.setFullScreen(true);
         stage.show();
     }
-
     public void backToMain(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -362,7 +378,6 @@ private User currentUser ;
         stage.setScene(scene);
         stage.show();
     }
-
     public void openProfileSettings(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("profilePage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -370,7 +385,6 @@ private User currentUser ;
         stage.setScene(scene);
         stage.show();
     }
-
     public void exit(ActionEvent e) 
     {
         System.exit(1);

@@ -34,7 +34,7 @@ public class Firebase {
         movies = new ArrayList<>() ;
         takeAllMovieData();
         takeAllData();
-            }
+    }
     public Firebase(FirebaseDataCallback callback) {
         films = FirebaseDatabase.getInstance().getReference("movies");
         userDB = FirebaseDatabase.getInstance().getReference("users");

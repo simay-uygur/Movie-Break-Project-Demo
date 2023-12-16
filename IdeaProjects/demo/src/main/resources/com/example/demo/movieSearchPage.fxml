@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -55,11 +56,66 @@
           <RowConstraints maxHeight="336.00000000000006" minHeight="-1.1368683772161603E-13" prefHeight="51.19998779296873" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" />
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </center></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </top></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </top></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </top></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </top></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                <bottom>
                   <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" BorderPane.alignment="CENTER">
@@ -68,11 +124,69 @@
                      </font>
                   </Label>
                </bottom>
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </top>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" />
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </top></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </top></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </MenuButton>
+               </top></BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <top>
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+               </top></BorderPane>
             <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />

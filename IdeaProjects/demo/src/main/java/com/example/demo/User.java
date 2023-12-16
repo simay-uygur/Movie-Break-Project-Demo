@@ -13,7 +13,9 @@ public class User {
     ArrayList<String> friendsIDs;
     ArrayList<String> chatIDs;
     ArrayList<String> sessionIDs;
+    String[] recomms = new String[5];
     MovieService mService ;
+
     public User(String userName, String password, String userID , Firebase fb)
     {
         mService = new MovieService() ;
@@ -117,14 +119,17 @@ public class User {
         setPassword(newPassword);
     }
 
-    public String[] recomIds(){
-        String[] x = new String[5];
-        x[0] = "844416";
-        x[1] = "845844";
-        x[2] = "854648";
-        x[3] = "857879";
-        x[4] = "870358";
-        return x;
+    public void recomIds(){
+        
+        recomms[0] = "844416";
+        recomms[1] = "845844";
+        recomms[2] = "854648";
+        recomms[3] = "857879";
+        recomms[4] = "870358";
+    }
+
+    public String[] getrecomArray(){
+        return recomms;
     }
 
     public String toString()

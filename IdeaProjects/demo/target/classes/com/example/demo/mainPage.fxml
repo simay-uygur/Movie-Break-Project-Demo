@@ -21,77 +21,7 @@
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <ToolBar prefHeight="97.0" prefWidth="1536.0" BorderPane.alignment="CENTER">
-              <items>
-                  <Pane prefHeight="88.0" prefWidth="1520.0">
-                     <children>
-                        <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0">
-                                 <image>
-                                    <Image url="@images/home_symbol.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></Button>
-                        <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
-                           <graphic>
-                              <ImageView fitHeight="75.0" fitWidth="80.0">
-                                 <image>
-                                    <Image url="@images/logout_symbol.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></Button>
-                        <Button layoutX="125.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="100.0">
-                                 <image>
-                                    <Image url="@images/calendar_symbol.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></Button>
-                        <Button layoutX="512.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="414.0" text="   Go to Search Pages">
-                           <graphic>
-                              <ImageView fitHeight="54.0" fitWidth="60.0">
-                                 <image>
-                                    <Image url="@images/search_symbol.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="24.0" />
-                           </font></Button>
-                        <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="89.0" prefWidth="332.0" text="Nickname">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="68.0" fitWidth="68.0">
-                                 <image>
-                                    <Image url="@images/nickname_symbol.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button layoutX="265.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0">
-                                 <image>
-                                    <Image url="@images/chat_symbol.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <MenuButton layoutX="926.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Friend Search" />
-                              <MenuItem mnemonicParsing="false" text="Movie Search" />
-                              <MenuItem mnemonicParsing="false" text="Session Search" />
-                           </items>
-                        </MenuButton>
-                     </children>
-                  </Pane>
-              </items>
-            </ToolBar>
+            <ToolBar prefHeight="97.0" prefWidth="1536.0" BorderPane.alignment="CENTER_LEFT" />
          </top>
          <center>
             <SplitPane dividerPositions="0.4879707112970711" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
@@ -214,7 +144,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Button layoutX="1400.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                        <Button fx:id="movierefreshbutton" layoutX="1400.0" layoutY="10.0" mnemonicParsing="false" onAction="#refreshMovie" prefHeight="46.0" prefWidth="52.0">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -223,7 +153,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Line endX="1413.39990234375" endY="-3.814697265625E-6" layoutX="121.0" layoutY="59.0" startX="-120.99999237060547" startY="-3.814697265625E-6" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -333,7 +262,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Button layoutX="1403.0" layoutY="5.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
+                        <Button fx:id="friendrefreshbutton" layoutX="1400.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -342,7 +271,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Line endX="1444.39990234375" endY="1.9073486328125E-5" layoutX="90.0" layoutY="59.0" startX="-100.0" />
                      </children>
                   </AnchorPane>
               </items>

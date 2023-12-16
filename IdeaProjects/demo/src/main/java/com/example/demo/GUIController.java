@@ -39,6 +39,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 public class GUIController {
+    private User currentUser ; 
     private static int id;
     private Scene scene;
     private Stage stage;
@@ -313,11 +314,9 @@ public class GUIController {
 
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
+            currentUser = fb.getUser() ;
+            
             changeMainPage(e);
-        }
-        else 
-        {
-            System.out.println("1111111111111111111111111111111111111Is stored" + moviesStore);
         }
     }
 

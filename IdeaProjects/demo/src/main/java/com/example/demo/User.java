@@ -160,7 +160,6 @@ public class User {
         HashMap<String, String> ret = new HashMap<>() ;
         ret.put(g1, g2) ;
         favGenres = ret ;
-        recommendMovies();
     }
 
     public ArrayList<String> getFavMoviesIDs()
@@ -235,4 +234,10 @@ public class User {
     {
         return;
     }*/
+
+    public ArrayList<String> recommend()
+    {
+        recommendMovies(); 
+        return recommendedMovies ;
+    }
 }

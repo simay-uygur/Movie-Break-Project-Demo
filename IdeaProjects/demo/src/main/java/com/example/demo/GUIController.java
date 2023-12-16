@@ -192,8 +192,12 @@ private User currentUser ;
     @FXML
     private ObservableList<Integer> movieIds;
     
+    @FXML
+    private Button b1;
+    
     private String user;
     private int index = 5;
+    private int sCounterMovie = 0;
     private String[] movieIDs = new String[5];
     //movie searchlemek için
     public List<Movie> performMovieSearch(String searchText) {
@@ -213,8 +217,6 @@ private User currentUser ;
             for (Movie movie : searchResults) {
                 movieIds.add(movie.getId());
             }
-            // Sonuçları arayüzde gösterme kodu
-            searchResultsListView.getItems().setAll(searchResults);
         }
     }
     public List<User> performUserSearch(String searchText) {
@@ -264,6 +266,7 @@ private User currentUser ;
             }
         }
     } 
+
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
@@ -291,9 +294,18 @@ private User currentUser ;
         }
     }
 
+
+    private void updateSearchids(){
+        for(int a = 0; a<5; a++ ){
+            movieIDs[a] = movieIds.get(a+sCounterMovie);
+        }
+        sCounterMovie++;
+    }
+
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
+        updateSearchids();
         helperChange(movieIDs);
     }
 

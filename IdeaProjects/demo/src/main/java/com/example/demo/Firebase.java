@@ -1,12 +1,10 @@
 package com.example.demo;
-
 import com.example.demo.GUIController;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
 import com.google.firebase.messaging.Message;
-
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -151,14 +149,12 @@ public class Firebase {
                 Object value = dataSnapshot.getValue();
                 userID = Integer.parseInt("" + value);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.err.println("Error: " + databaseError.getMessage());
             }
         });
     }
-
     public void initChatID()
     {
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("chats/ID-Counter");
@@ -168,24 +164,20 @@ public class Firebase {
                 Object value = dataSnapshot.getValue();
                 chatID = Integer.parseInt("" + value);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.err.println("Error: " + databaseError.getMessage());
             }
         });
     }
-
     public void createUser(String userName, String pass, String ID)
     {
         u = new User(userName, pass , ID , this);
     }
-
     /*public void createChat(ArrayList<Message> messages, String ID, ArrayList<User> users)
     {
         c = new Chat(messages, ID, users);
     }*/
-
     public void add(String userId , String path , String id) 
     {
         DatabaseReference user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ;
@@ -195,7 +187,6 @@ public class Firebase {
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
         }
     }
-
     public User getUser(){
         System.out.println(u);
         return u;

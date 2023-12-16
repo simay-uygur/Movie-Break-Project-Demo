@@ -23,7 +23,7 @@
    <children>
       <Pane layoutX="530.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
-            <TextField layoutX="96.0" layoutY="11.0" prefHeight="77.0" prefWidth="797.0" style="-fx-border-radius: 30; -fx-background-radius: 30;" text="       ">
+            <TextField fx:id="textFieldSearch" layoutX="96.0" layoutY="11.0" onAction="#handleMovieSearch" prefHeight="77.0" prefWidth="797.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
                <font>
                   <Font size="36.0" />
                </font>
@@ -58,7 +58,7 @@
         </rowConstraints>
          <children>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
-               <center>
+               <top>
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Add to Favourites" />
@@ -68,6 +68,9 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
+               </top>
+               <center>
+                  <ImageView fx:id="view1" fitHeight="204.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <top>
@@ -80,7 +83,10 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-               </top></BorderPane>
+               </top>
+               <center>
+                  <ImageView fx:id="view6" fitHeight="194.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <top>
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
@@ -92,7 +98,10 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-               </top></BorderPane>
+               </top>
+               <center>
+                  <ImageView fx:id="view2" fitHeight="204.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <top>
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
@@ -104,7 +113,10 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-               </top></BorderPane>
+               </top>
+               <center>
+                  <ImageView fx:id="view7" fitHeight="195.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <top>
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
@@ -116,7 +128,10 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-               </top></BorderPane>
+               </top>
+               <center>
+                  <ImageView fx:id="view3" fitHeight="204.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                <bottom>
                   <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" BorderPane.alignment="CENTER">
@@ -126,7 +141,7 @@
                   </Label>
                </bottom>
                <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
+                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="BOTTOM_LEFT">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Add to Favourites" />
                         <MenuItem mnemonicParsing="false" text="Create Session" />
@@ -136,6 +151,9 @@
                      </font>
                   </MenuButton>
                </top>
+               <center>
+                  <ImageView fx:id="view4" fitHeight="179.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <top>
@@ -148,7 +166,10 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-               </top></BorderPane>
+               </top>
+               <center>
+                  <ImageView fx:id="view8" fitHeight="194.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <top>
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
@@ -160,7 +181,10 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-               </top></BorderPane>
+               </top>
+               <center>
+                  <ImageView fx:id="view10" fitHeight="201.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                <top>
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
@@ -175,7 +199,10 @@
                         <Insets />
                      </BorderPane.margin>
                   </MenuButton>
-               </top></BorderPane>
+               </top>
+               <center>
+                  <ImageView fx:id="view5" fitHeight="203.0" fitWidth="218.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <top>
                   <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
@@ -187,60 +214,63 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-               </top></BorderPane>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="1">
+               </top>
+               <center>
+                  <ImageView fx:id="view9" fitHeight="192.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center></BorderPane>
+            <Label fx:id="label1" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="label2" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="label3" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Label fx:id="label4" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <Label fx:id="label5" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="3">
+            <Label fx:id="label6" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="label7" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label fx:id="label8" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Label fx:id="label9" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <Label fx:id="label10" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
          </children>
       </GridPane>
-      <Button layoutX="1381.0" layoutY="791.0" mnemonicParsing="false">
+      <Button layoutX="1381.0" layoutY="791.0" mnemonicParsing="false" onAction="#moveBackwardMovieSearch">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
@@ -249,7 +279,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1457.0" layoutY="791.0" mnemonicParsing="false">
+      <Button layoutX="1457.0" layoutY="791.0" mnemonicParsing="false" onAction="#moveForwardMovieSearch">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>

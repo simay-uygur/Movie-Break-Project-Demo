@@ -21,7 +21,6 @@ public class Welcome extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
     public static void initialize() {
         try{
             FileInputStream serviceAccount =
@@ -36,7 +35,6 @@ public class Welcome extends Application {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) {
         initialize();
         launch();

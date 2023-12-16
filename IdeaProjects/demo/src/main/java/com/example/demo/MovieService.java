@@ -108,7 +108,7 @@ public class MovieService
 
     private static void initializeFirebase() {
         try {
-            FileInputStream serviceAccount = new FileInputStream("Movie-Break-Project-Demo\\IdeaProjects\\demo\\serviceAccountKey.json");
+            FileInputStream serviceAccount = new FileInputStream("IdeaProjects\\demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -120,7 +120,6 @@ public class MovieService
             System.err.println("Failed to initialize Firebase: " + e.getMessage());
         }
     }
-
     private static void storeMovieInDatabase(Movie movie) {
         try {
             DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies");
@@ -132,8 +131,6 @@ public class MovieService
             System.err.println("Failed to save movie data to Firebase: " + e.getMessage());
         }
     }
-
-
     public static List<Movie> parseSearchResults(String jsonResponse, String searchQ) {
         List<Movie> movies = new ArrayList<>();
 

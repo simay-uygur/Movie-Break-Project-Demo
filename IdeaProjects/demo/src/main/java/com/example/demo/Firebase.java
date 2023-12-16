@@ -33,7 +33,8 @@ public class Firebase {
         users = new ArrayList<>() ;
         movies = new ArrayList<>() ;
         takeAllMovieData();
-    }
+        takeAllData();
+            }
     public Firebase(FirebaseDataCallback callback) {
         films = FirebaseDatabase.getInstance().getReference("movies");
         userDB = FirebaseDatabase.getInstance().getReference("users");
@@ -51,7 +52,7 @@ public class Firebase {
         films.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                movies.clear();
+                movies.clear(); // Clear the ArrayList to avoid duplicates
 
                 for (DataSnapshot movie : snapshot.getChildren()) {
                     movies.add(new Movie(
@@ -62,6 +63,7 @@ public class Firebase {
                     );
                 }
 
+                // Notify the callback that data has been loaded
                 if (dataCallback != null) {
                     dataCallback.onDataLoaded(movies);
                 }
@@ -226,6 +228,7 @@ public class Firebase {
         }
     }
     public User getUser(){
+        System.out.println(u);
         return u;
     }
     public String getCurrentID(){

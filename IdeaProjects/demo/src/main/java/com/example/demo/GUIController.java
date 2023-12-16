@@ -39,7 +39,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 public class GUIController {
-    private User currentUser ; 
+private User currentUser ; 
     private static int id;
     private Scene scene;
     private Stage stage;
@@ -48,7 +48,7 @@ public class GUIController {
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
-            moviesStore = movies;
+                        moviesStore = movies;
         }
     });
     @FXML
@@ -191,7 +191,7 @@ public class GUIController {
             List<Movie> searchResults = performSearch(searchText);
             movieIds = FXCollections.observableArrayList();
             for (Movie movie : searchResults) {
-                movieIds.add(movie.takeId());
+                movieIds.add(movie.getId());
             }
             // Sonuçları arayüzde gösterme kodu
             searchResultsListView.getItems().setAll(searchResults);
@@ -234,7 +234,7 @@ public class GUIController {
         //String[] ids = {"155", "240", "238", "8871", "10908"};
         //movieIDs = ids;
         fb.getUser().recomIds();
-        //movieIDs = fb.getUser().getrecomArray();
+      //  movieIDs = fb.getUser().getrecomArray();
         System.out.println("id" +movieIDs.toString());
         helperChange(movieIDs);
     }
@@ -314,8 +314,7 @@ public class GUIController {
 
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
-            currentUser = fb.getUser() ;
-            
+            System.out.println("Is stored" + moviesStore);
             changeMainPage(e);
         }
     }

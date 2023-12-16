@@ -18,21 +18,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.File;
@@ -227,9 +220,14 @@ public class GUIController {
         }
     } 
     //refreshFriend
+    //public void refreshFriend(){}
     public void refreshMovie() {
-        String[] ids = {"155", "240", "238", "8871", "10908"};
-        movieIDs = ids;
+
+        //String[] ids = {"155", "240", "238", "8871", "10908"};
+        //movieIDs = ids;
+        fb.getUser().recomIds();
+        movieIDs = fb.getUser().getrecomArray();
+        System.out.println("id" +movieIDs.toString());
         helperChange(movieIDs);
     }
 
@@ -290,7 +288,6 @@ public class GUIController {
         } else {
             DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
             data.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         Object value = dataSnapshot.getValue();
@@ -300,7 +297,6 @@ public class GUIController {
                     }
                 }
 
-                @Override
                 public void onCancelled(DatabaseError databaseError) {
                     System.err.println("Error: " + databaseError.getMessage());
                 }

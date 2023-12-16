@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -51,6 +53,9 @@ public class GUIController {
             moviesStore = movies;
         }
     });
+    @FXML
+    private ComboBox searchOptions;
+    
     @FXML
     private Button insert;
 
@@ -169,6 +174,8 @@ public class GUIController {
     
     @FXML
     private ListView<Movie> searchResultsListView; 
+    @FXML
+    private MenuButton searchChooser;
     // Sonuçları göstermek için bir ListView bileşeni
     @FXML
     private ObservableList<Integer> movieIds;
@@ -381,10 +388,37 @@ public class GUIController {
     }
 
     public void openProfileSettings(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("profilePage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("profile1.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void openCalender(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("sessionCalender.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void openChat(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("chat.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+    public void openSearch(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("chat.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.show();
     }
 

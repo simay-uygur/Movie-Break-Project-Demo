@@ -34,7 +34,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button alignment="CENTER_RIGHT" layoutX="986.0" layoutY="99.0" mnemonicParsing="false" onAction="#openProfile3" prefHeight="43.0" prefWidth="181.0" text="Favorite Films" textAlignment="RIGHT">
+            <Button alignment="CENTER_RIGHT" layoutX="986.0" layoutY="99.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="43.0" prefWidth="181.0" text="Favorite Films" textAlignment="RIGHT">
                <font>
                   <Font size="20.0" />
                </font>

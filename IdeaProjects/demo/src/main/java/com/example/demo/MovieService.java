@@ -47,7 +47,7 @@ public class MovieService
         imageUrls = new ArrayList<String>();
         movieIds = new ArrayList<String>();
         initializeFirebase();
-        String genreId = "28"; // Aksiyon türünün ID'si
+        String genreId = "28"; //Action
         fetchAndStoreMovies(genreId);
         genreId = "12"; //Adventure
         fetchAndStoreMovies(genreId);

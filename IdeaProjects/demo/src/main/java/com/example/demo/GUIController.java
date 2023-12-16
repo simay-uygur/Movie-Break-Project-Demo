@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.Firebase.FirebaseDataCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,17 +33,23 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
-
 public class GUIController {
     private static int id;
     private Scene scene;
     private Stage stage;
     private Parent root;
-    Firebase fb = new Firebase();
+    private ArrayList<Movie> moviesStore;
+    Firebase fb = new Firebase(new FirebaseDataCallback() {
+        @Override
+        public void onDataLoaded(ArrayList<Movie>movies) {
+            moviesStore = movies;
+        }
+    });
     @FXML
     private Button insert;
 
@@ -183,7 +190,7 @@ public class GUIController {
             List<Movie> searchResults = performSearch(searchText);
             movieIds = FXCollections.observableArrayList();
             for (Movie movie : searchResults) {
-                movieIds.add(movie.getId());
+                movieIds.add(movie.takeId());
             }
             // Sonuçları arayüzde gösterme kodu
             searchResultsListView.getItems().setAll(searchResults);
@@ -226,16 +233,16 @@ public class GUIController {
         //String[] ids = {"155", "240", "238", "8871", "10908"};
         //movieIDs = ids;
         fb.getUser().recomIds();
-        movieIDs = fb.getUser().getrecomArray();
+        //movieIDs = fb.getUser().getrecomArray();
         System.out.println("id" +movieIDs.toString());
         helperChange(movieIDs);
     }
-
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
         helperChange(movieIDs);
     }
+
 
     public void displaying() {
         label1.setText("dskjfjö");
@@ -308,6 +315,10 @@ public class GUIController {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
             changeMainPage(e);
         }
+        else 
+        {
+            System.out.println("1111111111111111111111111111111111111Is stored" + moviesStore);
+        }
     }
 
     public void takeUserID(Object value) {
@@ -362,4 +373,8 @@ public class GUIController {
         stage.show();
     }
 
+    public void exit(ActionEvent e) 
+    {
+        System.exit(1);
+    }
 }

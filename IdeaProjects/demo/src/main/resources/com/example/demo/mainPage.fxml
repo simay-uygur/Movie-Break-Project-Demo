@@ -33,7 +33,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
+                        <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" onAction="#exit" prefHeight="88.0" prefWidth="96.0">
                            <graphic>
                               <ImageView fitHeight="75.0" fitWidth="80.0">
                                  <image>

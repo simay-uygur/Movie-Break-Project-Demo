@@ -21,6 +21,7 @@ public class Firebase {
     private int chatID;
     private User u;
     private Chat c;
+    private FirebaseDataCallback dataCallback;
     DatabaseReference userDB;
     DatabaseReference chatDB;
     Query userQ ;
@@ -32,9 +33,46 @@ public class Firebase {
         users = new ArrayList<>() ;
         movies = new ArrayList<>() ;
         takeAllMovieData();
-        takeAllData();
     }
+    public Firebase(FirebaseDataCallback callback) {
+        films = FirebaseDatabase.getInstance().getReference("movies");
+        userDB = FirebaseDatabase.getInstance().getReference("users");
+        chatDB = FirebaseDatabase.getInstance().getReference("chats");
+        users = new ArrayList<>();
+        movies = new ArrayList<>();
+        this.dataCallback = callback;
+        takeAllData();
+        takeAllMovieData();
+    }
+    public interface FirebaseDataCallback {
+        void onDataLoaded(ArrayList<Movie> movies);
+    }
+    public void takeAllMovieData() {
+        films.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                movies.clear();
 
+                for (DataSnapshot movie : snapshot.getChildren()) {
+                    movies.add(new Movie(
+                            Integer.parseInt(movie.getKey()),
+                            "" + movie.child("title").getValue(),
+                            "" + movie.child("genre").getValue(),
+                            "" + movie.child("path").getValue())
+                    );
+                }
+
+                if (dataCallback != null) {
+                    dataCallback.onDataLoaded(movies);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.out.println("Something went wrong :(");
+            }
+        });
+    }
     public boolean userPush(String name , String password , int id)
     {
         if (!accountExists(name)) 
@@ -105,7 +143,7 @@ public class Firebase {
             }
         });
     }
-    public void takeAllMovieData() 
+   /* public void takeAllMovieData() 
     {
         films.addValueEventListener(new ValueEventListener() {
 
@@ -128,7 +166,7 @@ public class Firebase {
             }
             
         });
-    }
+    } */
 
     public void setAcc()
     {
@@ -188,7 +226,6 @@ public class Firebase {
         }
     }
     public User getUser(){
-        System.out.println(u);
         return u;
     }
     public String getCurrentID(){

@@ -13,88 +13,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="97.0" prefWidth="1536.0" AnchorPane.bottomAnchor="760.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <items>
-            <Pane prefHeight="88.0" prefWidth="1520.0">
-               <children>
-                  <MenuButton layoutX="968.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Friend Search" />
-                        <MenuItem mnemonicParsing="false" text="Movie Search" />
-                        <MenuItem mnemonicParsing="false" text="Session Search" />
-                     </items>
-                  </MenuButton>
-                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@images/home_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
-                     <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@images/logout_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="125.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="100.0">
-                           <image>
-                              <Image url="@images/calendar_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <TextField layoutX="482.0" layoutY="28.0" prefHeight="40.0" prefWidth="392.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Button layoutX="892.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0">
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="60.0">
-                           <image>
-                              <Image url="@images/search_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="nicknamePage" layoutX="1033.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="81.0" prefWidth="362.0" text="Nickname">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="68.0" fitWidth="68.0">
-                           <image>
-                              <Image url="@images/nickname_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="265.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@images/chat_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </Pane>
-         </items>
-      </ToolBar>
+      <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="110.0" prefWidth="1536.0" AnchorPane.bottomAnchor="754.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Button layoutX="1453.0" layoutY="786.0" mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
@@ -178,39 +102,223 @@
                   <Font size="22.0" />
                </font>
             </Label>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" />
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Pane layoutX="-16.0" layoutY="-98.0" prefHeight="94.0" prefWidth="1520.0">
                      <children>
-                        <TextField layoutX="17.0" layoutY="11.0" prefHeight="77.0" prefWidth="891.0" style="-fx-border-radius: 30; -fx-background-radius: 30;" text="       ">
+                        <TextField layoutX="80.0" layoutY="11.0" prefHeight="77.0" prefWidth="828.0" promptText="// Search users by their names" style="-fx-border-radius: 30; -fx-background-radius: 30;">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <Label alignment="CENTER" layoutX="1074.0" layoutY="14.0" prefHeight="70.0" prefWidth="431.0" text="User Search">
+                        <Label alignment="CENTER" layoutX="1075.0" layoutY="15.0" prefHeight="70.0" prefWidth="431.0" text="User Search">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <ImageView disable="true" fitHeight="60.0" fitWidth="60.0" layoutX="44.0" layoutY="19.0">
+                        <ImageView disable="true" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0">
                            <image>
                               <Image url="@images/search_symbol.png" />
                            </image>
                         </ImageView>
+                        <Line endX="1359.0" endY="6.0" layoutX="169.0" layoutY="88.0" startX="-177.00001525878906" startY="6.0" />
                      </children>
                   </Pane>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@images/add_friend.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
+            <Button mnemonicParsing="false" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@images/add_friend.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </GridPane>
+      <ToolBar prefHeight="97.0" prefWidth="1536.0">
+         <items>
+            <Pane prefHeight="88.0" prefWidth="1520.0">
+               <children>
+                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                           <image>
+                              <Image url="@images/home_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
+                     <graphic>
+                        <ImageView fitHeight="75.0" fitWidth="80.0">
+                           <image>
+                              <Image url="@images/logout_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="125.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="100.0">
+                           <image>
+                              <Image url="@images/calendar_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="512.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="414.0" text="   Go to Search Pages">
+                     <graphic>
+                        <ImageView fitHeight="54.0" fitWidth="60.0">
+                           <image>
+                              <Image url="@images/search_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="89.0" prefWidth="332.0" text="Nickname">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="68.0" fitWidth="68.0">
+                           <image>
+                              <Image url="@images/nickname_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="265.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                           <image>
+                              <Image url="@images/chat_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <MenuButton layoutX="926.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Friend Search" />
+                        <MenuItem mnemonicParsing="false" text="Movie Search" />
+                        <MenuItem mnemonicParsing="false" text="Session Search" />
+                     </items>
+                  </MenuButton>
+               </children>
+            </Pane>
+         </items>
+      </ToolBar>
    </children>
 </AnchorPane>

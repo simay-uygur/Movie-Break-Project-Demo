@@ -55,6 +55,7 @@ public class GUIController {
     private static ArrayList<String> favMoviesIDs ;
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
+    private static int disp = 0 ;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
@@ -473,26 +474,30 @@ public class GUIController {
         }
         helperChangeMovie1(movieIDs);
     }
-    public void displayImage(MouseEvent e){
-        int counter = 0 ;
-        currentUser.setFavMovies(favMoviesIDs);
-        currentUser.setFavGenres();
-        int c = currentUser.getRecommendedMovies().size()%5 ;
-        for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
+    public void displayImage(){
+        if (disp == 0) 
         {
-            movieIDs[counter] = currentUser.getRecommendedMovies().get(i) ;
-            counter ++ ; 
-        }
-        index += counter ;
-        if (index == currentUser.getRecommendedMovies().size() - 1 && c > 0) 
-        { 
-            for (int i = index ; i < c + index ; i++) 
+            int counter = 0 ;
+            currentUser.setFavMovies(favMoviesIDs);
+            currentUser.setFavGenres();
+            int c = currentUser.getRecommendedMovies().size()%5 ;
+            for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
             {
-                movieIDs[i] = "000000";
+                movieIDs[counter] = currentUser.getRecommendedMovies().get(i) ;
+                counter ++ ; 
             }
+            index += counter ;
+            if (index == currentUser.getRecommendedMovies().size() - 1 && c > 0) 
+            { 
+                for (int i = index ; i < c + index ; i++) 
+                {
+                    movieIDs[i] = "000000";
+                }
+            }
+            //updateSearchids();
+            helperChangeMovie1(movieIDs);
+            disp++;
         }
-        //updateSearchids();
-        helperChangeMovie1(movieIDs);
     }
 
     //recommend ve update var YAPMAM GEREK
@@ -687,6 +692,7 @@ public class GUIController {
     }
 
     public void changeMainPage(ActionEvent e) throws IOException {
+        disp = 0 ;
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);

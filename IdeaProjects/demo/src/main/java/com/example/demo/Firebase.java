@@ -50,6 +50,7 @@ public class Firebase {
     public interface FirebaseDataCallback {
         void onDataLoaded(ArrayList<Movie> movies);
         void onUserLoaded(User user) ;
+        void onFav_MoviesIDSloaded(ArrayList<String> datas) ;
     }
 
     public void takeAllMovieData() {
@@ -220,7 +221,7 @@ public class Firebase {
     }
     public void createUser(String userName, String pass, String ID)
     {
-        u = new User(userName, pass , ID , this , take("Fav_MovieIDs", ID));
+        u = new User(userName, pass , ID , this);
     }
 
     /*public void createChat(ArrayList<Message> messages, String ID, ArrayList<User> users)
@@ -228,7 +229,7 @@ public class Firebase {
         c = new Chat(messages, ID, users);
     }*/
 
-    public ArrayList<String> take(String path , String id) 
+    public ArrayList<String> takeIDS(String path , String id) 
     {
         ArrayList<String> ids = new ArrayList<>() ;
         userDB.child(id).child(path).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -239,8 +240,10 @@ public class Firebase {
                 {
                     ids.add(data.getKey()) ;
                 }
-                setData(ids);
-                System.out.println(DATA);
+                if (dataCallback != null) 
+                {
+                    dataCallback.onFav_MoviesIDSloaded(ids);
+                }
             }
 
             @Override

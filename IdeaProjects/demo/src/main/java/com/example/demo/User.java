@@ -27,12 +27,9 @@ public class User {
     private DatabaseReference friends ;
     private HashMap<String,String> favGenres ; 
     private static ArrayList<String> recommendedMovies ; 
-    public User(String userName, String password, String userID , Firebase fb , ArrayList<String> favMovies)
+    public User(String userName, String password, String userID , Firebase fb)
     {
-        favMoviesIDs = favMovies ;
-        System.out.println(favMoviesIDs);
-        favMoviesIDs = fb.take("Fav_MovieIDs", userID) ;
-        System.out.println(favMoviesIDs);
+        favMoviesIDs = new ArrayList<>() ; 
         setFirebase(fb);
         setUserName(userName);
         setPassword(password);

@@ -201,7 +201,14 @@
             <Font size="18.0" />
          </font>
       </TextArea>
-      <Button layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0" />
+      <Button layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/send_symbol.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Line endX="-16.5" endY="-32.20001220703125" layoutX="1536.0" layoutY="320.0" startX="-16.5" startY="-157.8000030517578" />
       <Line endX="-16.5" endY="-31.0" layoutX="1535.0" layoutY="622.0" startX="-16.5" startY="-150.19998168945312" />
       <Line endX="-16.5" endY="-39.399993896484375" layoutX="1536.0" layoutY="476.0" startX="-16.5" startY="-158.60000610351562" />

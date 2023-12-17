@@ -15,11 +15,12 @@ public class Firebase {
     private boolean accExists = false;
     ArrayList<String> users ;
     ArrayList<Movie> movies ;
+    private static ArrayList<String> DATA ;
     DatabaseReference films ;
     private int userID;
     private int chatID;
-    private User u;
-    private Chat c;
+    private static User u;
+    private static Chat c;
     private FirebaseDataCallback dataCallback;
     DatabaseReference userDB;
     DatabaseReference chatDB;
@@ -45,9 +46,13 @@ public class Firebase {
         takeAllData();
         takeAllMovieData();
     }
+
     public interface FirebaseDataCallback {
         void onDataLoaded(ArrayList<Movie> movies);
+        void onUserLoaded(User user) ;
+        void onFav_MoviesIDSloaded(ArrayList<String> datas) ;
     }
+
     public void takeAllMovieData() {
         films.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -82,6 +87,10 @@ public class Firebase {
             DatabaseReference user = userDB.child(""+id);
             user.child("Username").setValueAsync(name);
             user.child("Password").setValueAsync(password);
+            user.child("Fav_MovieIDs").setValueAsync("") ;
+            user.child("Friends").setValueAsync("") ;
+            user.child("SessionIDS").setValueAsync("") ;
+            user.child("ChatIDS").setValueAsync("") ;
             DatabaseReference userIDs = userDB.child("ID-Counter");
             userIDs.setValueAsync(id + 1);
             return true ;
@@ -214,10 +223,42 @@ public class Firebase {
     {
         u = new User(userName, pass , ID , this);
     }
+
     /*public void createChat(ArrayList<Message> messages, String ID, ArrayList<User> users)
     {
         c = new Chat(messages, ID, users);
     }*/
+
+    public ArrayList<String> takeIDS(String path , String id) 
+    {
+        ArrayList<String> ids = new ArrayList<>() ;
+        userDB.child(id).child(path).addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) 
+                {
+                    ids.add(data.getKey()) ;
+                }
+                if (dataCallback != null) 
+                {
+                    dataCallback.onFav_MoviesIDSloaded(ids);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+
+        });
+        return DATA ;
+    }
+
+    public void setData(ArrayList<String> datas) 
+    {
+        DATA = new ArrayList<>(datas) ;
+    }
+
     public void add(String userId , String path , String id) 
     {
         DatabaseReference user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ;
@@ -228,7 +269,6 @@ public class Firebase {
         }
     }
     public User getUser(){
-        System.out.println(u);
         return u;
     }
     public String getCurrentID(){

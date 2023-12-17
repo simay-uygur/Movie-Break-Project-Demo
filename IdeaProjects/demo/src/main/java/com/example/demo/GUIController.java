@@ -43,8 +43,10 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
+
 public class GUIController {
-private User currentUser ; 
+
+    private User currentUser ; 
     private static int id;
     private Scene scene;
     private Stage stage;
@@ -58,8 +60,7 @@ private User currentUser ;
         }
     });
     
-    @FXML
-    private ComboBox<String> menu;
+    @FXML private ComboBox<String> menu;
 
     @FXML private Button insert;
  
@@ -135,28 +136,27 @@ private User currentUser ;
     
     @FXML private TextField userSearchTextField; 
     
-    @FXML private ObservableList<String> movieIds = FXCollections.observableArrayList();    
+    private ObservableList<String> movieIds = FXCollections.observableArrayList();   
+    private ObservableList<String> userIds = FXCollections.observableArrayList();  
 
     @FXML private Button b1;
 
     private List<User> usersStore;
-
-    private int smcounter = 0;
     
     private String user;
     private int index = 0;
-    private int sCounterMovie = 0;
+    private int smcounter = 0;
+    private int sucounter = 0;
+
     private String[] movieIDs = new String[5];
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
-        // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<Movie> searchResults = moviesStore.stream()
             .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
         System.out.println("searchresult"+ searchResults.toString());
         return searchResults;
-        
     }
 
     @FXML
@@ -171,7 +171,7 @@ private User currentUser ;
                 System.out.println("..."+movie.takeId());
             }
         }
-        System.out.println("ids     " +movieIds.toString());
+        System.out.println("ids     " +movieIds);
 
         while (movieIds.size()%10 !=0 ) {
             movieIds.add("000000");
@@ -194,12 +194,12 @@ private User currentUser ;
     }
     
     public void moveForwardMovieSearch(ActionEvent e) {
-        if (smcounter <= movieIds.size()/ 5) { // Check if there are enough elements
+        if (smcounter <= movieIds.size()/ 5) { 
             smcounter++;
             String[] x2 = new String[5];
             String[] y2 = new String[5];
     
-            int startIndex = 5 * smcounter;
+            int startIndex = 10 * smcounter;
     
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < movieIds.size()) {
@@ -210,13 +210,12 @@ private User currentUser ;
                     }
                 } else {
                     if (a < 5) {
-                        x2[a] = "0000";
+                        x2[a] = "000000";
                     } else {
-                        y2[a - 5] = "0000";
+                        y2[a - 5] = "000000";
                     }
                 }
             }
-    
             helperChange1(x2);
             helperChange2(y2);
         }
@@ -228,7 +227,7 @@ private User currentUser ;
             String[] x1 = new String[5];
             String[] y1 = new String[5];
 
-            int startIndex = 5 * smcounter;
+            int startIndex = 10 * smcounter;
 
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < movieIds.size()) {
@@ -238,15 +237,13 @@ private User currentUser ;
                         y1[a - 5] = movieIds.get(startIndex + a);
                     }
                 } else {
-                    // Handle the case when you go before the start of the list
                     if (a < 5) {
-                        x1[a] = "0000"; // Fill with "0000" or any other placeholder
+                        x1[a] = "000000"; 
                     } else {
-                        y1[a - 5] = "0000"; // Fill with "0000" or any other placeholder
+                        y1[a - 5] = "000000"; // Fill with "0000" or any other placeholder
                     }
                 }
             }
-
             helperChange1(x1);
             helperChange2(y1);
         }
@@ -260,18 +257,42 @@ private User currentUser ;
             .collect(Collectors.toList());
         return searchResults;
     }
+
     @FXML
     private void handleUserSearch(ActionEvent event) {
+        sucounter = 0;
+        userIds.clear();
         String searchText = userSearchTextField.getText().trim();
         if (!searchText.isEmpty()) {
             List<User> searchResults = performUserSearch(searchText);
-            userIds = FXCollections.observableArrayList();
             for (User user : searchResults) {
                 userIds.add(""+user.getID());
             }
         }
-        //kallanı yok neden
+
+    
+        System.out.println("user ids     " +userIds);
+
+        while (userIds.size()%10 !=0 ) {
+            userIds.add("000000");
+        }
+
+        System.out.println(userIds);
+        String[] x = new String[5];
+        String[] y = new String[5];
+
+        for(int a=0; a<10; a++){
+            if(a<5){
+                x[a] = movieIds.get(a);
+            }
+            else{
+                y[a-5] = movieIds.get(a);
+            }
+        }
+        //helper method for user 
     }
+    
+    
 
     public void helperChange1(String[] ids) {
         CompletableFuture<String> ctitle = new CompletableFuture<>();
@@ -334,9 +355,73 @@ private User currentUser ;
             }
         }
     } 
+/* 
+    public void helperChange3(String[] ids) {
+        CompletableFuture<String> ctitle = new CompletableFuture<>();
+        String title = "";
+        for (int i = 0; i < ids.length; i++) {
+            BufferedImage cposter = loadMoviePoster(ids[i]);
+            ctitle = loadMovieName(ids[i]);
+            title = ctitle.join();
+            if (i == 0) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view1.setImage(posterImage);
+                label1.setText(title);
+            } else if (i == 1) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view2.setImage(posterImage);
+                label2.setText(title);
+            } else if (i == 2) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view3.setImage(posterImage);
+                label3.setText(title);
+            } else if (i == 3) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view4.setImage(posterImage);
+                label4.setText(title);
+            } else {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view5.setImage(posterImage);
+                label5.setText(title);
+            }
+        }
+    } 
+
+    public void helperChange4(String[] ids) {
+        CompletableFuture<String> ctitle = new CompletableFuture<>();
+        String title = "";
+        for (int i = 0; i < ids.length; i++) {
+            BufferedImage cposter = loadMoviePoster(ids[i]);
+            ctitle = loadMovieName(ids[i]);
+            title = ctitle.join();
+            if (i == 0) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view6.setImage(posterImage);
+                label6.setText(title);
+            } else if (i == 1) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view7.setImage(posterImage);
+                label7.setText(title);
+            } else if (i == 2) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view8.setImage(posterImage);
+                label8.setText(title);
+            } else if (i == 3) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view9.setImage(posterImage);
+                label9.setText(title);
+            } else {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view10.setImage(posterImage);
+                label10.setText(title);
+            }
+        }
+    } 
+    */
 
     //refreshFriend
     //public void refreshFriend(){}
+
     public void refreshMovie(ActionEvent e) {
         //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
@@ -361,12 +446,15 @@ private User currentUser ;
             helperChange1(movieIDs);
         }
     }
+
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
-        updateSearchids();
+        //updateSearchids();
         helperChange1(movieIDs);
     }
+
+    //recommend ve update var 
 
     public void searchMovieDisplay(ActionEvent e ){
 
@@ -378,14 +466,14 @@ private User currentUser ;
         try {
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);  
-            //System.out.println("image is assigned");
-            //System.out.println("path is " + imagePath);
+
 
         } catch (IOException e) {
             //System.err.println("Error loading image: " + e.getMessage());  
         }
         return img;
     }
+
     public CompletableFuture<String> loadMovieName(String movieId) {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/" + movieId + "/title");
         CompletableFuture<String> future = new CompletableFuture<>();
@@ -404,6 +492,7 @@ private User currentUser ;
         });
         return future;
     }
+    
     public void insert(ActionEvent e) {
         if (userN.getText().equals("") || pass.getText().equals("")) {
             message.setText("Empty Password or Username");

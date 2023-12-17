@@ -454,7 +454,6 @@ public class GUIController {
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
-        //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
         currentUser.setFavMovies(favMoviesIDs);
         currentUser.setFavGenres();
@@ -592,7 +591,6 @@ public class GUIController {
     {
         //System.out.println("2"+users);
         //System.out.println("user "+currentUser.getID());
-        System.out.println(currentUser.friendsIDs);
         if (e.getSource() == addToFav0) 
         {
             System.out.println(movieIDs[0]); 

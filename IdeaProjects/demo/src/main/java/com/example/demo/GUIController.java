@@ -452,7 +452,7 @@ public class GUIController {
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
-        /* //System.out.println("id" +movieIDs.toString());
+        //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
         currentUser.setFavMovies(favMoviesIDs);
         currentUser.setFavGenres();
@@ -469,13 +469,8 @@ public class GUIController {
             {
                 movieIDs[i] = "000000";
             }
-            helperChangeMovie1(shortM);
         }
-        else 
-        {
-            helperChangeMovie1(movieIDs);
-        }*/
-        System.out.println("notrefreshed ");
+        helperChangeMovie1(movieIDs);
     }
     public void displayImage(MouseEvent e){
         int counter = 0 ;

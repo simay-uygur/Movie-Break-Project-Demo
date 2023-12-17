@@ -575,7 +575,7 @@ public class GUIController {
             changeMainPage(e);
         }
     }
-
+    
     public void takeUserID(Object value) {
         id = Integer.parseInt("" + value);
         if (fb.userPush(userN.getText(), pass.getText(), id)) {
@@ -586,13 +586,13 @@ public class GUIController {
             message.setFill(Color.rgb(139, 0, 0));
         }
     }
-
+    
     
     public void addMovie(ActionEvent e) 
     {
         //System.out.println("2"+users);
         //System.out.println("user "+currentUser.getID());
-        System.out.println("3"+favMoviesIDs);
+        System.out.println(currentUser.friendsIDs);
         if (e.getSource() == addToFav0) 
         {
             System.out.println(movieIDs[0]); 

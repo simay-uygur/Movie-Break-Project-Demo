@@ -24,7 +24,6 @@ public class User {
     ArrayList<String> sessionIDs;
     MovieService mService; 
     private ArrayList<Movie> movies ;
-    private DatabaseReference friends ;
     private HashMap<String,String> favGenres ; 
     private static ArrayList<String> recommendedMovies ; 
     public User(String userName, String password, String userID , Firebase fb)
@@ -48,7 +47,12 @@ public class User {
     public void initRefs()
     {
         movies = new ArrayList<>(fb.movies) ;
-        friends = FirebaseDatabase.getInstance().getReference("users/"+userID+"/Friends") ;
+        //friends = FirebaseDatabase.getInstance().getReference("users/"+userID+"/Friends") ;
+    }
+
+    public void setFriends(ArrayList<String> homo) 
+    {
+        friendsIDs = new ArrayList<>(homo) ; 
     }
 
     public void setGenres(HashMap<String, String> genres) 

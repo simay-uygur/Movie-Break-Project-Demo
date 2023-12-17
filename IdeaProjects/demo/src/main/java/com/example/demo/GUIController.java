@@ -150,10 +150,10 @@ public class GUIController {
 
     String[] k = new String[5];
     String[] l = new String[5];
-    String[] k1 = new String[5];
-    String[] l1 = new String[5];
-    String[] k2 = new String[5];
-    String[] l2 = new String[5];
+    //String[] k1 = new String[5];
+    //String[] l1 = new String[5];
+    //String[] k2 = new String[5];
+    //String[] l2 = new String[5];
 
     private String[] movieIDs = new String[5];
     //private static String[] movieIDs = new String[5];
@@ -220,6 +220,8 @@ public class GUIController {
             helperChangeMovie2(y2);
         }
     }
+
+    
 
     public void moveBackwardMovieSearch(ActionEvent e) {
         if (smcounter > 0) {
@@ -297,15 +299,15 @@ public class GUIController {
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < userIds.size()) {
                     if (a < 5) {
-                        k2[a] = userIds.get(startIndex + a);
+                        k[a] = userIds.get(startIndex + a);
                     } else {
-                        l2[a - 5] = userIds.get(startIndex + a);
+                        l[a - 5] = userIds.get(startIndex + a);
                     }
                 } else {
                     if (a < 5) {
-                        k2[a] = "000000";
+                        k[a] = "000000";
                     } else {
-                        l2[a - 5] = "000000";
+                        l[a - 5] = "000000";
                     }
                 }
             }
@@ -324,15 +326,15 @@ public class GUIController {
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < userIds.size()) {
                     if (a < 5) {
-                        k1[a] = userIds.get(startIndex + a);
+                        k[a] = userIds.get(startIndex + a);
                     } else {
-                        l1[a - 5] = userIds.get(startIndex + a);
+                        l[a - 5] = userIds.get(startIndex + a);
                     }
                 } else {
                     if (a < 5) {
-                        k1[a] = "000000"; 
+                        k[a] = "000000"; 
                     } else {
-                        l1[a - 5] = "000000"; 
+                        l[a - 5] = "000000"; 
                     }
                 }
             }
@@ -528,7 +530,6 @@ public class GUIController {
     }
 
     public CompletableFuture<String> loadUserName(String userid) {
-
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users/" + userid +"/Username" );
         CompletableFuture<String> future = new CompletableFuture<>();
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -571,9 +572,6 @@ public class GUIController {
 
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
-            //setUsers(users) ;
-            //System.out.println("1"+userIds);
-            //System.out.println("1"+users);
             changeMainPage(e);
         }
     }
@@ -619,6 +617,59 @@ public class GUIController {
         {
             System.out.println(movieIDs[4]); 
             currentUser.addMovie(movieIDs[4]) ;
+        }
+    }
+
+    public void addUserAsFriend(ActionEvent e){
+        
+        if (e.getSource() == b1) 
+        {
+            System.out.println(k[0]);
+            currentUser.addFriend(k[0]);
+        }
+        else if (e.getSource() == b2) 
+        {
+            System.out.println(k[1]);
+            currentUser.addFriend(k[1]);
+        }
+        else if (e.getSource() == b3) 
+        {
+            System.out.println(k[2]);
+            currentUser.addFriend(k[2]);
+        }
+        else if (e.getSource() == b4) 
+        {
+            System.out.println(k[3]);
+            currentUser.addFriend(k[3]);
+        }
+        else if(e.getSource() == b5)
+        {
+            System.out.println(k[4]);
+            currentUser.addFriend(k[4]);
+        }
+        else if (e.getSource() == b6)
+        {
+            System.out.println(l[0]);
+            currentUser.addFriend(l[0]);
+        }
+        else if (e.getSource() == b7)
+        {
+            System.out.println(l[1]);
+            currentUser.addFriend(l[1]);
+        }
+        else if (e.getSource() == b8)
+        {
+            System.out.println(l[2]);
+            currentUser.addFriend(l[2]);
+        }
+        else if (e.getSource() == b9)
+        {
+            System.out.println(l[3]);
+            currentUser.addFriend(l[3]);
+        }
+        else{
+            System.out.println(l[4]);
+            currentUser.addFriend(l[4]);
         }
     }
     public void changeIn(ActionEvent e) throws IOException {

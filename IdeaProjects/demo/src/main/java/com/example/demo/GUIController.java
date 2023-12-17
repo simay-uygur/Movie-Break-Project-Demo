@@ -41,6 +41,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.imageio.ImageIO;
+import javax.swing.text.DefaultEditorKit.CutAction;
+
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 public class GUIController {
@@ -168,15 +170,13 @@ public class GUIController {
             List<Movie> searchResults = performMovieSearch(searchText);
             for (Movie movie : searchResults) {
                 movieIds.add(""+movie.takeId());
-                System.out.println("..."+movie.takeId());
             }
         }
-        System.out.println("ids     " +movieIds.toString());
         while (movieIds.size()%10 !=0 ) {
             movieIds.add("000000");
         }
 
-        System.out.println(movieIds);
+        System.out.println("searched movie ids  "+movieIds);
 
         for(int a=0; a<10; a++){
             if(a<5){
@@ -244,14 +244,15 @@ public class GUIController {
 
     public List<User> performUserSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
-        List<User> searchResults = usersStore.stream()
-            .filter(user -> user.getName().toLowerCase().contains(trimmedSearchText))
+        List<User> searchResults = users.stream()
+            .filter(user -> !user.getName().equals(currentUser.getName()) && user.getName().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
         return searchResults;
     }
+
     @FXML
     private void handleUserSearch(ActionEvent event) {
-    sucounter = 0;
+        sucounter = 0;
         userIds.clear();
         String searchText = userSearchTextField.getText().trim();
         if (!searchText.isEmpty()) {
@@ -261,24 +262,24 @@ public class GUIController {
                 userIds.add(""+user.getID());
             }
         }
-        
-        System.out.println("user ids     " +userIds);
-
+        //System.out.println("user ids     " +userIds);
+        if(userIds.size() ==0){
+            userIds.add("000000");
+        }
         while (userIds.size()%10 !=0 ) {
             userIds.add("000000");
         }
-
-        System.out.println(userIds);
-
+        //System.out.println(userIds);
         for(int a=0; a<10; a++){
             if(a<5){
-                k[a] = movieIds.get(a);
+                k[a] = userIds.get(a);
             }
             else{
-                l[a-5] = movieIds.get(a);
+                l[a-5] = userIds.get(a);
             }
         }
-        //helper method for user   public private 
+        helperChangeUser1(k);
+        helperChangeUser2(l);
     }
     
     public void moveForwardUserSearch(ActionEvent e) {
@@ -397,11 +398,15 @@ public class GUIController {
     } 
 
     public void helperChangeUser1(String[] ids) {
+        System.out.println( "helper one is entered ");
+        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
         String title = "";
         for (int i = 0; i < ids.length; i++) {
-            cUtitle = loadMovieName(ids[i]);
+            cUtitle = loadUserName(ids[i]);
+            System.out.println("cutitle"+ cUtitle.toString());
             title = cUtitle.join();
+            System.out.println(title);
             if (i == 0) {
                 label1.setText(title);
             } else if (i == 1) {
@@ -419,8 +424,10 @@ public class GUIController {
     public void helperChangeUser2(String[] ids) {
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
         String title = "";
+        System.out.println( "helper two is entered ");
+        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));
         for (int i = 0; i < ids.length; i++) {
-            cUtitle = loadMovieName(ids[i]);
+            cUtitle = loadUserName(ids[i]);
             title = cUtitle.join();
             if (i == 0) {
                 label6.setText(title);
@@ -435,11 +442,11 @@ public class GUIController {
             }
         }
     } 
-    /* 
+    
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
-        //System.out.println("id" +movieIDs.toString());
+        /* //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
         //System.out.println("1"+currentUser.getFavMoviesIDs());
         int c = currentUser.recommend().size()%5 ;
@@ -460,14 +467,14 @@ public class GUIController {
         else 
         {
             helperChangeMovie1(movieIDs);
-        }
-    }*/
+        }*/
+        System.out.println("notrefreshed ");
+    }
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
         //updateSearchids();
         helperChangeMovie1(movieIDs);
-        //updateSearchids();
     }
 
     //recommend ve update var YAPMAM GEREK
@@ -482,9 +489,6 @@ public class GUIController {
         try {
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);  
-            //System.out.println("image is assigned");
-            //System.out.println("path is " + imagePath);
-
         } catch (IOException e) {
             System.err.println("Error loading image: " + e.getMessage());  
         }
@@ -555,7 +559,7 @@ public class GUIController {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
             //setUsers(users) ;
             //System.out.println("1"+userIds);
-            System.out.println("1"+users);
+            //System.out.println("1"+users);
             changeMainPage(e);
         }
     }

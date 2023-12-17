@@ -50,9 +50,5 @@ public class Movie {
         return "Name: "+ name+ " id: "+ id+ " genre: "+ genre + " posterpath "+ posterPath;
     }
 
-    public int getId() {
-        return 0;
-    }
-
     
 }

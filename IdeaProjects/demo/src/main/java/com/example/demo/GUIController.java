@@ -1,4 +1,5 @@
 package com.example.demo;
+
 import javafx.scene.control.MenuItem;
 import com.example.demo.Firebase.FirebaseDataCallback;
 import com.google.firebase.database.DataSnapshot;
@@ -6,7 +7,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-//import io.grpc.netty.shaded.io.netty.util.internal.SystemPropertyUtil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -61,164 +61,197 @@ private int searchc = 0;
     @FXML
     private ComboBox<String> menu;
 
-    @FXML
-    private Button insert;
+    @FXML private Button insert;
+ 
+    @FXML private Button backIn;
 
-    @FXML
-    private Button backIn;
+    @FXML private Button backUp;
 
-    @FXML
-    private Button backUp;
+    @FXML private TextField pass;
 
-    @FXML
-    private TextField pass;
+    @FXML private TextField ar;
 
-    @FXML
-    private TextField ar;
+    @FXML private TextField userN;
 
-    @FXML
-    private TextField userN;
+    @FXML private VBox friends;
 
-    @FXML
-    private VBox friends;
+    @FXML private Label label;
 
-    @FXML
-    private Label label;
+    @FXML private Button in;
 
-    @FXML
-    private Button in;
+    @FXML private Button up;
 
-    @FXML
-    private Button up;
+    @FXML private ImageView profilePhoto;
 
-    @FXML
-    private ImageView profilePhoto;
+    @FXML private Label label1;
 
-    @FXML
-    private Label label1;
+    @FXML private ImageView view1;
 
-    @FXML
-    private ImageView view1;
+    @FXML private Label label2;
 
-    @FXML
-    private Label label2;
+    @FXML private ImageView view2;
 
-    @FXML
-    private ImageView view2;
+    @FXML private Label label3;
 
-    @FXML
-    private Label label3;
+    @FXML private ImageView view3;
 
-    @FXML
-    private ImageView view3;
+    @FXML private Label label4;
 
-    @FXML
-    private Label label4;
+    @FXML private ImageView view4;
 
-    @FXML
-    private ImageView view4;
+    @FXML private Label label5;
 
-    @FXML
-    private Label label5;
+    @FXML private ImageView view5;
 
-    @FXML
-    private ImageView view5;
+    @FXML private Label label6;
 
-    @FXML
-    private Label label6;
+    @FXML private ImageView view6;
 
-    @FXML
-    private ImageView view6;
+    @FXML private Label label7;
 
-    @FXML
-    private Label label7;
+    @FXML private ImageView view7;
+ 
+    @FXML private Label label8;
 
-    @FXML
-    private ImageView view7;
+    @FXML private ImageView view8;
 
-    @FXML
-    private Label label8;
+    @FXML private Label label9;
 
-    @FXML
-    private ImageView view8;
+    @FXML private ImageView view9;
 
-    @FXML
-    private Label label9;
+    @FXML private Label label10;
 
-    @FXML
-    private ImageView view9;
+    @FXML private ImageView view10;
 
-    @FXML
-    private Label label10;
+    @FXML private Button movierefreshbutton;
 
-    @FXML
-    private ImageView view10;
+    @FXML private Button friendrefreshbutton;
 
-    @FXML
-    private Label mslabel1;
+    @FXML private TextField textFieldSearch;
 
-    @FXML
-    private ImageView msview1;
-
-    @FXML
-    private Label mslabel2;
-
-    @FXML
-    private ImageView msview2;
-
-    @FXML
-    private Button movierefreshbutton;
-
-    @FXML
-    private Button friendrefreshbutton;
-
-    @FXML
-    private TextField textFieldSearch;
-
-    @FXML
-    private Text message;
+    @FXML private Text message;
     
-    @FXML
-    private ListView<Movie> searchResultsListView; 
-    // Sonuçları göstermek için bir ListView bileşeni
-    private List<User> usersStore; // Kullanıcıları tutacak bir liste
+    @FXML private ListView<Movie> searchResultsListView; 
+    
+    @FXML private TextField userSearchTextField; 
+    
+    @FXML private ObservableList<String> movieIds = FXCollections.observableArrayList();    
 
-    @FXML
-    private TextField userSearchTextField; // Kullanıcı araması için metin alanı
+    @FXML private Button b1;
 
-    @FXML
-    private ListView<User> userSearchResultsListView; // Kullanıcı arama sonuçlarını gösterecek ListView bileşeni
+    private List<User> usersStore;
 
-    @FXML
-    private ObservableList<String> movieIds;
-
-    @FXML
-    private ObservableList<String> userIds;
-
+    private int smcounter = 0;
+    
     private String user;
-    private int index = 5;
+    private int index = 0;
+    private int sCounterMovie = 0;
     private String[] movieIDs = new String[5];
-    //movie searchlemek için
-    public List<Movie> performMovieSearch(String searchText) {
+
+    private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
         // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<Movie> searchResults = moviesStore.stream()
             .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
+        System.out.println("searchresult"+ searchResults.toString());
         return searchResults;
+        
     }
 
     @FXML
     private void handleMovieSearch(ActionEvent event) {
+        smcounter =0;
+        movieIds.clear();
         String searchText = textFieldSearch.getText().trim();
         if (!searchText.isEmpty()) {
             List<Movie> searchResults = performMovieSearch(searchText);
-            movieIds = FXCollections.observableArrayList();
             for (Movie movie : searchResults) {
-                movieIds.add(""+movie.getId());
+                movieIds.add(""+movie.takeId());
+                System.out.println("..."+movie.takeId());
             }
         }
+        System.out.println("ids     " +movieIds.toString());
+
+        while (movieIds.size()%10 !=0 ) {
+            movieIds.add("000000");
+        }
+
+        System.out.println(movieIds);
+        String[] x = new String[5];
+        String[] y = new String[5];
+
+        for(int a=0; a<10; a++){
+            if(a<5){
+                x[a] = movieIds.get(a);
+            }
+            else{
+                y[a-5] = movieIds.get(a);
+            }
+        }
+        helperChange1(x);
+        helperChange2(y);
     }
+    
+    public void moveForwardMovieSearch(ActionEvent e) {
+        if (smcounter <= movieIds.size()/ 5) { // Check if there are enough elements
+            smcounter++;
+            String[] x2 = new String[5];
+            String[] y2 = new String[5];
+    
+            int startIndex = 5 * smcounter;
+    
+            for (int a = 0; a < 10; a++) {
+                if (startIndex + a < movieIds.size()) {
+                    if (a < 5) {
+                        x2[a] = movieIds.get(startIndex + a);
+                    } else {
+                        y2[a - 5] = movieIds.get(startIndex + a);
+                    }
+                } else {
+                    if (a < 5) {
+                        x2[a] = "0000";
+                    } else {
+                        y2[a - 5] = "0000";
+                    }
+                }
+            }
+    
+            helperChange1(x2);
+            helperChange2(y2);
+        }
+    }
+
+    public void moveBackwardMovieSearch(ActionEvent e) {
+        if (smcounter > 0) {
+            smcounter--;
+            String[] x1 = new String[5];
+            String[] y1 = new String[5];
+
+            int startIndex = 5 * smcounter;
+
+            for (int a = 0; a < 10; a++) {
+                if (startIndex + a < movieIds.size()) {
+                    if (a < 5) {
+                        x1[a] = movieIds.get(startIndex + a);
+                    } else {
+                        y1[a - 5] = movieIds.get(startIndex + a);
+                    }
+                } else {
+                    // Handle the case when you go before the start of the list
+                    if (a < 5) {
+                        x1[a] = "0000"; // Fill with "0000" or any other placeholder
+                    } else {
+                        y1[a - 5] = "0000"; // Fill with "0000" or any other placeholder
+                    }
+                }
+            }
+
+            helperChange1(x1);
+            helperChange2(y1);
+        }
+    }
+
     public List<User> performUserSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
         // Arama teriminin kullanıcı adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
@@ -237,9 +270,10 @@ private int searchc = 0;
                 userIds.add(""+user.getID());
             }
         }
+        //kallanı yok neden
     }
 
-    public void helperImageChange(String[] ids) {
+    public void helperChange1(String[] ids) {
         CompletableFuture<String> ctitle = new CompletableFuture<>();
         String title = "";
         for (int i = 0; i < ids.length; i++) {
@@ -269,6 +303,38 @@ private int searchc = 0;
             }
         }
     } 
+
+    public void helperChange2(String[] ids) {
+        CompletableFuture<String> ctitle = new CompletableFuture<>();
+        String title = "";
+        for (int i = 0; i < ids.length; i++) {
+            BufferedImage cposter = loadMoviePoster(ids[i]);
+            ctitle = loadMovieName(ids[i]);
+            title = ctitle.join();
+            if (i == 0) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view6.setImage(posterImage);
+                label6.setText(title);
+            } else if (i == 1) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view7.setImage(posterImage);
+                label7.setText(title);
+            } else if (i == 2) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view8.setImage(posterImage);
+                label8.setText(title);
+            } else if (i == 3) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view9.setImage(posterImage);
+                label9.setText(title);
+            } else {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+                view10.setImage(posterImage);
+                label10.setText(title);
+            }
+        }
+    } 
+
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
@@ -288,17 +354,22 @@ private int searchc = 0;
             {
                 shortM[i] = movieIDs[i] ;
             }
-            helperImageChange(shortM);
+            helperChange1(shortM);
         }
         else 
         {
-            helperImageChange(movieIDs);
+            helperChange1(movieIDs);
         }
     }
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
-        helperImageChange(movieIDs);
+        updateSearchids();
+        helperChange1(movieIDs);
+    }
+
+    public void searchMovieDisplay(ActionEvent e ){
+
     }
     public BufferedImage loadMoviePoster(String movieId) {
         BufferedImage img = null;
@@ -308,7 +379,7 @@ private int searchc = 0;
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);  
             //System.out.println("image is assigned");
-            System.out.println("path is " + imagePath);
+            //System.out.println("path is " + imagePath);
 
         } catch (IOException e) {
             //System.err.println("Error loading image: " + e.getMessage());  
@@ -358,7 +429,7 @@ private int searchc = 0;
         if (fb.hasAcc(userN.getText(), pass.getText())) {
             currentUser = fb.getUser() ;
             changeMainPage(e);
-            System.out.println(Arrays.toString(fb.getUser().recomIds()));
+            //System.out.println(Arrays.toString(fb.getUser().recomIds()));
         }
     }
     public void takeUserID(Object value) {
@@ -454,6 +525,7 @@ private int searchc = 0;
             menu.setPromptText("Select Type First");
         }
     }
+
     public void openProfile1(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("profile1.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -462,6 +534,7 @@ private int searchc = 0;
         stage.setFullScreen(true);
         stage.show();
     }
+
     public void openProfile2(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("profile2.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -470,6 +543,7 @@ private int searchc = 0;
         stage.setFullScreen(true);
         stage.show();
     }
+
     public void openProfile3(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("profile3.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

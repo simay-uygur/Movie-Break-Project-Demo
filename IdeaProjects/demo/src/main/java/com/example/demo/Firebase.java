@@ -55,6 +55,7 @@ public class Firebase {
         void onUserLoaded(User user) ;
         void onFav_MoviesIDSloaded(ArrayList<String> fav_moviesDatas) ;
         void onUsersLoaded(ArrayList<User> userIDs) ;
+        void onFriendsLoaded(ArrayList<String> friendIDs) ;
     }
 
     public void takeAllMovieData() {
@@ -81,6 +82,49 @@ public class Firebase {
             public void onCancelled(DatabaseError error) {
                 System.out.println("Something went wrong :(");
             }
+        });
+    }
+
+    public void takeAllData()
+    {
+        userDB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot userSnapshot : snapshot.getChildren())
+                {
+                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
+                    users.add(u) ;
+                    //System.out.println(users);
+                }
+                
+
+                if (dataCallback != null) 
+                    dataCallback.onUsersLoaded(users);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void takeFriends()
+    {
+        userDB.child(id).child("Friends").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot homie : snapshot.getChildren()) 
+                {
+                    
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+            
         });
     }
     public boolean userPush(String name , String password , int id)
@@ -141,29 +185,6 @@ public class Firebase {
         return -1 ;
     }
 
-    public void takeAllData()
-    {
-        userDB.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot userSnapshot : snapshot.getChildren())
-                {
-                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
-                    users.add(u) ;
-                    //System.out.println(users);
-                }
-                
-
-                if (dataCallback != null) 
-                    dataCallback.onUsersLoaded(users);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-
-            }
-        });
-    }
    /* public void takeAllMovieData() 
     {
         films.addValueEventListener(new ValueEventListener() {

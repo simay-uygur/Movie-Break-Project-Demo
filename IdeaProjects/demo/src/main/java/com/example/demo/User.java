@@ -30,23 +30,23 @@ public class User {
     public User(String userName, String password, String userID , Firebase fb)
     {
         favMoviesIDs = new ArrayList<>() ; 
+        recommendedMovies = new ArrayList<>() ;
         setFirebase(fb);
         setUserName(userName);
         setPassword(password);
         setID(userID);
         initRefs();
-        setFavGenres();
-        recomIds();
+        //recomIds();
     }
     
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
+        //setFavGenres();
     }
 
     public void initRefs()
     {
-        recommendedMovies = new ArrayList<>() ;
         movies = new ArrayList<>(fb.movies) ;
         friends = FirebaseDatabase.getInstance().getReference("users/"+userID+"/Friends") ;
     }
@@ -108,9 +108,12 @@ public class User {
 
     public void addMovie(String movieId) 
     {
-        System.out.println("Movie added:" + movieId);
         fb.add(userID, "Fav_MovieIDs", movieId);
-        if (!favMoviesIDs.contains(movieId)) favMoviesIDs.add(movieId); 
+        if (!favMoviesIDs.contains(movieId)) 
+        {
+            favMoviesIDs.add(movieId); 
+            fb.add(userID, "Fav_MovieIDs", movieId);
+        }
     }
 
     public void removeFriend(String userID)
@@ -120,7 +123,6 @@ public class User {
 
     public void setFavGenres() {
         ArrayList<String> genres = new ArrayList<>();
-        
         for (int i = 0; i < favMoviesIDs.size(); i++) {
             for (Movie m : movies) 
             {
@@ -153,6 +155,7 @@ public class User {
         HashMap<String, String> ret = new HashMap<>() ;
         ret.put(g1, g2) ;
         favGenres = ret ;
+        recommendMovies();
     }
 
     public ArrayList<String> getFavMoviesIDs()
@@ -209,6 +212,7 @@ public class User {
                  !favMoviesIDs.contains(""+m.takeId())) 
             recommendedMovies.add(""+m.takeId()) ;
         }
+        System.out.println(recommendedMovies);
     }
 
     public void addForRec(String id) 
@@ -227,9 +231,9 @@ public class User {
         return;
     }*/
 
-    public ArrayList<String> recommend()
+    public ArrayList<String> getRecommendedMovies()
     {
-        recommendMovies(); 
+        //recommendMovies(); 
         return recommendedMovies ;
     }
 }

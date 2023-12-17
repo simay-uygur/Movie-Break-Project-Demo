@@ -51,7 +51,6 @@ public class User {
         recomIds();
     }
     
-
     public void initRefs()
     {
         recommendedMovies = new ArrayList<>() ;

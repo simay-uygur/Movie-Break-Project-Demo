@@ -16,7 +16,6 @@ public class Message {
         this.userID = userID;
         setTime();
     }
-
     /*
      *  it returns the current hour and the minute in which this 
      * message is sent, and it sets the time variable of this class.

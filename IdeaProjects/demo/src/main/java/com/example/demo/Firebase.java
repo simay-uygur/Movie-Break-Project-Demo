@@ -16,6 +16,7 @@ public class Firebase {
     private boolean accExists = false;
     ArrayList<User> users ;
     ArrayList<Movie> movies ;
+    ArrayList<String> friendsIDs ;
     private static ArrayList<String> DATA ;
     DatabaseReference films ;
     private int userID;
@@ -25,7 +26,6 @@ public class Firebase {
     private FirebaseDataCallback dataCallback;
     DatabaseReference userDB;
     DatabaseReference chatDB;
-    private ArrayList<String> userIDs ;
     Query userQ ;
     private static String id ; 
     public Firebase()
@@ -44,6 +44,7 @@ public class Firebase {
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
         users = new ArrayList<>();
         movies = new ArrayList<>();
+        friendsIDs = new ArrayList<>() ;
         this.dataCallback = callback;
         //takeIDS("Fav_MovieIDs", id) ;
         takeAllData();
@@ -55,10 +56,11 @@ public class Firebase {
         void onUserLoaded(User user) ;
         void onFav_MoviesIDSloaded(ArrayList<String> fav_moviesDatas) ;
         void onUsersLoaded(ArrayList<User> userIDs) ;
+        void onFriendsLoaded(ArrayList<String> friendIDs) ;
     }
 
     public void takeAllMovieData() {
-        films.addListenerForSingleValueEvent(new ValueEventListener() {
+        films.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 movies.clear(); // Clear the ArrayList to avoid duplicates
@@ -81,6 +83,56 @@ public class Firebase {
             public void onCancelled(DatabaseError error) {
                 System.out.println("Something went wrong :(");
             }
+        });
+    }
+
+    public void takeAllData()
+    {
+        userDB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot userSnapshot : snapshot.getChildren())
+                {
+                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
+                    users.add(u) ;
+                    //System.out.println(users);
+                }
+                
+
+                if (dataCallback != null) 
+                    dataCallback.onUsersLoaded(users);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void takeFriends(String id)
+    {
+        userDB.child(id).child("Friends").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                friendsIDs.clear();
+                for (DataSnapshot homie : snapshot.getChildren()) 
+                {
+                    friendsIDs.add(""+homie.getKey()) ;
+                }
+                System.out.println(friendsIDs);
+
+                if (dataCallback != null) 
+                {
+                    dataCallback.onFriendsLoaded(friendsIDs);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+            
         });
     }
     public boolean userPush(String name , String password , int id)
@@ -141,29 +193,6 @@ public class Firebase {
         return -1 ;
     }
 
-    public void takeAllData()
-    {
-        userDB.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot userSnapshot : snapshot.getChildren())
-                {
-                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
-                    users.add(u) ;
-                    System.out.println(users);
-                }
-                
-
-                if (dataCallback != null) 
-                    dataCallback.onUsersLoaded(users);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-
-            }
-        });
-    }
    /* public void takeAllMovieData() 
     {
         films.addValueEventListener(new ValueEventListener() {
@@ -202,7 +231,7 @@ public class Firebase {
     public void initUserID()
     {
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
-        data.addListenerForSingleValueEvent(new ValueEventListener() {
+        data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Object value = dataSnapshot.getValue();
@@ -217,7 +246,7 @@ public class Firebase {
     public void initChatID()
     {
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("chats/ID-Counter");
-        data.addListenerForSingleValueEvent(new ValueEventListener() {
+        data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Object value = dataSnapshot.getValue();
@@ -235,6 +264,8 @@ public class Firebase {
         if (dataCallback != null) 
         {
             dataCallback.onUserLoaded(u);
+            takeFriends(id);
+            u.setFriends(friendsIDs);
         }
     }
 
@@ -246,7 +277,7 @@ public class Firebase {
     public ArrayList<String> takeIDS(String path , String id) 
     {
         ArrayList<String> ids = new ArrayList<>() ;
-        userDB.child(id).child(path).addListenerForSingleValueEvent(new ValueEventListener() {
+        userDB.child(id).child(path).addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {

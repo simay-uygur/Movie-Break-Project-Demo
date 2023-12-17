@@ -479,9 +479,6 @@ public class GUIController {
 
     //recommend ve update var YAPMAM GEREK
 
-    public void searchMovieDisplay(ActionEvent e){
-
-    }
     public BufferedImage loadMoviePoster(String movieId) {
         BufferedImage img = null;
         String imagePath = "IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\movieImages\\" + movieId

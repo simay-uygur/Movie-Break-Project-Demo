@@ -42,14 +42,14 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
-
 public class GUIController {
     private static User currentUser ; 
     private static int id;
     private Scene scene;
     private Stage stage;
     private Parent root;
-private int searchc = 0;
+    private static ArrayList<String> favMoviesIDs ;
+    private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
@@ -61,7 +61,18 @@ private int searchc = 0;
         public void onUserLoaded(User user) {
             currentUser = user ;
         }
+
+        @Override
+        public void onFav_MoviesIDSloaded(ArrayList<String> datas) {
+            favMoviesIDs = datas ;
+        }
+
+        @Override
+        public void onUsersLoaded(ArrayList<User> userIDs) {
+            users = userIDs ;
+        }
     });
+    
     @FXML
     private ComboBox<String> menu;
 
@@ -139,26 +150,30 @@ private int searchc = 0;
     
     @FXML private TextField userSearchTextField; 
     
-    @FXML private ObservableList<String> movieIds = FXCollections.observableArrayList();    
-    @FXML private ObservableList<String> userIds = FXCollections.observableArrayList(); 
+    private ObservableList<String> movieIds = FXCollections.observableArrayList();    
+    private ObservableList<String> userIds = FXCollections.observableArrayList();  
+
     @FXML private Button b1;
 
     @FXML private MenuItem addToFav0 , addToFav1 , addToFav2 , addToFav3 , addToFav4 ;
 
     private List<User> usersStore;
     private int smcounter = 0;
+    private int sucounter = 0;
     private String user;
     private int index = 0;
     private int sCounterMovie = 0;
+
     private static String[] movieIDs = new String[5];
-    private ObservableList<Object> userIds;
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
+        // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<Movie> searchResults = moviesStore.stream()
             .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
         return searchResults;
+        
     }
     @FXML
     private void handleMovieSearch(ActionEvent event) {
@@ -172,12 +187,10 @@ private int searchc = 0;
                 System.out.println("..."+movie.takeId());
             }
         }
-        System.out.println("ids     " +movieIds);
-
+        System.out.println("ids     " +movieIds.toString());
         while (movieIds.size()%10 !=0 ) {
             movieIds.add("000000");
         }
-
         String[] x = new String[5];
         String[] y = new String[5];
         for(int a=0; a<10; a++){
@@ -192,7 +205,7 @@ private int searchc = 0;
         helperChange2(y);
     }
     public void moveForwardMovieSearch(ActionEvent e) {
-        if (smcounter <= movieIds.size()/ 5) { 
+        if (smcounter <= movieIds.size()/ 5) { // Check if there are enough elements
             smcounter++;
             String[] x2 = new String[5];
             String[] y2 = new String[5];
@@ -206,9 +219,9 @@ private int searchc = 0;
                     }
                 } else {
                     if (a < 5) {
-                        x2[a] = "000000";
+                        x2[a] = "0000";
                     } else {
-                        y2[a - 5] = "000000";
+                        y2[a - 5] = "0000";
                     }
                 }
             }
@@ -230,13 +243,15 @@ private int searchc = 0;
                         y1[a - 5] = movieIds.get(startIndex + a);
                     }
                 } else {
+                    // Handle the case when you go before the start of the list
                     if (a < 5) {
-                        x1[a] = "000000"; 
+                        x1[a] = "0000"; // Fill with "0000" or any other placeholder
                     } else {
-                        y1[a - 5] = "000000"; // Fill with "0000" or any other placeholder
+                        y1[a - 5] = "0000"; // Fill with "0000" or any other placeholder
                     }
                 }
             }
+
             helperChange1(x1);
             helperChange2(y1);
         }
@@ -249,20 +264,20 @@ private int searchc = 0;
             .collect(Collectors.toList());
         return searchResults;
     }
-
     @FXML
     private void handleUserSearch(ActionEvent event) {
-        sucounter = 0;
+    sucounter = 0;
         userIds.clear();
         String searchText = userSearchTextField.getText().trim();
         userIds.clear();
         if (!searchText.isEmpty()) {
             List<User> searchResults = performUserSearch(searchText);
+            userIds = FXCollections.observableArrayList();
             for (User user : searchResults) {
                 userIds.add(""+user.getID());
             }
         }
-
+        
     
         System.out.println("user ids     " +userIds);
 
@@ -344,9 +359,9 @@ private int searchc = 0;
             }
         }
     } 
+
     //refreshFriend
     //public void refreshFriend(){}
-
     public void refreshMovie(ActionEvent e) {
         //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
@@ -367,11 +382,10 @@ private int searchc = 0;
         }
         helperChange1(movieIDs);
     }
-
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
-       // updateSearchids();
+        updateSearchids();
         helperChange1(movieIDs);
     }
 
@@ -388,14 +402,14 @@ private int searchc = 0;
         try {
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);  
-
+            //System.out.println("image is assigned");
+            //System.out.println("path is " + imagePath);
 
         } catch (IOException e) {
             //System.err.println("Error loading image: " + e.getMessage());  
         }
         return img;
     }
-
     public CompletableFuture<String> loadMovieName(String movieId) {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/" + movieId + "/title");
         CompletableFuture<String> future = new CompletableFuture<>();
@@ -414,7 +428,6 @@ private int searchc = 0;
         });
         return future;
     }
-    
     public void insert(ActionEvent e) {
         if (userN.getText().equals("") || pass.getText().equals("")) {
             message.setText("Empty Password or Username");
@@ -438,7 +451,9 @@ private int searchc = 0;
     }
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
-            currentUser = fb.getUser() ;
+            //setUsers(users) ;
+            //System.out.println("1"+userIds);
+            System.out.println("1"+users);
             changeMainPage(e);
         }
     }
@@ -452,9 +467,13 @@ private int searchc = 0;
             message.setFill(Color.rgb(139, 0, 0));
         }
     }
-
+    
     public void addMovie(ActionEvent e) 
     {
+        currentUser.setFavMovies(favMoviesIDs);
+        System.out.println("2"+users);
+        System.out.println("user "+currentUser.getID());
+        System.out.println("3"+favMoviesIDs);
         if (e.getSource() == addToFav0) 
         {
             System.out.println(movieIDs[0]); 

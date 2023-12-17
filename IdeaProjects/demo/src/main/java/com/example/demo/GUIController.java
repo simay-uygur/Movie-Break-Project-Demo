@@ -131,11 +131,9 @@ public class GUIController {
     private String user;
     private int index = 0;
     @FXML private MenuItem addToFav0 , addToFav1 , addToFav2 , addToFav3 , addToFav4 ;
-    private List<User> usersStore;
     private int smcounter = 0;
     private int sucounter = 0;
-    private String user;
-    private int index = 0;
+
     private int sCounterMovie = 0;
 
     String[] x = new String[5];
@@ -440,7 +438,7 @@ public class GUIController {
             }
         }
     } 
-
+    /* 
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
@@ -466,13 +464,13 @@ public class GUIController {
         {
             helperChangeMovie1(movieIDs);
         }
-    }
+    }*/
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
         //updateSearchids();
         helperChangeMovie1(movieIDs);
-        updateSearchids();
+        //updateSearchids();
     }
 
     //recommend ve update var YAPMAM GEREK

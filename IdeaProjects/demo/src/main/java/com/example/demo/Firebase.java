@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Firebase {
     private boolean accExists = false;
-    ArrayList<String> users ;
+    ArrayList<User> users ;
     ArrayList<Movie> movies ;
     private static ArrayList<String> DATA ;
     DatabaseReference films ;
@@ -25,7 +25,9 @@ public class Firebase {
     private FirebaseDataCallback dataCallback;
     DatabaseReference userDB;
     DatabaseReference chatDB;
+    private ArrayList<String> userIDs ;
     Query userQ ;
+    private static String id ; 
     public Firebase()
     {
         films = FirebaseDatabase.getInstance().getReference("movies");
@@ -43,6 +45,7 @@ public class Firebase {
         users = new ArrayList<>();
         movies = new ArrayList<>();
         this.dataCallback = callback;
+        //takeIDS("Fav_MovieIDs", id) ;
         takeAllData();
         takeAllMovieData();
     }
@@ -50,7 +53,8 @@ public class Firebase {
     public interface FirebaseDataCallback {
         void onDataLoaded(ArrayList<Movie> movies);
         void onUserLoaded(User user) ;
-        void onFav_MoviesIDSloaded(ArrayList<String> datas) ;
+        void onFav_MoviesIDSloaded(ArrayList<String> fav_moviesDatas) ;
+        void onUsersLoaded(ArrayList<User> userIDs) ;
     }
 
     public void takeAllMovieData() {
@@ -58,7 +62,6 @@ public class Firebase {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 movies.clear(); // Clear the ArrayList to avoid duplicates
-
                 for (DataSnapshot movie : snapshot.getChildren()) {
                     movies.add(new Movie(
                             Integer.parseInt(movie.getKey()),
@@ -100,9 +103,9 @@ public class Firebase {
 
     public boolean accountExists(String name) 
     {
-        for (String toCheck : users) 
+        for (User toCheck : users) 
         {
-            if (toCheck.substring(toCheck.indexOf("|")+1, toCheck.lastIndexOf("|")).equals(name)) return true ;
+            if (toCheck.getName().equals(name)) return true ;
         }
         return false ;
     }
@@ -120,6 +123,8 @@ public class Firebase {
         int ID = indexOf(name, pass) ;
         if (ID > -1) 
         {
+            id = ""+ID ;
+            takeIDS("Fav_MovieIDs", ""+ID) ;
             createUser(name, pass, ""+ID);
             return true ;
         }
@@ -128,24 +133,29 @@ public class Firebase {
 
     public int indexOf(String name , String pass)
     {
-        for (String toCheck : users) 
+        for (User toCheck : users) 
         {
-            if (toCheck.substring(toCheck.indexOf("|")+1).equals(name+"|"+pass)) 
-                return Integer.parseInt(toCheck.substring(0, toCheck.indexOf("|"))) ;
+            if (toCheck.getName().equals(name) && toCheck.getPassword().equals(pass)) 
+                return Integer.parseInt(toCheck.getID()) ;
         }
         return -1 ;
     }
 
     public void takeAllData()
     {
-        userDB.addValueEventListener(new ValueEventListener() {
+        userDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
-                    String personalData = userSnapshot.getKey() + "|" + userSnapshot.child("Username").getValue() + "|" + userSnapshot.child("Password").getValue() ;
-                    users.add(personalData) ;
+                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
+                    users.add(u) ;
+                    System.out.println(users);
                 }
+                
+
+                if (dataCallback != null) 
+                    dataCallback.onUsersLoaded(users);
             }
 
             @Override
@@ -222,6 +232,10 @@ public class Firebase {
     public void createUser(String userName, String pass, String ID)
     {
         u = new User(userName, pass , ID , this);
+        if (dataCallback != null) 
+        {
+            dataCallback.onUserLoaded(u);
+        }
     }
 
     /*public void createChat(ArrayList<Message> messages, String ID, ArrayList<User> users)
@@ -240,6 +254,7 @@ public class Firebase {
                 {
                     ids.add(data.getKey()) ;
                 }
+
                 if (dataCallback != null) 
                 {
                     dataCallback.onFav_MoviesIDSloaded(ids);
@@ -268,6 +283,7 @@ public class Firebase {
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
         }
     }
+
     public User getUser(){
         return u;
     }

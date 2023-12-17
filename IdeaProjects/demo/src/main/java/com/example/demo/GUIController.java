@@ -43,14 +43,14 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
-
 public class GUIController {
     private static User currentUser ; 
     private static int id;
     private Scene scene;
     private Stage stage;
     private Parent root;
-
+    private static ArrayList<String> favMoviesIDs ;
+    private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
@@ -62,9 +62,20 @@ public class GUIController {
         public void onUserLoaded(User user) {
             currentUser = user ;
         }
+
+        @Override
+        public void onFav_MoviesIDSloaded(ArrayList<String> datas) {
+            favMoviesIDs = datas ;
+        }
+
+        @Override
+        public void onUsersLoaded(ArrayList<User> userIDs) {
+            users = userIDs ;
+        }
     });
     
-    @FXML private ComboBox<String> menu;
+    @FXML
+    private ComboBox<String> menu;
 
     @FXML private Button insert;
  
@@ -140,7 +151,7 @@ public class GUIController {
     
     @FXML private TextField userSearchTextField; 
     
-    private ObservableList<String> movieIds = FXCollections.observableArrayList();   
+    private ObservableList<String> movieIds = FXCollections.observableArrayList();    
     private ObservableList<String> userIds = FXCollections.observableArrayList();  
 
     @FXML private Button b1;
@@ -148,21 +159,23 @@ public class GUIController {
     @FXML private MenuItem addToFav0 , addToFav1 , addToFav2 , addToFav3 , addToFav4 ;
 
     private List<User> usersStore;
-    
+    private int smcounter = 0;
+    private int sucounter = 0;
     private String user;
     private int index = 0;
     private int sCounterMovie = 0;
+
     private static String[] movieIDs = new String[5];
-    private ObservableList<Object> userIds;
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
+        // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<Movie> searchResults = moviesStore.stream()
             .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
         return searchResults;
+        
     }
-
     @FXML
     private void handleMovieSearch(ActionEvent event) {
         smcounter =0;
@@ -175,15 +188,12 @@ public class GUIController {
                 System.out.println("..."+movie.takeId());
             }
         }
-        System.out.println("ids     " +movieIds);
-
+        System.out.println("ids     " +movieIds.toString());
         while (movieIds.size()%10 !=0 ) {
             movieIds.add("000000");
         }
-
         String[] x = new String[5];
         String[] y = new String[5];
-
         for(int a=0; a<10; a++){
             if(a<5){
                 x[a] = movieIds.get(a);
@@ -195,15 +205,12 @@ public class GUIController {
         helperChange1(x);
         helperChange2(y);
     }
-    
     public void moveForwardMovieSearch(ActionEvent e) {
-        if (smcounter <= movieIds.size()/ 5) { 
+        if (smcounter <= movieIds.size()/ 5) { // Check if there are enough elements
             smcounter++;
             String[] x2 = new String[5];
             String[] y2 = new String[5];
-    
-            int startIndex = 10 * smcounter;
-    
+            int startIndex = 5 * smcounter;
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < movieIds.size()) {
                     if (a < 5) {
@@ -213,9 +220,9 @@ public class GUIController {
                     }
                 } else {
                     if (a < 5) {
-                        x2[a] = "000000";
+                        x2[a] = "0000";
                     } else {
-                        y2[a - 5] = "000000";
+                        y2[a - 5] = "0000";
                     }
                 }
             }
@@ -240,13 +247,15 @@ public class GUIController {
                         y1[a - 5] = movieIds.get(startIndex + a);
                     }
                 } else {
+                    // Handle the case when you go before the start of the list
                     if (a < 5) {
-                        x1[a] = "000000"; 
+                        x1[a] = "0000"; // Fill with "0000" or any other placeholder
                     } else {
-                        y1[a - 5] = "000000"; // Fill with "0000" or any other placeholder
+                        y1[a - 5] = "0000"; // Fill with "0000" or any other placeholder
                     }
                 }
             }
+
             helperChange1(x1);
             helperChange2(y1);
         }
@@ -260,19 +269,19 @@ public class GUIController {
             .collect(Collectors.toList());
         return searchResults;
     }
-
     @FXML
     private void handleUserSearch(ActionEvent event) {
-        sucounter = 0;
+    sucounter = 0;
         userIds.clear();
         String searchText = userSearchTextField.getText().trim();
         if (!searchText.isEmpty()) {
             List<User> searchResults = performUserSearch(searchText);
+            userIds = FXCollections.observableArrayList();
             for (User user : searchResults) {
                 userIds.add(""+user.getID());
             }
         }
-
+        
     
         System.out.println("user ids     " +userIds);
 
@@ -358,73 +367,9 @@ public class GUIController {
             }
         }
     } 
-/* 
-    public void helperChange3(String[] ids) {
-        CompletableFuture<String> ctitle = new CompletableFuture<>();
-        String title = "";
-        for (int i = 0; i < ids.length; i++) {
-            BufferedImage cposter = loadMoviePoster(ids[i]);
-            ctitle = loadMovieName(ids[i]);
-            title = ctitle.join();
-            if (i == 0) {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view1.setImage(posterImage);
-                label1.setText(title);
-            } else if (i == 1) {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view2.setImage(posterImage);
-                label2.setText(title);
-            } else if (i == 2) {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view3.setImage(posterImage);
-                label3.setText(title);
-            } else if (i == 3) {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view4.setImage(posterImage);
-                label4.setText(title);
-            } else {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view5.setImage(posterImage);
-                label5.setText(title);
-            }
-        }
-    } 
-
-    public void helperChange4(String[] ids) {
-        CompletableFuture<String> ctitle = new CompletableFuture<>();
-        String title = "";
-        for (int i = 0; i < ids.length; i++) {
-            BufferedImage cposter = loadMoviePoster(ids[i]);
-            ctitle = loadMovieName(ids[i]);
-            title = ctitle.join();
-            if (i == 0) {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view6.setImage(posterImage);
-                label6.setText(title);
-            } else if (i == 1) {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view7.setImage(posterImage);
-                label7.setText(title);
-            } else if (i == 2) {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view8.setImage(posterImage);
-                label8.setText(title);
-            } else if (i == 3) {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view9.setImage(posterImage);
-                label9.setText(title);
-            } else {
-                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
-                view10.setImage(posterImage);
-                label10.setText(title);
-            }
-        }
-    } 
-    */
 
     //refreshFriend
     //public void refreshFriend(){}
-
     public void refreshMovie(ActionEvent e) {
         //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
@@ -445,11 +390,10 @@ public class GUIController {
         }
         helperChange1(movieIDs);
     }
-
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
         movieIDs = ids;
-        //updateSearchids();
+        updateSearchids();
         helperChange1(movieIDs);
     }
 
@@ -466,14 +410,14 @@ public class GUIController {
         try {
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);  
-
+            //System.out.println("image is assigned");
+            //System.out.println("path is " + imagePath);
 
         } catch (IOException e) {
             //System.err.println("Error loading image: " + e.getMessage());  
         }
         return img;
     }
-
     public CompletableFuture<String> loadMovieName(String movieId) {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/" + movieId + "/title");
         CompletableFuture<String> future = new CompletableFuture<>();
@@ -492,7 +436,6 @@ public class GUIController {
         });
         return future;
     }
-    
     public void insert(ActionEvent e) {
         if (userN.getText().equals("") || pass.getText().equals("")) {
             message.setText("Empty Password or Username");
@@ -516,7 +459,9 @@ public class GUIController {
     }
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
-            currentUser = fb.getUser() ;
+            //setUsers(users) ;
+            //System.out.println("1"+userIds);
+            System.out.println("1"+users);
             changeMainPage(e);
         }
     }
@@ -530,9 +475,13 @@ public class GUIController {
             message.setFill(Color.rgb(139, 0, 0));
         }
     }
-
+    
     public void addMovie(ActionEvent e) 
     {
+        currentUser.setFavMovies(favMoviesIDs);
+        System.out.println("2"+users);
+        System.out.println("user "+currentUser.getID());
+        System.out.println("3"+favMoviesIDs);
         if (e.getSource() == addToFav0) 
         {
             System.out.println(movieIDs[0]); 

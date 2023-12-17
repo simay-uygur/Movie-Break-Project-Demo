@@ -39,6 +39,10 @@ public class User {
         recomIds();
     }
     
+    public void setFavMovies(ArrayList<String> fav)
+    {
+        favMoviesIDs = new ArrayList<>(fav) ;
+    }
 
     public void initRefs()
     {

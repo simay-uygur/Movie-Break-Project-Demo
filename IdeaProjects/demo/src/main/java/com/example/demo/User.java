@@ -96,21 +96,26 @@ public class User {
         return friendsIDs;
     }
 
-    public void addFriendID(String userID)
-    {
-        friendsIDs.add(userID);
-    }
+
 
     public void addFriend(String friendID)
     {
-        fb.add(userID, "Friends", friendID);
+        if (!friendsIDs.contains(friendID)) 
+        {
+            System.out.println("friend added:" + friendID);
+            fb.add(userID, "Friends", friendID);
+            friendsIDs.add(friendID);
+        }
     }
 
     public void addMovie(String movieId) 
     {
-        System.out.println("Movie added:" + movieId);
-        fb.add(userID, "Fav_MovieIDs", movieId);
-        if (!favMoviesIDs.contains(movieId)) favMoviesIDs.add(movieId); 
+        if (!favMoviesIDs.contains(movieId)) 
+        {
+            System.out.println("Movie added:" + movieId);
+            fb.add(userID, "Fav_MovieIDs", movieId);
+            favMoviesIDs.add(movieId);
+        }
     }
 
     public void removeFriend(String userID)

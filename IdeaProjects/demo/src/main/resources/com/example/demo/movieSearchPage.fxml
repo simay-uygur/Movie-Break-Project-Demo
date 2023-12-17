@@ -23,7 +23,7 @@
    <children>
       <Pane layoutX="530.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
-            <TextField fx:id="textFieldSearch" layoutX="96.0" layoutY="11.0" onAction="#handleMovieSearch" prefHeight="77.0" prefWidth="797.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
+            <TextField fx:id="movieSearchTextField" layoutX="96.0" layoutY="11.0" onAction="#handleMovieSearch" prefHeight="77.0" prefWidth="797.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
                <font>
                   <Font size="36.0" />
                </font>

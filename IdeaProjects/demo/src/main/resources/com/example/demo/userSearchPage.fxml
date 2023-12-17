@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <Button layoutX="1453.0" layoutY="786.0" mnemonicParsing="false">
+      <Button layoutX="1453.0" layoutY="786.0" mnemonicParsing="false" onAction="#moveForwardUserSearch">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
@@ -26,7 +26,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1377.0" layoutY="786.0" mnemonicParsing="false">
+      <Button layoutX="1377.0" layoutY="786.0" mnemonicParsing="false" onAction="#moveBackwardUserSearch">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
@@ -50,61 +50,61 @@
             <RowConstraints maxHeight="336.00000000000006" minHeight="-1.1368683772161603E-13" prefHeight="51.19998779296873" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="1">
+            <Label fx:id="label1" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="label2" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="label3" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Label fx:id="label4" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <Label fx:id="label5" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="3">
+            <Label fx:id="label6" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="label7" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label fx:id="label8" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Label fx:id="label9" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <Label fx:id="label10" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b5" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -114,9 +114,9 @@
                </children></Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b3" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -128,7 +128,7 @@
                <children>
                   <Pane layoutX="-16.0" layoutY="-98.0" prefHeight="94.0" prefWidth="1520.0">
                      <children>
-                        <TextField layoutX="80.0" layoutY="11.0" prefHeight="77.0" prefWidth="828.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
+                        <TextField fx:id="userSearchTextField" layoutX="80.0" layoutY="11.0" onAction="#handleUserSearch" prefHeight="77.0" prefWidth="828.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -150,9 +150,9 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b2" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -162,9 +162,9 @@
                </children></Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b4" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -174,9 +174,9 @@
                </children></Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b6" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -186,9 +186,9 @@
                </children></Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b7" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -198,9 +198,9 @@
                </children></Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b8" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -210,9 +210,9 @@
                </children></Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b9" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -222,9 +222,9 @@
                </children></Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="b10" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                        <ImageView fitHeight="190.0" fitWidth="219.0">
                            <image>
                               <Image url="@images/add_friend.png" />
                            </image>
@@ -232,9 +232,9 @@
                      </graphic>
                   </Button>
                </children></Pane>
-            <Button mnemonicParsing="false" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <Button fx:id="b1" mnemonicParsing="false" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0">
+                  <ImageView fitHeight="190.0" fitWidth="219.0">
                      <image>
                         <Image url="@images/add_friend.png" />
                      </image>

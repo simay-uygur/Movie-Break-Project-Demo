@@ -121,7 +121,14 @@
             <Font size="18.0" />
          </font>
       </TextArea>
-      <Button layoutX="1432.0" layoutY="782.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0" />
+      <Button layoutX="1432.0" layoutY="782.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/send_symbol.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Pane layoutX="10.0" layoutY="130.0" prefHeight="427.0" prefWidth="330.0" style="-fx-background-color: pink;">
          <children>
             <ImageView fitHeight="388.0" fitWidth="288.0" layoutX="20.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />

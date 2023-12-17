@@ -291,7 +291,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="1451.0" layoutY="788.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
+      <Button layoutX="1451.0" layoutY="789.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>

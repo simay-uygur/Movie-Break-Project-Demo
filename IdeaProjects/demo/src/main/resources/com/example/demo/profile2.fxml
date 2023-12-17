@@ -223,24 +223,6 @@
             </GridPane>
          </top>
       </BorderPane>
-      <Button layoutX="1301.0" layoutY="764.0" mnemonicParsing="false">
-         <graphic>
-            <ImageView fitHeight="38.0" fitWidth="38.0">
-               <image>
-                  <Image url="@images/left_arrow.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="1356.0" layoutY="764.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="55.0">
-         <graphic>
-            <ImageView fitHeight="35.0" fitWidth="33.0">
-               <image>
-                  <Image url="@images/right_arrow.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
          <items>
             <Pane prefHeight="88.0" prefWidth="1520.0">
@@ -310,5 +292,23 @@
             </Pane>
          </items>
       </ToolBar>
+      <Button layoutX="1371.0" layoutY="789.0" mnemonicParsing="false">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="60.0">
+               <image>
+                  <Image url="@images/left_arrow.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="1451.0" layoutY="789.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="60.0">
+               <image>
+                  <Image url="@images/right_arrow.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

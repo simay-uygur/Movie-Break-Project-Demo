@@ -51,6 +51,7 @@ public class GUIController {
     private Scene scene;
     private Stage stage;
     private Parent root;
+    private static ArrayList<String> friendsIDs ;
     private static ArrayList<String> favMoviesIDs ;
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
@@ -71,8 +72,13 @@ public class GUIController {
         }
 
         @Override
-        public void onUsersLoaded(ArrayList<User> userIDs) {
-            users = userIDs ;
+        public void onUsersLoaded(ArrayList<User> Users) {
+            users = Users ;
+        }
+
+        @Override
+        public void onFriendsLoaded(ArrayList<String> friendIDs) {
+            friendsIDs = friendIDs ;
         }
     });
     
@@ -447,11 +453,50 @@ public class GUIController {
     
     //refreshFriend
     //public void refreshFriend(){}
-
-
+    public void refreshMovie(ActionEvent e) {
+        /* //System.out.println("id" +movieIDs.toString());
+        int counter = 0 ;
+        currentUser.setFavMovies(favMoviesIDs);
+        currentUser.setFavGenres();
+        int c = currentUser.getRecommendedMovies().size()%5 ;
+        for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
+        {
+            movieIDs[counter] = currentUser.getRecommendedMovies().get(i) ;
+            counter ++ ; 
+        }
+        index += counter ;
+        if (index == currentUser.getRecommendedMovies().size() - 1 && c > 0) 
+        { 
+            for (int i = index ; i < c + index ; i++) 
+            {
+                movieIDs[i] = "000000";
+            }
+            helperChangeMovie1(shortM);
+        }
+        else 
+        {
+            helperChangeMovie1(movieIDs);
+        }*/
+        System.out.println("notrefreshed ");
+    }
     public void displayImage(MouseEvent e){
-        String[] ids = {"156022", "298618", "360920", "414906", "385687"};
-        movieIDs = ids;
+        int counter = 0 ;
+        currentUser.setFavMovies(favMoviesIDs);
+        currentUser.setFavGenres();
+        int c = currentUser.getRecommendedMovies().size()%5 ;
+        for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
+        {
+            movieIDs[counter] = currentUser.getRecommendedMovies().get(i) ;
+            counter ++ ; 
+        }
+        index += counter ;
+        if (index == currentUser.getRecommendedMovies().size() - 1 && c > 0) 
+        { 
+            for (int i = index ; i < c + index ; i++) 
+            {
+                movieIDs[i] = "000000";
+            }
+        }
         //updateSearchids();
         helperChangeMovie1(movieIDs);
     }
@@ -550,9 +595,8 @@ public class GUIController {
     
     public void addMovie(ActionEvent e) 
     {
-        currentUser.setFavMovies(favMoviesIDs);
-        System.out.println("2"+users);
-        System.out.println("user "+currentUser.getID());
+        //System.out.println("2"+users);
+        //System.out.println("user "+currentUser.getID());
         System.out.println("3"+favMoviesIDs);
         if (e.getSource() == addToFav0) 
         {

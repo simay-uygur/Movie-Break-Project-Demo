@@ -58,7 +58,7 @@ public class Firebase {
     }
 
     public void takeAllMovieData() {
-        films.addListenerForSingleValueEvent(new ValueEventListener() {
+        films.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 movies.clear(); // Clear the ArrayList to avoid duplicates
@@ -143,14 +143,14 @@ public class Firebase {
 
     public void takeAllData()
     {
-        userDB.addListenerForSingleValueEvent(new ValueEventListener() {
+        userDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
                     User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
                     users.add(u) ;
-                    System.out.println(users);
+                    //System.out.println(users);
                 }
                 
 
@@ -202,7 +202,7 @@ public class Firebase {
     public void initUserID()
     {
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("users/ID-Counter");
-        data.addListenerForSingleValueEvent(new ValueEventListener() {
+        data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Object value = dataSnapshot.getValue();
@@ -217,7 +217,7 @@ public class Firebase {
     public void initChatID()
     {
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("chats/ID-Counter");
-        data.addListenerForSingleValueEvent(new ValueEventListener() {
+        data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Object value = dataSnapshot.getValue();
@@ -246,7 +246,7 @@ public class Firebase {
     public ArrayList<String> takeIDS(String path , String id) 
     {
         ArrayList<String> ids = new ArrayList<>() ;
-        userDB.child(id).child(path).addListenerForSingleValueEvent(new ValueEventListener() {
+        userDB.child(id).child(path).addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {

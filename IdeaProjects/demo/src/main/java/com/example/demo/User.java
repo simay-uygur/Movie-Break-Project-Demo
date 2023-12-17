@@ -110,7 +110,7 @@ public class User {
     {
         System.out.println("Movie added:" + movieId);
         fb.add(userID, "Fav_MovieIDs", movieId);
-        favMoviesIDs.add(movieId);
+        if (!favMoviesIDs.contains(movieId)) favMoviesIDs.add(movieId); 
     }
 
     public void removeFriend(String userID)

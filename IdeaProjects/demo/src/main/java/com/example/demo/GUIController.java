@@ -75,9 +75,6 @@ public class GUIController {
     });
     
     @FXML private ComboBox<String> menu;
-    @FXML
-    private ComboBox<String> menu;
-
     @FXML private Button insert;
     @FXML private Button backIn;
     @FXML private Button backUp;
@@ -151,7 +148,7 @@ public class GUIController {
     String[] l2 = new String[5];
 
     private String[] movieIDs = new String[5];
-    private static String[] movieIDs = new String[5];
+    //private static String[] movieIDs = new String[5];
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();

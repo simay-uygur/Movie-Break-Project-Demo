@@ -406,8 +406,8 @@ public class GUIController {
     } 
 
     public void helperChangeUser1(String[] ids) {
-        System.out.println( "helper one is entered ");
-        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));
+        /*System.out.println( "helper one is entered ");
+        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));*/
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
         String title = "";
         for (int i = 0; i < ids.length; i++) {
@@ -432,8 +432,8 @@ public class GUIController {
     public void helperChangeUser2(String[] ids) {
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
         String title = "";
-        System.out.println( "helper two is entered ");
-        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));
+        /*System.out.println( "helper two is entered ");
+        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));*/
         for (int i = 0; i < ids.length; i++) {
             cUtitle = loadUserName(ids[i]);
             title = cUtitle.join();

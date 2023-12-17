@@ -218,7 +218,6 @@ public class User {
                  !favMoviesIDs.contains(""+m.takeId())) 
             recommendedMovies.add(""+m.takeId()) ;
         }
-        System.out.println(recommendedMovies);
     }
 
     public void addForRec(String id) 

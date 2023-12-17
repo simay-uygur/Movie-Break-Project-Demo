@@ -121,7 +121,6 @@ public class Firebase {
                 {
                     friendsIDs.add(""+homie.getKey()) ;
                 }
-                System.out.println(friendsIDs);
 
                 if (dataCallback != null) 
                 {

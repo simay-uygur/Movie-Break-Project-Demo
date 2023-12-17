@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,6 +14,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -129,31 +132,123 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Pane layoutX="10.0" layoutY="130.0" prefHeight="427.0" prefWidth="330.0" style="-fx-background-color: pink;">
+      <Pane layoutY="97.0" prefHeight="767.0" prefWidth="350.0">
          <children>
-            <ImageView fitHeight="388.0" fitWidth="288.0" layoutX="20.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="767.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/capraz.jpg" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-0.3" />
+               </effect>
+            </ImageView>
+            <Pane layoutX="21.0" layoutY="26.0" prefHeight="405.0" prefWidth="308.0" style="-fx-background-color: pink;">
+               <effect>
+                  <DropShadow height="4.0" offsetX="4.0" offsetY="4.0" radius="1.5" spread="1.0" width="4.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Label layoutX="79.0" layoutY="450.0" opacity="0.96" prefHeight="35.0" prefWidth="192.0" style="-fx-background-color: #D9597A;" text=" Session Name:" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="10.0" layoutY="575.0" opacity="0.96" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #D9597A;" text=" Movie:" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="10.0" layoutY="615.0" opacity="0.96" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #D9597A;" text=" Start: " textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="10.0" layoutY="655.0" opacity="0.96" prefHeight="26.0" prefWidth="56.0" style="-fx-background-color: #D9597A;" text=" End: " textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="78.0" layoutY="655.0" maxHeight="27.0" prefHeight="27.0" prefWidth="249.0" style="-fx-background-color: pink;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="93.0" layoutY="575.0" maxHeight="27.0" prefHeight="27.0" prefWidth="249.0" style="-fx-background-color: pink;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="88.0" layoutY="615.0" maxHeight="27.0" prefHeight="27.0" prefWidth="249.0" style="-fx-background-color: pink;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label layoutX="10.0" layoutY="493.0" prefHeight="35.0" prefWidth="330.0" style="-fx-background-color: pink;">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
          </children>
       </Pane>
-      <Label layoutX="14.0" layoutY="681.0" prefHeight="35.0" prefWidth="330.0" style="-fx-background-color: pink;" text="Start Date:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="582.0" prefHeight="35.0" prefWidth="330.0" style="-fx-background-color: pink;" text="Session Name:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="629.0" prefHeight="35.0" prefWidth="330.0" style="-fx-background-color: pink;" text="Movie Name:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="728.0" prefHeight="35.0" prefWidth="330.0" style="-fx-background-color: pink;" text="Finish Date:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
          <items>
             <Pane prefHeight="88.0" prefWidth="1520.0">

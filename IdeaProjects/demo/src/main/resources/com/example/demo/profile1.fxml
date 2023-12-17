@@ -6,6 +6,8 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
@@ -16,16 +18,30 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <Pane layoutY="99.0" prefHeight="135.0" prefWidth="1536.0">
+      <ImageView fitHeight="864.0" fitWidth="1536.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/backr.jpg" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="-0.3" />
+         </effect>
+      </ImageView>
+      <Pane layoutY="96.0" prefHeight="141.0" prefWidth="1536.0">
          <children>
-            <Label layoutX="39.0" layoutY="13.0" prefHeight="126.0" prefWidth="355.0" text=" Nickname">
+            <Pane layoutY="-1.0" prefHeight="141.0" prefWidth="1536.0" style="-fx-background-color: #D9597A;">
+               <effect>
+                  <ColorAdjust brightness="-0.3" />
+               </effect>
+            </Pane>
+            <Label layoutX="39.0" layoutY="13.0" prefHeight="126.0" prefWidth="355.0" text=" Nickname" textFill="WHITE">
                <font>
-                  <Font name="Bookman Old Style" size="36.0" />
+                  <Font name="Bookman Old Style Bold" size="36.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="114.0" fitWidth="116.0">
@@ -35,7 +51,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button alignment="CENTER_RIGHT" layoutX="986.0" layoutY="99.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="43.0" prefWidth="181.0" text="Favorite Films" textAlignment="RIGHT">
+            <Button alignment="CENTER_RIGHT" layoutX="986.0" layoutY="97.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="43.0" prefWidth="181.0" text="Favorite Films" textAlignment="RIGHT">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -55,7 +71,7 @@
                   <Image url="@images/heart_symbol.png" />
                </image>
             </ImageView>
-            <Button layoutX="1384.0" layoutY="100.0" mnemonicParsing="false" onAction="#openProfile3" prefHeight="40.0" prefWidth="55.0">
+            <Button layoutX="1384.0" layoutY="99.0" mnemonicParsing="false" onAction="#openProfile3" prefHeight="40.0" prefWidth="55.0">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="38.0">
                      <image>
@@ -64,224 +80,19 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER_RIGHT" layoutX="1205.0" layoutY="98.0" mnemonicParsing="false" onAction="#openProfile2" prefHeight="43.0" prefWidth="139.0" text="Friends" textAlignment="RIGHT">
+            <Button alignment="CENTER_RIGHT" layoutX="1205.0" layoutY="96.0" mnemonicParsing="false" onAction="#openProfile2" prefHeight="43.0" prefWidth="139.0" text="Friends" textAlignment="RIGHT">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <ImageView fitHeight="35.0" fitWidth="48.0" layoutX="1216.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="48.0" layoutX="1216.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/4951182.png" />
                </image>
             </ImageView>
-            <Line endX="1536.0" layoutY="141.0" />
+            <Line endX="1536.0" layoutY="141.0" strokeWidth="2.0" />
          </children>
       </Pane>
-      <GridPane hgap="15.0" layoutX="60.0" layoutY="270.0" prefHeight="250.0" prefWidth="1400.0" vgap="5.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="322.399951171875" minHeight="10.0" prefHeight="251.60001525878909" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="179.8000244140625" minHeight="10.0" prefHeight="60.399984741210915" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <MenuButton alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children></Pane>
-            <Label contentDisplay="CENTER" prefHeight="32.0" prefWidth="311.0" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="303.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="294.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
-      <GridPane hgap="15.0" layoutX="60.0" layoutY="530.0" prefHeight="250.0" prefWidth="1400.0" vgap="5.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="322.399951171875" minHeight="10.0" prefHeight="251.60001525878909" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="179.8000244140625" minHeight="10.0" prefHeight="60.399984741210915" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-               <children>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </children>
-            </Pane>
-            <Label contentDisplay="CENTER" prefHeight="32.0" prefWidth="311.0" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="303.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="294.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
       <Button layoutX="1371.0" layoutY="789.0" mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
@@ -369,5 +180,365 @@
             </Pane>
          </items>
       </ToolBar>
+      <GridPane hgap="30.0" layoutX="60.0" layoutY="260.0" prefHeight="250.0" prefWidth="1400.0" vgap="5.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="322.399951171875" minHeight="10.0" prefHeight="194.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="179.8000244140625" minHeight="10.0" prefHeight="50.80000000000001" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="178.0" prefWidth="268.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view5" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="80.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view22" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view2" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view3" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view4" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Label fx:id="label1" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label2" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="303.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label3" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="303.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label4" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label5" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="294.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane hgap="30.0" layoutX="60.0" layoutY="530.0" prefHeight="250.0" prefWidth="1400.0" vgap="5.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="322.399951171875" minHeight="10.0" prefHeight="194.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="179.8000244140625" minHeight="10.0" prefHeight="50.80000000000001" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="178.0" prefWidth="268.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view51" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view11" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view21" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view31" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
+               <children>
+                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                        <MenuItem mnemonicParsing="false" text="Create Session" />
+                     </items>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <ImageView fx:id="view41" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Label fx:id="label11" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label21" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="303.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label31" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="303.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label41" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label51" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="294.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

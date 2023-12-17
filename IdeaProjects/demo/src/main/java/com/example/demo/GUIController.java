@@ -44,7 +44,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 public class GUIController {
-private User currentUser ; 
+    private static User currentUser ; 
     private static int id;
     private Scene scene;
     private Stage stage;
@@ -55,6 +55,11 @@ private User currentUser ;
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
             moviesStore = movies;
+        }
+
+        @Override
+        public void onUserLoaded(User user) {
+            currentUser = user ;
         }
     });
     
@@ -139,6 +144,8 @@ private User currentUser ;
 
     @FXML private Button b1;
 
+    @FXML private MenuItem addToFav0 , addToFav1 , addToFav2 , addToFav3 , addToFav4 ;
+
     private List<User> usersStore;
 
     private int smcounter = 0;
@@ -146,7 +153,8 @@ private User currentUser ;
     private String user;
     private int index = 0;
     private int sCounterMovie = 0;
-    private String[] movieIDs = new String[5];
+    private static String[] movieIDs = new String[5];
+    private ObservableList<Object> userIds;
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
@@ -154,7 +162,6 @@ private User currentUser ;
         List<Movie> searchResults = moviesStore.stream()
             .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
-        System.out.println("searchresult"+ searchResults.toString());
         return searchResults;
         
     }
@@ -177,7 +184,6 @@ private User currentUser ;
             movieIds.add("000000");
         }
 
-        System.out.println(movieIds);
         String[] x = new String[5];
         String[] y = new String[5];
 
@@ -340,6 +346,7 @@ private User currentUser ;
     public void refreshMovie(ActionEvent e) {
         //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
+        //System.out.println("1"+currentUser.getFavMoviesIDs());
         int c = currentUser.recommend().size()%5 ;
         for (int i = index ; i < 5 + index && i < currentUser.recommend().size() ; i++) 
         {
@@ -349,17 +356,12 @@ private User currentUser ;
         index += counter ;
         if (index == currentUser.recommend().size() && c > 0) 
         { 
-            String[] shortM = new String[c] ;
-            for (int i = 0 ; i < c ; i++) 
+            for (int i = index ; i < c + index ; i++) 
             {
-                shortM[i] = movieIDs[i] ;
+                movieIDs[i] = "000000";
             }
-            helperChange1(shortM);
         }
-        else 
-        {
-            helperChange1(movieIDs);
-        }
+        helperChange1(movieIDs);
     }
     public void displayImage(MouseEvent e){
         String[] ids = {"156022", "298618", "360920", "414906", "385687"};
@@ -368,7 +370,10 @@ private User currentUser ;
         helperChange1(movieIDs);
     }
 
-    public void searchMovieDisplay(ActionEvent e ){
+    private void updateSearchids() {
+    }
+
+    public void searchMovieDisplay(ActionEvent e){
 
     }
     public BufferedImage loadMoviePoster(String movieId) {
@@ -429,7 +434,6 @@ private User currentUser ;
         if (fb.hasAcc(userN.getText(), pass.getText())) {
             currentUser = fb.getUser() ;
             changeMainPage(e);
-            //System.out.println(Arrays.toString(fb.getUser().recomIds()));
         }
     }
     public void takeUserID(Object value) {
@@ -440,6 +444,35 @@ private User currentUser ;
         } else {
             message.setText("You are signed up");
             message.setFill(Color.rgb(139, 0, 0));
+        }
+    }
+
+    public void addMovie(ActionEvent e) 
+    {
+        if (e.getSource() == addToFav0) 
+        {
+            System.out.println(movieIDs[0]); 
+            currentUser.addMovie(movieIDs[0]) ;
+        }
+        else if (e.getSource() == addToFav1) 
+        {
+            System.out.println(movieIDs[1]); 
+            currentUser.addMovie(movieIDs[1]) ;
+        }
+        else if (e.getSource() == addToFav2) 
+        {
+            System.out.println(movieIDs[2]); 
+            currentUser.addMovie(movieIDs[2]) ;
+        }
+        else if (e.getSource() == addToFav3) 
+        {
+            System.out.println(movieIDs[3]); 
+            currentUser.addMovie(movieIDs[3]) ;
+        }
+        else 
+        {
+            System.out.println(movieIDs[4]); 
+            currentUser.addMovie(movieIDs[4]) ;
         }
     }
     public void changeIn(ActionEvent e) throws IOException {

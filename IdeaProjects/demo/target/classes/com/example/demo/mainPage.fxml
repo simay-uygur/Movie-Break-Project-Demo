@@ -117,7 +117,7 @@
                                  <children>
                                     <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
                                        <items>
-                                          <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                                          <MenuItem fx:id="addToFav4" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
                                           <MenuItem mnemonicParsing="false" text="Create Session" />
                                        </items>
                                        <font>
@@ -131,7 +131,7 @@
                                  <children>
                                     <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                                        <MenuItem fx:id="addToFav0" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
                                           <MenuItem mnemonicParsing="false" text="Create Session" />
                                       </items>
                                        <font>
@@ -145,7 +145,7 @@
                                  <children>
                                     <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
                                        <items>
-                                          <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                                          <MenuItem fx:id="addToFav1" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
                                           <MenuItem mnemonicParsing="false" text="Create Session" />
                                        </items>
                                        <font>
@@ -159,7 +159,7 @@
                                  <children>
                                     <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
                                        <items>
-                                          <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                                          <MenuItem fx:id="addToFav2" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
                                           <MenuItem mnemonicParsing="false" text="Create Session" />
                                        </items>
                                        <font>
@@ -173,7 +173,7 @@
                                  <children>
                                     <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
                                        <items>
-                                          <MenuItem mnemonicParsing="false" text="Add to Favourites" />
+                                          <MenuItem fx:id="addToFav3" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
                                           <MenuItem mnemonicParsing="false" text="Create Session" />
                                        </items>
                                        <font>

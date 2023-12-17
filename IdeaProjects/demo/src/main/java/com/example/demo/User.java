@@ -18,7 +18,7 @@ public class User {
     String password;
     String userID;
     Firebase fb ;
-    ArrayList<String> favMoviesIDs;
+    private ArrayList<String> favMoviesIDs;
     ArrayList<String> friendsIDs;
     ArrayList<String> chatIDs;
     ArrayList<String> sessionIDs;
@@ -26,27 +26,18 @@ public class User {
     private ArrayList<Movie> movies ;
     private DatabaseReference friends ;
     private HashMap<String,String> favGenres ; 
-    private ArrayList<String> recommendedMovies ; 
-    public User(String userName, String password, String userID , Firebase fb)
+    private static ArrayList<String> recommendedMovies ; 
+    public User(String userName, String password, String userID , Firebase fb , ArrayList<String> favMovies)
     {
-        mService = new MovieService() ;
-        recommendedMovies = new ArrayList<>() ; 
+        favMoviesIDs = favMovies ;
+        System.out.println(favMoviesIDs);
+        favMoviesIDs = fb.take("Fav_MovieIDs", userID) ;
+        System.out.println(favMoviesIDs);
         setFirebase(fb);
         setUserName(userName);
         setPassword(password);
         setID(userID);
-        initRefs(); 
-        addMovie(""+238);
-        addMovie(""+155);
-        addMovie(""+240);
-        addMovie(""+150540);
-        addMovie(""+287903);
-        addMovie(""+10908);
-        addMovie(""+118249);
-        addMovie(""+76600);
-        addMovie(""+662167);
-        addMovie(""+726209);
-        addMovie(""+897087);
+        initRefs();
         setFavGenres();
         recomIds();
     }
@@ -55,7 +46,6 @@ public class User {
     public void initRefs()
     {
         recommendedMovies = new ArrayList<>() ;
-        favMoviesIDs = new ArrayList<>() ;
         movies = new ArrayList<>(fb.movies) ;
         friends = FirebaseDatabase.getInstance().getReference("users/"+userID+"/Friends") ;
     }
@@ -117,6 +107,7 @@ public class User {
 
     public void addMovie(String movieId) 
     {
+        System.out.println("Movie added:" + movieId);
         fb.add(userID, "Fav_MovieIDs", movieId);
         favMoviesIDs.add(movieId);
     }
@@ -206,7 +197,6 @@ public class User {
     public void recommendMovies() 
     {
         ArrayList<String> recomms = new ArrayList<>() ; 
-        System.out.println(favGenres);
         String first = favGenres.keySet().toString().substring(1, favGenres.keySet().toString().length()-1) ;
         String second = favGenres.values().toString().substring(1, favGenres.values().toString().length()-1) ;
         for (Movie m : movies) 

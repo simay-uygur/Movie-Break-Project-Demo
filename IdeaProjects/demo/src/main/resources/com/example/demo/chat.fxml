@@ -18,11 +18,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#initFriends" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#displayFriends" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
       <Pane layoutY="97.0" prefHeight="767.0" prefWidth="350.0" style="-fx-background-color: #D9597A;">
          <children>
-            <Button fx:id="friend1" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#displayFriends" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend1" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="left" layoutX="79.0" layoutY="666.0" mnemonicParsing="false" onMousePressed="#initFriends" prefHeight="63.0" prefWidth="74.0">
+            <Button fx:id="left" layoutX="79.0" layoutY="666.0" mnemonicParsing="false" onAction="#displayFriendsLeft" prefHeight="63.0" prefWidth="74.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0">
                      <image>
@@ -57,7 +57,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button fx:id="right" layoutX="175.0" layoutY="666.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
+            <Button fx:id="right" layoutX="175.0" layoutY="666.0" mnemonicParsing="false" onAction="#displayFriendsRight" prefHeight="63.0" prefWidth="76.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0">
                      <image>
@@ -73,7 +73,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button fx:id="friend2" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend2" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -92,7 +92,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="friend3" layoutX="20.0" layoutY="320.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend3" layoutX="20.0" layoutY="320.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -111,7 +111,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="friend4" layoutX="20.0" layoutY="410.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend4" layoutX="20.0" layoutY="410.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -130,7 +130,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="friend5" layoutX="20.0" layoutY="500.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend5" layoutX="20.0" layoutY="500.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -216,54 +216,54 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+            <TextArea fx:id="friendChat4" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+            <TextArea fx:id="friendChat3" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <TextArea fx:id="friendChat2" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TextArea fx:id="chatText1" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TextArea fx:id="friendChat1" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <TextArea fx:id="user1" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <TextArea fx:id="user2" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <TextArea fx:id="user3" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+            <TextArea fx:id="user4" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
          </children>
       </GridPane>
-      <TextArea layoutX="358.0" layoutY="778.0" prefHeight="68.0" prefWidth="1052.0" promptText="//Type here" styleClass="rounded-text-area">
+      <TextArea layoutX="393.0" layoutY="778.0" prefHeight="68.0" prefWidth="1017.0" promptText="//Type here" styleClass="rounded-text-area">
          <font>
             <Font size="18.0" />
          </font>
       </TextArea>
-      <Button layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0">
+      <Button fx:id="send" layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>

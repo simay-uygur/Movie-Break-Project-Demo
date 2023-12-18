@@ -96,8 +96,7 @@ public class Firebase {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
                     User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
-                    users.add(u) ;
-                    //System.out.println(users);
+                    users.add(setUser(u)) ;
                 }
                 
 
@@ -316,12 +315,41 @@ public class Firebase {
             if (Integer.parseInt(id) > Integer.parseInt(userId)) 
             {
                 DatabaseReference chat = chatDB.child(userId+id) ; 
-                chat.setValueAsync(userId) ; 
-                chat.setValueAsync(id); 
+                chat.child(userId).setValueAsync("") ; 
+                chat.child(id).setValueAsync(""); 
+            }
+            else 
+            {
+                DatabaseReference chat = chatDB.child(id+userId) ; 
+                chat.child(userId).setValueAsync("") ; 
+                chat.child(id).setValueAsync(""); 
             }
             break ;
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
         }
+    }
+
+    public User setUser(User u) 
+    {
+        ArrayList<String> ids = new ArrayList<>() ;
+        userDB.child(u.getID()).child("Fav_MovieIDs").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot m : snapshot.getChildren())
+                {
+                    ids.add(m.getKey()) ;
+                    System.out.println(ids);
+                }
+                u.setFavMovies(ids);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+            
+        });
+        return u ;
     }
 
     public User getUser(){

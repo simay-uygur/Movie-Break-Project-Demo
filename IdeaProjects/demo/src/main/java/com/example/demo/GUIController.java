@@ -119,7 +119,7 @@ public class GUIController {
     @FXML private Text message;
     @FXML private ListView<Movie> searchResultsListView; 
     @FXML private TextField userSearchTextField; 
-    @FXML private Button b1; // for user search the first 5 buttons can be applied to the recommended users again
+    @FXML private Button b1; 
     @FXML private Button b2;
     @FXML private Button b3;
     @FXML private Button b4;
@@ -219,9 +219,6 @@ public class GUIController {
             helperChangeMovie2(y2);
         }
     }
-
-    
-
     public void moveBackwardMovieSearch(ActionEvent e) {
         if (smcounter > 0) {
             smcounter--;
@@ -495,8 +492,12 @@ public class GUIController {
             //updateSearchids();
             helperChangeMovie1(movieIDs);
             disp++;
+            System.out.println(currentUser.recommendedFriendsIDs);
         }
+
     }
+
+
 
     //recommend ve update var YAPMAM GEREK
 
@@ -588,8 +589,6 @@ public class GUIController {
             message.setFill(Color.rgb(139, 0, 0));
         }
     }
-    
-    
     public void addMovie(ActionEvent e) 
     {
         //System.out.println("user "+currentUser.getID());

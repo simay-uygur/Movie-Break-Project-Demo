@@ -5,12 +5,10 @@ import java.time.LocalTime;
  * Message
  */
 public class Message {
-
     Controller controller;
     String text;
     LocalTime time;
     int userID;
-
     public Message (String text, int userID, LocalTime time)
     {
         this.text = text;

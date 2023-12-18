@@ -85,7 +85,9 @@ public class Firebase {
             }
         });
     }
-
+    public ArrayList<User> getUsers(){
+        return users;
+    }
     public void takeAllData()
     {
         userDB.addValueEventListener(new ValueEventListener() {

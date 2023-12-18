@@ -1,17 +1,14 @@
 package com.example.demo;
-
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 public class User {
     Controller controller;
     String userName;
@@ -20,11 +17,12 @@ public class User {
     Firebase fb ;
     private ArrayList<String> favMoviesIDs;
     ArrayList<String> friendsIDs;
+    ArrayList<String> recommendedFriendsIDs;    
     ArrayList<String> chatIDs;
     ArrayList<String> sessionIDs;
     MovieService mService; 
     private ArrayList<Movie> movies ;
-    private ArrayList<String> favGenres ; 
+    private ArrayList<String> favGenres ;
     private static ArrayList<String> recommendedMovies ; 
     public User(String userName, String password, String userID , Firebase fb)
     {
@@ -36,13 +34,40 @@ public class User {
         setPassword(password);
         setID(userID);
         initRefs();
+        //recomIds();
+        recommendedFriendsIDs = new ArrayList<>();
     }
+    public ArrayList<String> getFavGenres(){
+        return favGenres;
+    }
+    public void findRecommendedFriends(){
+        ArrayList<User> userForCompare = fb.getUsers();
+        for (int num = 0; num < userForCompare.size(); num++) {
+            if (userForCompare.get(num).getFavGenres().contains(this.favGenres.get(0)) ||
+                    userForCompare.get(num).getFavGenres().contains(this.favGenres.get(1)) ||
+                    userForCompare.get(num).getFavGenres().contains(this.favGenres.get(2))) {
+                boolean check = true;
+                for (int n = 0; n < this.friendsIDs.size(); n++) {
+                    if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
+                        check = false;
+                    }
+                }
+                if (check == true) {
+                    recommendedFriendsIDs.add(userForCompare.get(num).getId());
+                }
+            }
+        }
+        
+    }
+
+
     
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
         //setFavGenres();
     }
+
 
     public void initRefs()
     {
@@ -106,6 +131,7 @@ public class User {
     {
         if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
         {
+            System.out.println("friend added:" + friendID);
             fb.add(userID, "Friends", friendID);
             friendsIDs.add(friendID);
         }
@@ -115,6 +141,7 @@ public class User {
     {
         if (!favMoviesIDs.contains(movieId)) 
         {
+            System.out.println("Movie added:" + movieId);
             fb.add(userID, "Fav_MovieIDs", movieId);
             favMoviesIDs.add(movieId);
         }
@@ -135,7 +162,6 @@ public class User {
         }
         findMaxes(genres);
     }
-
     public void findMaxes(ArrayList<String> genres) 
     {
         int max = 0 , temp = 0;
@@ -157,15 +183,7 @@ public class User {
                 temp = 0 ;
             }
         }
-        ArrayList<String> g = new ArrayList<>() ;
-        g.add(g1) ;
-        g.add(g2) ;
-        g.add(g3) ;
-        favGenres = g ;
-        System.out.println(favGenres);
-        recommendMovies();
     }
-
     public ArrayList<String> getFavMoviesIDs()
     {
         return favMoviesIDs;
@@ -222,12 +240,13 @@ public class User {
     {
         recommendedMovies.add(""+id) ;
     }
-
+    public String getId(){
+        return userID;
+    }
     public String toString()
     {
         return "Name: " + userName + " ID: " + userID;
     }
-
     /* 
     public ArrayList<Integer> search(String input)
     {
@@ -236,7 +255,11 @@ public class User {
 
     public ArrayList<String> getRecommendedMovies()
     {
-        //recommendMovies(); 
         return recommendedMovies ;
+    }
+
+    public ArrayList<String> getRecommendedFriends()
+    {
+        return recommendedFriendsIDs ;
     }
 }

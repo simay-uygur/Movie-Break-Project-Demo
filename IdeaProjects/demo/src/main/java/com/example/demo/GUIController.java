@@ -137,13 +137,14 @@ public class GUIController {
     @FXML private Button b10;   
 
     @FXML private MenuItem addToFav0,addToFav1,addToFav2,addToFav3,addToFav4,addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
-
+    @FXML private TextArea friendChat , myChat ;
+    @FXML private Button send ;
+    @FXML private TextArea textToSend ;
     private List<User> usersStore; 
     private ObservableList<String> movieIds = FXCollections.observableArrayList();   
     private ObservableList<String> userIds = FXCollections.observableArrayList();  
     private String user;
     private int index = 0;
-    @FXML private Button chat0 , chat1 , chat2 , chat3 , chat4 ; 
     @FXML private Button left , right ;
     private int smcounter = 0;
     private int sucounter = 0;
@@ -785,7 +786,6 @@ public class GUIController {
 
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
-        
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -994,6 +994,22 @@ public class GUIController {
                 friend5.setText("");
             }
         }
+    }
+
+    public void toSend(ActionEvent e) 
+    {
+        if (myChat.getWidth() < textToSend.getText().length()) 
+        {
+            myChat.appendText(textToSend.getText(0 , textToSend.getText().length()/2) + "\n");
+            myChat.appendText(textToSend.getText(textToSend.getText().length()/2 , textToSend.getText().length()) + "\n");
+            fb.add(currentUser.getID(), "chats", textToSend.getText() , "03");
+        }
+        else 
+        {
+            myChat.appendText(textToSend.getText() + "\n");
+            fb.add(currentUser.getID(), "chats", textToSend.getText() , "03" );
+        }
+        textToSend.setText("");
     }
     public void displayFriendsLeft(ActionEvent e){
         if(!(friendsIndex-5 < 0)){

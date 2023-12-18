@@ -11,7 +11,6 @@ import com.google.firebase.database.ValueEventListener;
 import javafx.scene.image.Image;
 
 public class Movie {
-
     Controller controller;
     String name;
     String genre;
@@ -25,30 +24,22 @@ public class Movie {
         this.genre = genre ;
         this.posterPath = posterPath;
     }
-
     public String getTitle() {
         return name ;
     }
-
     public String getGenre() {
         return genre;
     }
-
     public String getPath(){
         return posterPath;
     }
-
     public int takeId() {
         return id;
     }
-    
     public void setId(int id) {
         this.id = id;
     }
-
     public String toString() {
         return "Name: "+ name+ " id: "+ id+ " genre: "+ genre + " posterpath "+ posterPath;
     }
-
-    
 }

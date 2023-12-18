@@ -1,22 +1,21 @@
+package com.example.demo;
 import java.time.LocalTime;
 
 /**
  * Message
  */
 public class Message {
-
     Controller controller;
     String text;
     LocalTime time;
-    int userID;
+    String userID;
 
-    public Message (String text, int userID, LocalTime time)
+    public Message (String text, String userID)
     {
         this.text = text;
         this.userID = userID;
         setTime();
     }
-
     /*
      *  it returns the current hour and the minute in which this 
      * message is sent, and it sets the time variable of this class.
@@ -34,7 +33,7 @@ public class Message {
         return hour + ":" + minute;
     }
 
-    public int getUserID()
+    public String getUserID()
     {
         return this.userID;
     }
@@ -42,5 +41,11 @@ public class Message {
     public String getText()
     {
         return this.text;
+    }
+    public String displayHeadTitle(){
+        return getUserID()+" "+getTime();
+    }
+    public String displayText(){
+        return getText();
     }
 }

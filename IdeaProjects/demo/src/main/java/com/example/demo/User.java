@@ -1,9 +1,7 @@
 package com.example.demo;
-
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -11,7 +9,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 public class User {
     Controller controller;
     String userName;
@@ -20,14 +17,24 @@ public class User {
     Firebase fb ;
     private ArrayList<String> favMoviesIDs;
     ArrayList<String> friendsIDs;
+    ArrayList<String> recommendedFriendsIDs;    
     ArrayList<String> chatIDs;
     ArrayList<String> sessionIDs;
     MovieService mService; 
+    private ArrayList<Chat> chatsWithFriends ;
+    private ArrayList<Message> userMessages ;
+    private ArrayList<Message> friendsMessages ;
     private ArrayList<Movie> movies ;
-    private HashMap<String,String> favGenres ; 
+    private ArrayList<String> favGenres ; 
+    private DatabaseReference chats ;
     private static ArrayList<String> recommendedMovies ; 
     public User(String userName, String password, String userID , Firebase fb)
     {
+        chats = FirebaseDatabase.getInstance().getReference("chats"); 
+        chatsWithFriends = new ArrayList<>() ;
+        userMessages = new ArrayList<>() ;
+        friendsMessages = new ArrayList<>() ;
+        friendsIDs = new ArrayList<>();
         favMoviesIDs = new ArrayList<>() ; 
         recommendedMovies = new ArrayList<>() ;
         setFirebase(fb);
@@ -35,14 +42,40 @@ public class User {
         setPassword(password);
         setID(userID);
         initRefs();
-        //recomIds();
+        recommendedFriendsIDs = new ArrayList<>();
     }
+    public ArrayList<String> getFavGenres(){
+        return favGenres;
+    }
+    public void findRecommendedFriends(){
+        ArrayList<User> userForCompare = fb.getUsers();
+        for (int num = 0; num < userForCompare.size(); num++) {
+            if (userForCompare.get(num).getFavGenres().contains(this.favGenres.get(0)) ||
+                    userForCompare.get(num).getFavGenres().contains(this.favGenres.get(1)) ||
+                    userForCompare.get(num).getFavGenres().contains(this.favGenres.get(2))) {
+                boolean check = true;
+                for (int n = 0; n < this.friendsIDs.size(); n++) {
+                    if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
+                        check = false;
+                    }
+                }
+                if (check == true) {
+                    recommendedFriendsIDs.add(userForCompare.get(num).getId());
+                }
+            }
+        }
+        
+    }
+
+
     
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
-        //setFavGenres();
+        setFavGenres();
     }
+
+
 
     public void initRefs()
     {
@@ -55,7 +88,7 @@ public class User {
         friendsIDs = new ArrayList<>(homo) ; 
     }
 
-    public void setGenres(HashMap<String, String> genres) 
+    public void setGenres(ArrayList<String> genres) 
     {
         this.favGenres = genres ;
     }
@@ -104,7 +137,7 @@ public class User {
 
     public void addFriend(String friendID)
     {
-        if (!friendsIDs.contains(friendID)) 
+        if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
         {
             System.out.println("friend added:" + friendID);
             fb.add(userID, "Friends", friendID);
@@ -137,11 +170,10 @@ public class User {
         }
         findMaxes(genres);
     }
-
     public void findMaxes(ArrayList<String> genres) 
     {
         int max = 0 , temp = 0;
-        String g1 = "" , g2 = "" ; 
+        String g1 = "" , g2 = "" , g3 = ""; 
         Collections.sort(genres);
         for (int i = 0 ; i < genres.size() - 1 ; i++) 
         {
@@ -152,18 +184,20 @@ public class User {
                 if (temp >= max) 
                 {
                     max = temp ;
+                    g3 = g2 ;
                     g2 = g1 ;
                     g1 = genres.get(i+1) ;
                 }
                 temp = 0 ;
             }
         }
-        HashMap<String, String> ret = new HashMap<>() ;
-        ret.put(g1, g2) ;
-        favGenres = ret ;
+        ArrayList<String> g = new ArrayList<>() ;
+        g.add(g1) ;
+        g.add(g2) ;
+        g.add(g3) ;
+        favGenres = g ;
         recommendMovies();
     }
-
     public ArrayList<String> getFavMoviesIDs()
     {
         return favMoviesIDs;
@@ -206,19 +240,40 @@ public class User {
 
     public void recommendMovies() 
     {
-        ArrayList<String> recomms = new ArrayList<>() ; 
-        String first = favGenres.keySet().toString().substring(1, favGenres.keySet().toString().length()-1) ;
-        String second = favGenres.values().toString().substring(1, favGenres.values().toString().length()-1) ;
         for (Movie m : movies) 
         {
-            if ((m.getGenre().equals(second) 
-                 || 
-                 m.getGenre().equals(first)) 
+            if ( favGenres.contains(m.getGenre()) 
                  && 
                  !favMoviesIDs.contains(""+m.takeId())) 
             recommendedMovies.add(""+m.takeId()) ;
         }
-        System.out.println(recommendedMovies);
+    }
+
+    public void createChats() 
+    {
+
+    }
+
+
+    public void takeMessages(ArrayList<Message> unknown , String path) 
+    {
+        chats.child(path).addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot message : snapshot.getChildren()) 
+                {
+                    
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'onCancelled'");
+            }
+            
+        });
     }
 
     public void addForRec(String id) 
@@ -226,20 +281,22 @@ public class User {
         recommendedMovies.add(""+id) ;
     }
 
+    public String getId(){
+        return userID;
+    }
+    
     public String toString()
     {
-        return "Name: " + userName + " ID: " + userID;
+        return "Name: " + userName + " ID: " + userID + favMoviesIDs;
     }
-
-    /* 
-    public ArrayList<Integer> search(String input)
-    {
-        return;
-    }*/
 
     public ArrayList<String> getRecommendedMovies()
     {
-        //recommendMovies(); 
         return recommendedMovies ;
+    }
+
+    public ArrayList<String> getRecommendedFriends()
+    {
+        return recommendedFriendsIDs ;
     }
 }

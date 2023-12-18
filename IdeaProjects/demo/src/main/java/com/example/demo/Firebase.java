@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
-
 public class Firebase {
     private boolean accExists = false;
     ArrayList<User> users ;
@@ -34,6 +33,7 @@ public class Firebase {
         userDB = FirebaseDatabase.getInstance().getReference("users");
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
         users = new ArrayList<>() ;
+        //user = new User(, getCurrentID(), getCurrentID(), null)
         movies = new ArrayList<>() ;
         takeAllMovieData();
         takeAllData();
@@ -85,7 +85,9 @@ public class Firebase {
             }
         });
     }
-
+    public ArrayList<User> getUsers(){
+        return users;
+    }
     public void takeAllData()
     {
         userDB.addValueEventListener(new ValueEventListener() {
@@ -94,8 +96,7 @@ public class Firebase {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
                     User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
-                    users.add(u) ;
-                    //System.out.println(users);
+                    users.add(setUser(u)) ;
                 }
                 
 
@@ -121,7 +122,6 @@ public class Firebase {
                 {
                     friendsIDs.add(""+homie.getKey()) ;
                 }
-                System.out.println(friendsIDs);
 
                 if (dataCallback != null) 
                 {
@@ -310,9 +310,46 @@ public class Firebase {
         DatabaseReference user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ;
         switch(path)
         {
-            case "Friends" : DatabaseReference friend = userDB.child(id).child(path) ; friend.child(userId).setValueAsync("") ; break ;
+            case "Friends" : 
+            DatabaseReference friend = userDB.child(id).child(path) ; friend.child(userId).setValueAsync("") ; 
+            if (Integer.parseInt(id) > Integer.parseInt(userId)) 
+            {
+                DatabaseReference chat = chatDB.child(userId+id) ; 
+                chat.child(userId).setValueAsync("") ; 
+                chat.child(id).setValueAsync(""); 
+            }
+            else 
+            {
+                DatabaseReference chat = chatDB.child(id+userId) ; 
+                chat.child(userId).setValueAsync("") ; 
+                chat.child(id).setValueAsync(""); 
+            }
+            break ;
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
         }
+    }
+
+    public User setUser(User u) 
+    {
+        ArrayList<String> ids = new ArrayList<>() ;
+        userDB.child(u.getID()).child("Fav_MovieIDs").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot m : snapshot.getChildren())
+                {
+                    ids.add(m.getKey()) ;
+                    System.out.println(ids);
+                }
+                u.setFavMovies(ids);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+            
+        });
+        return u ;
     }
 
     public User getUser(){

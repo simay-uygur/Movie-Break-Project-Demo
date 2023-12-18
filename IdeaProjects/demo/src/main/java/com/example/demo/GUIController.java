@@ -1,6 +1,7 @@
 package com.example.demo;
-
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+
 import com.example.demo.Firebase.FirebaseDataCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +36,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
+import java.security.cert.X509CRL;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
@@ -52,9 +54,12 @@ public class GUIController {
     private Stage stage;
     private Parent root;
     private static ArrayList<String> friendsIDs ;
+    private static ArrayList<String> ChatIDs;
     private static ArrayList<String> favMoviesIDs ;
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
+    private static int disp = 0 ;
+    private static int friendsIndex = 0 ;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
@@ -81,7 +86,8 @@ public class GUIController {
             friendsIDs = friendIDs ;
         }
     });
-    
+    @FXML private Button friend1, friend2, friend3, friend4, friend5;
+    @FXML private TextArea chatText1;
     @FXML private ComboBox<String> menu;
     @FXML private Button insert;
     @FXML private Button backIn;
@@ -119,7 +125,7 @@ public class GUIController {
     @FXML private Text message;
     @FXML private ListView<Movie> searchResultsListView; 
     @FXML private TextField userSearchTextField; 
-    @FXML private Button b1; // for user search the first 5 buttons can be applied to the recommended users again
+    @FXML private Button b1; 
     @FXML private Button b2;
     @FXML private Button b3;
     @FXML private Button b4;
@@ -130,12 +136,17 @@ public class GUIController {
     @FXML private Button b9;
     @FXML private Button b10;   
 
+    @FXML private MenuItem addToFav0,addToFav1,addToFav2,addToFav3,addToFav4,addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
+    @FXML private TextArea friendChat1 , friendChat2 , friendChat3 , friendChat4 , user1 , user2 , user3 , user4 ;
+    @FXML private Button send ;
+    @FXML private TextArea textToSend ;
     private List<User> usersStore; 
     private ObservableList<String> movieIds = FXCollections.observableArrayList();   
     private ObservableList<String> userIds = FXCollections.observableArrayList();  
     private String user;
     private int index = 0;
-    @FXML private MenuItem addToFav0 , addToFav1 , addToFav2 , addToFav3 , addToFav4 ;
+    @FXML private Button chat0 , chat1 , chat2 , chat3 , chat4 ; 
+    @FXML private Button left , right ;
     private int smcounter = 0;
     private int sucounter = 0;
 
@@ -143,17 +154,11 @@ public class GUIController {
 
     String[] x = new String[5];
     String[] y = new String[5];
-    String[] x1 = new String[5];
-    String[] y1 = new String[5];
-    String[] x2 = new String[5];
-    String[] y2 = new String[5];
+
 
     String[] k = new String[5];
     String[] l = new String[5];
-    //String[] k1 = new String[5];
-    //String[] l1 = new String[5];
-    //String[] k2 = new String[5];
-    //String[] l2 = new String[5];
+
 
     private String[] movieIDs = new String[5];
     //private static String[] movieIDs = new String[5];
@@ -182,8 +187,6 @@ public class GUIController {
             movieIds.add("000000");
         }
 
-        System.out.println("searched movie ids  "+movieIds);
-
         for(int a=0; a<10; a++){
             if(a<5){
                 x[a] = movieIds.get(a);
@@ -204,25 +207,22 @@ public class GUIController {
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < movieIds.size()) {
                     if (a < 5) {
-                        x2[a] = movieIds.get(startIndex + a);
+                        x[a] = movieIds.get(startIndex + a);
                     } else {
-                        y2[a - 5] = movieIds.get(startIndex + a);
+                        y[a - 5] = movieIds.get(startIndex + a);
                     }
                 } else {
                     if (a < 5) {
-                        x2[a] = "0000";
+                        x[a] = "0000";
                     } else {
-                        y2[a - 5] = "0000";
+                        y[a - 5] = "0000";
                     }
                 }
             }
-            helperChangeMovie1(x2);
-            helperChangeMovie2(y2);
+            helperChangeMovie1(x);
+            helperChangeMovie2(y);
         }
     }
-
-    
-
     public void moveBackwardMovieSearch(ActionEvent e) {
         if (smcounter > 0) {
             smcounter--;
@@ -232,24 +232,23 @@ public class GUIController {
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < movieIds.size()) {
                     if (a < 5) {
-                        x1[a] = movieIds.get(startIndex + a);
+                        x[a] = movieIds.get(startIndex + a);
                     } else {
-                        y1[a - 5] = movieIds.get(startIndex + a);
+                        y[a - 5] = movieIds.get(startIndex + a);
                     }
                 } else {
                     // Handle the case when you go before the start of the list
                     if (a < 5) {
-                        x1[a] = "0000"; // Fill with "0000" or any other placeholder
+                        x[a] = "0000"; // Fill with "0000" or any other placeholder
                     } else {
-                        y1[a - 5] = "000000"; 
+                        y[a - 5] = "000000"; 
                     }
                 }
             }
-            helperChangeMovie1(x1);
-            helperChangeMovie2(y1);
+            helperChangeMovie1(x);
+            helperChangeMovie2(y);
         }
     }
-
     public List<User> performUserSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
         List<User> searchResults = users.stream()
@@ -263,6 +262,7 @@ public class GUIController {
         sucounter = 0;
         userIds.clear();
         String searchText = userSearchTextField.getText().trim();
+        userIds.clear();
         if (!searchText.isEmpty()) {
             List<User> searchResults = performUserSearch(searchText);
             userIds = FXCollections.observableArrayList();
@@ -270,14 +270,12 @@ public class GUIController {
                 userIds.add(""+user.getID());
             }
         }
-        //System.out.println("user ids     " +userIds);
         if(userIds.size() ==0){
             userIds.add("000000");
         }
         while (userIds.size()%10 !=0 ) {
             userIds.add("000000");
         }
-        //System.out.println(userIds);
         for(int a=0; a<10; a++){
             if(a<5){
                 k[a] = userIds.get(a);
@@ -311,8 +309,8 @@ public class GUIController {
                     }
                 }
             }
-            helperChangeUser1(x2);
-            helperChangeUser2(y2);
+            helperChangeUser1(k);
+            helperChangeUser2(l);
             //integer bölmesi yap ki devam etmesim e!n son!!!!!!!!
         }
     }
@@ -338,8 +336,8 @@ public class GUIController {
                     }
                 }
             }
-            helperChangeUser1(x1);
-            helperChangeUser2(y1);            
+            helperChangeUser1(k);
+            helperChangeUser2(l);            
         }
     }
 
@@ -406,15 +404,12 @@ public class GUIController {
     } 
 
     public void helperChangeUser1(String[] ids) {
-        System.out.println( "helper one is entered ");
-        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));
+
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
         String title = "";
         for (int i = 0; i < ids.length; i++) {
             cUtitle = loadUserName(ids[i]);
-            System.out.println("cutitle"+ cUtitle.toString());
             title = cUtitle.join();
-            System.out.println(title);
             if (i == 0) {
                 label1.setText(title);
             } else if (i == 1) {
@@ -432,8 +427,7 @@ public class GUIController {
     public void helperChangeUser2(String[] ids) {
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
         String title = "";
-        System.out.println( "helper two is entered ");
-        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));
+
         for (int i = 0; i < ids.length; i++) {
             cUtitle = loadUserName(ids[i]);
             title = cUtitle.join();
@@ -454,10 +448,9 @@ public class GUIController {
     //refreshFriend
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
-        //System.out.println("id" +movieIDs.toString());
         int counter = 0 ;
+        System.out.println(users);
         currentUser.setFavMovies(favMoviesIDs);
-        currentUser.setFavGenres();
         int c = currentUser.getRecommendedMovies().size()%5 ;
         for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
         {
@@ -474,27 +467,42 @@ public class GUIController {
         }
         helperChangeMovie1(movieIDs);
     }
-    public void displayImage(MouseEvent e){
-        int counter = 0 ;
-        currentUser.setFavMovies(favMoviesIDs);
-        currentUser.setFavGenres();
-        int c = currentUser.getRecommendedMovies().size()%5 ;
-        for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
+    public void displayImage(){
+        if (disp == 0) 
         {
-            movieIDs[counter] = currentUser.getRecommendedMovies().get(i) ;
-            counter ++ ; 
-        }
-        index += counter ;
-        if (index == currentUser.getRecommendedMovies().size() - 1 && c > 0) 
-        { 
-            for (int i = index ; i < c + index ; i++) 
-            {
-                movieIDs[i] = "000000";
+            
+            currentUser.setFavMovies(favMoviesIDs);
+            
+            currentUser.setFavGenres();
+            if(currentUser.getFavMoviesIDs().isEmpty()){
+                movieIDs = currentUser.recomIds();
             }
+            else{
+                int counter = 0 ;
+                
+                int c = currentUser.getRecommendedMovies().size()%5 ;
+                for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
+                {
+                    movieIDs[counter] = currentUser.getRecommendedMovies().get(i) ;
+                    counter ++ ; 
+                }
+                index += counter ;
+                if (index == currentUser.getRecommendedMovies().size() - 1 && c > 0) 
+                { 
+                    for (int i = index ; i < c + index ; i++) 
+                    {
+                        movieIDs[i] = "000000";
+                    }
+                }
+            }
+            
+            helperChangeMovie1(movieIDs);
+            disp++;
         }
-        //updateSearchids();
-        helperChangeMovie1(movieIDs);
+
     }
+
+
 
     //recommend ve update var YAPMAM GEREK
 
@@ -575,6 +583,31 @@ public class GUIController {
             changeMainPage(e);
         }
     }
+
+    public void openFriendChat(ActionEvent e) 
+    {
+        Chat c ;
+        if (e.getSource() == friend1) 
+        {
+            //c = new 
+        }
+        else if (e.getSource() == friend2)
+        {
+
+        }
+        else if (e.getSource() == friend3) 
+        {
+            
+        }
+        else if (e.getSource() == friend4)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
     
     public void takeUserID(Object value) {
         id = Integer.parseInt("" + value);
@@ -586,13 +619,8 @@ public class GUIController {
             message.setFill(Color.rgb(139, 0, 0));
         }
     }
-    
-    
     public void addMovie(ActionEvent e) 
     {
-        //System.out.println("2"+users);
-        //System.out.println("user "+currentUser.getID());
-        System.out.println(currentUser.friendsIDs);
         if (e.getSource() == addToFav0) 
         {
             System.out.println(movieIDs[0]); 
@@ -618,6 +646,62 @@ public class GUIController {
             System.out.println(movieIDs[4]); 
             currentUser.addMovie(movieIDs[4]) ;
         }
+        
+    }
+
+    public void addMovieInSearch(ActionEvent e) 
+    {
+        if (e.getSource() == addToFav0) 
+        {
+            System.out.println(x[0]); 
+            currentUser.addMovie(x[0]) ;
+        }
+        else if (e.getSource() == addToFav1) 
+        {
+            System.out.println(x[1]); 
+            currentUser.addMovie(x[1]) ;
+        }
+        else if (e.getSource() == addToFav2) 
+        {
+            System.out.println(x[2]); 
+            currentUser.addMovie(x[2]) ;
+        }
+        else if (e.getSource() == addToFav3) 
+        {
+            System.out.println(x[3]); 
+            currentUser.addMovie(x[3]) ;
+        }
+        else if( e.getSource() == addToFav4)
+        {
+            System.out.println(x[4]); 
+            currentUser.addMovie(x[4]) ;
+        }
+        else if( e.getSource() == addToFav5)
+        {
+            System.out.println(y[0]); 
+            currentUser.addMovie(y[0]) ;
+        }
+        else if (e.getSource() == addToFav6) 
+        {
+            System.out.println(y[1]); 
+            currentUser.addMovie(y[1]) ;
+        }
+        else if (e.getSource() == addToFav7) 
+        {
+            System.out.println(y[2]); 
+            currentUser.addMovie(y[2]) ;
+        }
+        else if (e.getSource() == addToFav8) 
+        {
+            System.out.println(y[3]); 
+            currentUser.addMovie(y[3]) ;
+        }
+        else
+        {
+            System.out.println(y[4]); 
+            currentUser.addMovie(y[4]) ;
+        }
+
     }
 
     public void addUserAsFriend(ActionEvent e){
@@ -689,6 +773,8 @@ public class GUIController {
     }
 
     public void changeMainPage(ActionEvent e) throws IOException {
+        disp = 0 ;
+        System.out.println(users);
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -723,13 +809,72 @@ public class GUIController {
         stage.show();
     }
 
-    public void openChat(ActionEvent e) throws IOException {
+    public void openChat(ActionEvent e) throws IOException 
+    {
         root = FXMLLoader.load(getClass().getResource("chat.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+    }
+
+    public void initFriends(MouseEvent e) throws IOException 
+    {
+        if (friendsIndex < 4 && e.getSource() == left) return ;
+        if (e.getSource() == left) 
+        {
+            int c = 5 ;
+            for (int i = friendsIndex ; i < users.size() && c > 0 ; i++) 
+            {
+                if (friendsIDs.contains(users.get(i).getID())) 
+                {
+                    if      (c == 0) friend1.setText(users.get(i).getName());
+                    else if (c == 1) friend1.setText(users.get(i).getName());
+                    else if (c == 2) friend3.setText(users.get(i).getName());
+                    else if (c == 3) friend4.setText(users.get(i).getName());
+                    else if (c == 4) friend5.setText(users.get(i).getName());
+                    c-- ;
+                }
+            }
+            friendsIndex -= c - 1;
+        }
+        else if (e.getSource() == right)
+        {
+            int c = 0 ;
+            for (int i = friendsIndex ; i < users.size() && c < 5 ; i++) 
+            {
+                if (friendsIDs.contains(users.get(i).getID())) 
+                {
+                    if      (c == 0) friend1.setText(users.get(i).getName());
+                    else if (c == 1) friend1.setText(users.get(i).getName());
+                    else if (c == 2) friend3.setText(users.get(i).getName());
+                    else if (c == 3) friend4.setText(users.get(i).getName());
+                    else if (c == 4) friend5.setText(users.get(i).getName());
+                    c++ ;
+                }
+            }
+            friendsIndex += c - 1;
+        }
+        else 
+        {
+            int c = 0 ;
+            for (int i = friendsIndex ; i < users.size() && c < 5 ; i++) 
+            {
+                if (friendsIDs.contains(users.get(i).getID())) 
+                {
+                    if      (c == 0) friend1.setText(users.get(i).getName());
+                    else if (c == 1) friend1.setText(users.get(i).getName());
+                    else if (c == 2) friend3.setText(users.get(i).getName());
+                    else if (c == 3) friend4.setText(users.get(i).getName());
+                    else if (c == 4) friend5.setText(users.get(i).getName());
+                    c++ ;
+                }
+            }
+            friendsIndex += c - 1;
+        }
+        
+        System.out.println(friendsIndex);
     }
 
     public void openSearchPage(ActionEvent e) throws IOException {
@@ -798,6 +943,23 @@ public class GUIController {
     public void callSearchComboBox(Event e){
         if (menu.getItems().isEmpty()) {
             menu.getItems().addAll("Friend Search", "Movie Search", "Session Search");
+        }
+    }
+    public void displayFriends(ActionEvent e){
+        int bound = Math.min(friendsIDs.size(), 5);
+        for (int i = 0; i < bound; i++) {
+            for (int j = 0; j < users.size(); j++) {
+                if(friendsIDs.get(i) == users.get(j).getID()) {
+                    friend1.setText(users.get(j).getName());
+                }
+                if(i == 0 && friendsIDs.get(i) == users.get(j).getID()) {
+                    friend1.setText(users.get(j).getName());
+                }
+                if(i == 1 && friendsIDs.get(i) == users.get(j).getID()) friend2.setText(users.get(j).getName());
+                if(i == 2 && friendsIDs.get(i) == users.get(j).getID()) friend3.setText(users.get(j).getName());
+                if(i == 3 && friendsIDs.get(i) == users.get(j).getID()) friend4.setText(users.get(j).getName());
+                if(i == 4 && friendsIDs.get(i) == users.get(j).getID()) friend5.setText(users.get(j).getName());
+            }
         }
     }
 }

@@ -24,11 +24,11 @@ public class User {
     ArrayList<String> sessionIDs;
     MovieService mService; 
     private ArrayList<Movie> movies ;
-    private DatabaseReference friends ;
     private HashMap<String,String> favGenres ; 
     private static ArrayList<String> recommendedMovies ; 
     public User(String userName, String password, String userID , Firebase fb)
     {
+        friendsIDs = new ArrayList<>();
         favMoviesIDs = new ArrayList<>() ; 
         recommendedMovies = new ArrayList<>() ;
         setFirebase(fb);
@@ -48,7 +48,12 @@ public class User {
     public void initRefs()
     {
         movies = new ArrayList<>(fb.movies) ;
-        friends = FirebaseDatabase.getInstance().getReference("users/"+userID+"/Friends") ;
+        //friends = FirebaseDatabase.getInstance().getReference("users/"+userID+"/Friends") ;
+    }
+
+    public void setFriends(ArrayList<String> homo) 
+    {
+        friendsIDs = new ArrayList<>(homo) ; 
     }
 
     public void setGenres(HashMap<String, String> genres) 
@@ -96,23 +101,25 @@ public class User {
         return friendsIDs;
     }
 
-    public void addFriendID(String userID)
-    {
-        friendsIDs.add(userID);
-    }
+
 
     public void addFriend(String friendID)
     {
-        fb.add(userID, "Friends", friendID);
+        if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
+        {
+            System.out.println("friend added:" + friendID);
+            fb.add(userID, "Friends", friendID);
+            friendsIDs.add(friendID);
+        }
     }
 
     public void addMovie(String movieId) 
     {
-        fb.add(userID, "Fav_MovieIDs", movieId);
         if (!favMoviesIDs.contains(movieId)) 
         {
-            favMoviesIDs.add(movieId); 
+            System.out.println("Movie added:" + movieId);
             fb.add(userID, "Fav_MovieIDs", movieId);
+            favMoviesIDs.add(movieId);
         }
     }
 
@@ -212,7 +219,6 @@ public class User {
                  !favMoviesIDs.contains(""+m.takeId())) 
             recommendedMovies.add(""+m.takeId()) ;
         }
-        System.out.println(recommendedMovies);
     }
 
     public void addForRec(String id) 

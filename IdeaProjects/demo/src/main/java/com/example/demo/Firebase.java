@@ -15,6 +15,7 @@ public class Firebase {
     private boolean accExists = false;
     ArrayList<User> users ;
     ArrayList<Movie> movies ;
+    ArrayList<String> friendsIDs ;
     private static ArrayList<String> DATA ;
     DatabaseReference films ;
     private int userID;
@@ -24,7 +25,6 @@ public class Firebase {
     private FirebaseDataCallback dataCallback;
     DatabaseReference userDB;
     DatabaseReference chatDB;
-    private ArrayList<String> userIDs ;
     Query userQ ;
     private static String id ; 
     public Firebase()
@@ -44,6 +44,7 @@ public class Firebase {
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
         users = new ArrayList<>();
         movies = new ArrayList<>();
+        friendsIDs = new ArrayList<>() ;
         this.dataCallback = callback;
         //takeIDS("Fav_MovieIDs", id) ;
         takeAllData();
@@ -109,15 +110,21 @@ public class Firebase {
         });
     }
 
-    public void takeFriends()
+    public void takeFriends(String id)
     {
         userDB.child(id).child("Friends").addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                friendsIDs.clear();
                 for (DataSnapshot homie : snapshot.getChildren()) 
                 {
-                    
+                    friendsIDs.add(""+homie.getKey()) ;
+                }
+
+                if (dataCallback != null) 
+                {
+                    dataCallback.onFriendsLoaded(friendsIDs);
                 }
             }
 
@@ -256,6 +263,8 @@ public class Firebase {
         if (dataCallback != null) 
         {
             dataCallback.onUserLoaded(u);
+            takeFriends(id);
+            u.setFriends(friendsIDs);
         }
     }
 

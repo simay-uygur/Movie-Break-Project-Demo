@@ -309,7 +309,15 @@ public class Firebase {
         DatabaseReference user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ;
         switch(path)
         {
-            case "Friends" : DatabaseReference friend = userDB.child(id).child(path) ; friend.child(userId).setValueAsync("") ; break ;
+            case "Friends" : 
+            DatabaseReference friend = userDB.child(id).child(path) ; friend.child(userId).setValueAsync("") ; 
+            if (Integer.parseInt(id) > Integer.parseInt(userId)) 
+            {
+                DatabaseReference chat = chatDB.child(userId+id) ; 
+                chat.setValueAsync(userId) ; 
+                chat.setValueAsync(id); 
+            }
+            break ;
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
         }
     }

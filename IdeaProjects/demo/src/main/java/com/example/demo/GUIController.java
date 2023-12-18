@@ -1,5 +1,7 @@
 package com.example.demo;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+
 import com.example.demo.Firebase.FirebaseDataCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,6 +54,7 @@ public class GUIController {
     private Stage stage;
     private Parent root;
     private static ArrayList<String> friendsIDs ;
+    private static ArrayList<String> ChatIDs;
     private static ArrayList<String> favMoviesIDs ;
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
@@ -83,7 +86,8 @@ public class GUIController {
             friendsIDs = friendIDs ;
         }
     });
-    
+    @FXML private Button friend1, friend2, friend3, friend4, friend5;
+    @FXML private TextArea chatText1;
     @FXML private ComboBox<String> menu;
     @FXML private Button insert;
     @FXML private Button backIn;
@@ -159,6 +163,7 @@ public class GUIController {
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
+        // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<Movie> searchResults = moviesStore.stream()
             .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
             .collect(Collectors.toList());
@@ -810,6 +815,7 @@ public class GUIController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+        System.out.println();
     }
 
     public void openChat(ActionEvent e) throws IOException 
@@ -820,6 +826,7 @@ public class GUIController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+        System.out.println(users);
     }
 
     public void initFriends(MouseEvent e) throws IOException 
@@ -928,6 +935,25 @@ public class GUIController {
     public void callSearchComboBox(Event e){
         if (menu.getItems().isEmpty()) {
             menu.getItems().addAll("Friend Search", "Movie Search", "Session Search");
+        }
+    }
+    public void displayFriends(ActionEvent e){
+        int bound = Math.min(friendsIDs.size(), 5);
+        for (int i = 0; i < bound; i++) {
+            for (int j = 0; j < users.size(); j++) {
+                if(friendsIDs.get(i) == users.get(j).getID()) {
+                    friend1.setText(users.get(j).getName());
+                }
+                System.out.println(users.get(j).getID().getClass());
+                System.out.println(friendsIDs.get(i).getClass());
+                if(i == 0 && friendsIDs.get(i) == users.get(j).getID()) {
+                    friend1.setText(users.get(j).getName());
+                }
+                if(i == 1 && friendsIDs.get(i) == users.get(j).getID()) friend2.setText(users.get(j).getName());
+                if(i == 2 && friendsIDs.get(i) == users.get(j).getID()) friend3.setText(users.get(j).getName());
+                if(i == 3 && friendsIDs.get(i) == users.get(j).getID()) friend4.setText(users.get(j).getName());
+                if(i == 4 && friendsIDs.get(i) == users.get(j).getID()) friend5.setText(users.get(j).getName());
+            }
         }
     }
 }

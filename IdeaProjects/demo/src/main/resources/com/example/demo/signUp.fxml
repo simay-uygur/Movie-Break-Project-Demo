@@ -34,7 +34,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <PasswordField fx:id="pass" alignment="TOP_CENTER" layoutX="22.0" layoutY="227.0" prefHeight="30.0" prefWidth="256.0" promptText="Password" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2; -fx-border-color: #a6032e;">
+            <PasswordField fx:id="pass" alignment="TOP_CENTER" layoutX="22.0" layoutY="200.0" prefHeight="30.0" prefWidth="256.0" promptText="Password" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2; -fx-border-color: #a6032e;">
                <effect>
                   <DropShadow height="30.0" radius="14.5" spread="0.6" width="30.0">
                      <color>
@@ -42,7 +42,7 @@
                      </color>
                   </DropShadow>
                </effect></PasswordField>
-            <TextField fx:id="userN" alignment="TOP_CENTER" layoutX="22.0" layoutY="170.0" prefHeight="25.0" prefWidth="256.0" promptText="Username" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 2; -fx-border-color: #a6032e;">
+            <TextField fx:id="userN" alignment="TOP_CENTER" layoutX="22.0" layoutY="140.0" prefHeight="25.0" prefWidth="256.0" promptText="Username" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 2; -fx-border-color: #a6032e;">
                <effect>
                   <DropShadow height="30.0" radius="14.5" spread="0.6" width="30.0">
                      <color>
@@ -50,7 +50,7 @@
                      </color>
                   </DropShadow>
                </effect></TextField>
-            <Button fx:id="signUp" layoutX="101.0" layoutY="298.0" mnemonicParsing="false" onAction="#insert" prefHeight="51.0" prefWidth="98.0" style="-fx-background-color: #D9597A; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="Sign Up" textFill="WHITE">
+            <Button fx:id="signUp" layoutX="101.0" layoutY="269.0" mnemonicParsing="false" onAction="#insert" prefHeight="51.0" prefWidth="98.0" style="-fx-background-color: #D9597A; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="Sign Up" textFill="WHITE">
                <font>
                   <Font name="Bookman Old Style Bold" size="18.0" />
                </font>
@@ -62,7 +62,12 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Text layoutX="48.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="10.0" text="Registration" textAlignment="CENTER" wrappingWidth="204.53668212890625">
+            <Text layoutX="48.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="10.0" text="Registration" textAlignment="CENTER" wrappingWidth="204.53668212890625">
+               <font>
+                  <Font name="Cambria" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="message" layoutX="7.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="10.0" textAlignment="CENTER" wrappingWidth="286.1367492675781">
                <font>
                   <Font name="Cambria" size="36.0" />
                </font>

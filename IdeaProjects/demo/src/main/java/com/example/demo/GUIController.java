@@ -469,10 +469,6 @@ public class GUIController {
             currentUser.setFavMovies(favMoviesIDs);
             
             currentUser.setFavGenres();
-            System.out.println("favee"+currentUser.getFavMoviesIDs());
-            System.out.println( currentUser.getFavGenres());
-            System.out.println( currentUser.recommendedFriendsIDs);
-        //currentUser.findRecommendedFriends();
             if(currentUser.getFavMoviesIDs().isEmpty()){
                 movieIDs = currentUser.recomIds();
             }
@@ -617,6 +613,7 @@ public class GUIController {
     
     public void takeUserID(Object value) {
         id = Integer.parseInt("" + value);
+        System.out.println(id);
         if (fb.userPush(userN.getText(), pass.getText(), id)) {
             message.setText("You are signed up");
             message.setFill(Color.rgb(34, 139, 34));
@@ -843,8 +840,9 @@ public class GUIController {
                 }
             }
             friendsIndex -= c ;
+            System.out.println(friendsIndex);
         }
-        else if (e.getSource() == right)
+        else 
         {
             int c = 0 ;
             for (int i = friendsIndex ; i < users.size() && c < 5 ; i++) 
@@ -860,6 +858,7 @@ public class GUIController {
                 }
             }
             friendsIndex += c ;
+            System.out.println(friendsIndex);
         }
     }
 

@@ -55,7 +55,7 @@ public class GUIController {
     private static ArrayList<String> favMoviesIDs ;
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
-    private static int disp = 0 ;
+    private  int disp = 0 ;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
@@ -150,10 +150,7 @@ public class GUIController {
 
     String[] k = new String[5];
     String[] l = new String[5];
-    //String[] k1 = new String[5];
-    //String[] l1 = new String[5];
-    //String[] k2 = new String[5];
-    //String[] l2 = new String[5];
+
 
     private String[] movieIDs = new String[5];
     //private static String[] movieIDs = new String[5];
@@ -266,14 +263,12 @@ public class GUIController {
                 userIds.add(""+user.getID());
             }
         }
-        //System.out.println("user ids     " +userIds);
         if(userIds.size() ==0){
             userIds.add("000000");
         }
         while (userIds.size()%10 !=0 ) {
             userIds.add("000000");
         }
-        //System.out.println(userIds);
         for(int a=0; a<10; a++){
             if(a<5){
                 k[a] = userIds.get(a);
@@ -402,15 +397,12 @@ public class GUIController {
     } 
 
     public void helperChangeUser1(String[] ids) {
-        /*System.out.println( "helper one is entered ");
-        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));*/
+
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
         String title = "";
         for (int i = 0; i < ids.length; i++) {
             cUtitle = loadUserName(ids[i]);
-            System.out.println("cutitle"+ cUtitle.toString());
             title = cUtitle.join();
-            System.out.println(title);
             if (i == 0) {
                 label1.setText(title);
             } else if (i == 1) {
@@ -428,8 +420,7 @@ public class GUIController {
     public void helperChangeUser2(String[] ids) {
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
         String title = "";
-        /*System.out.println( "helper two is entered ");
-        System.out.println( "ids that entered in the method are "+ Arrays.toString(ids));*/
+
         for (int i = 0; i < ids.length; i++) {
             cUtitle = loadUserName(ids[i]);
             title = cUtitle.join();
@@ -470,6 +461,7 @@ public class GUIController {
         helperChangeMovie1(movieIDs);
     }
     public void displayImage(){
+        
         if (disp == 0) 
         {
             currentUser.setFavMovies(favMoviesIDs);
@@ -497,10 +489,9 @@ public class GUIController {
                 }
             }
             
-            //updateSearchids();
             helperChangeMovie1(movieIDs);
             disp++;
-            System.out.println(currentUser.recommendedFriendsIDs);
+            
         }
 
     }
@@ -599,7 +590,6 @@ public class GUIController {
     }
     public void addMovie(ActionEvent e) 
     {
-        //System.out.println("user "+currentUser.getID());
         if (e.getSource() == addToFav0) 
         {
             System.out.println(movieIDs[0]); 
@@ -753,6 +743,11 @@ public class GUIController {
 
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
+        currentUser.setFavMovies(favMoviesIDs);
+        System.out.println("favee"+currentUser.getFavMoviesIDs());
+        currentUser.setFavGenres();
+        currentUser.findRecommendedFriends();
+        System.out.println("ff"+ currentUser.getFriendsIDs());
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);

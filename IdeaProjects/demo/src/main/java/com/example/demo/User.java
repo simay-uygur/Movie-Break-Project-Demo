@@ -65,8 +65,8 @@ public class User {
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
-        //setFavGenres();
     }
+
 
 
     public void initRefs()

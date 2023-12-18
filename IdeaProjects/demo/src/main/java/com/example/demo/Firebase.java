@@ -110,21 +110,21 @@ public class Firebase {
         });
     }
 
-    public void takeFriends()
+    public void takeFriends(String id)
     {
         userDB.child(id).child("Friends").addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                friendsIDs.clear();
                 for (DataSnapshot homie : snapshot.getChildren()) 
                 {
                     friendsIDs.add(""+homie.getKey()) ;
                 }
-                System.out.println(friendsIDs);
 
                 if (dataCallback != null) 
                 {
-                    
+                    dataCallback.onFriendsLoaded(friendsIDs);
                 }
             }
 
@@ -263,6 +263,8 @@ public class Firebase {
         if (dataCallback != null) 
         {
             dataCallback.onUserLoaded(u);
+            takeFriends(id);
+            u.setFriends(friendsIDs);
         }
     }
 

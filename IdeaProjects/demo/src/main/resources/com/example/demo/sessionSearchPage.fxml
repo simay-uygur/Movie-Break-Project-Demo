@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,26 +14,41 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <Pane layoutX="530.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+      <Pane layoutX="530.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
             <TextField layoutX="98.0" layoutY="11.0" prefHeight="77.0" prefWidth="795.0" promptText="// Search sessions by movie names" style="-fx-border-radius: 30; -fx-background-radius: 30;">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Bookman Old Style" size="30.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="1135.0" layoutY="14.0" prefHeight="70.0" prefWidth="392.0" text="Session Search">
+            <Label alignment="CENTER" layoutX="1098.0" layoutY="14.0" prefHeight="70.0" prefWidth="392.0" style="-fx-background-color: pink;" text="Session Search">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Bookman Old Style" size="36.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Label>
-            <ImageView disable="true" fitHeight="60.0" fitWidth="60.0" layoutX="29.0" layoutY="19.0">
+            <ImageView disable="true" fitHeight="60.0" fitWidth="60.0" layoutX="24.0" layoutY="19.0">
                <image>
                   <Image url="@images/search_symbol.png" />
                </image>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.3" width="5.0">
+                     <color>
+                        <Color red="1.0" green="0.7529411911964417" blue="0.7960784435272217" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </ImageView>
          </children>
       </Pane>
@@ -56,225 +72,505 @@
             <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="Movie Name: ">
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: ">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Label>
-            <Label prefWidth="529.0" text="Movie Name: " GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="Movie Name: " GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefWidth="529.0" text="Movie Name: " GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="Movie Name: " GridPane.rowIndex="4">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefWidth="529.0" text="Movie Name: " GridPane.rowIndex="5">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="Movie Name: " GridPane.rowIndex="6">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefWidth="529.0" text="Movie Name: " GridPane.rowIndex="7">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="Movie Name: " GridPane.rowIndex="8">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefWidth="529.0" text="Movie Name: " GridPane.rowIndex="9">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="DATE: " GridPane.columnIndex="1">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="DATE: " GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="QUOTA: " GridPane.columnIndex="2">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="4">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="7">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #FFC1C2;" text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="8">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label text="QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="9">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFC1C2;" GridPane.columnIndex="3">
+            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: PİNK;" GridPane.columnIndex="3">
                <top>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" BorderPane.alignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="22.0" />
+                        <Font name="Bookman Old Style Bold" size="22.0" />
                      </font>
+                     <effect>
+                        <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                           <color>
+                              <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
                </top>
             </BorderPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Button>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFC1C2;" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <top>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" BorderPane.alignment="CENTER">
+               <bottom>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="22.0" />
+                        <Font name="Bookman Old Style Bold" size="22.0" />
                      </font>
+                     <effect>
+                        <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                           <color>
+                              <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
-               </top>
+               </bottom>
             </BorderPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" GridPane.columnIndex="3" GridPane.rowIndex="3">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Button>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFC1C2;" GridPane.columnIndex="3" GridPane.rowIndex="4">
-               <top>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" BorderPane.alignment="CENTER">
+               <center>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="22.0" />
+                        <Font name="Bookman Old Style Bold" size="22.0" />
                      </font>
+                     <effect>
+                        <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                           <color>
+                              <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
-               </top>
+               </center>
             </BorderPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" GridPane.columnIndex="3" GridPane.rowIndex="5">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Button>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFC1C2;" GridPane.columnIndex="3" GridPane.rowIndex="6">
-               <top>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" BorderPane.alignment="CENTER">
+               <center>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="22.0" />
+                        <Font name="Bookman Old Style Bold" size="22.0" />
                      </font>
+                     <effect>
+                        <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                           <color>
+                              <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
-               </top>
+               </center>
             </BorderPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" GridPane.columnIndex="3" GridPane.rowIndex="7">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Button>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFC1C2;" GridPane.columnIndex="3" GridPane.rowIndex="8">
-               <top>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" BorderPane.alignment="CENTER">
+               <center>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="22.0" />
+                        <Font name="Bookman Old Style Bold" size="22.0" />
                      </font>
+                     <effect>
+                        <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                           <color>
+                              <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
-               </top>
+               </center>
             </BorderPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="JOIN" GridPane.columnIndex="3" GridPane.rowIndex="9">
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1">
                <font>
-                  <Font size="22.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" DATE: " GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="9">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" Movie Name: " GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" text=" QUOTA: " GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="9">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" style="-fx-background-color: D9597A;" text="JOIN" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="7">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" width="3.0">
+                     <color>
+                        <Color red="0.6470588445663452" green="0.007843137718737125" blue="0.1764705926179886" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Button>
          </children>
       </GridPane>

@@ -4,12 +4,15 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
@@ -22,11 +25,18 @@
                </image>
             </ImageView>
          </graphic>
+         <effect>
+            <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+               <color>
+                  <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+               </color>
+            </DropShadow>
+         </effect>
       </Button>
-      <GridPane layoutX="299.0" layoutY="100.0" prefHeight="631.0" prefWidth="947.0">
+      <GridPane alignment="CENTER" layoutX="282.0" layoutY="188.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="1000.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="488.8" minWidth="10.0" prefWidth="484.0000732421875" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="533.6000488281251" minWidth="10.0" prefWidth="515.1999267578124" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -35,64 +45,142 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="54.0" prefWidth="481.0" text="Determine the Quota: " GridPane.rowIndex="3">
+            <Label alignment="TOP_RIGHT" prefHeight="35.0" prefWidth="477.0" text="Determine the Quota:  " GridPane.rowIndex="3">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Bookman Old Style Bold" size="24.0" />
                </font>
             </Label>
-            <DatePicker editable="false" prefHeight="56.0" prefWidth="223.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <DatePicker editable="false" prefHeight="56.0" prefWidth="227.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Label prefHeight="35.0" prefWidth="139.0" text="Start Date:" GridPane.rowIndex="1">
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="58.0" prefWidth="439.0" text="Movie Name:  " textFill="WHITE" GridPane.halignment="CENTER">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Bookman Old Style Bold" size="40.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="2.0" offsetY="2.0" radius="2.0" spread="0.5" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Label>
-            <Label prefHeight="35.0" prefWidth="138.0" text="Finish Date:" GridPane.rowIndex="2">
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutY="59.0" prefHeight="35.0" prefWidth="184.0" text=" Start Date:   ">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <DatePicker editable="false" layoutX="180.0" layoutY="50.0" prefHeight="50.0" prefWidth="250.0">
+                     <effect>
+                        <DropShadow height="30.0" radius="14.5" width="30.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </DatePicker>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Label layoutY="32.0" prefHeight="35.0" prefWidth="189.0" text=" Finish Date:  ">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <DatePicker editable="false" layoutX="180.0" layoutY="26.0" prefHeight="50.0" prefWidth="250.0">
+                     <effect>
+                        <DropShadow height="30.0" radius="14.5" width="30.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </DatePicker>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutY="58.0" prefHeight="35.0" prefWidth="171.0" text=" Start Hour:">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="180.0" layoutY="50.0" prefHeight="50.0" prefWidth="250.0" promptText="// Type hour like 10.15">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                     <effect>
+                        <DropShadow height="30.0" radius="14.5" width="30.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <TextField layoutX="180.0" layoutY="26.0" prefHeight="50.0" prefWidth="250.0" promptText="// Type hour like 10.15">
+                     <font>
+                        <Font name="Bookman Old Style" size="18.0" />
+                     </font>
+                     <effect>
+                        <DropShadow height="30.0" radius="14.5" width="30.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+                  <Label layoutX="2.0" layoutY="35.0" prefHeight="35.0" prefWidth="189.0" text=" Finish Hour:">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <TextField layoutY="22.0" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="150.0" prefHeight="50.0" prefWidth="150.0">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <effect>
+                        <DropShadow height="30.0" radius="14.5" width="30.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+               </children>
+            </Pane>
+            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" GridPane.columnIndex="1">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Bookman Old Style" size="24.0" />
                </font>
-            </Label>
-            <TextField prefHeight="88.0" prefWidth="474.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </TextField>
-            <Label prefHeight="35.0" prefWidth="139.0" text="Start Hour:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label prefHeight="35.0" prefWidth="147.0" text="Finish Hour:" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label prefHeight="58.0" prefWidth="250.0" text="Movie Name:" GridPane.halignment="CENTER">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
-            <Label prefHeight="58.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-               <font>
-                  <Font size="40.0" />
-               </font>
+               <effect>
+                  <DropShadow height="4.0" offsetX="2.0" offsetY="2.0" radius="1.5" width="4.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Label>
          </children>
       </GridPane>
-      <TextField layoutX="910.0" layoutY="474.0" prefHeight="44.0" prefWidth="336.0" promptText="//Type hour as 10.15">
+      <Button layoutX="1190.0" layoutY="697.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="258.0" style="-fx-background-color: D9597A;" text="Create Sesion" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="Bookman Old Style Bold" size="30.0" />
          </font>
-      </TextField>
-      <TextField layoutX="910.0" layoutY="316.0" prefHeight="44.0" prefWidth="336.0" promptText="//Type hour as 10.15">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Button layoutX="1317.0" layoutY="748.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" text="Create Sesion">
-         <font>
-            <Font size="22.0" />
-         </font>
+         <effect>
+            <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+               <color>
+                  <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+               </color>
+            </DropShadow>
+         </effect>
       </Button>
    </children>
 </AnchorPane>

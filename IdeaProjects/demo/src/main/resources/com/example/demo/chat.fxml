@@ -22,7 +22,7 @@
    <children>
       <Pane layoutY="97.0" prefHeight="767.0" prefWidth="350.0" style="-fx-background-color: #D9597A;">
          <children>
-            <Button fx:id="chat0" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend1" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#displayFriends" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -73,7 +73,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button fx:id="chat1" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend2" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -92,7 +92,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="chat2" layoutX="20.0" layoutY="320.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend3" layoutX="20.0" layoutY="320.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -111,7 +111,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="chat3" layoutX="20.0" layoutY="410.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend4" layoutX="20.0" layoutY="410.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -130,7 +130,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="chat4" layoutX="20.0" layoutY="500.0" mnemonicParsing="false" onAction="#openFriendChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+            <Button fx:id="friend5" layoutX="20.0" layoutY="500.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -231,7 +231,7 @@
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TextArea fx:id="chatText1" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>

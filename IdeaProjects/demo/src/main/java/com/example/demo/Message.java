@@ -10,7 +10,7 @@ public class Message {
     LocalTime time;
     String userID;
 
-    public Message (String text, String userID, LocalTime time)
+    public Message (String text, String userID)
     {
         this.text = text;
         this.userID = userID;

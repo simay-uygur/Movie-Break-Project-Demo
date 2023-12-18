@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import java.util.ArrayList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -7,25 +6,27 @@ import javafx.scene.control.TextArea;
 public class Chat {
     Controller controller;
     String chatID;
-    ArrayList<User> users;
+    ArrayList<String> userIDs;
     ArrayList<Message> messages;
-    public Chat (ArrayList<Message> messages, String ID, ArrayList<User> users)
+
+    public Chat (ArrayList<Message> messages, String ID, ArrayList<String> users)
     {
         this.chatID = ID;
         this.messages = messages;
-        this.users = users;
-        for (int i = 0; i < this.users.size(); i++)
+        this.userIDs = users;
+        for (int i = 0; i < users.size(); i++)
         {
-            this.users.get(i).getChatIDs().add(ID);
+            userIDs.add(users.get(i));
         }
     }
     public String getID()
     {
         return this.chatID;
     }
-    public ArrayList<User> getUsers()
+
+    public ArrayList<String> getUsers()
     {
-        return this.users;
+        return this.userIDs;
     }
     public ArrayList<Message> getMessages()
     {

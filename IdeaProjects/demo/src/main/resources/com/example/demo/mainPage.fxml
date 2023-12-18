@@ -337,7 +337,7 @@
                            <children>
                               <Pane maxWidth="300.0" minWidth="201.0" prefHeight="170.0" prefWidth="294.0">
                                  <children>
-                                    <Button fx:id="b1" alignment="TOP_LEFT" layoutX="50.0" maxWidth="50.0" mnemonicParsing="false" prefWidth="50.0" style="-fx-background-color: #D9597A;">
+                                    <Button fx:id="b1" alignment="TOP_LEFT" layoutX="50.0" maxWidth="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" prefWidth="50.0" style="-fx-background-color: #D9597A;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -356,7 +356,7 @@
                                  </children></Pane>
                               <Pane maxWidth="362.0" minWidth="238.0" prefHeight="170.0" prefWidth="277.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                  <children>
-                                    <Button alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" style="-fx-background-color: #A6032E;">
+                                    <Button fx:id="b2" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" style="-fx-background-color: #A6032E;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -375,7 +375,7 @@
                                  </children></Pane>
                               <Pane maxWidth="300.0" minWidth="182.0" prefHeight="170.0" prefWidth="182.0" GridPane.columnIndex="2">
                                  <children>
-                                    <Button alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" style="-fx-background-color: #D9597A;">
+                                    <Button fx:id="b3" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" style="-fx-background-color: #D9597A;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -394,7 +394,7 @@
                                  </children></Pane>
                               <Pane maxWidth="489.0" minWidth="239.0" prefHeight="170.0" prefWidth="489.0" GridPane.columnIndex="3">
                                  <children>
-                                    <Button alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" style="-fx-background-color: #A6032E;">
+                                    <Button fx:id="b4" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" style="-fx-background-color: #A6032E;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -413,7 +413,7 @@
                                  </children></Pane>
                               <Pane maxWidth="300.0" minWidth="243.0" prefHeight="170.0" prefWidth="243.0" GridPane.columnIndex="4">
                                  <children>
-                                    <Button alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" style="-fx-background-color: #D9597A;">
+                                    <Button fx:id="b5" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" style="-fx-background-color: #D9597A;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -430,7 +430,7 @@
                                        </effect>
                                     </Button>
                                  </children></Pane>
-                              <Label fx:id="label11" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
+                              <Label fx:id="label6" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Bookman Old Style Bold" size="22.0" />
                                  </font>
@@ -442,7 +442,7 @@
                                     </DropShadow>
                                  </effect>
                               </Label>
-                              <Label fx:id="label111" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                              <Label fx:id="label10" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Bookman Old Style Bold" size="22.0" />
                                  </font>
@@ -454,7 +454,7 @@
                                     </DropShadow>
                                  </effect>
                               </Label>
-                              <Label fx:id="label112" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label fx:id="label8" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Bookman Old Style Bold" size="22.0" />
                                  </font>
@@ -466,7 +466,7 @@
                                     </DropShadow>
                                  </effect>
                               </Label>
-                              <Label fx:id="label42" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label fx:id="label7" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Bookman Old Style Bold" size="22.0" />
                                  </font>
@@ -478,7 +478,7 @@
                                     </DropShadow>
                                  </effect>
                               </Label>
-                              <Label fx:id="label421" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                              <Label fx:id="label9" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="280.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Bookman Old Style Bold" size="22.0" />
                                  </font>

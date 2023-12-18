@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,11 +13,46 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
+      <Pane layoutY="97.0" prefHeight="94.0" prefWidth="1536.0" style="-fx-background-color: #D9597A;">
+         <children>
+            <TextField fx:id="userSearchTextField" layoutX="97.0" layoutY="11.0" onAction="#handleUserSearch" prefHeight="77.0" prefWidth="828.0" promptText="// Search users by their names" style="-fx-border-radius: 30; -fx-background-radius: 30;">
+               <font>
+                  <Font name="Bookman Old Style" size="30.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="1098.0" layoutY="10.0" prefHeight="70.0" prefWidth="392.0" style="-fx-background-color: pink;" text="User Search">
+               <font>
+                  <Font name="Bookman Old Style" size="36.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Line endX="1367.0" endY="6.0" layoutX="169.0" layoutY="88.0" startX="-177.00001525878906" startY="6.0" />
+            <ImageView disable="true" fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="17.0">
+               <image>
+                  <Image url="@images/search_symbol.png" />
+               </image>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.3" width="5.0">
+                     <color>
+                        <Color red="1.0" green="0.7529411911964417" blue="0.7960784435272217" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ImageView>
+         </children>
+      </Pane>
       <Button layoutX="1453.0" layoutY="786.0" mnemonicParsing="false" onAction="#moveForwardUserSearch">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
@@ -35,7 +71,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <GridPane hgap="20.0" layoutX="24.0" layoutY="204.0" prefHeight="566.0" prefWidth="1495.0" vgap="10.0">
+      <GridPane hgap="20.0" layoutX="24.0" layoutY="204.0" prefHeight="566.0" prefWidth="1495.0" vgap="10.0" AnchorPane.bottomAnchor="90.0" AnchorPane.topAnchor="220.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -124,30 +160,7 @@
                      </graphic>
                   </Button>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Pane layoutX="-16.0" layoutY="-98.0" prefHeight="94.0" prefWidth="1520.0">
-                     <children>
-                        <TextField fx:id="userSearchTextField" layoutX="80.0" layoutY="11.0" onAction="#handleUserSearch" prefHeight="77.0" prefWidth="828.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </TextField>
-                        <Label alignment="CENTER" layoutX="1075.0" layoutY="15.0" prefHeight="70.0" prefWidth="431.0" text="User Search">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                        <ImageView disable="true" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="20.0">
-                           <image>
-                              <Image url="@images/search_symbol.png" />
-                           </image>
-                        </ImageView>
-                        <Line endX="1359.0" endY="6.0" layoutX="169.0" layoutY="88.0" startX="-177.00001525878906" startY="6.0" />
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                   <Button fx:id="b2" mnemonicParsing="false">

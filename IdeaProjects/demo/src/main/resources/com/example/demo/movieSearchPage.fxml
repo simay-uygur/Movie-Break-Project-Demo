@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,33 +17,48 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <Pane layoutX="530.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+      <Pane layoutX="530.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
-            <TextField fx:id="movieSearchTextField" layoutX="96.0" layoutY="11.0" onAction="#handleMovieSearch" prefHeight="77.0" prefWidth="797.0" style="-fx-border-radius: 30; -fx-background-radius: 30;">
+            <TextField fx:id="movieSearchTextField" layoutX="96.0" layoutY="11.0" onAction="#handleMovieSearch" prefHeight="77.0" prefWidth="797.0" promptText="// Search movies by their titles" style="-fx-border-radius: 30; -fx-background-radius: 30;">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Bookman Old Style" size="30.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="1135.0" layoutY="14.0" prefHeight="70.0" prefWidth="392.0" text="Movie Search">
+            <Label alignment="CENTER" layoutX="1098.0" layoutY="14.0" prefHeight="70.0" prefWidth="392.0" style="-fx-background-color: pink;" text="Movie Search">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Bookman Old Style" size="36.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Label>
-            <ImageView disable="true" fitHeight="60.0" fitWidth="60.0" layoutX="23.0" layoutY="20.0">
+            <Line endX="1213.0" endY="10.400009155273438" layoutX="323.0" layoutY="88.0" startX="-323.0" startY="10.400009155273438" />
+            <Line endX="1412.0" endY="4.57763690064894E-6" layoutX="124.0" startX="-124.00001525878906" startY="4.57763690064894E-6" />
+            <ImageView disable="true" fitHeight="60.0" fitWidth="60.0" layoutX="22.0" layoutY="21.0">
                <image>
                   <Image url="@images/search_symbol.png" />
                </image>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.3" width="5.0">
+                     <color>
+                        <Color red="1.0" green="0.7529411911964417" blue="0.7960784435272217" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </ImageView>
-            <Line endX="1213.0" endY="10.400009155273438" layoutX="323.0" layoutY="88.0" startX="-323.0" startY="10.400009155273438" />
-            <Line endX="1412.0" endY="4.57763690064894E-6" layoutX="124.0" startX="-124.00001525878906" startY="4.57763690064894E-6" />
          </children>
       </Pane>
-      <GridPane hgap="20.0" layoutX="573.0" layoutY="194.4" prefHeight="566.0" prefWidth="1536.0" vgap="10.0" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="194.0">
+      <GridPane hgap="20.0" layoutX="573.0" layoutY="212.0" prefHeight="548.0" prefWidth="1520.0" vgap="10.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="220.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

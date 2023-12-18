@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Welcome extends Application {
 
@@ -35,12 +34,7 @@ public class Welcome extends Application {
         }
     }
     public static void main(String[] args) {
-        
-        //GUIController g = new GUIController();
-        
-        //System.out.println(g.performSearch(k).toString());
         initialize();
         launch();
-
     }
 }

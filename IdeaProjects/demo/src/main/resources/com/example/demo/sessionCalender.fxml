@@ -2,8 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,11 +13,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <GridPane hgap="15.0" layoutX="26.0" layoutY="158.0" prefHeight="598.0" prefWidth="1486.0" vgap="15.0">
+      <GridPane hgap="15.0" layoutX="30.4" layoutY="204.0" prefHeight="598.0" prefWidth="1486.0" vgap="15.0" AnchorPane.leftAnchor="30.4" AnchorPane.rightAnchor="30.40000000000009">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -35,128 +38,265 @@
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" text="go to session" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+               <effect>
+                  <DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
                <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
+                  <Font size="14.0" />
+               </font></Button>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="22.0" />
-               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
                <font>
                   <Font size="22.0" />
                </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
-               <font>
-                  <Font size="22.0" />
-               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5">
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
             <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <font>
                   <Font size="22.0" />
                </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </TextArea>
-            <Button mnemonicParsing="false" text="go to session" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-            <Button mnemonicParsing="false" text="go to session" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextArea>
          </children>
       </GridPane>
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
@@ -228,5 +368,29 @@
             </Pane>
          </items>
       </ToolBar>
+      <Label alignment="CENTER" layoutX="70.0" layoutY="160.0" prefHeight="34.0" prefWidth="110.0" style="-fx-background-color: d9597a;" text="Today!" textFill="WHITE">
+         <font>
+            <Font name="Bookman Old Style" size="24.0" />
+         </font>
+         <effect>
+            <DropShadow height="5.0" offsetX="3.0" offsetY="3.0" radius="2.0" width="5.0">
+               <color>
+                  <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <Label alignment="CENTER" layoutX="579.0" layoutY="111.0" prefHeight="58.0" prefWidth="387.0" style="-fx-background-color: A6032E;" text="Your Schedule" textFill="WHITE">
+         <font>
+            <Font name="Bookman Old Style Bold" size="36.0" />
+         </font>
+         <effect>
+            <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
+               <color>
+                  <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

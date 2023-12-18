@@ -20,16 +20,8 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <ImageView fitHeight="864.0" fitWidth="1536.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/backr.jpg" />
-         </image>
-         <effect>
-            <ColorAdjust brightness="-0.3" />
-         </effect>
-      </ImageView>
       <Pane layoutY="99.0" prefHeight="135.0" prefWidth="1536.0">
          <children>
             <Pane layoutY="-1.0" prefHeight="141.0" prefWidth="1536.0" style="-fx-background-color: #D9597A;">
@@ -52,6 +44,13 @@
                      </image>
                   </ImageView>
                </graphic>
+               <effect>
+                  <DropShadow height="5.0" offsetX="1.0" offsetY="1.0" radius="2.0" spread="0.6" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Label>
             <Button alignment="CENTER_RIGHT" layoutX="986.0" layoutY="96.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="43.0" prefWidth="181.0" text="Favorite Films" textAlignment="RIGHT">
                <font>

@@ -601,6 +601,7 @@ public class GUIController {
     
     public void addMovie(ActionEvent e) 
     {
+        //System.out.println("user "+currentUser.getID());
         if (e.getSource() == addToFav0) 
         {
             System.out.println(movieIDs[0]); 

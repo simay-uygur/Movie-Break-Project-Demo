@@ -29,6 +29,7 @@ public class User {
     private static ArrayList<String> recommendedMovies ; 
     public User(String userName, String password, String userID , Firebase fb)
     {
+        friendsIDs = new ArrayList<>();
         favMoviesIDs = new ArrayList<>() ; 
         recommendedMovies = new ArrayList<>() ;
         setFirebase(fb);
@@ -100,7 +101,7 @@ public class User {
 
     public void addFriend(String friendID)
     {
-        if (!friendsIDs.contains(friendID)) 
+        if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
         {
             System.out.println("friend added:" + friendID);
             fb.add(userID, "Friends", friendID);

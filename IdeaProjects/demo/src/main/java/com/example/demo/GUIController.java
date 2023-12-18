@@ -35,6 +35,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
+import java.security.cert.X509CRL;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
@@ -131,12 +132,14 @@ public class GUIController {
     @FXML private Button b9;
     @FXML private Button b10;   
 
+    @FXML private MenuItem addToFav0,addToFav1,addToFav2,addToFav3,addToFav4,addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
+
     private List<User> usersStore; 
     private ObservableList<String> movieIds = FXCollections.observableArrayList();   
     private ObservableList<String> userIds = FXCollections.observableArrayList();  
     private String user;
     private int index = 0;
-    @FXML private MenuItem addToFav0 , addToFav1 , addToFav2 , addToFav3 , addToFav4 ;
+
     private int smcounter = 0;
     private int sucounter = 0;
 
@@ -144,10 +147,7 @@ public class GUIController {
 
     String[] x = new String[5];
     String[] y = new String[5];
-    String[] x1 = new String[5];
-    String[] y1 = new String[5];
-    String[] x2 = new String[5];
-    String[] y2 = new String[5];
+
 
     String[] k = new String[5];
     String[] l = new String[5];
@@ -204,20 +204,20 @@ public class GUIController {
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < movieIds.size()) {
                     if (a < 5) {
-                        x2[a] = movieIds.get(startIndex + a);
+                        x[a] = movieIds.get(startIndex + a);
                     } else {
-                        y2[a - 5] = movieIds.get(startIndex + a);
+                        y[a - 5] = movieIds.get(startIndex + a);
                     }
                 } else {
                     if (a < 5) {
-                        x2[a] = "0000";
+                        x[a] = "0000";
                     } else {
-                        y2[a - 5] = "0000";
+                        y[a - 5] = "0000";
                     }
                 }
             }
-            helperChangeMovie1(x2);
-            helperChangeMovie2(y2);
+            helperChangeMovie1(x);
+            helperChangeMovie2(y);
         }
     }
 
@@ -232,21 +232,21 @@ public class GUIController {
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < movieIds.size()) {
                     if (a < 5) {
-                        x1[a] = movieIds.get(startIndex + a);
+                        x[a] = movieIds.get(startIndex + a);
                     } else {
-                        y1[a - 5] = movieIds.get(startIndex + a);
+                        y[a - 5] = movieIds.get(startIndex + a);
                     }
                 } else {
                     // Handle the case when you go before the start of the list
                     if (a < 5) {
-                        x1[a] = "0000"; // Fill with "0000" or any other placeholder
+                        x[a] = "0000"; // Fill with "0000" or any other placeholder
                     } else {
-                        y1[a - 5] = "000000"; 
+                        y[a - 5] = "000000"; 
                     }
                 }
             }
-            helperChangeMovie1(x1);
-            helperChangeMovie2(y1);
+            helperChangeMovie1(x);
+            helperChangeMovie2(y);
         }
     }
 
@@ -311,8 +311,8 @@ public class GUIController {
                     }
                 }
             }
-            helperChangeUser1(x2);
-            helperChangeUser2(y2);
+            helperChangeUser1(k);
+            helperChangeUser2(l);
             //integer bölmesi yap ki devam etmesim e!n son!!!!!!!!
         }
     }
@@ -338,8 +338,8 @@ public class GUIController {
                     }
                 }
             }
-            helperChangeUser1(x1);
-            helperChangeUser2(y1);            
+            helperChangeUser1(k);
+            helperChangeUser2(l);            
         }
     }
 
@@ -476,23 +476,31 @@ public class GUIController {
     public void displayImage(){
         if (disp == 0) 
         {
-            int counter = 0 ;
             currentUser.setFavMovies(favMoviesIDs);
             currentUser.setFavGenres();
-            int c = currentUser.getRecommendedMovies().size()%5 ;
-            for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
-            {
-                movieIDs[counter] = currentUser.getRecommendedMovies().get(i) ;
-                counter ++ ; 
+            
+            if(currentUser.getFavMoviesIDs().isEmpty()){
+                movieIDs = currentUser.recomIds();
             }
-            index += counter ;
-            if (index == currentUser.getRecommendedMovies().size() - 1 && c > 0) 
-            { 
-                for (int i = index ; i < c + index ; i++) 
+            else{
+                int counter = 0 ;
+                
+                int c = currentUser.getRecommendedMovies().size()%5 ;
+                for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
                 {
-                    movieIDs[i] = "000000";
+                    movieIDs[counter] = currentUser.getRecommendedMovies().get(i) ;
+                    counter ++ ; 
+                }
+                index += counter ;
+                if (index == currentUser.getRecommendedMovies().size() - 1 && c > 0) 
+                { 
+                    for (int i = index ; i < c + index ; i++) 
+                    {
+                        movieIDs[i] = "000000";
+                    }
                 }
             }
+            
             //updateSearchids();
             helperChangeMovie1(movieIDs);
             disp++;
@@ -593,8 +601,6 @@ public class GUIController {
     
     public void addMovie(ActionEvent e) 
     {
-        //System.out.println("2"+users);
-        //System.out.println("user "+currentUser.getID());
         if (e.getSource() == addToFav0) 
         {
             System.out.println(movieIDs[0]); 
@@ -620,6 +626,62 @@ public class GUIController {
             System.out.println(movieIDs[4]); 
             currentUser.addMovie(movieIDs[4]) ;
         }
+        
+    }
+
+    public void addMovieInSearch(ActionEvent e) 
+    {
+        if (e.getSource() == addToFav0) 
+        {
+            System.out.println(x[0]); 
+            currentUser.addMovie(x[0]) ;
+        }
+        else if (e.getSource() == addToFav1) 
+        {
+            System.out.println(x[1]); 
+            currentUser.addMovie(x[1]) ;
+        }
+        else if (e.getSource() == addToFav2) 
+        {
+            System.out.println(x[2]); 
+            currentUser.addMovie(x[2]) ;
+        }
+        else if (e.getSource() == addToFav3) 
+        {
+            System.out.println(x[3]); 
+            currentUser.addMovie(x[3]) ;
+        }
+        else if( e.getSource() == addToFav4)
+        {
+            System.out.println(x[4]); 
+            currentUser.addMovie(x[4]) ;
+        }
+        else if( e.getSource() == addToFav5)
+        {
+            System.out.println(y[0]); 
+            currentUser.addMovie(y[0]) ;
+        }
+        else if (e.getSource() == addToFav6) 
+        {
+            System.out.println(y[1]); 
+            currentUser.addMovie(y[1]) ;
+        }
+        else if (e.getSource() == addToFav7) 
+        {
+            System.out.println(y[2]); 
+            currentUser.addMovie(y[2]) ;
+        }
+        else if (e.getSource() == addToFav8) 
+        {
+            System.out.println(y[3]); 
+            currentUser.addMovie(y[3]) ;
+        }
+        else
+        {
+            System.out.println(y[4]); 
+            currentUser.addMovie(y[4]) ;
+        }
+
     }
 
     public void addUserAsFriend(ActionEvent e){

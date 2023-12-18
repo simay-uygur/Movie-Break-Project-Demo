@@ -55,7 +55,8 @@ public class GUIController {
     private static ArrayList<String> favMoviesIDs ;
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
-    private  int disp = 0 ;
+    private static int disp = 0 ;
+    private static int friendsIndex = 0 ;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
@@ -138,7 +139,7 @@ public class GUIController {
     private ObservableList<String> userIds = FXCollections.observableArrayList();  
     private String user;
     private int index = 0;
-
+    @FXML private Button chat0 , chat1 , chat2 , chat3 , chat4 ; 
     private int smcounter = 0;
     private int sucounter = 0;
 
@@ -461,11 +462,12 @@ public class GUIController {
         helperChangeMovie1(movieIDs);
     }
     public void displayImage(){
-        
         if (disp == 0) 
         {
             currentUser.setFavMovies(favMoviesIDs);
-            currentUser.setFavGenres();
+            currentUser.findRecommendedFriends();
+            /*currentUser.setFavMovies(favMoviesIDs);
+            currentUser.setFavGenres();*/
             
             if(currentUser.getFavMoviesIDs().isEmpty()){
                 movieIDs = currentUser.recomIds();
@@ -575,6 +577,38 @@ public class GUIController {
     public void check(ActionEvent e) throws IOException {
         if (fb.hasAcc(userN.getText(), pass.getText())) {
             changeMainPage(e);
+        }
+    }
+
+    public void openFriendChat(ActionEvent e) 
+    {
+        /*String source = ""+e.getSource() ;
+        switch (source) 
+        {
+            case "chat0" : System.out.println("chat 1"); break ;
+            case "chat1" : System.out.println("chat 2"); break ;
+            case "chat2" : System.out.println("chat 3"); break ;
+            case "chat3" : System.out.println("chat 4"); break ;
+            case "chat4" : System.out.println("chat 5"); break ;
+        }*/
+        if (e.getSource() == chat0) 
+        {
+        }
+        else if (e.getSource() == chat1)
+        {
+
+        }
+        else if (e.getSource() == chat2) 
+        {
+            
+        }
+        else if (e.getSource() == chat3)
+        {
+            
+        }
+        else
+        {
+            
         }
     }
     
@@ -743,11 +777,6 @@ public class GUIController {
 
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
-        currentUser.setFavMovies(favMoviesIDs);
-        System.out.println("favee"+currentUser.getFavMoviesIDs());
-        currentUser.setFavGenres();
-        currentUser.findRecommendedFriends();
-        System.out.println("ff"+ currentUser.getFriendsIDs());
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -782,7 +811,8 @@ public class GUIController {
         stage.show();
     }
 
-    public void openChat(ActionEvent e) throws IOException {
+    public void openChat(ActionEvent e) throws IOException 
+    {
         root = FXMLLoader.load(getClass().getResource("chat.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -791,7 +821,25 @@ public class GUIController {
         stage.show();
     }
 
-    public void openSearchPage(ActionEvent e) throws IOException {
+    public void initFriends(ActionEvent e) throws IOException 
+    {
+        int c = 0 ;
+        for (int i = friendsIndex ; i < users.size() && c < 5 ; i++) 
+        {
+            if (friendsIDs.contains(users.get(i).getID())) 
+            {
+                if (c == 0) chat0.setText(users.get(i).getName());
+                else if (c == 1) chat1.setText(users.get(i).getName());
+                else if (c == 2) chat2.setText(users.get(i).getName());
+                else if (c == 3) chat3.setText(users.get(i).getName());
+                else if (c == 4) chat4.setText(users.get(i).getName());
+                c++ ;
+            }
+        }
+        friendsIndex += c ;
+    }
+
+    public void openSearchPage(MouseEvent e) throws IOException {
         if(menu.getValue() == "Friend Search"){
             root = FXMLLoader.load(getClass().getResource("userSearchPage.fxml"));
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

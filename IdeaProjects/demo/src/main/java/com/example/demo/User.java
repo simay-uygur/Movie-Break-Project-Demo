@@ -2,7 +2,7 @@ package com.example.demo;
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,11 +21,19 @@ public class User {
     ArrayList<String> chatIDs;
     ArrayList<String> sessionIDs;
     MovieService mService; 
+    private ArrayList<Chat> chatsWithFriends ;
+    private ArrayList<Message> userMessages ;
+    private ArrayList<Message> friendsMessages ;
     private ArrayList<Movie> movies ;
-    private ArrayList<String> favGenres ;
+    private ArrayList<String> favGenres ; 
+    private DatabaseReference chats ;
     private static ArrayList<String> recommendedMovies ; 
     public User(String userName, String password, String userID , Firebase fb)
     {
+        chats = FirebaseDatabase.getInstance().getReference("chats"); 
+        chatsWithFriends = new ArrayList<>() ;
+        userMessages = new ArrayList<>() ;
+        friendsMessages = new ArrayList<>() ;
         friendsIDs = new ArrayList<>();
         favMoviesIDs = new ArrayList<>() ; 
         recommendedMovies = new ArrayList<>() ;
@@ -65,6 +73,8 @@ public class User {
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
+        System.out.println(favMoviesIDs);
+        setFavGenres();
     }
 
 
@@ -183,6 +193,12 @@ public class User {
                 temp = 0 ;
             }
         }
+        ArrayList<String> g = new ArrayList<>() ;
+        g.add(g1) ;
+        g.add(g2) ;
+        g.add(g3) ;
+        favGenres = g ;
+        recommendMovies();
     }
     public ArrayList<String> getFavMoviesIDs()
     {
@@ -234,6 +250,33 @@ public class User {
                  !favMoviesIDs.contains(""+m.takeId())) 
             recommendedMovies.add(""+m.takeId()) ;
         }
+    }
+
+    public void createChats() 
+    {
+
+    }
+
+
+    public void takeMessages(ArrayList<Message> unknown , String path) 
+    {
+        chats.child(path).addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot message : snapshot.getChildren()) 
+                {
+                    
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'onCancelled'");
+            }
+            
+        });
     }
 
     public void addForRec(String id) 

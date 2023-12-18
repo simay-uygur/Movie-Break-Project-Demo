@@ -280,6 +280,66 @@
                                     </DropShadow>
                                  </effect>
                               </Label>
+                              <Label fx:id="label61" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Bookman Old Style Bold" size="22.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                                       <color>
+                                          <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label fx:id="label62" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Bookman Old Style Bold" size="22.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                                       <color>
+                                          <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label fx:id="label63" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Bookman Old Style Bold" size="22.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                                       <color>
+                                          <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label fx:id="label91" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Bookman Old Style Bold" size="22.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                                       <color>
+                                          <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label fx:id="label92" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Bookman Old Style Bold" size="22.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                                       <color>
+                                          <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
                            </children>
                         </GridPane>
                         <Label layoutX="20.0" layoutY="5.0" prefHeight="54.0" prefWidth="586.0" text="Your Movie Recommendations">

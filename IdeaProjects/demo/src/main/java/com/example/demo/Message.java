@@ -5,7 +5,6 @@ import java.time.LocalTime;
  * Message
  */
 public class Message {
-
     Controller controller;
     String text;
     LocalTime time;
@@ -17,7 +16,6 @@ public class Message {
         this.userID = userID;
         setTime();
     }
-
     /*
      *  it returns the current hour and the minute in which this 
      * message is sent, and it sets the time variable of this class.

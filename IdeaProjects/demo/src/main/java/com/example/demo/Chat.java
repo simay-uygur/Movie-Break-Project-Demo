@@ -5,12 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class Chat {
-    
     Controller controller;
     String chatID;
     ArrayList<User> users;
     ArrayList<Message> messages;
-
     public Chat (ArrayList<Message> messages, String ID, ArrayList<User> users)
     {
         this.chatID = ID;
@@ -21,17 +19,14 @@ public class Chat {
             this.users.get(i).getChatIDs().add(ID);
         }
     }
-
     public String getID()
     {
         return this.chatID;
     }
-
     public ArrayList<User> getUsers()
     {
         return this.users;
     }
-
     public ArrayList<Message> getMessages()
     {
         return this.messages;

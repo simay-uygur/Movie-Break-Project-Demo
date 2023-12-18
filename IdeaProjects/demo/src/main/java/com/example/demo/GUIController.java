@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import javafx.scene.control.MenuItem;
 import com.example.demo.Firebase.FirebaseDataCallback;
 import com.google.firebase.database.DataSnapshot;
@@ -121,7 +120,7 @@ public class GUIController {
     @FXML private Text message;
     @FXML private ListView<Movie> searchResultsListView; 
     @FXML private TextField userSearchTextField; 
-    @FXML private Button b1; // for user search the first 5 buttons can be applied to the recommended users again
+    @FXML private Button b1; 
     @FXML private Button b2;
     @FXML private Button b3;
     @FXML private Button b4;
@@ -220,9 +219,6 @@ public class GUIController {
             helperChangeMovie2(y);
         }
     }
-
-    
-
     public void moveBackwardMovieSearch(ActionEvent e) {
         if (smcounter > 0) {
             smcounter--;
@@ -249,7 +245,6 @@ public class GUIController {
             helperChangeMovie2(y);
         }
     }
-
     public List<User> performUserSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
         List<User> searchResults = users.stream()
@@ -263,6 +258,7 @@ public class GUIController {
         sucounter = 0;
         userIds.clear();
         String searchText = userSearchTextField.getText().trim();
+        userIds.clear();
         if (!searchText.isEmpty()) {
             List<User> searchResults = performUserSearch(searchText);
             userIds = FXCollections.observableArrayList();
@@ -504,8 +500,12 @@ public class GUIController {
             //updateSearchids();
             helperChangeMovie1(movieIDs);
             disp++;
+            System.out.println(currentUser.recommendedFriendsIDs);
         }
+
     }
+
+
 
     //recommend ve update var YAPMAM GEREK
 
@@ -597,8 +597,6 @@ public class GUIController {
             message.setFill(Color.rgb(139, 0, 0));
         }
     }
-    
-    
     public void addMovie(ActionEvent e) 
     {
         //System.out.println("user "+currentUser.getID());

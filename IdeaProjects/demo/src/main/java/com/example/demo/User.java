@@ -36,7 +36,6 @@ public class User {
         setPassword(password);
         setID(userID);
         initRefs();
-        //recomIds();
     }
     
     public void setFavMovies(ArrayList<String> fav)

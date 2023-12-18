@@ -35,9 +35,6 @@ public class Welcome extends Application {
     }
     public static void main(String[] args) {
         
-        //GUIController g = new GUIController();
-        
-        //System.out.println(g.performSearch(k).toString());
         initialize();
         launch();
 

@@ -24,7 +24,7 @@ public class User {
     ArrayList<String> sessionIDs;
     MovieService mService; 
     private ArrayList<Movie> movies ;
-    private HashMap<String,String> favGenres ; 
+    private ArrayList<String> favGenres ; 
     private static ArrayList<String> recommendedMovies ; 
     public User(String userName, String password, String userID , Firebase fb)
     {
@@ -56,7 +56,7 @@ public class User {
         friendsIDs = new ArrayList<>(homo) ; 
     }
 
-    public void setGenres(HashMap<String, String> genres) 
+    public void setGenres(ArrayList<String> genres) 
     {
         this.favGenres = genres ;
     }
@@ -107,7 +107,6 @@ public class User {
     {
         if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
         {
-            System.out.println("friend added:" + friendID);
             fb.add(userID, "Friends", friendID);
             friendsIDs.add(friendID);
         }
@@ -117,7 +116,6 @@ public class User {
     {
         if (!favMoviesIDs.contains(movieId)) 
         {
-            System.out.println("Movie added:" + movieId);
             fb.add(userID, "Fav_MovieIDs", movieId);
             favMoviesIDs.add(movieId);
         }
@@ -142,7 +140,7 @@ public class User {
     public void findMaxes(ArrayList<String> genres) 
     {
         int max = 0 , temp = 0;
-        String g1 = "" , g2 = "" ; 
+        String g1 = "" , g2 = "" , g3 = ""; 
         Collections.sort(genres);
         for (int i = 0 ; i < genres.size() - 1 ; i++) 
         {
@@ -153,15 +151,19 @@ public class User {
                 if (temp >= max) 
                 {
                     max = temp ;
+                    g3 = g2 ;
                     g2 = g1 ;
                     g1 = genres.get(i+1) ;
                 }
                 temp = 0 ;
             }
         }
-        HashMap<String, String> ret = new HashMap<>() ;
-        ret.put(g1, g2) ;
-        favGenres = ret ;
+        ArrayList<String> g = new ArrayList<>() ;
+        g.add(g1) ;
+        g.add(g2) ;
+        g.add(g3) ;
+        favGenres = g ;
+        System.out.println(favGenres);
         recommendMovies();
     }
 
@@ -208,13 +210,9 @@ public class User {
     public void recommendMovies() 
     {
         ArrayList<String> recomms = new ArrayList<>() ; 
-        String first = favGenres.keySet().toString().substring(1, favGenres.keySet().toString().length()-1) ;
-        String second = favGenres.values().toString().substring(1, favGenres.values().toString().length()-1) ;
         for (Movie m : movies) 
         {
-            if ((m.getGenre().equals(second) 
-                 || 
-                 m.getGenre().equals(first)) 
+            if ( favGenres.contains(m.getGenre()) 
                  && 
                  !favMoviesIDs.contains(""+m.takeId())) 
             recommendedMovies.add(""+m.takeId()) ;

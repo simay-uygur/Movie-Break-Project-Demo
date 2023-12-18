@@ -140,6 +140,7 @@ public class GUIController {
     private String user;
     private int index = 0;
     @FXML private Button chat0 , chat1 , chat2 , chat3 , chat4 ; 
+    @FXML private Button left , right ;
     private int smcounter = 0;
     private int sucounter = 0;
 
@@ -465,9 +466,6 @@ public class GUIController {
         if (disp == 0) 
         {
             currentUser.setFavMovies(favMoviesIDs);
-            currentUser.findRecommendedFriends();
-            /*currentUser.setFavMovies(favMoviesIDs);
-            currentUser.setFavGenres();*/
             
             if(currentUser.getFavMoviesIDs().isEmpty()){
                 movieIDs = currentUser.recomIds();
@@ -493,7 +491,6 @@ public class GUIController {
             
             helperChangeMovie1(movieIDs);
             disp++;
-            
         }
 
     }
@@ -821,22 +818,42 @@ public class GUIController {
         stage.show();
     }
 
-    public void initFriends(ActionEvent e) throws IOException 
+    public void initFriends(MouseEvent e) throws IOException 
     {
-        int c = 0 ;
-        for (int i = friendsIndex ; i < users.size() && c < 5 ; i++) 
+        if (e.getSource() == left) 
         {
-            if (friendsIDs.contains(users.get(i).getID())) 
+            int c = 5 ;
+            for (int i = friendsIndex ; i < users.size() && c > 0 ; i++) 
             {
-                if (c == 0) chat0.setText(users.get(i).getName());
-                else if (c == 1) chat1.setText(users.get(i).getName());
-                else if (c == 2) chat2.setText(users.get(i).getName());
-                else if (c == 3) chat3.setText(users.get(i).getName());
-                else if (c == 4) chat4.setText(users.get(i).getName());
-                c++ ;
+                if (friendsIDs.contains(users.get(i).getID())) 
+                {
+                    if      (c == 0) chat0.setText(users.get(i).getName());
+                    else if (c == 1) chat1.setText(users.get(i).getName());
+                    else if (c == 2) chat2.setText(users.get(i).getName());
+                    else if (c == 3) chat3.setText(users.get(i).getName());
+                    else if (c == 4) chat4.setText(users.get(i).getName());
+                    c-- ;
+                }
             }
+            friendsIndex -= c ;
         }
-        friendsIndex += c ;
+        else if (e.getSource() == right)
+        {
+            int c = 0 ;
+            for (int i = friendsIndex ; i < users.size() && c < 5 ; i++) 
+            {
+                if (friendsIDs.contains(users.get(i).getID())) 
+                {
+                    if      (c == 0) chat0.setText(users.get(i).getName());
+                    else if (c == 1) chat1.setText(users.get(i).getName());
+                    else if (c == 2) chat2.setText(users.get(i).getName());
+                    else if (c == 3) chat3.setText(users.get(i).getName());
+                    else if (c == 4) chat4.setText(users.get(i).getName());
+                    c++ ;
+                }
+            }
+            friendsIndex += c ;
+        }
     }
 
     public void openSearchPage(MouseEvent e) throws IOException {

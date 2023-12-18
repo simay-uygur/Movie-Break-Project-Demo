@@ -42,7 +42,6 @@ public class User {
         setPassword(password);
         setID(userID);
         initRefs();
-        //recomIds();
         recommendedFriendsIDs = new ArrayList<>();
     }
     public ArrayList<String> getFavGenres(){
@@ -73,7 +72,6 @@ public class User {
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
-        System.out.println(favMoviesIDs);
         setFavGenres();
     }
 

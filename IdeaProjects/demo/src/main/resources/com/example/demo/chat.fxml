@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="79.0" layoutY="666.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="74.0">
+            <Button fx:id="left" layoutX="79.0" layoutY="666.0" mnemonicParsing="false" onMousePressed="#initFriends" prefHeight="63.0" prefWidth="74.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0">
                      <image>
@@ -57,7 +57,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button layoutX="175.0" layoutY="666.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
+            <Button fx:id="right" layoutX="175.0" layoutY="666.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="60.0">
                      <image>

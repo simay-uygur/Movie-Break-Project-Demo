@@ -60,6 +60,7 @@ public class GUIController {
     private ArrayList<Movie> moviesStore;
     private static int disp = 0 ;
     private static int friendsIndex = 0 ;
+    private static String[] chatFriendList = new String[5] ;
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
@@ -817,7 +818,7 @@ public class GUIController {
         stage.show();
     }
 
-    public void initFriends(MouseEvent e) throws IOException 
+    /*public void initFriends(MouseEvent e) throws IOException 
     {
         if (friendsIndex < 4 && e.getSource() == left) return ;
         if (e.getSource() == left) 
@@ -873,7 +874,7 @@ public class GUIController {
         }
         
         System.out.println(friendsIndex);
-    }
+    }*/
 
     public void openSearchPage(ActionEvent e) throws IOException {
         if(menu.getValue() == "Friend Search"){
@@ -949,17 +950,60 @@ public class GUIController {
             for (int j = 0; j < users.size(); j++) {
                 if(friendsIDs.get(i) == users.get(j).getID()) {
                     friend1.setText(users.get(j).getName());
+                    chatFriendList[i] = users.get(j).getID() ;
                 }
                 if(i == 0 && friendsIDs.get(i) == users.get(j).getID()) {
                     friend1.setText(users.get(j).getName());
+                    chatFriendList[i] = users.get(j).getID() ;
                 }
-                if(i == 1 && friendsIDs.get(i) == users.get(j).getID()) friend2.setText(users.get(j).getName());
-                if(i == 2 && friendsIDs.get(i) == users.get(j).getID()) friend3.setText(users.get(j).getName());
-                if(i == 3 && friendsIDs.get(i) == users.get(j).getID()) friend4.setText(users.get(j).getName());
-                if(i == 4 && friendsIDs.get(i) == users.get(j).getID()) friend5.setText(users.get(j).getName());
+                if(i == 1 && friendsIDs.get(i) == users.get(j).getID()) 
+                {
+                    friend2.setText(users.get(j).getName());
+                    chatFriendList[i] = users.get(j).getID() ;
+                }
+                if(i == 2 && friendsIDs.get(i) == users.get(j).getID()) 
+                {
+                    friend3.setText(users.get(j).getName());
+                    chatFriendList[i] = users.get(j).getID() ;
+                }
+                if(i == 3 && friendsIDs.get(i) == users.get(j).getID()) 
+                {
+                    friend4.setText(users.get(j).getName());
+                    chatFriendList[i] = users.get(j).getID() ;
+                }
+                if(i == 4 && friendsIDs.get(i) == users.get(j).getID()) 
+                {
+                    friend5.setText(users.get(j).getName());
+                    chatFriendList[i] = users.get(j).getID() ;
+                }
             }
         }
+        createChat(e);
     }
+
+    public void createChat(ActionEvent e) 
+    {   
+        if (e.getSource() == friend1) 
+        {
+            System.out.println(chatFriendList[0]);
+        }
+        else if (e.getSource() == friend2) 
+        {
+            System.out.println(chatFriendList[1]);
+        }
+        else if (e.getSource() == friend3) 
+        {
+            System.out.println(chatFriendList[2]);
+        }
+        else if (e.getSource() == friend4) 
+        {
+            System.out.println(chatFriendList[3]);
+        }
+        else 
+        {
+            System.out.println(chatFriendList[4]);
+        }
+    }   
 
     public void toSend(ActionEvent e) 
     {

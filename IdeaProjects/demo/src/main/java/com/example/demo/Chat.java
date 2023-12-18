@@ -9,15 +9,13 @@ public class Chat {
     ArrayList<String> userIDs;
     ArrayList<Message> messages;
 
-    public Chat (ArrayList<Message> messages, String ID, ArrayList<String> users)
+    public Chat (String ID)
     {
         this.chatID = ID;
-        this.messages = messages;
-        this.userIDs = users;
-        for (int i = 0; i < users.size(); i++)
+        /*for (int i = 0; i < users.size(); i++)
         {
             userIDs.add(users.get(i));
-        }
+        }*/
     }
     public String getID()
     {

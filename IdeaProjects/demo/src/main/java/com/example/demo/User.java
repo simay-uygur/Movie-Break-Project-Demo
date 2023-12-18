@@ -287,7 +287,7 @@ public class User {
     
     public String toString()
     {
-        return "Name: " + userName + " ID: " + userID;
+        return "Name: " + userName + " ID: " + userID + favMoviesIDs;
     }
 
     public ArrayList<String> getRecommendedMovies()

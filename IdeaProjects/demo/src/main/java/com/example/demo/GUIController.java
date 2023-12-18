@@ -464,11 +464,17 @@ public class GUIController {
     public void displayImage(){
         if (disp == 0) 
         {
+            
             currentUser.setFavMovies(favMoviesIDs);
             currentUser.findRecommendedFriends();
             /*currentUser.setFavMovies(favMoviesIDs);
             currentUser.setFavGenres();*/
             
+            currentUser.setFavGenres();
+            System.out.println("favee"+currentUser.getFavMoviesIDs());
+            System.out.println( currentUser.getFavGenres());
+            System.out.println( currentUser.recommendedFriendsIDs);
+        //currentUser.findRecommendedFriends();
             if(currentUser.getFavMoviesIDs().isEmpty()){
                 movieIDs = currentUser.recomIds();
             }
@@ -777,6 +783,7 @@ public class GUIController {
 
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
+        
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);

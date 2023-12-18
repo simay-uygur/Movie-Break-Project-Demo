@@ -242,7 +242,6 @@ public class User {
 
     public void recommendMovies() 
     {
-        ArrayList<String> recomms = new ArrayList<>() ; 
         for (Movie m : movies) 
         {
             if ( favGenres.contains(m.getGenre()) 
@@ -283,18 +282,15 @@ public class User {
     {
         recommendedMovies.add(""+id) ;
     }
+
     public String getId(){
         return userID;
     }
+    
     public String toString()
     {
         return "Name: " + userName + " ID: " + userID;
     }
-    /* 
-    public ArrayList<Integer> search(String input)
-    {
-        return;
-    }*/
 
     public ArrayList<String> getRecommendedMovies()
     {

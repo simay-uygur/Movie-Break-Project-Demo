@@ -9,9 +9,9 @@ public class Message {
     Controller controller;
     String text;
     LocalTime time;
-    int userID;
+    String userID;
 
-    public Message (String text, int userID, LocalTime time)
+    public Message (String text, String userID, LocalTime time)
     {
         this.text = text;
         this.userID = userID;
@@ -35,7 +35,7 @@ public class Message {
         return hour + ":" + minute;
     }
 
-    public int getUserID()
+    public String getUserID()
     {
         return this.userID;
     }
@@ -43,5 +43,11 @@ public class Message {
     public String getText()
     {
         return this.text;
+    }
+    public String displayHeadTitle(){
+        return getUserID()+" "+getTime();
+    }
+    public String displayText(){
+        return getText();
     }
 }

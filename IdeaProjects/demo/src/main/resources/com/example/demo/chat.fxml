@@ -258,11 +258,7 @@
             </TextArea>
          </children>
       </GridPane>
-<<<<<<< HEAD
-      <TextArea layoutX="358.0" layoutY="778.0" prefHeight="65.0" prefWidth="1052.0" promptText="// Type here" styleClass="rounded-text-area">
-=======
       <TextArea fx:id="textToSend" layoutX="358.0" layoutY="778.0" prefHeight="68.0" prefWidth="1052.0" promptText="//Type here" styleClass="rounded-text-area">
->>>>>>> 1d8e270c9aa7bf8e576e9fc950b9c1359993b2e7
          <font>
             <Font name="Bookman Old Style" size="22.0" />
          </font>
@@ -274,11 +270,7 @@
             </DropShadow>
          </effect>
       </TextArea>
-<<<<<<< HEAD
-      <Button layoutX="1425.0" layoutY="778.0" maxHeight="65.0" minHeight="65.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="89.0">
-=======
       <Button fx:id="send" layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0">
->>>>>>> 1d8e270c9aa7bf8e576e9fc950b9c1359993b2e7
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>

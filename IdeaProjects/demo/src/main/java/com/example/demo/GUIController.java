@@ -137,9 +137,7 @@ public class GUIController {
     @FXML private Button b10;   
 
     @FXML private MenuItem addToFav0,addToFav1,addToFav2,addToFav3,addToFav4,addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
-    @FXML private TextArea friendChat1 , friendChat2 , friendChat3 , friendChat4 , user1 , user2 , user3 , user4 ;
-    @FXML private Button send ;
-    @FXML private TextArea textToSend ;
+
     private List<User> usersStore; 
     private ObservableList<String> movieIds = FXCollections.observableArrayList();   
     private ObservableList<String> userIds = FXCollections.observableArrayList();  
@@ -186,6 +184,8 @@ public class GUIController {
         while (movieIds.size()%10 !=0 ) {
             movieIds.add("000000");
         }
+
+        System.out.println("searched movie ids  "+movieIds);
 
         for(int a=0; a<10; a++){
             if(a<5){
@@ -449,8 +449,8 @@ public class GUIController {
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
         int counter = 0 ;
-        System.out.println(users);
         currentUser.setFavMovies(favMoviesIDs);
+        currentUser.setFavGenres();
         int c = currentUser.getRecommendedMovies().size()%5 ;
         for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
         {
@@ -474,6 +474,10 @@ public class GUIController {
             currentUser.setFavMovies(favMoviesIDs);
             
             currentUser.setFavGenres();
+            System.out.println("favee"+currentUser.getFavMoviesIDs());
+            System.out.println( currentUser.getFavGenres());
+            System.out.println( currentUser.recommendedFriendsIDs);
+        //currentUser.findRecommendedFriends();
             if(currentUser.getFavMoviesIDs().isEmpty()){
                 movieIDs = currentUser.recomIds();
             }
@@ -586,20 +590,27 @@ public class GUIController {
 
     public void openFriendChat(ActionEvent e) 
     {
-        Chat c ;
-        if (e.getSource() == friend1) 
+        /*String source = ""+e.getSource() ;
+        switch (source) 
         {
-            //c = new 
+            case "chat0" : System.out.println("chat 1"); break ;
+            case "chat1" : System.out.println("chat 2"); break ;
+            case "chat2" : System.out.println("chat 3"); break ;
+            case "chat3" : System.out.println("chat 4"); break ;
+            case "chat4" : System.out.println("chat 5"); break ;
+        }*/
+        if (e.getSource() == chat0) 
+        {
         }
-        else if (e.getSource() == friend2)
+        else if (e.getSource() == chat1)
         {
 
         }
-        else if (e.getSource() == friend3) 
+        else if (e.getSource() == chat2) 
         {
             
         }
-        else if (e.getSource() == friend4)
+        else if (e.getSource() == chat3)
         {
             
         }
@@ -774,7 +785,7 @@ public class GUIController {
 
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
-        System.out.println(users);
+        
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -807,6 +818,7 @@ public class GUIController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+        System.out.println();
     }
 
     public void openChat(ActionEvent e) throws IOException 
@@ -818,11 +830,11 @@ public class GUIController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+        System.out.println(users);
     }
 
     /*public void initFriends(MouseEvent e) throws IOException 
     {
-        if (friendsIndex < 4 && e.getSource() == left) return ;
         if (e.getSource() == left) 
         {
             int c = 5 ;
@@ -830,15 +842,15 @@ public class GUIController {
             {
                 if (friendsIDs.contains(users.get(i).getID())) 
                 {
-                    if      (c == 0) friend1.setText(users.get(i).getName());
-                    else if (c == 1) friend1.setText(users.get(i).getName());
-                    else if (c == 2) friend3.setText(users.get(i).getName());
-                    else if (c == 3) friend4.setText(users.get(i).getName());
-                    else if (c == 4) friend5.setText(users.get(i).getName());
+                    if      (c == 0) chat0.setText(users.get(i).getName());
+                    else if (c == 1) chat1.setText(users.get(i).getName());
+                    else if (c == 2) chat2.setText(users.get(i).getName());
+                    else if (c == 3) chat3.setText(users.get(i).getName());
+                    else if (c == 4) chat4.setText(users.get(i).getName());
                     c-- ;
                 }
             }
-            friendsIndex -= c - 1;
+            friendsIndex -= c ;
         }
         else if (e.getSource() == right)
         {
@@ -847,15 +859,15 @@ public class GUIController {
             {
                 if (friendsIDs.contains(users.get(i).getID())) 
                 {
-                    if      (c == 0) friend1.setText(users.get(i).getName());
-                    else if (c == 1) friend1.setText(users.get(i).getName());
-                    else if (c == 2) friend3.setText(users.get(i).getName());
-                    else if (c == 3) friend4.setText(users.get(i).getName());
-                    else if (c == 4) friend5.setText(users.get(i).getName());
+                    if      (c == 0) chat0.setText(users.get(i).getName());
+                    else if (c == 1) chat1.setText(users.get(i).getName());
+                    else if (c == 2) chat2.setText(users.get(i).getName());
+                    else if (c == 3) chat3.setText(users.get(i).getName());
+                    else if (c == 4) chat4.setText(users.get(i).getName());
                     c++ ;
                 }
             }
-            friendsIndex += c - 1;
+            friendsIndex += c ;
         }
     }*/
 
@@ -982,7 +994,6 @@ public class GUIController {
                 friend5.setText("");
             }
         }
-        System.out.println(friendsIndex);
     }
     public void displayFriendsLeft(ActionEvent e){
         if(!(friendsIndex-5 < 0)){
@@ -1000,6 +1011,5 @@ public class GUIController {
                 if(i == friendsIndex+4 && friendsIDs.get(i).equals(users.get(j).getID())) friend5.setText(users.get(j).getName());
             }
         }
-        System.out.println(friendsIndex);
     }
 }

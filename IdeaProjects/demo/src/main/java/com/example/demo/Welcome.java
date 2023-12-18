@@ -34,10 +34,6 @@ public class Welcome extends Application {
         }
     }
     public static void main(String[] args) {
-<<<<<<< HEAD
-=======
-        
->>>>>>> 1d8e270c9aa7bf8e576e9fc950b9c1359993b2e7
         initialize();
         launch();
     }

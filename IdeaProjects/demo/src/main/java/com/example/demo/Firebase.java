@@ -305,7 +305,7 @@ public class Firebase {
         DATA = new ArrayList<>(datas) ;
     }
 
-    public void add(String userId , String path , String id) 
+    public void add(String userId , String path , String id , String chatUser) 
     {
         DatabaseReference user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ;
         switch(path)
@@ -314,7 +314,7 @@ public class Firebase {
             DatabaseReference friend = userDB.child(id).child(path) ; friend.child(userId).setValueAsync("") ; 
             if (Integer.parseInt(id) > Integer.parseInt(userId)) 
             {
-                DatabaseReference chat = chatDB.child(userId+id) ; 
+                DatabaseReference chat = chatDB.child(userId+"-"+id) ; 
                 chat.child(userId).setValueAsync("") ; 
                 chat.child(id).setValueAsync(""); 
             }
@@ -326,6 +326,7 @@ public class Firebase {
             }
             break ;
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
+            case "chats" : chatDB.child(chatUser).child(userId).setValueAsync(id) ;
         }
     }
 
@@ -339,7 +340,6 @@ public class Firebase {
                 for (DataSnapshot m : snapshot.getChildren())
                 {
                     ids.add(m.getKey()) ;
-                    System.out.println(ids);
                 }
                 u.setFavMovies(ids);
             }

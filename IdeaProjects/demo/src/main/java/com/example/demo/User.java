@@ -140,7 +140,7 @@ public class User {
         if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
         {
             System.out.println("friend added:" + friendID);
-            fb.add(userID, "Friends", friendID);
+            fb.add(userID, "Friends", friendID , "");
             friendsIDs.add(friendID);
         }
     }
@@ -150,7 +150,7 @@ public class User {
         if (!favMoviesIDs.contains(movieId)) 
         {
             System.out.println("Movie added:" + movieId);
-            fb.add(userID, "Fav_MovieIDs", movieId);
+            fb.add(userID, "Fav_MovieIDs", movieId , "");
             favMoviesIDs.add(movieId);
         }
     }

@@ -56,8 +56,9 @@ import javax.swing.text.DefaultEditorKit.CutAction;
 
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
+
 public class GUIController {
-    private static User currentUser ; 
+    private static User currentUser ;
     private static Chat privateChat ;
     private static int id;
     private Scene scene;
@@ -72,8 +73,8 @@ public class GUIController {
     private static int openOnce = 0 ;
     private static int friendsIndex = 0 ;
     private static String[] chatFriendList = new String[5] ;
-    private static ArrayList<String> favGenres = new ArrayList<>(); 
-    private static ArrayList<String> recommendedMovies = new ArrayList<>(); 
+    private static ArrayList<String> favGenres = new ArrayList<>();
+    private static ArrayList<String> recommendedMovies = new ArrayList<>();
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
@@ -101,9 +102,8 @@ public class GUIController {
         }
     });
     private Button changeNiButton, changePassButton; // remove friend from profile2 buttons
-    private TextField changeNick, changePass;
-    @FXML 
-    @FXML
+        private TextField changeNick, changePass;
+    
     @FXML private Button friend1, friend2, friend3, friend4, friend5;
     @FXML private TextArea chatText1;
     @FXML private ComboBox<String> menu;
@@ -147,9 +147,9 @@ public class GUIController {
     @FXML private TextArea friendChat , myChat ;
     @FXML private Button send ;
     @FXML private TextArea textToSend ;
-    private List<User> usersStore; 
-    private ObservableList<String> movieIds = FXCollections.observableArrayList();   
-    private ObservableList<String> userIds = FXCollections.observableArrayList();  
+    private List<User> usersStore;
+    private ObservableList<String> movieIds = FXCollections.observableArrayList();
+    private ObservableList<String> userIds = FXCollections.observableArrayList();
     private String user;
     private int index = 0;
     private int index1 = 0;
@@ -163,21 +163,21 @@ public class GUIController {
 
     String[] x = new String[5];
     String[] y = new String[5];
-    String[] k = new String[5];
+        String[] k = new String[5];
     String[] l = new String[5];
     String[] switchforuser = new String[5];
 
     private String[] movieIDs = new String[5];
     private String[] recUserIds = new String[5];
-
+    
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
         // Arama teriminin film adında herhangi bir yerde olup olmadığını kontrol etmek için bir filtre kullanın
         List<Movie> searchResults = moviesStore.stream()
-            .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
-            .collect(Collectors.toList());
+                .filter(movie -> movie.getTitle().toLowerCase().contains(trimmedSearchText))
+                .collect(Collectors.toList());
         return searchResults;
-        
+
     }
     @FXML
     private void handleMovieSearch(ActionEvent event) {
@@ -194,7 +194,7 @@ public class GUIController {
             movieIds.add("000000");
         }
 
-
+        
         for(int a=0; a<10; a++){
             if(a<5){
                 x[a] = movieIds.get(a);
@@ -207,11 +207,11 @@ public class GUIController {
         helperChangeMovie2(y);
     }
     public void moveForwardMovieSearch(ActionEvent e) {
-        if (smcounter <= movieIds.size()/ 10) { 
+        if (smcounter <= movieIds.size()/ 10) {
             smcounter++;
-    
+
             int startIndex = 10 * smcounter;
-    
+
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < movieIds.size()) {
                     if (a < 5) {
@@ -249,7 +249,7 @@ public class GUIController {
                     if (a < 5) {
                         x[a] = "0000"; // Fill with "0000" or any other placeholder
                     } else {
-                        y[a - 5] = "000000"; 
+                        y[a - 5] = "000000";
                     }
                 }
             }
@@ -260,8 +260,8 @@ public class GUIController {
     public List<User> performUserSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
         List<User> searchResults = users.stream()
-            .filter(user -> !user.getName().equals(currentUser.getName()) && user.getName().toLowerCase().contains(trimmedSearchText))
-            .collect(Collectors.toList());
+                .filter(user -> !user.getName().equals(currentUser.getName()) && user.getName().toLowerCase().contains(trimmedSearchText))
+                .collect(Collectors.toList());
         return searchResults;
     }
 
@@ -295,13 +295,13 @@ public class GUIController {
         helperChangeUser1(k);
         helperChangeUser2(l);
     }
-    
+
     public void moveForwardUserSearch(ActionEvent e) {
-        if (sucounter <= userIds.size()/ 10) { 
+        if (sucounter <= userIds.size()/ 10) {
             sucounter++;
-    
+
             int startIndex = 10 * sucounter;
-    
+
             for (int a = 0; a < 10; a++) {
                 if (startIndex + a < userIds.size()) {
                     if (a < 5) {
@@ -338,14 +338,14 @@ public class GUIController {
                     }
                 } else {
                     if (a < 5) {
-                        k[a] = "000000"; 
+                        k[a] = "000000";
                     } else {
-                        l[a - 5] = "000000"; 
+                        l[a - 5] = "000000";
                     }
                 }
             }
             helperChangeUser1(k);
-            helperChangeUser2(l);            
+            helperChangeUser2(l);
         }
     }
 
@@ -378,7 +378,7 @@ public class GUIController {
                 label5.setText(title);
             }
         }
-    } 
+    }
 
     public void helperChangeMovie2(String[] ids) {
         CompletableFuture<String> ctitle = new CompletableFuture<>();
@@ -409,7 +409,7 @@ public class GUIController {
                 label10.setText(title);
             }
         }
-    } 
+    }
 
     public void helperChangeUser1(String[] ids) {
 
@@ -430,7 +430,7 @@ public class GUIController {
                 label5.setText(title);
             }
         }
-    } 
+    }
 
     public void helperChangeUser2(String[] ids) {
         CompletableFuture<String> cUtitle = new CompletableFuture<>();
@@ -451,50 +451,50 @@ public class GUIController {
                 label10.setText(title);
             }
         }
-    } 
-    
+    }
+
 
     public void refreshUsers(ActionEvent e) {
-        /* 
-        int counter = 0 ;
-        //recommend users al 
-  
+        /*
+         int counter = 0 ;
+         //recommend users al
+         
         //ArrayList<String> a = recommendMovies();
-        int c = a.size()%5 ;
-        
-        for (int i = index ; counter < 5 && i < a.size() ; i++) 
-        {
+         int c = a.size()%5 ;
+         
+        for (int i = index ; counter < 5 && i < a.size() ; i++)
+         {
             movieIDs[counter] = a.get(i) ;
-            counter ++ ; 
-        }
+         counter ++ ;
+         }
         index += counter ;
-        if (index == a.size() - 1 && c > 0) 
-        { 
-            for (int i = index ; i < c + index ; i++) 
-            {
+         if (index == a.size() - 1 && c > 0)
+         { 
+            for (int i = index ; i < c + index ; i++)
+         {
                 movieIDs[i] = "000000";
-            }
+         }
         }
         helperChangeMovie1(movieIDs);
-        */
+         */
     }
 
     public void refreshMovie(ActionEvent e) {
         int counter = 0 ;
         currentUser.setFavMovies(favMoviesIDs);
         favGenres=currentUser.setFavGenres(moviesStore);
-  
+
         ArrayList<String> a = recommendMovies();
         int c = a.size()%5 ;
-        
+
         for (int i = index ; counter < 5 && i < a.size() ; i++) 
         {
             movieIDs[counter] = a.get(i) ;
-            counter ++ ; 
+            counter ++ ;
         }
         index += counter ;
         if (index == a.size() - 1 && c > 0) 
-        { 
+        {
             for (int i = index ; i < c + index ; i++) 
             {
                 movieIDs[i] = "000000";
@@ -502,7 +502,7 @@ public class GUIController {
         }
         helperChangeMovie1(movieIDs);
     }
-    public void displayImage(){
+public void displayImage(){
         //setUsers();
         setAllgenres();
         if (disp == 0) 
@@ -511,7 +511,7 @@ public class GUIController {
 
             currentUser.setFavMovies(favMoviesIDs);
             //System.out.println("1111"+callFavGenres("1"));
-            ArrayList<String> a = new ArrayList<>();
+ArrayList<String> a = new ArrayList<>();
             a = recommendUsers();
             System.out.println("PRINT" + a);
             
@@ -521,23 +521,23 @@ public class GUIController {
             else{
                 int counter = 0 ;
                 ArrayList<String> b = recommendMovies();
-                
+
                 int c = b.size()%5 ;
                 for (int i = index ; counter < 5 && i < b.size() ; i++) 
                 {
                     movieIDs[counter] = b.get(i) ;
-                    counter ++ ; 
+                    counter ++ ;
                 }
                 index += counter ;
                 if (index == b.size() - 1 && c > 0) 
-                { 
+                {
                     for (int i = index ; i < c + index ; i++) 
                     {
                         movieIDs[i] = "000000";
+}
                     }
                 }
-            }
-            
+        
             helperChangeMovie1(movieIDs);
             disp++;
         }
@@ -546,18 +546,18 @@ public class GUIController {
 
     public void displayFriendsProfile(){
         if (disp1 == 0) {
-            
+
             int counter = 0 ;
-                
+
             int c = friendsIDs.size()%5 ;
             for (int i = index1 ; counter < 5 && i < friendsIDs.size() ; i++) 
             {
                 recUserIds[counter] = friendsIDs.get(i) ;
-                counter ++ ; 
+                counter ++ ;
             }
             index1 += counter ;
             if (index1 == friendsIDs.size() - 1 && c > 0) 
-            { 
+            {
                 for (int i = index1 ; i < c + index1 ; i++) 
                 {
                     recUserIds[i] = "000000";
@@ -569,9 +569,9 @@ public class GUIController {
     }
 /* 
     public void displayFavMovies(){
-        /* 
+        /*
         if (disp2 == 0) {
-            
+
             int counter = 0 ;
                 
             int c = friendsIDs.size()%5 ;
@@ -588,11 +588,11 @@ public class GUIController {
                     recUserIds[i] = "000000";
                 }
             }
-        }
+            }
         helperChangeUser1(recUserIds);
         disp1++;
-        */
-    }
+
+    }*/
  
     //recommend friend ve update var YAPMAM GEREK
 
@@ -602,12 +602,13 @@ public class GUIController {
                 + ".jpg";
         try {
             File imageFile = new File(imagePath);
-            img = ImageIO.read(imageFile);  
+            img = ImageIO.read(imageFile);
         } catch (IOException e) {
-            System.err.println("Error loading image: " + e.getMessage());  
+            System.err.println("Error loading image: " + e.getMessage());
         }
         return img;
     }
+
     public CompletableFuture<String> loadMovieName(String movieId) {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("movies/" + movieId + "/title");
         CompletableFuture<String> future = new CompletableFuture<>();
@@ -620,6 +621,7 @@ public class GUIController {
                     future.completeExceptionally(new Exception("title not found"));
                 }
             }
+
             public void onCancelled(DatabaseError databaseError) {
                 future.completeExceptionally(new Exception(databaseError.getMessage()));
             }
@@ -639,6 +641,7 @@ public class GUIController {
                     future.completeExceptionally(new Exception("title not found"));
                 }
             }
+
             public void onCancelled(DatabaseError databaseError) {
                 future.completeExceptionally(new Exception(databaseError.getMessage()));
             }
@@ -661,6 +664,7 @@ public class GUIController {
                         takeUserID(0);
                     }
                 }
+
                 public void onCancelled(DatabaseError databaseError) {
                     System.err.println("Error: " + databaseError.getMessage());
                 }
@@ -673,7 +677,7 @@ public class GUIController {
             changeMainPage(e);
         }
     }
-    
+
     public void takeUserID(Object value) {
         id = Integer.parseInt("" + value);
         if (fb.userPush(userN.getText(), pass.getText(), id)) {
@@ -684,86 +688,86 @@ public class GUIController {
             message.setFill(Color.rgb(139, 0, 0));
         }
     }
-    public void addMovie(ActionEvent e) 
+public void addMovie(ActionEvent e) 
     {
         if (e.getSource() == addToFav0) 
         {
-            //System.out.println(movieIDs[0]); 
+            //System.out.println(movieIDs[0]);
             currentUser.addMovie(movieIDs[0]) ;
         }
         else if (e.getSource() == addToFav1) 
         {
-            //System.out.println(movieIDs[1]); 
+            //System.out.println(movieIDs[1]);
             currentUser.addMovie(movieIDs[1]) ;
         }
         else if (e.getSource() == addToFav2) 
         {
-            //System.out.println(movieIDs[2]); 
+            //System.out.println(movieIDs[2]);
             currentUser.addMovie(movieIDs[2]) ;
         }
         else if (e.getSource() == addToFav3) 
         {
-            //System.out.println(movieIDs[3]); 
+            //System.out.println(movieIDs[3]);
             currentUser.addMovie(movieIDs[3]) ;
         }
         else 
         {
-            //System.out.println(movieIDs[4]); 
+            //System.out.println(movieIDs[4]);
             currentUser.addMovie(movieIDs[4]) ;
         }
-        
+
     }
 
     public void addMovieInSearch(ActionEvent e) 
     {
         if (e.getSource() == addToFav0) 
         {
-            //System.out.println(x[0]); 
+            //System.out.println(x[0]);
             currentUser.addMovie(x[0]) ;
         }
         else if (e.getSource() == addToFav1) 
         {
-            //System.out.println(x[1]); 
+            //System.out.println(x[1]);
             currentUser.addMovie(x[1]) ;
         }
         else if (e.getSource() == addToFav2) 
         {
-            //System.out.println(x[2]); 
+            //System.out.println(x[2]);
             currentUser.addMovie(x[2]) ;
         }
         else if (e.getSource() == addToFav3) 
         {
-            //System.out.println(x[3]); 
+            //System.out.println(x[3]);
             currentUser.addMovie(x[3]) ;
         }
         else if( e.getSource() == addToFav4)
         {
-            //System.out.println(x[4]); 
+            //System.out.println(x[4]);
             currentUser.addMovie(x[4]) ;
         }
         else if( e.getSource() == addToFav5)
         {
-            //System.out.println(y[0]); 
+            //System.out.println(y[0]);
             currentUser.addMovie(y[0]) ;
         }
         else if (e.getSource() == addToFav6) 
         {
-            //System.out.println(y[1]); 
+            //System.out.println(y[1]);
             currentUser.addMovie(y[1]) ;
         }
         else if (e.getSource() == addToFav7) 
         {
-            //System.out.println(y[2]); 
+            //System.out.println(y[2]);
             currentUser.addMovie(y[2]) ;
         }
         else if (e.getSource() == addToFav8) 
         {
-            //System.out.println(y[3]); 
+            //System.out.println(y[3]);
             currentUser.addMovie(y[3]) ;
         }
         else
         {
-            //System.out.println(y[4]); 
+            //System.out.println(y[4]);
             currentUser.addMovie(y[4]) ;
         }
 
@@ -772,7 +776,7 @@ public class GUIController {
 
 
     public void addUserAsFriend(ActionEvent e){
-        
+
         if (e.getSource() == b1) 
         {
             //ystem.out.println(k[0]);
@@ -824,7 +828,7 @@ public class GUIController {
         }
     }
 
-    public void removeFriendFromProfile(ActionEvent e) {
+    /*public void removeFriendFromProfile(ActionEvent e) {
 
         if (e.getSource() == r1) {
             currentUser.removeFriend(friendsIDs.get(0));
@@ -837,7 +841,7 @@ public class GUIController {
         } else if (e.getSource() == r5) {
             currentUser.removeFriend(friendsIDs.get(4));
         } 
-    }
+    }*/
 
     public void changeNick ()
     {
@@ -860,7 +864,7 @@ public class GUIController {
         stage.show();
         //System.out.println(moviesStore);
     }
-    
+
     public void changeUp(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -868,7 +872,7 @@ public class GUIController {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
@@ -1021,9 +1025,9 @@ public class GUIController {
                 }
             }
             openOnce++ ;
-        } 
+        }
     }
-    public void displayFriendsRight(ActionEvent e){
+public void displayFriendsRight(ActionEvent e){
         if(!(friendsIndex+5 >= friendsIDs.size())){
             friendsIndex += 5;
         }
@@ -1059,7 +1063,7 @@ public class GUIController {
     }
 
     public void createChat(ActionEvent e) 
-    { 
+    {
         if (e.getSource() == friend1) 
         {
             privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[0]) , currentUser.getID() , chatFriendList[0]) ;
@@ -1081,7 +1085,7 @@ public class GUIController {
             privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[4]) , currentUser.getID() , chatFriendList[4]) ;
         }
         privateChat.setMessages(friendChat, myChat);
-    }   
+    }
 
     public String getChatID(String userId , String friendId) 
     {
@@ -1147,7 +1151,7 @@ public class GUIController {
             }
         }
     }
-    public ArrayList<String> callFavGenres(String userID){
+public ArrayList<String> callFavGenres(String userID){
         ArrayList<String> ids = new ArrayList<>();
         for (User user : users) {
             
@@ -1158,11 +1162,10 @@ public class GUIController {
         //ids = findMaxes(ids);
         return ids;
     }
-        Collections.sort(genres);
+        //Collections.sort(genres);
     
 
-    public ArrayList<String> recommendMovies() 
-    {
+ 
 
     public ArrayList<String> recommendMovies() 
     {
@@ -1170,18 +1173,18 @@ public class GUIController {
         ArrayList<String> a = new ArrayList<String>();
         for (Movie m : moviesStore) 
         {
-            if ( callFavGenres(currentUser.getID()).contains(m.getGenre()) 
-                 && 
-                 !favMoviesIDs.contains(""+m.takeId())) 
-            a.add(""+m.takeId()) ;
+            if ( callFavGenres(currentUser.getID()).contains(m.getGenre())
+                    &&
+                    !favMoviesIDs.contains(""+m.takeId()))
+                a.add(""+m.takeId()) ;
         }
         return a;
     }
-
-    public ArrayList<String> recommendUsers() 
-    {
+    
+    public ArrayList<String> recommendUsers()
+     {
         ArrayList<String> current = new ArrayList<String>();
-        ArrayList<String> otherUsers = new ArrayList<>();
+     ArrayList<String> otherUsers = new ArrayList<>();
         ArrayList<String> recomUser = new ArrayList<>();
         current = callFavGenres(currentUser.getID());
         System.out.println("current" + current);
@@ -1248,21 +1251,21 @@ public class GUIController {
     } 
       
     public void findRecommendedFriends(){
-        ArrayList<User> userForCompare = fb.getUsers();
-        for (int num = 0; num < userForCompare.size(); num++) {
-            //System.out.println("hee"+userForCompare.get(num).getFavGenres());
-            if (userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(0)) ||
-                    userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(1)) ||
-                    userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(2))) {
-                boolean check = true;
-                for (int n = 0; n < currentUser.friendsIDs.size(); n++) {
-                    if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
-                        check = false;
-                    }
+     ArrayList<User> userForCompare = fb.getUsers();
+     for (int num = 0; num < userForCompare.size(); num++) {
+     //System.out.println("hee"+userForCompare.get(num).getFavGenres());
+     if (userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(0)) ||
+     userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(1)) ||
+     userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(2))) {
+     boolean check = true;
+     for (int n = 0; n < currentUser.friendsIDs.size(); n++) {
+     if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
+     check = false;
+     }
                 }
                 if (check == true) {
-                    currentUser.recommendedFriendsIDs.add(userForCompare.get(num).getId());
-                }
+     currentUser.recommendedFriendsIDs.add(userForCompare.get(num).getId());
+     }
             }
         }
         
@@ -1271,11 +1274,11 @@ public class GUIController {
     public ArrayList<String> findMaxes(ArrayList<String> genres) 
     {
         int max = 0 , temp = 0;
-        String g1 = "" , g2 = "" , g3 = ""; 
+        String g1 = "" , g2 = "" , g3 = "";
         Collections.sort(genres);
         for (int i = 0 ; i < genres.size() - 1 ; i++) 
         {
-            if (genres.get(i).equals(genres.get(i+1))) 
+            if (genres.get(i).equals(genres.get(i+1)))
                 temp ++ ;
             else 
             {
@@ -1294,15 +1297,14 @@ public class GUIController {
         g.add(g2) ;
         g.add(g3) ;
         return g;
-    }
+}
 
-    public void setAllgenres(){
+public void setAllgenres(){
         for(int a=0; a<users.size()-1; a++){
             callFavGenres(users.get(a).getID());
             //System.out.println("user"+ users.get(a).getID() +users.get(a).getFavGenres());
-        }
-    }    
+    }
+}    
 
    
 }
-      

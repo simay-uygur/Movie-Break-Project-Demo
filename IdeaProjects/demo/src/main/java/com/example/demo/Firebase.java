@@ -105,6 +105,7 @@ public class Firebase {
                 {
                     User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ; 
                     users.add(setUser(u));
+                    //u.initRefs();
                 }
                 
 
@@ -348,9 +349,7 @@ public class Firebase {
                 {
                     ids.add(m.getKey()) ;
                 }
-                u.setFavMovies(ids);
-                u.setFavGenres();
-                
+                u.setFavMovies(ids);                
             }
             
             @Override

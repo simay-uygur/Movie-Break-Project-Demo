@@ -75,45 +75,45 @@ public class Chat {
 
     public void setMyMessages(TextArea me)
     {
-        chat.child(userID).addValueEventListener(new ValueEventListener() {
+        chat.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                String msg = "" ;
+                String myMsg = "" ;
                 for (DataSnapshot mess : snapshot.getChildren())
                 {
                     if (!mess.getKey().equals("Counter"))
                     {
-                        msg += ""+mess.getValue()+"\n" ;
+                        myMsg += "\n"+mess.getValue()+"\n" ;
                     }
                 }
-                me.appendText(msg);
+                me.appendText(myMsg);
             }
-
+            
             @Override
             public void onCancelled(DatabaseError error) {
             }
             
         });
     }
-
+    
     public void setFriendMessages(TextArea friend)
     {
-        chat.child(friendID).addValueEventListener(new ValueEventListener() {
+        chat.child(friendID).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                String msg = "" ;
+                String frMsg = "" ;
                 for (DataSnapshot mess : snapshot.getChildren())
                 {
                     if (!mess.getKey().equals("Counter"))
                     {
-                        msg += ""+mess.getValue()+"\n" ;
+                        frMsg += "\n"+mess.getValue()+"\n" ;
                     }
                 }
-                friend.appendText(msg);
+                friend.appendText(frMsg);
             }
-
+            
             @Override
             public void onCancelled(DatabaseError error) {
             }
@@ -130,7 +130,7 @@ public class Chat {
 
     public void setCounter() 
     {
-        chat.child(userID).child("Counter").addValueEventListener(new ValueEventListener() {
+        chat.child(userID).child("Counter").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {

@@ -978,7 +978,7 @@ public class GUIController {
         friendChat.setText("");
         if (myChat.getWidth() <= textToSend.getText().length()) 
         {
-            privateChat.add(new Message(textToSend.getText(), currentUser.getID()));
+            privateChat.add(new Message(textToSend.getText().substring(0, textToSend.getText().length()/2) + "\n" + textToSend.getText().substring(textToSend.getText().length()/2 , textToSend.getText().length()), currentUser.getID()));
             /*myChat.appendText(textToSend.getText(0 , textToSend.getText().length()/2) + "\n");
             myChat.appendText(textToSend.getText(textToSend.getText().length()/2 , textToSend.getText().length()) + "\n");*/
             //fb.add(currentUser.getID(), "chats", textToSend.getText() , "03");

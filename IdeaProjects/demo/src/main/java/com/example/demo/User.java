@@ -27,7 +27,7 @@ public class User {
     private static ArrayList<Movie> movies ;
     private static ArrayList<String> favGenres ; 
     private DatabaseReference chats ;
-    private static ArrayList<String> recommendedMovies ; 
+    private ArrayList<String> recommendedMovies ; 
     public User(String userName, String password, String userID , Firebase fb)
     {
         chats = FirebaseDatabase.getInstance().getReference("chats"); 
@@ -37,6 +37,7 @@ public class User {
         friendsMessages = new ArrayList<>() ;
         friendsIDs = new ArrayList<>();
         recommendedMovies = new ArrayList<>() ;
+        recommendedFriendsIDs = new ArrayList<>();
         setFirebase(fb);
         setUserName(userName);
         setPassword(password);
@@ -46,40 +47,13 @@ public class User {
     public ArrayList<String> getFavGenres(){
         return favGenres;
     }
-    
-    public void findRecommendedFriends(){
-        ArrayList<User> userForCompare = fb.getUsers();
-        for (int num = 0; num < userForCompare.size(); num++) {
-            System.out.println("hee"+userForCompare.get(num).getFavGenres());
-            if (userForCompare.get(num).getFavGenres().contains(getFavGenres().get(0)) ||
-                    userForCompare.get(num).getFavGenres().contains(getFavGenres().get(1)) ||
-                    userForCompare.get(num).getFavGenres().contains(getFavGenres().get(2))) {
-                boolean check = true;
-                for (int n = 0; n < this.friendsIDs.size(); n++) {
-                    if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
-                        check = false;
-                    }
-                }
-                if (check == true) {
-                    recommendedFriendsIDs.add(userForCompare.get(num).getId());
-                }
-            }
-        }
-        
-    }
+
     
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
     }
-    /* 
-    public void setFavMovies(ArrayList<String> fav, UserCallback callback) {
-        this.favMoviesIDs = new ArrayList<>(fav);
-        setFavGenres();
-        if (callback != null) {
-            callback.onFavMoviesLoaded(this);
-        }
-    }*/
+
 
     public void setChatIDs(ArrayList<String> ChatIDs){
         this.chatIDs = ChatIDs;
@@ -93,9 +67,9 @@ public class User {
         //friends = FirebaseDatabase.getInstance().getReference("users/"+userID+"/Friends") ;
     }
 
-    public void setFriends(ArrayList<String> homo) 
+    public void setFriends(ArrayList<String> mo) 
     {
-        friendsIDs = new ArrayList<>(homo) ; 
+        friendsIDs = new ArrayList<>(mo) ; 
     }
 
     public void setGenres(ArrayList<String> genres) 
@@ -142,9 +116,12 @@ public class User {
     {
         return friendsIDs;
     }
+/*
+    public void setRecommendedUsers(ArrayList<String> user){
+        this.recommendedFriendsIDs = user;
+    }
 
-
-
+ */
     public void addFriend(String friendID)
     {
         if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
@@ -179,9 +156,9 @@ public class User {
                 }
             }
         }
-        /*System.out.println(favMoviesIDs);
-        System.out.println(genres);*/
-        findMaxes(genres);
+        System.out.println(genres);
+
+        //findMaxes(genres);
         return genres;
     }
     
@@ -210,7 +187,7 @@ public class User {
         g.add(g1) ;
         g.add(g2) ;
         g.add(g3) ;
-        favGenres = new ArrayList<>(g) ;
+        favGenres = g ;
         recommendMovies();
     }
     public ArrayList<String> getFavMoviesIDs()
@@ -251,17 +228,6 @@ public class User {
         x[3] = "857879";
         x[4] = "870358";
         return x;
-    }
-
-    public void recommendMovies() 
-    {
-        for (Movie m : movies) 
-        {
-            if ( favGenres.contains(m.getGenre()) 
-                 && 
-                 !favMoviesIDs.contains(""+m.takeId())) 
-            recommendedMovies.add(""+m.takeId()) ;
-        }
     }
 
     public void createChats() 

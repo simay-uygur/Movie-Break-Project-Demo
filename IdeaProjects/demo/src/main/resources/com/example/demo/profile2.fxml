@@ -122,7 +122,7 @@
                         </DropShadow>
                      </effect>
                   </Label>
-                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="r1" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeFriendFromProfile" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -236,7 +236,7 @@
                         </DropShadow>
                      </effect>
                   </Label>
-                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Button fx:id="r5" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeFriendFromProfile" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -255,7 +255,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button fx:id="r4" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeFriendFromProfile" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -274,7 +274,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Button fx:id="r3" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeFriendFromProfile" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -293,7 +293,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button fx:id="r2" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#removeFriendFromProfile" prefHeight="54.0" prefWidth="227.0" text="Remove This Friend" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>

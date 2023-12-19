@@ -16,9 +16,8 @@ import java.util.Scanner;
 import java.util.function.Consumer;
 public class Firebase {
     private boolean accExists = false;
-    ArrayList<User> users ;
-    ArrayList<Movie> movies ;
-    ArrayList<Chat> chats;
+    private static ArrayList<User> users ;
+    private static ArrayList<Movie> movies ;
     ArrayList<String> friendsIDs ;
     private static ArrayList<String> DATA ;
     DatabaseReference films ;
@@ -38,7 +37,7 @@ public class Firebase {
         chatDB = FirebaseDatabase.getInstance().getReference("chats");
         users = new ArrayList<>() ;
         //user = new User(, getCurrentID(), getCurrentID(), null)
-        movies = new ArrayList<>() ;
+        //movies = new ArrayList<>() ;
         takeAllMovieData();
         takeAllData();
     }
@@ -51,20 +50,20 @@ public class Firebase {
         friendsIDs = new ArrayList<>() ;
         this.dataCallback = callback;
         //takeIDS("Fav_MovieIDs", id) ;
-        takeAllData();
         takeAllMovieData();
+        takeAllData();
     }
 
     public interface FirebaseDataCallback {
         void onDataLoaded(ArrayList<Movie> movies);
         void onUserLoaded(User user) ;
         void onFav_MoviesIDSloaded(ArrayList<String> fav_moviesDatas) ;
-        void onUsersLoaded(ArrayList<User> userIDs) ;
+        void onUsersLoaded(ArrayList<User> users) ;
         void onFriendsLoaded(ArrayList<String> friendIDs) ;
     }
 
     public void takeAllMovieData() {
-        films.addValueEventListener(new ValueEventListener() {
+        films.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 movies.clear(); // Clear the ArrayList to avoid duplicates
@@ -85,11 +84,11 @@ public class Firebase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                System.out.println("Something went wrong :(");
+                //System.out.println("Something went wrong :(");
             }
         });
     }
-    
+
     
     
 
@@ -98,13 +97,14 @@ public class Firebase {
     }
     public void takeAllData()
     {
-        userDB.addValueEventListener(new ValueEventListener() {
+        userDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
-                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ; 
+                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
                     users.add(setUser(u));
+                    //System.out.println(users);
                 }
                 
 
@@ -193,6 +193,7 @@ public class Firebase {
 
     public int indexOf(String name , String pass)
     {
+
         for (User toCheck : users) 
         {
             if (toCheck.getName().equals(name) && toCheck.getPassword().equals(pass)) 
@@ -324,17 +325,21 @@ public class Firebase {
             {
                 DatabaseReference chat = chatDB.child(userId+"-"+id) ; 
                 chat.child(userId).setValueAsync("") ; 
+                chat.child(userId).child("Counter").setValueAsync(0) ;
                 chat.child(id).setValueAsync(""); 
+                chat.child(id).child("Counter").setValueAsync(0) ;
             }
             else 
             {
                 DatabaseReference chat = chatDB.child(id+"-"+userId) ; 
                 chat.child(userId).setValueAsync("") ; 
+                chat.child(userId).child("Counter").setValueAsync(0) ;
                 chat.child(id).setValueAsync(""); 
+                chat.child(id).child("Counter").setValueAsync(0) ; 
             }
             break ;
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
-        }
+            }
     }
 
     public User setUser(User u) 
@@ -349,10 +354,10 @@ public class Firebase {
                     ids.add(m.getKey()) ;
                 }
                 u.setFavMovies(ids);
-                u.setFavGenres();
-                
+                //u.setFavGenres();
+
             }
-            
+
             @Override
             public void onCancelled(DatabaseError error) {
             }
@@ -360,7 +365,7 @@ public class Firebase {
         });
         return u ;
     }
-
+    
         
     /*public void setUser(User u, Consumer<User> callback) {
         ArrayList<String> ids = new ArrayList<>();
@@ -388,4 +393,9 @@ public class Firebase {
     public String getCurrentID(){
         return u.getID();
     }
+
+    public void setMovies(ArrayList<Movie> zaeb) 
+    {
+        movies = zaeb ;
+    } 
 }

@@ -188,7 +188,7 @@ public class User {
         g.add(g2) ;
         g.add(g3) ;
         favGenres = g ;
-        recommendMovies();
+        //recommendMovies();
     }
     public ArrayList<String> getFavMoviesIDs()
     {

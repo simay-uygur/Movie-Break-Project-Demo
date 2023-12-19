@@ -162,12 +162,12 @@ public class GUIController {
 
     String[] x = new String[5];
     String[] y = new String[5];
-
     String[] k = new String[5];
     String[] l = new String[5];
-
+    String[] switchforuser = new String[5];
 
     private String[] movieIDs = new String[5];
+    private String[] recUserIds = new String[5];
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
@@ -451,8 +451,32 @@ public class GUIController {
         }
     } 
     
-    //refreshFriend
-    //public void refreshFriend(){}
+
+    public void refreshUsers(ActionEvent e) {
+        /* 
+        int counter = 0 ;
+        //recommend users al 
+  
+        //ArrayList<String> a = recommendMovies();
+        int c = a.size()%5 ;
+        
+        for (int i = index ; counter < 5 && i < a.size() ; i++) 
+        {
+            movieIDs[counter] = a.get(i) ;
+            counter ++ ; 
+        }
+        index += counter ;
+        if (index == a.size() - 1 && c > 0) 
+        { 
+            for (int i = index ; i < c + index ; i++) 
+            {
+                movieIDs[i] = "000000";
+            }
+        }
+        helperChangeMovie1(movieIDs);
+        */
+    }
+
     public void refreshMovie(ActionEvent e) {
         int counter = 0 ;
         currentUser.setFavMovies(favMoviesIDs);
@@ -477,8 +501,8 @@ public class GUIController {
         helperChangeMovie1(movieIDs);
     }
     public void displayImage(){
-        //setUsers();
-        //setAllgenres();
+
+        
         if (disp == 0) 
         {
             System.out.println("user"+ users.get(2).getFavGenres());
@@ -514,42 +538,35 @@ public class GUIController {
         }
 
     }
-/*
-    public void displayFriends(){
 
-        //setAllgenres();
+    public void displayFriendsProfile(){
         
-        if (disp1 == 0) 
-        {
+        if (disp1 == 0) {
             
-            if(currentUser.getFavMoviesIDs().isEmpty()){
-                movieIDs = currentUser.recomIds();
-            }
-            else{
-                int counter = 0 ;
-                ArrayList<String> b = recommendMovies();
+            int counter = 0 ;
                 
-                int c = b.size()%5 ;
-                for (int i = index1 ; counter < 5 && i < b.size() ; i++) 
+            int c = friendsIDs.size()%5 ;
+            for (int i = index1 ; counter < 5 && i < friendsIDs.size() ; i++) 
+            {
+                recUserIds[counter] = friendsIDs.get(i) ;
+                counter ++ ; 
+            }
+            index1 += counter ;
+            if (index1 == friendsIDs.size() - 1 && c > 0) 
+            { 
+                for (int i = index1 ; i < c + index1 ; i++) 
                 {
-                    movieIDs[counter] = b.get(i) ;
-                    counter ++ ; 
-                }
-                index1 += counter ;
-                if (index1 == b.size() - 1 && c > 0) 
-                { 
-                    for (int i = index1 ; i < c + index1 ; i++) 
-                    {
-                        movieIDs[i] = "000000";
-                    }
+                    recUserIds[i] = "000000";
                 }
             }
-            helperChangeMovie1(movieIDs);
-            disp1++;
         }
+        
+        helperChangeUser1(movieIDs);
+        disp1++;
+        
 
     }
- */
+ 
     //recommend friend ve update var YAPMAM GEREK
 
     public BufferedImage loadMoviePoster(String movieId) {

@@ -25,14 +25,21 @@
       </Pane>
       <Pane prefHeight="400.0" prefWidth="310.0" style="-fx-background-color: #FFC0CB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="backIn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="36.0" prefWidth="28.0" style="-fx-border-color: #000000; -fx-border-width: 2; -fx-border-radius: 20; -fx-background-radius: 20;">
+            <Button fx:id="backIn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="36.0" prefWidth="28.0" style="-fx-border-color: a6032e; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 20;">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/return.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
+               </graphic>
+               <effect>
+                  <DropShadow height="2.0" offsetX="2.0" offsetY="2.0" radius="0.5" width="2.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect></Button>
             <PasswordField fx:id="pass" alignment="TOP_CENTER" layoutX="23.0" layoutY="236.0" prefHeight="30.0" prefWidth="256.0" promptText="Password" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2; -fx-border-color: #a6032e;">
                <effect>
                   <DropShadow height="30.0" radius="14.5" spread="0.6" width="30.0">

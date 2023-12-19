@@ -286,7 +286,7 @@
             </Label>
          </children>
       </GridPane>
-      <Button layoutX="1381.0" layoutY="791.0" mnemonicParsing="false" onAction="#moveBackwardMovieSearch">
+      <Button layoutX="1360.0" layoutY="780.0" mnemonicParsing="false" onAction="#moveBackwardMovieSearch">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
@@ -294,8 +294,15 @@
                </image>
             </ImageView>
          </graphic>
+         <effect>
+            <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="0.6" width="3.0">
+               <color>
+                  <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+               </color>
+            </DropShadow>
+         </effect>
       </Button>
-      <Button layoutX="1457.0" layoutY="791.0" mnemonicParsing="false" onAction="#moveForwardMovieSearch">
+      <Button layoutX="1445.0" layoutY="780.0" mnemonicParsing="false" onAction="#moveForwardMovieSearch">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
@@ -303,6 +310,13 @@
                </image>
             </ImageView>
          </graphic>
+         <effect>
+            <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="0.6" width="3.0">
+               <color>
+                  <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+               </color>
+            </DropShadow>
+         </effect>
       </Button>
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
          <items>

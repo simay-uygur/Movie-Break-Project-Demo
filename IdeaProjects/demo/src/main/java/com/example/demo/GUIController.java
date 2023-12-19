@@ -805,6 +805,20 @@ public class GUIController {
         }
     }
 
+    public void removeFriendFromProfile(ActionEvent e) {
+
+        if (e.getSource() == r1) {
+            currentUser.removeFriend(friendsIDs.get(0));
+        } else if (e.getSource() == r2) {
+            currentUser.removeFriend(friendsIDs.get(1));
+        } else if (e.getSource() == r3) {
+            currentUser.removeFriend(friendsIDs.get(2));
+        } else if (e.getSource() == r4) {
+            currentUser.removeFriend(friendsIDs.get(3));
+        } else if (e.getSource() == r5) {
+            currentUser.removeFriend(friendsIDs.get(4));
+        } 
+    }
 
     public void changeNick ()
     {

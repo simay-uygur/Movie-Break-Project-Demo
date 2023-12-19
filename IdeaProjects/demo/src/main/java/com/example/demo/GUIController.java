@@ -50,7 +50,6 @@ import javax.swing.text.DefaultEditorKit.CutAction;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 public class GUIController {
-    DatabaseReference userDB = FirebaseDatabase.getInstance().getReference("users");
     private static User currentUser ; 
     private static Chat privateChat ;
     private static int id;
@@ -62,7 +61,8 @@ public class GUIController {
     private static ArrayList<String> favMoviesIDs ;
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
-    
+    private static int disp = 0 ;
+    private static int openOnce = 0 ;
     private static int friendsIndex = 0 ;
     private static String[] chatFriendList = new String[5] ;
     private static ArrayList<String> favGenres = new ArrayList<>(); 
@@ -509,6 +509,7 @@ public class GUIController {
                     }
                 }
             }
+            
             helperChangeMovie1(movieIDs);
             disp++;
         }
@@ -729,8 +730,6 @@ public class GUIController {
 
     }
 
-
-
     public void addUserAsFriend(ActionEvent e){
         
         if (e.getSource() == b1) 
@@ -789,8 +788,9 @@ public class GUIController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        //System.out.println(moviesStore);
     }
-
+    
     public void changeUp(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -798,15 +798,19 @@ public class GUIController {
         stage.setScene(scene);
         stage.show();
     }
-
+    
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.show();
-
+        setUsers();
+        //System.out.println(currentUser.getFavMoviesIDs());
+        //System.out.println("10"+callFavGenres(currentUser.getID()));
+        //System.out.println(currentUser);
     }
 
     public void backToMain(ActionEvent e) throws IOException {
@@ -914,35 +918,39 @@ public class GUIController {
         }
     }
     public void displayFriends(MouseEvent e){
-        int bound = Math.min(friendsIDs.size(), 5);
-        for (int i = friendsIndex; i < friendsIndex+bound; i++) {
-            for (int j = 0; j < users.size(); j++) {
-                if(i == 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
-                    friend1.setText(users.get(j).getName());
-                    chatFriendList[0] = users.get(j).getID() ;
-                }
-                if(i == 1 && friendsIDs.get(i).equals(users.get(j).getID())) 
-                {
-                    friend2.setText(users.get(j).getName());
-                    chatFriendList[1] = users.get(j).getID() ;
-                }
-                if(i == 2 && friendsIDs.get(i).equals(users.get(j).getID())) 
-                {
-                    friend3.setText(users.get(j).getName());
-                    chatFriendList[2] = users.get(j).getID() ;
-                }
-                if(i == 3 && friendsIDs.get(i).equals(users.get(j).getID())) 
-                {
-                    friend4.setText(users.get(j).getName());
-                    chatFriendList[3] = users.get(j).getID() ;
-                }
-                if(i == 4 && friendsIDs.get(i).equals(users.get(j).getID())) 
-                {
-                    friend5.setText(users.get(j).getName());
-                    chatFriendList[4] = users.get(j).getID() ;
+        if (openOnce == 0)
+        {
+            int bound = Math.min(friendsIDs.size(), 5);
+            for (int i = friendsIndex; i < friendsIndex+bound; i++) {
+                for (int j = 0; j < users.size(); j++) {
+                    if(i == 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                        friend1.setText(users.get(j).getName());
+                        chatFriendList[0] = users.get(j).getID() ;
+                    }
+                    if(i == 1 && friendsIDs.get(i).equals(users.get(j).getID())) 
+                    {
+                        friend2.setText(users.get(j).getName());
+                        chatFriendList[1] = users.get(j).getID() ;
+                    }
+                    if(i == 2 && friendsIDs.get(i).equals(users.get(j).getID())) 
+                    {
+                        friend3.setText(users.get(j).getName());
+                        chatFriendList[2] = users.get(j).getID() ;
+                    }
+                    if(i == 3 && friendsIDs.get(i).equals(users.get(j).getID())) 
+                    {
+                        friend4.setText(users.get(j).getName());
+                        chatFriendList[3] = users.get(j).getID() ;
+                    }
+                    if(i == 4 && friendsIDs.get(i).equals(users.get(j).getID())) 
+                    {
+                        friend5.setText(users.get(j).getName());
+                        chatFriendList[4] = users.get(j).getID() ;
+                    }
                 }
             }
-        }
+            openOnce++ ;
+        } 
     }
     public void displayFriendsRight(ActionEvent e){
         if(!(friendsIndex+5 >= friendsIDs.size())){
@@ -980,9 +988,7 @@ public class GUIController {
     }
 
     public void createChat(ActionEvent e) 
-    {
-        myChat.setText("");
-        friendChat.setText("");   
+    { 
         if (e.getSource() == friend1) 
         {
             privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[0]) , currentUser.getID() , chatFriendList[0]) ;
@@ -1020,7 +1026,9 @@ public class GUIController {
 
     public void toSend(ActionEvent e) 
     {
-        if (myChat.getWidth() < textToSend.getText().length()) 
+        myChat.setText("");
+        friendChat.setText("");
+        if (myChat.getWidth() <= textToSend.getText().length()) 
         {
             privateChat.add(new Message(textToSend.getText(), currentUser.getID()));
 
@@ -1031,6 +1039,7 @@ public class GUIController {
 
         }
         textToSend.setText("");
+        privateChat.setMessages(friendChat, myChat);
     }
 
     public void displayFriendsLeft(ActionEvent e){
@@ -1067,7 +1076,6 @@ public class GUIController {
             }
         }
     }
-
     public ArrayList<String> callFavGenres(String ID){
         ArrayList<String> ids = new ArrayList<>() ;
         for (int i = 0; i < users.size(); i++) {
@@ -1075,99 +1083,7 @@ public class GUIController {
                 ids = users.get(i).setFavGenres(moviesStore);
             }
         }
-
-        ids = findMaxes (ids);
+        System.out.println(ids);
         return ids ;
     }
-
-    public ArrayList<String> recommendMovies() 
-    {
-
-        ArrayList<String> a = new ArrayList<String>();
-        for (Movie m : moviesStore) 
-        {
-            if ( callFavGenres(currentUser.getID()).contains(m.getGenre()) 
-                 && 
-                 !favMoviesIDs.contains(""+m.takeId())) 
-            a.add(""+m.takeId()) ;
-        }
-        return a;
-    }
-/* 
-    public ArrayList<String> recommendUsers() 
-    {
-
-        ArrayList<String> b = new ArrayList<String>();
-        ArrayList<String> x = new ArrayList<>();
-
-
-        for(int y=0; y< users.size()-1; y++){
-            if(users.get(y).getID().equals(currentUser.getID())  ){
-                x = callFavGenres(users.get(y).getID());
-                if()
-            }
-            
-        }
-        return b;
-        
-    }
-
-      
-    public void findRecommendedFriends(){
-        ArrayList<User> userForCompare = fb.getUsers();
-        for (int num = 0; num < userForCompare.size(); num++) {
-            System.out.println("hee"+userForCompare.get(num).getFavGenres());
-            if (userForCompare.get(num).getFavGenres().contains(getFavGenres().get(0)) ||
-                    userForCompare.get(num).getFavGenres().contains(getFavGenres().get(1)) ||
-                    userForCompare.get(num).getFavGenres().contains(getFavGenres().get(2))) {
-                boolean check = true;
-                for (int n = 0; n < this.friendsIDs.size(); n++) {
-                    if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
-                        check = false;
-                    }
-                }
-                if (check == true) {
-                    recommendedFriendsIDs.add(userForCompare.get(num).getId());
-                }
-            }
-        }
-        
-    }
-*/
-    public ArrayList<String> findMaxes(ArrayList<String> genres) 
-    {
-        int max = 0 , temp = 0;
-        String g1 = "" , g2 = "" , g3 = ""; 
-        Collections.sort(genres);
-        for (int i = 0 ; i < genres.size() - 1 ; i++) 
-        {
-            if (genres.get(i).equals(genres.get(i+1))) 
-                temp ++ ;
-            else 
-            {
-                if (temp >= max) 
-                {
-                    max = temp ;
-                    g3 = g2 ;
-                    g2 = g1 ;
-                    g1 = genres.get(i+1) ;
-                }
-                temp = 0 ;
-            }
-        }
-        ArrayList<String> g = new ArrayList<>() ;
-        g.add(g1) ;
-        g.add(g2) ;
-        g.add(g3) ;
-        return g;
-    }
-
-    public void setAllgenres(){
-        for(int a=0; a<users.size()-1; a++){
-            callFavGenres(users.get(a).getID());
-            System.out.println("user"+ users.get(a).getID() +users.get(a).getFavGenres());
-        }
-    }    
-
-   
 }

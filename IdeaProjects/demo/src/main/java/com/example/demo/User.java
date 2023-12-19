@@ -24,7 +24,7 @@ public class User {
     private ArrayList<Chat> chatsWithFriends ;
     private ArrayList<Message> userMessages ;
     private ArrayList<Message> friendsMessages ;
-    private ArrayList<Movie> movies ;
+    private static ArrayList<Movie> movies ;
     private static ArrayList<String> favGenres ; 
     private DatabaseReference chats ;
     private ArrayList<String> recommendedMovies ; 
@@ -42,8 +42,7 @@ public class User {
         setUserName(userName);
         setPassword(password);
         setID(userID);
-        initRefs();
-       
+        recommendedFriendsIDs = new ArrayList<>();
     }
     public ArrayList<String> getFavGenres(){
         return favGenres;
@@ -63,7 +62,8 @@ public class User {
 
     public void initRefs()
     {
-        movies = new ArrayList<>(fb.movies) ;
+        this.movies = new ArrayList<>(movies) ;
+        //System.out.println(movies);
         //friends = FirebaseDatabase.getInstance().getReference("users/"+userID+"/Friends") ;
     }
 
@@ -126,7 +126,6 @@ public class User {
     {
         if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
         {
-            System.out.println("friend added:" + friendID);
             fb.add(userID, "Friends", friendID);
             friendsIDs.add(friendID);
         }
@@ -136,7 +135,6 @@ public class User {
     {
         if (!favMoviesIDs.contains(movieId)) 
         {
-            System.out.println("Movie added:" + movieId);
             fb.add(userID, "Fav_MovieIDs", movieId);
             favMoviesIDs.add(movieId);
         }
@@ -149,13 +147,11 @@ public class User {
 
     public ArrayList<String> setFavGenres(ArrayList<Movie> mo) {
         ArrayList<String> genres = new ArrayList<>();
-        System.out.println(favMoviesIDs);
         for (int i = 0; i < favMoviesIDs.size(); i++) {
             for (Movie m : mo) 
             {
                 if (favMoviesIDs.get(i).equals(""+m.takeId())) 
                 {
-                    System.out.println(m.takeId()+" "+favMoviesIDs.get(i) );
                     genres.add(m.getGenre()) ;
                 }
             }
@@ -166,7 +162,34 @@ public class User {
         return genres;
     }
     
-
+    public void findMaxes(ArrayList<String> genres) 
+    {
+        int max = 0 , temp = 0;
+        String g1 = "" , g2 = "" , g3 = ""; 
+        Collections.sort(genres);
+        for (int i = 0 ; i < genres.size() - 1 ; i++) 
+        {
+            if (genres.get(i).equals(genres.get(i+1))) 
+                temp ++ ;
+            else 
+            {
+                if (temp >= max) 
+                {
+                    max = temp ;
+                    g3 = g2 ;
+                    g2 = g1 ;
+                    g1 = genres.get(i+1) ;
+                }
+                temp = 0 ;
+            }
+        }
+        ArrayList<String> g = new ArrayList<>() ;
+        g.add(g1) ;
+        g.add(g2) ;
+        g.add(g3) ;
+        favGenres = g ;
+        recommendMovies();
+    }
     public ArrayList<String> getFavMoviesIDs()
     {
         return favMoviesIDs;
@@ -244,7 +267,7 @@ public class User {
     
     public String toString()
     {
-        return "Name: " + userName + " ID: " + userID + favMoviesIDs + "huesosi-ebanye" +favGenres;
+        return "Name: " + userName + " ID: " + userID + favMoviesIDs + "huesosi-ebanye" +favGenres ;
     }
 
     public ArrayList<String> getRecommendedMovies()

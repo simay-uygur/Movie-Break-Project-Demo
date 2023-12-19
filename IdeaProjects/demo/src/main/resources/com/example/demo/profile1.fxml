@@ -266,10 +266,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view5" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -290,11 +286,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view22" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image>
-                  </ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -315,10 +306,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view2" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -339,10 +326,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view3" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -363,10 +346,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view4" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -462,10 +441,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view51" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -486,10 +461,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view11" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -510,10 +481,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view21" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -534,10 +501,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view31" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -558,10 +521,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view41" fitHeight="195.0" fitWidth="170.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../proje%20cs/Movie-Break-Project-Demo/Movie-Break-Project-Demo/IdeaProjects/demo/src/main/resources/com/example/demo/images/nickname_symbol.png" />
-                     </image></ImageView>
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">

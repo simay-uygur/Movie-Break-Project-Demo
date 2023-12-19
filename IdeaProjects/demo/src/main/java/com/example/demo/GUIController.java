@@ -128,21 +128,10 @@ public class GUIController {
     @FXML private ImageView view10;
     @FXML private Button movierefreshbutton;
     @FXML private Button friendrefreshbutton;
-    @FXML private TextField movieSearchTextField;
+    @FXML private TextField movieSearchTextField, userSearchTextField;
     @FXML private Text message;
     @FXML private ListView<Movie> searchResultsListView; 
-    @FXML private TextField userSearchTextField; 
-    @FXML private Button b1; 
-    @FXML private Button b2;
-    @FXML private Button b3;
-    @FXML private Button b4;
-    @FXML private Button b5;
-    @FXML private Button b6;
-    @FXML private Button b7;        
-    @FXML private Button b8;
-    @FXML private Button b9;
-    @FXML private Button b10;   
-
+    @FXML private Button b1,b2,b3, b4,b5,b6,b7,b8,b9,b10;   
     @FXML private MenuItem addToFav0,addToFav1,addToFav2,addToFav3,addToFav4,addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
     @FXML private TextArea friendChat , myChat ;
     @FXML private Button send ;
@@ -159,6 +148,7 @@ public class GUIController {
     //private int =0;
     private static int disp = 0 ;
     private static int disp1 = 0;
+    private static int disp2 = 0;
 
     String[] x = new String[5];
     String[] y = new String[5];
@@ -540,7 +530,6 @@ public class GUIController {
     }
 
     public void displayFriendsProfile(){
-        
         if (disp1 == 0) {
             
             int counter = 0 ;
@@ -560,11 +549,34 @@ public class GUIController {
                 }
             }
         }
-        
-        helperChangeUser1(movieIDs);
+        helperChangeUser1(recUserIds);
         disp1++;
-        
+    }
 
+    public void displayFavMovies(){
+        /* 
+        if (disp2 == 0) {
+            
+            int counter = 0 ;
+                
+            int c = friendsIDs.size()%5 ;
+            for (int i = index1 ; counter < 5 && i < friendsIDs.size() ; i++) 
+            {
+                recUserIds[counter] = friendsIDs.get(i) ;
+                counter ++ ; 
+            }
+            index1 += counter ;
+            if (index1 == friendsIDs.size() - 1 && c > 0) 
+            { 
+                for (int i = index1 ; i < c + index1 ; i++) 
+                {
+                    recUserIds[i] = "000000";
+                }
+            }
+        }
+        helperChangeUser1(recUserIds);
+        disp1++;
+        */
     }
  
     //recommend friend ve update var YAPMAM GEREK
@@ -823,6 +835,7 @@ public class GUIController {
     }
 
     public void backToMain(ActionEvent e) throws IOException {
+        disp = 0;
         root = FXMLLoader.load(getClass().getResource("welcomePage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -889,6 +902,7 @@ public class GUIController {
     }
 
     public void openProfile1(ActionEvent e) throws IOException {
+        disp2 = 0;
         root = FXMLLoader.load(getClass().getResource("profile1.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -898,6 +912,7 @@ public class GUIController {
     }
 
     public void openProfile2(ActionEvent e) throws IOException {
+        disp1 = 0;
         root = FXMLLoader.load(getClass().getResource("profile2.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -927,7 +942,7 @@ public class GUIController {
         }
     }
     // this is for chat friend displaying
-    public void displayFriends(MouseEvent e){
+    public void displayFriends(){
         if (openOnce == 0)
         {
             int bound = Math.min(friendsIDs.size(), 5);

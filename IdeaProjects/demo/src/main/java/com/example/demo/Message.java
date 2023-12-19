@@ -26,26 +26,31 @@ public class Message {
         this.time = time;
     }
 
-    public String getTime()
+    public String getMessage()
     {
         int hour = time.getHour();
         int minute = time.getMinute();
-        return hour + ":" + minute;
+        return "Sent at: " + hour + ":" + minute + /*" by " + userID + */ "\n" + text;
     }
 
-    public String getUserID()
+    /*public String getUserID()
     {
         return this.userID;
-    }
+    }*/
 
-    public String getText()
+    /*public String getText()
     {
         return this.text;
-    }
-    public String displayHeadTitle(){
+    }*/
+    /*public String displayHeadTitle(){
         return getUserID()+" "+getTime();
-    }
-    public String displayText(){
+    }*/
+    /*public String displayText(){
         return getText();
-    }
+    }*/
+
+    /*public String toString() 
+    {
+        return getUserID() + " at " + getTime() + ":\n"+ getText() ;
+    }*/
 }

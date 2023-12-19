@@ -1,6 +1,7 @@
 package com.example.demo;
 import com.example.demo.GUIController;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Query;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
@@ -305,7 +306,7 @@ public class Firebase {
         DATA = new ArrayList<>(datas) ;
     }
 
-    public void add(String userId , String path , String id , String chatUser) 
+    public void add(String userId , String path , String id) 
     {
         DatabaseReference user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ;
         switch(path)
@@ -326,14 +327,13 @@ public class Firebase {
             }
             break ;
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
-            case "chats" : chatDB.child(chatUser).child(userId).setValueAsync(id) ;
         }
     }
 
     public User setUser(User u) 
     {
         ArrayList<String> ids = new ArrayList<>() ;
-        userDB.child(u.getID()).child("Fav_MovieIDs").addValueEventListener(new ValueEventListener() {
+        userDB.child(u.getID()).child("Fav_MovieIDs").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -343,7 +343,7 @@ public class Firebase {
                 }
                 u.setFavMovies(ids);
             }
-
+            
             @Override
             public void onCancelled(DatabaseError error) {
             }

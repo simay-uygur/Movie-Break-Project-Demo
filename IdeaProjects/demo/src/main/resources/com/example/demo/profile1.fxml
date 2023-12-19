@@ -22,7 +22,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#displayFavMovies" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
       <Pane layoutY="96.0" prefHeight="141.0" prefWidth="1536.0">
          <children>
@@ -266,7 +266,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view5" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -278,7 +277,6 @@
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="80.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <children>
-                  <ImageView fx:id="view1" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                   <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Add to Favourites" />
@@ -308,7 +306,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view2" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -318,7 +315,7 @@
                   </DropShadow>
                </effect>
             </Pane>
-            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
                <children>
                   <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
                      <items>
@@ -329,7 +326,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view3" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -350,7 +346,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view4" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -446,7 +441,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view10" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -467,7 +461,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view6" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -488,7 +481,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view7" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -509,7 +501,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view8" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -530,7 +521,6 @@
                         <Font size="14.0" />
                      </font>
                   </MenuButton>
-                  <ImageView fx:id="view9" fitHeight="163.0" fitWidth="228.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">

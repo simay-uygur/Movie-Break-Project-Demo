@@ -693,7 +693,7 @@ public class GUIController {
     {
         for (User u : users)
         {
-            u.setFavGenres(); 
+            u.setFavGenres(moviesStore); 
         }
         System.out.println(users);
     }

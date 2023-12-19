@@ -31,7 +31,7 @@ public class User {
     public User(String userName, String password, String userID , Firebase fb)
     {
         chats = FirebaseDatabase.getInstance().getReference("chats"); 
-        genres = new ArrayList<>() ;
+        //genres = new ArrayList<>() ;
         chatsWithFriends = new ArrayList<>() ;
         userMessages = new ArrayList<>() ;
         friendsMessages = new ArrayList<>() ;
@@ -190,7 +190,7 @@ public class User {
         findMaxes(genres);
         return genres;
     }
-    }
+    
     public void findMaxes(ArrayList<String> genres) 
     {
         int max = 0 , temp = 0;

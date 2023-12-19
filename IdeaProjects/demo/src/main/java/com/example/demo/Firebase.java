@@ -349,6 +349,8 @@ public class Firebase {
                     ids.add(m.getKey()) ;
                 }
                 u.setFavMovies(ids);
+                u.setFavGenres();
+                
             }
             
             @Override

@@ -228,5 +228,38 @@ public class eski {
     }
 
 */
+   /* 
 
+
+
+        public void findMaxes(ArrayList<String> genres) 
+    { 
+        int max = 0 , temp = 0;
+        String g1 = "" , g2 = "" , g3 = ""; 
+        Collections.sort(genres);
+        for (int i = 0 ; i <= genres.size() -1 ; i++) 
+        {
+            if (genres.get(i).equals(genres.get(i+1))) 
+                temp ++ ;
+            else 
+            {
+                if (temp >= max) 
+                {
+                    max = temp ;
+                    g3 = g2 ;
+                    g2 = g1 ;
+                    g1 = genres.get(i+1) ;
+                }
+                temp = 0 ;
+            }
+        }
+        ArrayList<String> g = new ArrayList<>() ;
+        g.add(g1) ;
+        g.add(g2) ;
+        g.add(g3) ;
+        favGenres = g ;
+        recommendMovies();
+        findRecommendedFriends();
+    }
+*/ 
 }

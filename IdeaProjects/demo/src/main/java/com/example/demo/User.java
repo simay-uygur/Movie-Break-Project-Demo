@@ -47,12 +47,14 @@ public class User {
     public ArrayList<String> getFavGenres(){
         return favGenres;
     }
+    
     public void findRecommendedFriends(){
         ArrayList<User> userForCompare = fb.getUsers();
         for (int num = 0; num < userForCompare.size(); num++) {
-            if (userForCompare.get(num).getFavGenres().contains(this.favGenres.get(0)) ||
-                    userForCompare.get(num).getFavGenres().contains(this.favGenres.get(1)) ||
-                    userForCompare.get(num).getFavGenres().contains(this.favGenres.get(2))) {
+            System.out.println("hee"+userForCompare.get(num).getFavGenres());
+            if (userForCompare.get(num).getFavGenres().contains(getFavGenres().get(0)) ||
+                    userForCompare.get(num).getFavGenres().contains(getFavGenres().get(1)) ||
+                    userForCompare.get(num).getFavGenres().contains(getFavGenres().get(2))) {
                 boolean check = true;
                 for (int n = 0; n < this.friendsIDs.size(); n++) {
                     if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
@@ -66,13 +68,19 @@ public class User {
         }
         
     }
-
-
     
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
     }
+    /* 
+    public void setFavMovies(ArrayList<String> fav, UserCallback callback) {
+        this.favMoviesIDs = new ArrayList<>(fav);
+        setFavGenres();
+        if (callback != null) {
+            callback.onFavMoviesLoaded(this);
+        }
+    }*/
 
     public void setChatIDs(ArrayList<String> ChatIDs){
         this.chatIDs = ChatIDs;
@@ -182,6 +190,7 @@ public class User {
         findMaxes(genres);
         return genres;
     }
+    }
     public void findMaxes(ArrayList<String> genres) 
     {
         int max = 0 , temp = 0;
@@ -265,7 +274,6 @@ public class User {
     {
 
     }
-
 
     public void takeMessages(ArrayList<Message> unknown , String path) 
     {

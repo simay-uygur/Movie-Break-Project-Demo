@@ -505,12 +505,12 @@ public class GUIController {
                     }
                 }
             }
-            
             helperChangeMovie1(movieIDs);
             disp++;
         }
 
     }
+
 
 
 

@@ -48,7 +48,6 @@ import javax.swing.text.DefaultEditorKit.CutAction;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 public class GUIController {
-    DatabaseReference userDB = FirebaseDatabase.getInstance().getReference("users");
     private static User currentUser ; 
     private static Chat privateChat ;
     private static int id;
@@ -61,9 +60,9 @@ public class GUIController {
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
     private static int disp = 0 ;
+    private static int openOnce = 0 ;
     private static int friendsIndex = 0 ;
     private static String[] chatFriendList = new String[5] ;
-    private static ArrayList<String> favGenres = new ArrayList<>(); 
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
@@ -454,10 +453,7 @@ public class GUIController {
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
         int counter = 0 ;
-        currentUser.setFavMovies(favMoviesIDs);
-        favGenres=currentUser.setFavGenres(moviesStore);
-        //System.out.println("1"+currentUser.getFavGenres());
-        //System.out.println(favGenres);
+                currentUser.setFavMovies(favMoviesIDs);
         int c = currentUser.getRecommendedMovies().size()%5 ;
         for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
         {
@@ -479,10 +475,7 @@ public class GUIController {
         {
             
             currentUser.setFavMovies(favMoviesIDs);
-            //currentUser.setFavGenres(moviesStore);
-            System.out.println("1111"+callFavGenres("1"));
-            System.out.println("favee"+currentUser.getFavMoviesIDs());
-            System.out.println( currentUser.recommendedFriendsIDs);
+            
         //currentUser.findRecommendedFriends();
             if(currentUser.getFavMoviesIDs().isEmpty()){
                 movieIDs = currentUser.recomIds();
@@ -505,12 +498,12 @@ public class GUIController {
                     }
                 }
             }
+            
             helperChangeMovie1(movieIDs);
             disp++;
         }
 
     }
-
 
 
 
@@ -689,14 +682,6 @@ public class GUIController {
 
     }
 
-    public void setUsers() 
-    {
-        for (User u : users)
-        {
-            u.setFavGenres(moviesStore); 
-        }
-    }
-
     public void addUserAsFriend(ActionEvent e){
         
         if (e.getSource() == b1) 
@@ -755,7 +740,6 @@ public class GUIController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        setUsers();
         //System.out.println(moviesStore);
     }
     
@@ -773,7 +757,7 @@ public class GUIController {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        //stage.setFullScreen(true);
+        stage.setFullScreen(true);
         stage.show();
     }
 
@@ -882,35 +866,39 @@ public class GUIController {
         }
     }
     public void displayFriends(MouseEvent e){
-        int bound = Math.min(friendsIDs.size(), 5);
-        for (int i = friendsIndex; i < friendsIndex+bound; i++) {
-            for (int j = 0; j < users.size(); j++) {
-                if(i == 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
-                    friend1.setText(users.get(j).getName());
-                    chatFriendList[0] = users.get(j).getID() ;
-                }
-                if(i == 1 && friendsIDs.get(i).equals(users.get(j).getID())) 
-                {
-                    friend2.setText(users.get(j).getName());
-                    chatFriendList[1] = users.get(j).getID() ;
-                }
-                if(i == 2 && friendsIDs.get(i).equals(users.get(j).getID())) 
-                {
-                    friend3.setText(users.get(j).getName());
-                    chatFriendList[2] = users.get(j).getID() ;
-                }
-                if(i == 3 && friendsIDs.get(i).equals(users.get(j).getID())) 
-                {
-                    friend4.setText(users.get(j).getName());
-                    chatFriendList[3] = users.get(j).getID() ;
-                }
-                if(i == 4 && friendsIDs.get(i).equals(users.get(j).getID())) 
-                {
-                    friend5.setText(users.get(j).getName());
-                    chatFriendList[4] = users.get(j).getID() ;
+        if (openOnce == 0)
+        {
+            int bound = Math.min(friendsIDs.size(), 5);
+            for (int i = friendsIndex; i < friendsIndex+bound; i++) {
+                for (int j = 0; j < users.size(); j++) {
+                    if(i == 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                        friend1.setText(users.get(j).getName());
+                        chatFriendList[0] = users.get(j).getID() ;
+                    }
+                    if(i == 1 && friendsIDs.get(i).equals(users.get(j).getID())) 
+                    {
+                        friend2.setText(users.get(j).getName());
+                        chatFriendList[1] = users.get(j).getID() ;
+                    }
+                    if(i == 2 && friendsIDs.get(i).equals(users.get(j).getID())) 
+                    {
+                        friend3.setText(users.get(j).getName());
+                        chatFriendList[2] = users.get(j).getID() ;
+                    }
+                    if(i == 3 && friendsIDs.get(i).equals(users.get(j).getID())) 
+                    {
+                        friend4.setText(users.get(j).getName());
+                        chatFriendList[3] = users.get(j).getID() ;
+                    }
+                    if(i == 4 && friendsIDs.get(i).equals(users.get(j).getID())) 
+                    {
+                        friend5.setText(users.get(j).getName());
+                        chatFriendList[4] = users.get(j).getID() ;
+                    }
                 }
             }
-        }
+            openOnce++ ;
+        } 
     }
     public void displayFriendsRight(ActionEvent e){
         if(!(friendsIndex+5 >= friendsIDs.size())){
@@ -948,9 +936,7 @@ public class GUIController {
     }
 
     public void createChat(ActionEvent e) 
-    {
-        myChat.setText("");
-        friendChat.setText("");   
+    { 
         if (e.getSource() == friend1) 
         {
             privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[0]) , currentUser.getID() , chatFriendList[0]) ;
@@ -971,7 +957,7 @@ public class GUIController {
         {
             privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[4]) , currentUser.getID() , chatFriendList[4]) ;
         }
-        privateChat.setFriendMessages(friendChat);;
+        privateChat.setMessages(friendChat, myChat);
     }   
 
     public String getChatID(String userId , String friendId) 
@@ -988,21 +974,23 @@ public class GUIController {
 
     public void toSend(ActionEvent e) 
     {
+        myChat.setText("");
         friendChat.setText("");
-        if (myChat.getWidth() < textToSend.getText().length()) 
+        if (myChat.getWidth() <= textToSend.getText().length()) 
         {
-            privateChat.add(myChat , new Message(textToSend.getText(), currentUser.getID()));
+            privateChat.add(new Message(textToSend.getText(), currentUser.getID()));
             /*myChat.appendText(textToSend.getText(0 , textToSend.getText().length()/2) + "\n");
             myChat.appendText(textToSend.getText(textToSend.getText().length()/2 , textToSend.getText().length()) + "\n");*/
             //fb.add(currentUser.getID(), "chats", textToSend.getText() , "03");
         }
         else 
         {
-            privateChat.add(myChat , new Message(textToSend.getText(), currentUser.getID()));
+            privateChat.add(new Message(textToSend.getText(), currentUser.getID()));
             //myChat.appendText(textToSend.getText() + "\n");
             //fb.add(currentUser.getID(), "chats", textToSend.getText() , "03" );
         }
         textToSend.setText("");
+        privateChat.setMessages(friendChat, myChat);
     }
 public void displayFriendsLeft(ActionEvent e){
         if(!(friendsIndex-5 < 0)){
@@ -1037,15 +1025,5 @@ public void displayFriendsLeft(ActionEvent e){
                 }
             }
         }
-    }
-    public ArrayList<String> callFavGenres(String ID){
-        ArrayList<String> ids = new ArrayList<>() ;
-        for (int i = 0; i < users.size(); i++) {
-            if(users.get(i).getID().equals(ID)){
-                ids = users.get(i).setFavGenres(moviesStore);
-            }
-        }
-        System.out.println(ids);
-        return ids ;
     }
 }

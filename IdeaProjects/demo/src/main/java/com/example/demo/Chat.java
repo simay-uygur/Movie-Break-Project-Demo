@@ -79,13 +79,15 @@ public class Chat {
             
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                String msg = "" ;
                 for (DataSnapshot mess : snapshot.getChildren())
                 {
                     if (!mess.getKey().equals("Counter"))
                     {
-                        me.appendText(""+mess.getValue()+"\n") ;
+                        msg += ""+mess.getValue()+"\n" ;
                     }
                 }
+                me.appendText(msg);
             }
 
             @Override
@@ -101,10 +103,15 @@ public class Chat {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                String msg = "" ;
                 for (DataSnapshot mess : snapshot.getChildren())
                 {
-                    friend.appendText(""+mess.getValue()+"\n");
+                    if (!mess.getKey().equals("Counter"))
+                    {
+                        msg += ""+mess.getValue()+"\n" ;
+                    }
                 }
+                friend.appendText(msg);
             }
 
             @Override

@@ -105,7 +105,6 @@ public class Firebase {
                     if (!userSnapshot.getKey().equals("ID-Counter"))
                     {
                         User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
-                        u.initRefs(movies);
                         users.add(setUser(u)) ;
                     }
                 }
@@ -278,7 +277,6 @@ public class Firebase {
             dataCallback.onUserLoaded(u);
             takeFriends(id);
             u.setFriends(friendsIDs);
-            u.initRefs(movies);
         }
     }
 
@@ -358,8 +356,6 @@ public class Firebase {
                     ids.add(m.getKey()) ;
                 }
                 u.setFavMovies(ids);
-                u.setFavGenres();
-                
             }
             
             @Override

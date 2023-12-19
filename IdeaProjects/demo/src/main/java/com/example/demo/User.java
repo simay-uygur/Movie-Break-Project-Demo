@@ -49,7 +49,6 @@ public class User {
     
     public void findRecommendedFriends(){
         ArrayList<User> userForCompare = fb.getUsers();
-        setFavGenres();
         for (int num = 0; num < userForCompare.size(); num++) {
             System.out.println("hee"+userForCompare.get(num).getFavGenres());
             if (userForCompare.get(num).getFavGenres().contains(getFavGenres().get(0)) ||
@@ -171,14 +170,11 @@ public class User {
 
     public ArrayList<String> setFavGenres(ArrayList<Movie> mo) {
         ArrayList<String> genres = new ArrayList<>();
-        System.out.println(favMoviesIDs);
-        System.out.println(mo);
         for (int i = 0; i < favMoviesIDs.size(); i++) {
             for (Movie m : mo) 
             {
                 if (favMoviesIDs.get(i).equals(""+m.takeId())) 
                 {
-                    System.out.println(m.takeId()+" "+favMoviesIDs.get(i) );
                     genres.add(m.getGenre()) ;
                 }
             }
@@ -305,7 +301,7 @@ public class User {
     
     public String toString()
     {
-        return "Name: " + userName + " ID: " + userID + favMoviesIDs + "huesosi-ebanye" +favGenres + "-pidarasy-" + genres ;
+        return "Name: " + userName + " ID: " + userID + favMoviesIDs + "huesosi-ebanye" +favGenres ;
     }
 
     public ArrayList<String> getRecommendedMovies()

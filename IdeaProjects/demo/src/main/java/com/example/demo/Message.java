@@ -26,7 +26,7 @@ public class Message {
         this.time = time;
     }
 
-    public String getMessage()
+    public String toString()
     {
         int hour = time.getHour();
         int minute = time.getMinute();

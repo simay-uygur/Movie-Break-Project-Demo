@@ -12,9 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class Chat {
-    @FXML public TextArea text1;
-    @FXML public TextArea text2;
-    Controller controller;
+    @FXML private TextArea text1;
+    @FXML private TextArea text2;
+    private static String counter = "1" ; 
     String chatID;
     ArrayList<String> userIDs;
     ArrayList<Message> messages;
@@ -31,6 +31,7 @@ public class Chat {
         this.userID = userID ;
         this.chatID = ID;
         chat = FirebaseDatabase.getInstance().getReference("chats").child(ID); 
+        setCounter();
         /*for (int i = 0; i < users.size(); i++)
         {
             userIDs.add(users.get(i));
@@ -75,19 +76,20 @@ public class Chat {
     public void setMyMessages(TextArea me)
     {
         chat.child(userID).addValueEventListener(new ValueEventListener() {
-
+            
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot mess : snapshot.getChildren())
                 {
-                    me.appendText(""+mess.getValue()+"\n");
+                    if (!mess.getKey().equals("Counter"))
+                    {
+                        me.appendText(""+mess.getValue()+"\n") ;
+                    }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'onCancelled'");
             }
             
         });
@@ -114,6 +116,34 @@ public class Chat {
 
     public void add(Message msg) 
     {
-        chat.child(userID).setValueAsync(msg) ;
+        chat.child(userID).child(counter).setValueAsync(msg.toString()) ;
+        chat.child(userID).child("Counter").setValueAsync(Integer.parseInt(counter)+1) ;
+    }
+
+
+    public void setCounter() 
+    {
+        chat.child(userID).child("Counter").addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) 
+                {
+                    set(""+snapshot.getValue());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'onCancelled'");
+            }
+            
+        });
+    }
+
+    public void set(String c) 
+    {
+        counter = c ;
     }
 }

@@ -695,7 +695,6 @@ public class GUIController {
         {
             u.setFavGenres(moviesStore); 
         }
-        System.out.println(users);
     }
 
     public void addUserAsFriend(ActionEvent e){
@@ -756,8 +755,10 @@ public class GUIController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        setUsers();
+        //System.out.println(moviesStore);
     }
-
+    
     public void changeUp(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("signUp.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -765,7 +766,7 @@ public class GUIController {
         stage.setScene(scene);
         stage.show();
     }
-
+    
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
@@ -774,10 +775,6 @@ public class GUIController {
         stage.setScene(scene);
         //stage.setFullScreen(true);
         stage.show();
-        setUsers();
-        //System.out.println(currentUser.getFavMoviesIDs());
-        //System.out.println("10"+callFavGenres(currentUser.getID()));
-        //System.out.println(currentUser);
     }
 
     public void backToMain(ActionEvent e) throws IOException {
@@ -974,7 +971,7 @@ public class GUIController {
         {
             privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[4]) , currentUser.getID() , chatFriendList[4]) ;
         }
-        privateChat.setMessages(friendChat, myChat);
+        privateChat.setFriendMessages(friendChat);;
     }   
 
     public String getChatID(String userId , String friendId) 
@@ -991,16 +988,17 @@ public class GUIController {
 
     public void toSend(ActionEvent e) 
     {
+        friendChat.setText("");
         if (myChat.getWidth() < textToSend.getText().length()) 
         {
-            privateChat.add(new Message(textToSend.getText(), currentUser.getID()));
+            privateChat.add(myChat , new Message(textToSend.getText(), currentUser.getID()));
             /*myChat.appendText(textToSend.getText(0 , textToSend.getText().length()/2) + "\n");
             myChat.appendText(textToSend.getText(textToSend.getText().length()/2 , textToSend.getText().length()) + "\n");*/
             //fb.add(currentUser.getID(), "chats", textToSend.getText() , "03");
         }
         else 
         {
-            privateChat.add(new Message(textToSend.getText(), currentUser.getID()));
+            privateChat.add(myChat , new Message(textToSend.getText(), currentUser.getID()));
             //myChat.appendText(textToSend.getText() + "\n");
             //fb.add(currentUser.getID(), "chats", textToSend.getText() , "03" );
         }

@@ -65,7 +65,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="993.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="991.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/heart_symbol.png" />
                </image>
@@ -92,7 +92,7 @@
             <Line endX="1536.0" layoutY="141.0" strokeWidth="2.0" />
          </children>
       </Pane>
-      <Button layoutX="1371.0" layoutY="789.0" mnemonicParsing="false">
+      <Button layoutX="1360.0" layoutY="785.0" mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
@@ -100,8 +100,15 @@
                </image>
             </ImageView>
          </graphic>
+         <effect>
+            <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="0.6" width="3.0">
+               <color>
+                  <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+               </color>
+            </DropShadow>
+         </effect>
       </Button>
-      <Button layoutX="1451.0" layoutY="789.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
+      <Button layoutX="1445.0" layoutY="785.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
                <image>
@@ -109,6 +116,13 @@
                </image>
             </ImageView>
          </graphic>
+         <effect>
+            <DropShadow height="3.0" offsetX="3.0" offsetY="3.0" radius="1.0" spread="0.6" width="3.0">
+               <color>
+                  <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+               </color>
+            </DropShadow>
+         </effect>
       </Button>
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
          <items>

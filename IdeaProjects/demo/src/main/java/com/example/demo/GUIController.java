@@ -152,12 +152,13 @@ public class GUIController {
     private ObservableList<String> userIds = FXCollections.observableArrayList();  
     private String user;
     private int index = 0;
+    private int index1 = 0;
     @FXML private Button left , right ;
     private int smcounter = 0;
     private int sucounter = 0;
+    //private int =0;
     private static int disp = 0 ;
     private static int disp1 = 0;
-    
 
     String[] x = new String[5];
     String[] y = new String[5];
@@ -801,10 +802,7 @@ public class GUIController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
-        //setUsers();
-        //System.out.println(currentUser.getFavMoviesIDs());
-        //System.out.println("10"+callFavGenres(currentUser.getID()));
-        //System.out.println(currentUser);
+
     }
 
     public void backToMain(ActionEvent e) throws IOException {
@@ -911,6 +909,7 @@ public class GUIController {
             menu.getItems().addAll("Friend Search", "Movie Search", "Session Search");
         }
     }
+    // this is for chat friend displaying
     public void displayFriends(MouseEvent e){
         if (openOnce == 0)
         {
@@ -1113,7 +1112,7 @@ public class GUIController {
         return b;
         
     }
-*/
+
       
     public void findRecommendedFriends(){
         ArrayList<User> userForCompare = fb.getUsers();
@@ -1134,7 +1133,7 @@ public class GUIController {
             }
         }
         
-    }
+    }*/
 
     public ArrayList<String> findMaxes(ArrayList<String> genres) 
     {

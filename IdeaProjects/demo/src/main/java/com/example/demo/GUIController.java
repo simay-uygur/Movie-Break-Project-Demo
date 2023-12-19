@@ -94,96 +94,10 @@ public class GUIController {
             friendsIDs = friendIDs;
         }
     });
+    private Button changeNiButton, changePassButton; // remove friend from profile2 buttons
+    private TextField changeNick, changePass;
+    @FXML 
     @FXML
-    private Button friend1, friend2, friend3, friend4, friend5;
-    @FXML
-    private TextArea chatText1;
-    @FXML
-    private ComboBox<String> menu;
-    @FXML
-    private Button insert;
-    @FXML
-    private Button backIn;
-    @FXML
-    private Button backUp;
-    @FXML
-    private TextField pass;
-    @FXML
-    private TextField ar;
-    @FXML
-    private TextField userN;
-    @FXML
-    private VBox friends;
-    @FXML
-    private Button in;
-    @FXML
-    private Button up;
-    @FXML
-    private ImageView profilePhoto;
-    @FXML
-    private Label label1;
-    @FXML
-    private ImageView view1;
-    @FXML
-    private Label label2;
-    @FXML
-    private ImageView view2;
-    @FXML
-    private Label label3;
-    @FXML
-    private ImageView view3;
-    @FXML
-    private Label label4;
-    @FXML
-    private ImageView view4;
-    @FXML
-    private Label label5;
-    @FXML
-    private ImageView view5;
-    @FXML
-    private Label label6;
-    @FXML
-    private ImageView view6;
-    @FXML
-    private Label label7;
-    @FXML
-    private ImageView view7;
-    @FXML
-    private Label label8;
-    @FXML
-    private ImageView view8;
-    @FXML
-    private Label label9;
-    @FXML
-    private ImageView view9;
-    @FXML
-    private Label label10;
-    @FXML
-    private ImageView view10;
-    @FXML
-    private Button movierefreshbutton;
-    @FXML
-    private Button friendrefreshbutton;
-    @FXML
-    private TextField movieSearchTextField, userSearchTextField;
-    @FXML
-    private Text message;
-    @FXML
-    private ListView<Movie> searchResultsListView;
-    @FXML
-    private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
-    @FXML
-    private MenuItem addToFav0, addToFav1, addToFav2, addToFav3, addToFav4, addToFav5, addToFav6, addToFav7, addToFav8,
-            addToFav9;
-    @FXML
-    private TextArea friendChat, myChat;
-    @FXML
-    private Button send;
-    @FXML
-    private TextArea textToSend;
-    private List<User> usersStore;
-    private ObservableList<String> movieIds = FXCollections.observableArrayList();
-    private ObservableList<String> userIds = FXCollections.observableArrayList();
     private String user;
     private int index = 0;
     private int index1 = 0;
@@ -605,13 +519,18 @@ public class GUIController {
         helperChangeUser1(friendDisplayedids);
         disp1++;
     }
-
+/* 
     public void displayFavMovies(){
-        //ArrayList<String> copyfav = new ArrayList<>(favMoviesIDs);
+        /* 
         if (disp2 == 0) {
-
-            /*while (favMoviesIDs.size() % 10 != 0) {
-                copyfav.add("000000");
+            
+            int counter = 0 ;
+                
+            int c = friendsIDs.size()%5 ;
+            for (int i = index1 ; counter < 5 && i < friendsIDs.size() ; i++) 
+            {
+                recUserIds[counter] = friendsIDs.get(i) ;
+                counter ++ ; 
             }
             for (int a = 0; a < 10; a++) {
                 if (a < 5) {
@@ -645,6 +564,8 @@ public class GUIController {
         helperChangeMovie2(moviesDisplayedids2);
         disp2++;
     }
+ 
+    //recommend friend ve update var YAPMAM GEREK
 
     // recommend friend ve update var YAPMAM GEREK
 
@@ -655,7 +576,6 @@ public class GUIController {
         try {
             File imageFile = new File(imagePath);
             img = ImageIO.read(imageFile);
-            
         } catch (IOException e) {
             System.err.println("Error loading image: " + e.getMessage());
         }
@@ -833,6 +753,33 @@ public class GUIController {
             System.out.println(l[4]);
             currentUser.addFriend(l[4]);
         }
+    }
+
+    public void removeFriendFromProfile(ActionEvent e) {
+
+        if (e.getSource() == r1) {
+            currentUser.removeFriend(friendsIDs.get(0));
+        } else if (e.getSource() == r2) {
+            currentUser.removeFriend(friendsIDs.get(1));
+        } else if (e.getSource() == r3) {
+            currentUser.removeFriend(friendsIDs.get(2));
+        } else if (e.getSource() == r4) {
+            currentUser.removeFriend(friendsIDs.get(3));
+        } else if (e.getSource() == r5) {
+            currentUser.removeFriend(friendsIDs.get(4));
+        } 
+    }
+
+    public void changeNick ()
+    {
+        String newNick = changeNick.getText();
+        currentUser.setUserName(newNick);
+    }
+
+    public void changePass ()
+    {
+        String newPass = changePass.getText();
+        currentUser.setPassword(newPass);
     }
 
     public void changeIn(ActionEvent e) throws IOException {
@@ -1187,7 +1134,7 @@ public class GUIController {
         g.add(g1);
         g.add(g2);
         g.add(g3);
-        return g;
-    }
+        return g;
+    }
 
 }

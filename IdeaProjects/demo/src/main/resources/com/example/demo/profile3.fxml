@@ -132,7 +132,7 @@
                         </DropShadow>
                      </effect>
                   </Label>
-                  <TextField GridPane.rowIndex="1">
+                  <TextField fx:id="changeNick" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -144,7 +144,7 @@
                         </DropShadow>
                      </effect>
                   </TextField>
-                  <TextField prefHeight="30.0" prefWidth="380.0" GridPane.rowIndex="3">
+                  <TextField fx:id="changePass" prefHeight="30.0" prefWidth="380.0" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -156,7 +156,7 @@
                         </DropShadow>
                      </effect>
                   </TextField>
-                  <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="200.0" text="Change Nickname" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="changeNickButton" mnemonicParsing="false" onAction="#changeNick" prefHeight="39.0" prefWidth="200.0" text="Change Nickname" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -167,7 +167,7 @@
                            </color>
                         </DropShadow>
                      </effect></Button>
-                  <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="200.0" text="Change Password" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="changePassButton" mnemonicParsing="false" onAction="#changePass" prefHeight="39.0" prefWidth="200.0" text="Change Password" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>

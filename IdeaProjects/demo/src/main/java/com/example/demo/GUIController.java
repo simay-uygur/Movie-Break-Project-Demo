@@ -61,7 +61,7 @@ public class GUIController {
     private static ArrayList<String> favMoviesIDs ;
     private static ArrayList<User> users ;
     private ArrayList<Movie> moviesStore;
-    private static int disp = 0 ;
+
     private static int openOnce = 0 ;
     private static int friendsIndex = 0 ;
     private static String[] chatFriendList = new String[5] ;
@@ -157,6 +157,7 @@ public class GUIController {
     private int sucounter = 0;
     private static int disp = 0 ;
     private static int disp1 = 0;
+    
 
 
     String[] x = new String[5];

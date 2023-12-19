@@ -12,12 +12,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class Chat {
-    @FXML private TextArea text1;
-    @FXML private TextArea text2;
+    @FXML public TextArea text1;
+    @FXML public TextArea text2;
     Controller controller;
     String chatID;
     ArrayList<String> userIDs;
     ArrayList<Message> messages;
+    ArrayList<String> messages1;
+    ArrayList<String> messages2;
     String message1 = "";
     String message2 = "";
     DatabaseReference chat ;
@@ -38,7 +40,9 @@ public class Chat {
     {
         return this.chatID;
     }
-
+    public void setMessages(ArrayList<String> arr){
+        messages1 = new ArrayList<>(arr);
+    }
     public ArrayList<String> getUsers()
     {
         return this.userIDs;

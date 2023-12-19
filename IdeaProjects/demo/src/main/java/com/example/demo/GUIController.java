@@ -48,6 +48,7 @@ import javax.swing.text.DefaultEditorKit.CutAction;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 public class GUIController {
+    DatabaseReference userDB = FirebaseDatabase.getInstance().getReference("users");
     private static User currentUser ; 
     private static Chat privateChat ;
     private static int id;
@@ -62,6 +63,7 @@ public class GUIController {
     private static int disp = 0 ;
     private static int friendsIndex = 0 ;
     private static String[] chatFriendList = new String[5] ;
+    private static ArrayList<String> favGenres = new ArrayList<>(); 
     Firebase fb = new Firebase(new FirebaseDataCallback() {
         @Override
         public void onDataLoaded(ArrayList<Movie>movies) {
@@ -452,7 +454,10 @@ public class GUIController {
     //public void refreshFriend(){}
     public void refreshMovie(ActionEvent e) {
         int counter = 0 ;
-                currentUser.setFavMovies(favMoviesIDs);
+        currentUser.setFavMovies(favMoviesIDs);
+        favGenres=currentUser.setFavGenres(moviesStore);
+        //System.out.println("1"+currentUser.getFavGenres());
+        //System.out.println(favGenres);
         int c = currentUser.getRecommendedMovies().size()%5 ;
         for (int i = index ; counter < 5 && i < currentUser.getRecommendedMovies().size() ; i++) 
         {
@@ -474,10 +479,9 @@ public class GUIController {
         {
             
             currentUser.setFavMovies(favMoviesIDs);
-            
-            currentUser.setFavGenres();
-System.out.println("favee"+currentUser.getFavMoviesIDs());
-            System.out.println( currentUser.getFavGenres());
+            //currentUser.setFavGenres(moviesStore);
+            System.out.println("1111"+callFavGenres("1"));
+            System.out.println("favee"+currentUser.getFavMoviesIDs());
             System.out.println( currentUser.recommendedFriendsIDs);
         //currentUser.findRecommendedFriends();
             if(currentUser.getFavMoviesIDs().isEmpty()){
@@ -768,9 +772,12 @@ System.out.println("favee"+currentUser.getFavMoviesIDs());
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
         stage.show();
         setUsers();
+        //System.out.println(currentUser.getFavMoviesIDs());
+        //System.out.println("10"+callFavGenres(currentUser.getID()));
+        //System.out.println(currentUser);
     }
 
     public void backToMain(ActionEvent e) throws IOException {
@@ -1032,5 +1039,15 @@ public void displayFriendsLeft(ActionEvent e){
                 }
             }
         }
+    }
+    public ArrayList<String> callFavGenres(String ID){
+        ArrayList<String> ids = new ArrayList<>() ;
+        for (int i = 0; i < users.size(); i++) {
+            if(users.get(i).getID().equals(ID)){
+                ids = users.get(i).setFavGenres(moviesStore);
+            }
+        }
+        System.out.println(ids);
+        return ids ;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo;
 import com.example.demo.GUIController;
+import com.fasterxml.jackson.databind.Module.SetupContext;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Query;
 import com.google.firebase.FirebaseApp;
@@ -12,10 +13,12 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Consumer;
 public class Firebase {
     private boolean accExists = false;
     ArrayList<User> users ;
     ArrayList<Movie> movies ;
+    ArrayList<Chat> chats;
     ArrayList<String> friendsIDs ;
     private static ArrayList<String> DATA ;
     DatabaseReference films ;
@@ -86,6 +89,10 @@ public class Firebase {
             }
         });
     }
+    
+    
+    
+
     public ArrayList<User> getUsers(){
         return users;
     }
@@ -96,8 +103,8 @@ public class Firebase {
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
-                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
-                    users.add(setUser(u)) ;
+                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ; 
+                    users.add(setUser(u));
                 }
                 
 
@@ -321,7 +328,7 @@ public class Firebase {
             }
             else 
             {
-                DatabaseReference chat = chatDB.child(id+userId) ; 
+                DatabaseReference chat = chatDB.child(id+"-"+userId) ; 
                 chat.child(userId).setValueAsync("") ; 
                 chat.child(id).setValueAsync(""); 
             }
@@ -351,6 +358,27 @@ public class Firebase {
         });
         return u ;
     }
+
+        
+    /*public void setUser(User u, Consumer<User> callback) {
+        ArrayList<String> ids = new ArrayList<>();
+        userDB.child(u.getID()).child("Fav_MovieIDs").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot m : snapshot.getChildren()) {
+                    ids.add(m.getKey());
+                }
+                u.setFavMovies(ids);
+                callback.accept(u); // Callback ile User nesnesini döndür
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Hata işleme
+            }
+        });
+    }*/
+    
 
     public User getUser(){
         return u;

@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#displayFriends" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
@@ -155,7 +154,7 @@
             </Label>
          </children>
       </Pane>
-      <TextArea fx:id="textToSend" layoutX="358.0" layoutY="778.0" prefHeight="68.0" prefWidth="1052.0" promptText="//Type here" styleClass="rounded-text-area">
+      <TextArea layoutX="393.0" layoutY="778.0" prefHeight="68.0" prefWidth="1017.0" promptText="//Type here" styleClass="rounded-text-area">
          <font>
             <Font name="Bookman Old Style" size="22.0" />
          </font>
@@ -167,7 +166,7 @@
             </DropShadow>
          </effect>
       </TextArea>
-      <Button fx:id="send" layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" onAction="#toSend" prefHeight="68.0" prefWidth="89.0">
+      <Button fx:id="send" layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -182,10 +181,6 @@
                </color>
             </DropShadow>
          </effect></Button>
-      <Line endX="-16.5" endY="-32.20001220703125" layoutX="1536.0" layoutY="320.0" startX="-16.5" startY="-157.8000030517578" />
-      <Line endX="-16.5" endY="-31.0" layoutX="1535.0" layoutY="622.0" startX="-16.5" startY="-150.19998168945312" />
-      <Line endX="-16.5" endY="-39.399993896484375" layoutX="1536.0" layoutY="476.0" startX="-16.5" startY="-158.60000610351562" />
-      <Line endX="-19.5999755859375" endY="-6.0" layoutX="1538.0" layoutY="765.0" startX="-19.5999755859375" startY="-137.199951171875" />
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
          <items>
             <Pane prefHeight="88.0" prefWidth="1520.0">
@@ -319,15 +314,7 @@
             <Image url="@images/small_logo.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="friendChat" layoutX="359.0" layoutY="111.0" prefHeight="650.0" prefWidth="550.0" style="-fx-alignment: bottom-left;" AnchorPane.bottomAnchor="102.39999999999998" AnchorPane.leftAnchor="359.20000000000005" AnchorPane.rightAnchor="626.6" AnchorPane.topAnchor="111.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="myChat" layoutX="910.0" layoutY="111.0" prefHeight="650.0" prefWidth="550.0" style="-fx-alignment: bottom-left; -fx-background-color: transparent;" AnchorPane.leftAnchor="910.0" AnchorPane.rightAnchor="75.59999999999991" AnchorPane.topAnchor="111.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextArea>
+      <TextArea fx:id="text2" editable="false" layoutX="378.0" layoutY="111.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="102.60000000000002" AnchorPane.leftAnchor="378.0" AnchorPane.rightAnchor="607.6" AnchorPane.topAnchor="111.0" />
+      <TextArea fx:id="text1" editable="false" layoutX="964.0" layoutY="111.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="102.60000000000002" AnchorPane.leftAnchor="964.0" AnchorPane.rightAnchor="21.59999999999991" AnchorPane.topAnchor="111.0" />
    </children>
 </AnchorPane>

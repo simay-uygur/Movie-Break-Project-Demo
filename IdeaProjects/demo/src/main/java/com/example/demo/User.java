@@ -28,7 +28,6 @@ public class User {
     private static ArrayList<String> favGenres ; 
     private DatabaseReference chats ;
     private static ArrayList<String> recommendedMovies ; 
-    private static ArrayList<String> genres ;
     public User(String userName, String password, String userID , Firebase fb)
     {
         chats = FirebaseDatabase.getInstance().getReference("chats"); 
@@ -73,9 +72,11 @@ public class User {
     public void setFavMovies(ArrayList<String> fav)
     {
         favMoviesIDs = new ArrayList<>(fav) ;
-        setFavGenres();
     }
 
+    public void setChatIDs(ArrayList<String> ChatIDs){
+        this.chatIDs = ChatIDs;
+    }
 
 
     public void initRefs()
@@ -161,19 +162,25 @@ public class User {
         friendsIDs.remove(userID);
     }
 
-    public void setFavGenres() {
-        //ArrayList<String> genres = new ArrayList<>();
+    public ArrayList<String> setFavGenres(ArrayList<Movie> mo) {
+        ArrayList<String> genres = new ArrayList<>();
+        System.out.println(favMoviesIDs);
+        System.out.println(mo);
         for (int i = 0; i < favMoviesIDs.size(); i++) {
-            for (Movie m : movies) 
+            for (Movie m : mo) 
             {
-                System.out.println("1"+m);
-                if (favMoviesIDs.contains(""+m.takeId())) genres.add(m.getGenre()) ;
+                if (favMoviesIDs.get(i).equals(""+m.takeId())) 
+                {
+                    System.out.println(m.takeId()+" "+favMoviesIDs.get(i) );
+                    genres.add(m.getGenre()) ;
+                }
             }
         }
         System.out.println(genres);
         /*System.out.println(favMoviesIDs);
         System.out.println(genres);*/
         findMaxes(genres);
+        return genres;
     }
     public void findMaxes(ArrayList<String> genres) 
     {

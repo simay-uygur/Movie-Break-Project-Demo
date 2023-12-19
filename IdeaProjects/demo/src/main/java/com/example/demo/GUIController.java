@@ -159,17 +159,14 @@ public class GUIController {
     private static int disp1 = 0;
     
 
-
     String[] x = new String[5];
     String[] y = new String[5];
-
 
     String[] k = new String[5];
     String[] l = new String[5];
 
 
     private String[] movieIDs = new String[5];
-    //private static String[] movieIDs = new String[5];
 
     private List<Movie> performMovieSearch(String searchText) {
         String trimmedSearchText = searchText.trim().toLowerCase();
@@ -480,7 +477,7 @@ public class GUIController {
     }
     public void displayImage(){
         //setUsers();
-        setAllgenres();
+        //setAllgenres();
         if (disp == 0) 
         {
             System.out.println("user"+ users.get(2).getFavGenres());
@@ -516,17 +513,13 @@ public class GUIController {
         }
 
     }
-
+/*
     public void displayFriends(){
-        //setUsers();
-        setAllgenres();
+
+        //setAllgenres();
         
         if (disp1 == 0) 
         {
-            System.out.println("user"+ users.get(2).getFavGenres());
-
-            currentUser.setFavMovies(favMoviesIDs);
-            System.out.println("1111"+callFavGenres("1"));
             
             if(currentUser.getFavMoviesIDs().isEmpty()){
                 movieIDs = currentUser.recomIds();
@@ -536,15 +529,15 @@ public class GUIController {
                 ArrayList<String> b = recommendMovies();
                 
                 int c = b.size()%5 ;
-                for (int i = index ; counter < 5 && i < b.size() ; i++) 
+                for (int i = index1 ; counter < 5 && i < b.size() ; i++) 
                 {
                     movieIDs[counter] = b.get(i) ;
                     counter ++ ; 
                 }
-                index += counter ;
-                if (index == b.size() - 1 && c > 0) 
+                index1 += counter ;
+                if (index1 == b.size() - 1 && c > 0) 
                 { 
-                    for (int i = index ; i < c + index ; i++) 
+                    for (int i = index1 ; i < c + index1 ; i++) 
                     {
                         movieIDs[i] = "000000";
                     }
@@ -555,7 +548,7 @@ public class GUIController {
         }
 
     }
-
+ */
     //recommend friend ve update var YAPMAM GEREK
 
     public BufferedImage loadMoviePoster(String movieId) {
@@ -808,7 +801,7 @@ public class GUIController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
-        setUsers();
+        //setUsers();
         //System.out.println(currentUser.getFavMoviesIDs());
         //System.out.println("10"+callFavGenres(currentUser.getID()));
         //System.out.println(currentUser);
@@ -1087,4 +1080,92 @@ public class GUIController {
         System.out.println(ids);
         return ids ;
     }
+
+
+    public ArrayList<String> recommendMovies() 
+    {
+
+        ArrayList<String> a = new ArrayList<String>();
+        for (Movie m : moviesStore) 
+        {
+            if ( callFavGenres(currentUser.getID()).contains(m.getGenre()) 
+                 && 
+                 !favMoviesIDs.contains(""+m.takeId())) 
+            a.add(""+m.takeId()) ;
+        }
+        return a;
+    }
+/* 
+    public ArrayList<String> recommendUsers() 
+    {
+
+        ArrayList<String> b = new ArrayList<String>();
+        ArrayList<String> x = new ArrayList<>();
+
+
+        for(int y=0; y< users.size()-1; y++){
+            if(users.get(y).getID().equals(currentUser.getID())  ){
+                x = callFavGenres(users.get(y).getID());
+                if()
+            }
+            
+        }
+        return b;
+        
+    }
+*/
+      
+    public void findRecommendedFriends(){
+        ArrayList<User> userForCompare = fb.getUsers();
+        for (int num = 0; num < userForCompare.size(); num++) {
+            System.out.println("hee"+userForCompare.get(num).getFavGenres());
+            if (userForCompare.get(num).getFavGenres().contains(getFavGenres().get(0)) ||
+                    userForCompare.get(num).getFavGenres().contains(getFavGenres().get(1)) ||
+                    userForCompare.get(num).getFavGenres().contains(getFavGenres().get(2))) {
+                boolean check = true;
+                for (int n = 0; n < this.friendsIDs.size(); n++) {
+                    if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
+                        check = false;
+                    }
+                }
+                if (check == true) {
+                    recommendedFriendsIDs.add(userForCompare.get(num).getId());
+                }
+            }
+        }
+        
+    }
+
+    public ArrayList<String> findMaxes(ArrayList<String> genres) 
+    {
+        int max = 0 , temp = 0;
+        String g1 = "" , g2 = "" , g3 = ""; 
+        Collections.sort(genres);
+        for (int i = 0 ; i < genres.size() - 1 ; i++) 
+        {
+            if (genres.get(i).equals(genres.get(i+1))) 
+                temp ++ ;
+            else 
+            {
+                if (temp >= max) 
+                {
+                    max = temp ;
+                    g3 = g2 ;
+                    g2 = g1 ;
+                    g1 = genres.get(i+1) ;
+                }
+                temp = 0 ;
+            }
+        }
+        ArrayList<String> g = new ArrayList<>() ;
+        g.add(g1) ;
+        g.add(g2) ;
+        g.add(g3) ;
+        return g;
+    }
+
+
+    
+
 }
+      

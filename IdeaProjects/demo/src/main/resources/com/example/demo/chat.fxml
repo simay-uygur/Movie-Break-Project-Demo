@@ -155,7 +155,7 @@
             </Label>
          </children>
       </Pane>
-      <TextArea fx:id="textToSend" layoutX="358.0" layoutY="778.0" prefHeight="68.0" prefWidth="1052.0" promptText="//Type here" styleClass="rounded-text-area">
+      <TextArea fx:id="textToSend" layoutX="393.0" layoutY="778.0" prefHeight="68.0" prefWidth="1017.0" promptText="//Type here" styleClass="rounded-text-area">
          <font>
             <Font name="Bookman Old Style" size="22.0" />
          </font>

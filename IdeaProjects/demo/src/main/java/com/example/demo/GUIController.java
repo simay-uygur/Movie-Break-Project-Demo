@@ -112,6 +112,7 @@ public class GUIController {
     @FXML private TextArea chatText1;
     @FXML
     private ComboBox<String> menu;
+    @FXML Button delFavMov0,delFavMov1,delFavMov2,delFavMov3,delFavMov4,delFavMov5,delFavMov6,delFavMov7,delFavMov8,delFavMov9;
     @FXML
     private Button insert;
     @FXML
@@ -559,6 +560,7 @@ public class GUIController {
     }
     public void displayImage(){
         //setUsers();
+        displayfriendpro1();
         setAllgenres();
         if (disp == 0) 
         {
@@ -782,6 +784,69 @@ public void addMovie(ActionEvent e)
             currentUser.addMovie(movieIDs[4]) ;
         }
     }
+    public void addMovie1(ActionEvent e) 
+    {
+        System.out.println(favMoviesIDs);
+        if (e.getSource() == addToFav0) 
+        {
+            //System.out.println(movieIDs[0]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[0]) ;
+        }
+        else if (e.getSource() == addToFav1) 
+        {
+            //System.out.println(movieIDs[1]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[1]) ;
+        }
+        else if (e.getSource() == addToFav2) 
+        {
+            //System.out.println(movieIDs[2]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[2]) ;
+        }
+        else if (e.getSource() == addToFav3) 
+        {
+            //System.out.println(movieIDs[3]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[3]) ;
+        }
+        else if (e.getSource() == addToFav4) 
+        {
+            //System.out.println(movieIDs[4]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[4]) ;
+        }
+        else if (e.getSource() == addToFav5) 
+        {
+            //System.out.println(movieIDs[1]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[1]) ;
+        }
+        else if (e.getSource() == addToFav6) 
+        {
+            //System.out.println(movieIDs[2]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[2]) ;
+        }
+        else if (e.getSource() == addToFav7) 
+        {
+            //System.out.println(movieIDs[3]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[3]) ;
+        }
+        else if (e.getSource() == addToFav8) 
+        {
+            //System.out.println(movieIDs[4]);
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[4]) ;
+        }
+        else if(e.getSource() == addToFav9){
+            favMoviesIDs.add(movieIDs[0]);
+            currentUser.addMovie(movieIDs[4]) ;
+        }
+        else{}
+    }
 
     public void addMovieInSearch(ActionEvent e) 
     {
@@ -837,8 +902,6 @@ public void addMovie(ActionEvent e)
         }
 
     }
-
-
 
     public void addUserAsFriend(ActionEvent e){
 
@@ -897,11 +960,24 @@ public void addMovie(ActionEvent e)
     {
         String newNick = changeNick.getText();
         currentUser.setUserName(newNick);
+        changeNick1(newNick);
     }
 
     public void changePass (ActionEvent e)
     {
         String newPass = changePass.getText();
+        currentUser.setPassword(newPass);
+        changePass1(newPass);
+    }
+    public void changeNick1(String newNick) {
+        DatabaseReference currentUserRef = fb.userDB.child(currentUser.getID());
+        currentUserRef.child("Username").setValueAsync(newNick);
+        currentUser.setUserName(newNick);
+    }
+    
+    public void changePass1(String newPass) {
+        DatabaseReference currentUserRef = fb.userDB.child(currentUser.getID());
+        currentUserRef.child("Password").setValueAsync(newPass);
         currentUser.setPassword(newPass);
     }
 
@@ -1243,7 +1319,31 @@ public void addMovie(ActionEvent e)
                 }
             }
         }
+        public void displayfriendpro1(){
+            ArrayList<String> arr = new ArrayList<>();
+            arr = recommendUsers();
+            int bound = Math.min(arr.size()-0, 5);
+            for (int i = 0; i < 0 + bound; i++) {
+                if (i == 0 ) {
+                    label6.setText(arr.get(i));
+                }
+                if (i == 1 ) {
+                    label7.setText(arr.get(i));
+                }
+                if (i == 2 ) {
+                    label8.setText(arr.get(i));
+                }
+                if (i == 3 ) {
+                    label9.setText(arr.get(i));
+                }
+                if (i == 4 ) {
+                    label10.setText(arr.get(i));
+                }
+            }
+        }
         public void displayImage1(){
+            BufferedImage cposter1 = loadMoviePoster("000000");
+            Image posterImage1 = SwingFXUtils.toFXImage(cposter1, null);
             int bound = Math.min(favMoviesIDs.size()-friendsIndex2, 10);
             CompletableFuture<String> ctitle = new CompletableFuture<>();
             String title = "";
@@ -1291,6 +1391,46 @@ public void addMovie(ActionEvent e)
                 if (i == friendsIndex2 + 9) {
                     view10.setImage(posterImage);
                     label10.setText(title);
+                }
+                if(bound <= 9){
+                    view10.setImage(posterImage1);
+                    label10.setText("");
+                }
+                if(bound <= 8){
+                    view9.setImage(posterImage1);
+                    label9.setText("");
+                }
+                if(bound <= 7){
+                    view8.setImage(posterImage1);
+                    label8.setText("");
+                }
+                if(bound <= 6){
+                    view7.setImage(posterImage1);
+                    label7.setText("");
+                }
+                if(bound <= 5){
+                    view6.setImage(posterImage1);
+                    label6.setText("");
+                }
+                if(bound <= 4){
+                    view5.setImage(posterImage1);
+                    label5.setText("");
+                }
+                if(bound <= 3){
+                    view4.setImage(posterImage1);
+                    label4.setText("");
+                }
+                if(bound <= 2){
+                    view3.setImage(posterImage1);
+                    label3.setText("");
+                }
+                if(bound <= 1){
+                    view2.setImage(posterImage1);
+                    label2.setText("");
+                }
+                if(bound <= 0){
+                    view1.setImage(posterImage1);
+                    label1.setText("");
                 }
             }
         }
@@ -1477,8 +1617,47 @@ public void addMovie(ActionEvent e)
             userFriendsRef.child(friendID).removeValueAsync();
             friendFriendsRef.child(userID).removeValueAsync();
     }
-    public void removeFilm(){
-        
+    public void removeFilm(ActionEvent e){
+        if(e.getSource() == delFavMov0){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+0));
+            favMoviesIDs.remove(friendsIndex2+0);
+        }
+        if(e.getSource() == delFavMov1){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+1));
+            favMoviesIDs.remove(friendsIndex2+1);
+        }
+        if(e.getSource() == delFavMov2){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+2));
+            favMoviesIDs.remove(friendsIndex2+2);
+        }
+        if(e.getSource() == delFavMov3){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+3));
+            favMoviesIDs.remove(friendsIndex2+3);
+        }
+        if(e.getSource() == delFavMov4){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+4));
+            favMoviesIDs.remove(friendsIndex2+4);
+        }
+        if(e.getSource() == delFavMov5){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+5));
+            favMoviesIDs.remove(friendsIndex2+5);
+        }
+        if(e.getSource() == delFavMov6){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+6));
+            favMoviesIDs.remove(friendsIndex2+6);
+        }
+        if(e.getSource() == delFavMov7){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+7));
+            favMoviesIDs.remove(friendsIndex2+7);
+        }
+        if(e.getSource() == delFavMov8){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+8));
+            favMoviesIDs.remove(friendsIndex2+8);
+        }
+        if(e.getSource() == delFavMov9){
+            removeFavoriteMovie(currentUser.getID(), favMoviesIDs.get(friendsIndex2+9));
+            favMoviesIDs.remove(friendsIndex2+9);
+        }
     }
     public void removeFavoriteMovie(String userID, String movieIDToRemove) {
         DatabaseReference userFavoritesRef = fb.userDB.child(userID).child("Fav_MovieIDs");

@@ -220,7 +220,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
                <children>
                   <ImageView fx:id="view5" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav4" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav4" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -241,7 +241,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <children>
                   <ImageView fx:id="view1" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav0" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav0" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -262,7 +262,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
                <children>
                   <ImageView fx:id="view2" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav1" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav1" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -283,7 +283,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
                <children>
                   <ImageView fx:id="view3" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav2" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav2" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -304,7 +304,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
                <children>
                   <ImageView fx:id="view4" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav3" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav3" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -400,7 +400,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
                <children>
                   <ImageView fx:id="view10" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav9" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav9" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -421,7 +421,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <children>
                   <ImageView fx:id="view6" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav5" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav5" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -442,7 +442,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
                <children>
                   <ImageView fx:id="view7" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav6" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav6" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -463,7 +463,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
                <children>
                   <ImageView fx:id="view8" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav7" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav7" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -484,7 +484,7 @@
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
                <children>
                   <ImageView fx:id="view9" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addToFav8" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                  <Button fx:id="addToFav8" mnemonicParsing="false" onAction="#addMovieInSearch" style="-fx-background-radius: 30; -fx-border-radius: 30;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>

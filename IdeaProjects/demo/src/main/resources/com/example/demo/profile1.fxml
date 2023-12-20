@@ -145,7 +145,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view5" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov01" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov01" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -166,7 +166,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view1" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov0" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov0" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -187,7 +187,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view2" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov1" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov1" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -208,7 +208,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view3" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov2" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov2" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -229,7 +229,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view4" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov3" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov3" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -325,7 +325,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view6" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov5" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov5" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -346,7 +346,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view7" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov6" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov6" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -367,7 +367,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view8" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov7" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov7" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -388,7 +388,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view9" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov8" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov8" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -409,7 +409,7 @@
                </effect>
                <children>
                   <ImageView fx:id="view10" fitHeight="195.0" fitWidth="180.0" layoutX="45.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="delFavMov9" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                  <Button fx:id="delFavMov9" mnemonicParsing="false" onAction="#removeFilm" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -600,5 +600,14 @@
             </Pane>
          </items>
       </ToolBar>
+      <Button layoutX="60.0" layoutY="789.0" mnemonicParsing="false" onAction="#displayImage1">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0">
+               <image>
+                  <Image url="@images/refresh%20symbol.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

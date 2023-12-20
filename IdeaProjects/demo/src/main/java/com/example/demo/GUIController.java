@@ -208,7 +208,7 @@ public class GUIController {
 
     String[] x = new String[5];
     String[] y = new String[5];
-        String[] k = new String[5];
+    String[] k = new String[5];
     String[] l = new String[5];
     String[] switchforuser = new String[5];
 

@@ -610,10 +610,10 @@
                   </ImageView>
                   <Label alignment="BOTTOM_LEFT" layoutX="100.0" layoutY="-5.0" prefHeight="53.0" prefWidth="175.0" style="-fx-background-color: #901C31;" text=" Movie" textFill="WHITE">
                      <font>
-                        <Font size="33.0" />
+                        <Font name="Bookman Old Style" size="33.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" layoutX="100.0" layoutY="44.0" prefHeight="46.0" prefWidth="175.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
+                  <Label alignment="TOP_LEFT" layoutX="101.0" layoutY="43.0" prefHeight="46.0" prefWidth="175.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
                      <font>
                         <Font size="33.0" />
                      </font>

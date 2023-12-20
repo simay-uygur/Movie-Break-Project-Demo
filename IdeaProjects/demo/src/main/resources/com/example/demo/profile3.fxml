@@ -184,9 +184,9 @@
       </Pane>
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
          <items>
-            <Pane prefHeight="88.0" prefWidth="1520.0">
+            <Pane onMouseEntered="#callSearchComboBox" prefHeight="88.0" prefWidth="1520.0">
                <children>
-                  <Button layoutX="240.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
+                  <Button layoutX="313.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0" onDragDetected="#changeMainPage">
                            <image>
@@ -197,7 +197,7 @@
                      <effect>
                         <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
                            <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18431372940540314" />
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
                            </color>
                         </DropShadow>
                      </effect>
@@ -213,28 +213,12 @@
                      <effect>
                         <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
                            <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18431372940540314" />
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
                            </color>
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button layoutX="340.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openCalender" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
-                     <graphic>
-                        <ImageView fitHeight="70.0" fitWidth="70.0">
-                           <image>
-                              <Image url="@images/calendar_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <effect>
-                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
-                           <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18431372940540314" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Button>
-                  <Button fx:id="nicknamePage" layoutX="1068.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="70.0" prefWidth="332.0" style="-fx-background-color: FFD2E3;" text=" Nickname">
+                  <Button fx:id="nicknamePage" layoutX="1068.0" layoutY="6.0" maxHeight="50.0" minHeight="70.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="70.0" prefWidth="332.0" style="-fx-background-color: FFD2E3;" text=" Nickname">
                      <font>
                         <Font name="Bookman Old Style" size="30.0" />
                      </font>
@@ -248,12 +232,12 @@
                      <effect>
                         <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
                            <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18431372940540314" />
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
                            </color>
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button layoutX="450.0" layoutY="6.0" maxHeight="70.0" maxWidth="70.0" mnemonicParsing="false" onAction="#openChat" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
+                  <Button layoutX="434.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openChat" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="70.0">
                            <image>
@@ -264,7 +248,7 @@
                      <effect>
                         <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
                            <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18431372940540314" />
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
                            </color>
                         </DropShadow>
                      </effect>
@@ -281,40 +265,40 @@
                         <Font name="Bookman Old Style" size="24.0" />
                      </font>
                      <effect>
-                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
+                        <DropShadow height="2.5" offsetX="5.0" offsetY="5.0" radius="0.125" width="0.0">
                            <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18431372940540314" />
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
                            </color>
                         </DropShadow>
                      </effect>
                   </Button>
-                  <ComboBox fx:id="menu" layoutX="877.0" layoutY="6.0" onShowing="#callSearchComboBox" prefHeight="70.0" prefWidth="150.0" promptText="Select Search Type" style="-fx-background-color: FFD2E3;">
+                  <ComboBox fx:id="menu" layoutX="877.0" layoutY="6.0" onShowing="#callSearchComboBox" prefHeight="70.0" prefWidth="150.0" promptText="  Select Search Type" style="-fx-background-color: FFD2E3;">
                      <effect>
                         <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
                            <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18431372940540314" />
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
                            </color>
                         </DropShadow>
                      </effect>
                   </ComboBox>
+                  <ImageView fitHeight="104.0" fitWidth="118.0" layoutX="-12.0" layoutY="-11.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/small_logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="BOTTOM_LEFT" layoutX="100.0" layoutY="-5.0" prefHeight="53.0" prefWidth="175.0" style="-fx-background-color: #901C31;" text=" Movie" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" layoutX="100.0" layoutY="47.0" prefHeight="46.0" prefWidth="175.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="33.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </items>
       </ToolBar>
-      <Label alignment="BOTTOM_LEFT" layoutX="104.0" prefHeight="53.0" prefWidth="125.0" style="-fx-background-color: #901C31;" text=" Movie" textFill="WHITE">
-         <font>
-            <Font name="Bookman Old Style Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label alignment="TOP_LEFT" layoutX="104.0" layoutY="53.0" prefHeight="45.0" prefWidth="125.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
-         <font>
-            <Font name="Bookman Old Style Bold" size="24.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="99.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/small_logo.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

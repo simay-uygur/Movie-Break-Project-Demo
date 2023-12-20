@@ -107,8 +107,9 @@ public class GUIController {
     @FXML Label profilefriend1,profilefriend2,profilefriend3,profilefriend4,profilefriend5;
     @FXML Button r1,r2,r3,r4,r5;
     @FXML private Button friend1, friend2, friend3, friend4, friend5;
-    @FXML
-    private TextArea chatText1;
+    @FXML private Button changePassButton,changeNickButton;
+    @FXML private TextField changePass, changeNick;
+    @FXML private TextArea chatText1;
     @FXML
     private ComboBox<String> menu;
     @FXML
@@ -184,8 +185,7 @@ public class GUIController {
     @FXML
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
     @FXML
-    private MenuItem addToFav0, addToFav1, addToFav2, addToFav3, addToFav4, addToFav5, addToFav6, addToFav7, addToFav8,
-            addToFav9;
+    private Button addToFav0, addToFav1, addToFav2, addToFav3, addToFav4, addToFav5, addToFav6, addToFav7, addToFav8,addToFav9;
     @FXML
     private TextArea friendChat, myChat;
     @FXML
@@ -750,32 +750,37 @@ public class GUIController {
     }
 public void addMovie(ActionEvent e) 
     {
+        System.out.println(favMoviesIDs);
         if (e.getSource() == addToFav0) 
         {
             //System.out.println(movieIDs[0]);
+            favMoviesIDs.add(movieIDs[0]);
             currentUser.addMovie(movieIDs[0]) ;
         }
         else if (e.getSource() == addToFav1) 
         {
             //System.out.println(movieIDs[1]);
+            favMoviesIDs.add(movieIDs[0]);
             currentUser.addMovie(movieIDs[1]) ;
         }
         else if (e.getSource() == addToFav2) 
         {
             //System.out.println(movieIDs[2]);
+            favMoviesIDs.add(movieIDs[0]);
             currentUser.addMovie(movieIDs[2]) ;
         }
         else if (e.getSource() == addToFav3) 
         {
             //System.out.println(movieIDs[3]);
+            favMoviesIDs.add(movieIDs[0]);
             currentUser.addMovie(movieIDs[3]) ;
         }
         else 
         {
             //System.out.println(movieIDs[4]);
+            favMoviesIDs.add(movieIDs[0]);
             currentUser.addMovie(movieIDs[4]) ;
         }
-
     }
 
     public void addMovieInSearch(ActionEvent e) 
@@ -888,29 +893,13 @@ public void addMovie(ActionEvent e)
         }
     }
 
-    public void removeFriendFromProfile(ActionEvent e) {
-/*
-        if (e.getSource() == r1) {
-            currentUser.removeFriend(friendsIDs.get(0));
-        } else if (e.getSource() == r2) {
-            currentUser.removeFriend(friendsIDs.get(1));
-        } else if (e.getSource() == r3) {
-            currentUser.removeFriend(friendsIDs.get(2));
-        } else if (e.getSource() == r4) {
-            currentUser.removeFriend(friendsIDs.get(3));
-        } else if (e.getSource() == r5) {
-            currentUser.removeFriend(friendsIDs.get(4));
-        } 
-        */
-    }
-
-    public void changeNick ()
+    public void changeNick (ActionEvent e)
     {
         String newNick = changeNick.getText();
         currentUser.setUserName(newNick);
     }
 
-    public void changePass ()
+    public void changePass (ActionEvent e)
     {
         String newPass = changePass.getText();
         currentUser.setPassword(newPass);
@@ -999,14 +988,6 @@ public void addMovie(ActionEvent e)
             stage.setFullScreen(true);
             stage.show();
         }
-        else if(menu.getValue() == "Session Search"){
-            root = FXMLLoader.load(getClass().getResource("sessionSearchPage.fxml"));
-            stage = (Stage)((Node) e.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setFullScreen(true);
-            stage.show();
-        }
         else {
             menu.setPromptText("Select Type First");
         }
@@ -1050,7 +1031,7 @@ public void addMovie(ActionEvent e)
 
     public void callSearchComboBox(Event e){
         if (menu.getItems().isEmpty()) {
-            menu.getItems().addAll("Friend Search", "Movie Search", "Session Search");
+            menu.getItems().addAll("Friend Search", "Movie Search");
         }
     }
     // this is for chat friend displaying
@@ -1172,10 +1153,6 @@ public void addMovie(ActionEvent e)
         } 
         else {
             return userId + "-" + friendId;
-        }
-        else 
-        {
-            return userId+"-"+friendId ;
         }
     }
 
@@ -1576,7 +1553,7 @@ public void addMovie(ActionEvent e)
         ArrayList<String> ids = new ArrayList<>();
         for (User user : users) {
             
-            if(user.getID().equals(userID)){
+            if(user.getID().equals(ID)){
                 ids = user.setFavGenres(moviesStore);
             }
         }

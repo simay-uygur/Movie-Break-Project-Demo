@@ -137,7 +137,7 @@ public class User {
         if (!favMoviesIDs.contains(movieId)) 
         {
             fb.add(userID, "Fav_MovieIDs", movieId);
-            favMoviesIDs.add(movieId);
+            //favMoviesIDs.add(movieId);
         }
     }
 

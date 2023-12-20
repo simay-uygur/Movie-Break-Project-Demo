@@ -972,7 +972,7 @@ public void addMovie(ActionEvent e)
     }
 
     public void openSearchPage(ActionEvent e) throws IOException {
-        if(menu.getValue() == "Friend Search"){
+        if(menu.getValue() == "User Search"){
             root = FXMLLoader.load(getClass().getResource("userSearchPage.fxml"));
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -1031,7 +1031,7 @@ public void addMovie(ActionEvent e)
 
     public void callSearchComboBox(Event e){
         if (menu.getItems().isEmpty()) {
-            menu.getItems().addAll("Friend Search", "Movie Search");
+            menu.getItems().addAll("User Search", "Movie Search");
         }
     }
     // this is for chat friend displaying
@@ -1247,6 +1247,7 @@ public void addMovie(ActionEvent e)
             int bound = Math.min(favMoviesIDs.size()-friendsIndex2, 10);
             CompletableFuture<String> ctitle = new CompletableFuture<>();
             String title = "";
+            System.out.println(favMoviesIDs);
             for (int i = friendsIndex2; i < friendsIndex2 + bound; i++) {
                 BufferedImage cposter = loadMoviePoster(favMoviesIDs.get(i));
                 Image posterImage = SwingFXUtils.toFXImage(cposter, null);                

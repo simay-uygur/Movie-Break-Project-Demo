@@ -147,7 +147,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </MenuButton>
-                                    <ImageView fx:id="view1" fitHeight="245.0" fitWidth="250.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="view1" fitHeight="245.0" fitWidth="200.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <effect>
                                     <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">

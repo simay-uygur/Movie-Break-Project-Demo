@@ -51,6 +51,7 @@ import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 
 public class GUIController {
+
     private static User currentUser;
     private static Chat privateChat;
     private static int id;
@@ -62,9 +63,11 @@ public class GUIController {
     private static ArrayList<String> favMoviesIDs;
     private static ArrayList<User> users;
     private ArrayList<Movie> moviesStore;
-
+    private static int openOnce1 = 0;
     private static int openOnce = 0;
     private static int friendsIndex = 0;
+    private static int friendsIndex1 = 0;
+    private static int friendsIndex2 = 0;
     private static String[] chatFriendList = new String[5];
     private static ArrayList<String> favGenres = new ArrayList<>();
     private static ArrayList<String> recommendedMovies = new ArrayList<>();
@@ -94,8 +97,9 @@ public class GUIController {
             friendsIDs = friendIDs;
         }
     });
-    @FXML
-    private Button friend1, friend2, friend3, friend4, friend5;
+    @FXML Label profilefriend1,profilefriend2,profilefriend3,profilefriend4,profilefriend5;
+    @FXML Button r1,r2,r3,r4,r5;
+    @FXML private Button friend1, friend2, friend3, friend4, friend5;
     @FXML
     private TextArea chatText1;
     @FXML
@@ -397,23 +401,27 @@ public class GUIController {
         String title = "";
         for (int i = 0; i < ids.length; i++) {
             BufferedImage cposter = loadMoviePoster(ids[i]);
-            Image posterImage = SwingFXUtils.toFXImage(cposter, null);
+            
             ctitle = loadMovieName(ids[i]);
             title = ctitle.join();
             if (i == 0) {
-                
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view1.setImage(posterImage);
                 label1.setText(title);
             } else if (i == 1) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view2.setImage(posterImage);
                 label2.setText(title);
             } else if (i == 2) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view3.setImage(posterImage);
                 label3.setText(title);
             } else if (i == 3) {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view4.setImage(posterImage);
                 label4.setText(title);
             } else {
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);
                 view5.setImage(posterImage);
                 label5.setText(title);
             }
@@ -458,11 +466,16 @@ public class GUIController {
         String title = "";
         for (int i = 0; i < ids.length; i++) {
             
-            cUtitle = loadUserName(ids[i]);
-            title = cUtitle.join();
             
-            if(ids[i].equals("000000"))
+            
+            if(ids[i].equals("000000")){
                 title = "";
+            }
+
+            else{
+                cUtitle = loadUserName(ids[i]);
+                title = cUtitle.join();
+            }    
             
             if (i == 0) {
             
@@ -562,7 +575,7 @@ public class GUIController {
 
             currentUser.setFavMovies(favMoviesIDs);
             System.out.println("1111" + callFavGenres("1"));
-
+            System.out.println("22222"+friendsIDs);
          
                 int counter = 0;
                 ArrayList<String> b = recommendMovies();
@@ -585,7 +598,9 @@ public class GUIController {
 
     }
 
+
     public void displayFriendsProfile() {
+        disp1 = 0;
         if (disp1 == 0) {
 
             int counter = 0;
@@ -607,19 +622,9 @@ public class GUIController {
     }
 
     public void displayFavMovies(){
-        //ArrayList<String> copyfav = new ArrayList<>(favMoviesIDs);
         if (disp2 == 0) {
 
-            /*while (favMoviesIDs.size() % 10 != 0) {
-                copyfav.add("000000");
-            }
-            for (int a = 0; a < 10; a++) {
-                if (a < 5) {
-                    moviesDisplayedids1[a] = copyfav.get(a);
-                } else {
-                    moviesDisplayedids2[a - 5] = copyfav.get(a);
-                }
-            }*/
+            
             int startIndex =0;
             currentUser.setFavMovies(favMoviesIDs);
             favGenres = currentUser.setFavGenres(moviesStore);
@@ -654,9 +659,9 @@ public class GUIController {
                 + ".jpg";
         try {
             File imageFile = new File(imagePath);
-            img = ImageIO.read(imageFile);
-            
-        } catch (IOException e) {
+            img = ImageIO.read(imageFile);    
+        } 
+        catch (IOException e) {
             System.err.println("Error loading image: " + e.getMessage());
         }
         return img;
@@ -891,11 +896,12 @@ public class GUIController {
     }
 
     public void openChat(ActionEvent e) throws IOException {
+        friendsIndex = 0;
         root = FXMLLoader.load(getClass().getResource("chat.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
         stage.show();
     }
 
@@ -928,6 +934,7 @@ public class GUIController {
 
     public void openProfile1(ActionEvent e) throws IOException {
         disp2 = 0;
+        friendsIndex2 = 0;
         root = FXMLLoader.load(getClass().getResource("profile1.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -937,7 +944,7 @@ public class GUIController {
     }
 
     public void openProfile2(ActionEvent e) throws IOException {
-        disp1 = 0;
+        friendsIndex1 = 0;
         root = FXMLLoader.load(getClass().getResource("profile2.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -968,35 +975,34 @@ public class GUIController {
 
     // this is for chat friend displaying
     public void displayFriends() {
-        if (openOnce == 0) {
-            int bound = Math.min(friendsIDs.size(), 5);
+        System.out.println(friendsIDs);
+            int bound = Math.min(friendsIDs.size()-friendsIndex, 5);
             for (int i = friendsIndex; i < friendsIndex + bound; i++) {
                 for (int j = 0; j < users.size(); j++) {
-                    if (i == 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    if (i == friendsIndex + 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
                         friend1.setText(users.get(j).getName());
                         chatFriendList[0] = users.get(j).getID();
                     }
-                    if (i == 1 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    if (i == friendsIndex + 1 && friendsIDs.get(i).equals(users.get(j).getID())) {
                         friend2.setText(users.get(j).getName());
                         chatFriendList[1] = users.get(j).getID();
                     }
-                    if (i == 2 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    if (i == friendsIndex + 2 && friendsIDs.get(i).equals(users.get(j).getID())) {
                         friend3.setText(users.get(j).getName());
                         chatFriendList[2] = users.get(j).getID();
                     }
-                    if (i == 3 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    if (i == friendsIndex + 3 && friendsIDs.get(i).equals(users.get(j).getID())) {
                         friend4.setText(users.get(j).getName());
                         chatFriendList[3] = users.get(j).getID();
                     }
-                    if (i == 4 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    if (i == friendsIndex + 4 && friendsIDs.get(i).equals(users.get(j).getID())) {
                         friend5.setText(users.get(j).getName());
                         chatFriendList[4] = users.get(j).getID();
                     }
                 }
             }
-            openOnce++;
         }
-    }
+
 
     public void displayFriendsRight(ActionEvent e) {
         if (!(friendsIndex + 5 >= friendsIDs.size())) {
@@ -1009,21 +1015,36 @@ public class GUIController {
                     friend1.setText(users.get(j).getName());
                     chatFriendList[0] = users.get(j).getID();
                 }
-                if (i == 1 && friendsIDs.get(i) == users.get(j).getID()) {
+                if (i == friendsIndex + 1 && friendsIDs.get(i).equals(users.get(j).getID())) {
                     friend2.setText(users.get(j).getName());
                     chatFriendList[1] = users.get(j).getID();
                 }
-                if (i == 2 && friendsIDs.get(i) == users.get(j).getID()) {
+                if (i == friendsIndex + 2 && friendsIDs.get(i).equals(users.get(j).getID())) {
                     friend3.setText(users.get(j).getName());
                     chatFriendList[2] = users.get(j).getID();
                 }
-                if (i == 3 && friendsIDs.get(i) == users.get(j).getID()) {
+                if (i == friendsIndex + 3 && friendsIDs.get(i).equals(users.get(j).getID())) {
                     friend4.setText(users.get(j).getName());
                     chatFriendList[3] = users.get(j).getID();
                 }
-                if (i == 4 && friendsIDs.get(i) == users.get(j).getID()) {
+                if (i == friendsIndex + 4 && friendsIDs.get(i).equals(users.get(j).getID())) {
                     friend5.setText(users.get(j).getName());
                     chatFriendList[4] = users.get(j).getID();
+                }
+                if(bound <= 4){
+                    friend5.setText("");
+                }
+                if(bound <= 3){
+                    friend4.setText("");
+                }
+                if(bound <= 2){
+                    friend3.setText("");
+                }
+                if(bound <= 1){
+                    friend2.setText("");
+                }
+                if(bound <= 0){
+                    friend1.setText("");
                 }
             }
         }
@@ -1052,7 +1073,8 @@ public class GUIController {
     public String getChatID(String userId, String friendId) {
         if (Integer.parseInt(userId) > Integer.parseInt(friendId)) {
             return friendId + "-" + userId;
-        } else {
+        } 
+        else {
             return userId + "-" + friendId;
         }
     }
@@ -1082,26 +1104,368 @@ public class GUIController {
                     friend1.setText(users.get(j).getName());
                     chatFriendList[0] = users.get(j).getID();
                 }
-                if (i == 1 && friendsIDs.get(i) == users.get(j).getID()) {
+                if (i == friendsIndex + 1 && friendsIDs.get(i).equals(users.get(j).getID())) {
                     friend2.setText(users.get(j).getName());
                     chatFriendList[1] = users.get(j).getID();
                 }
-                if (i == 2 && friendsIDs.get(i) == users.get(j).getID()) {
+                if (i == friendsIndex + 2 && friendsIDs.get(i).equals(users.get(j).getID())) {
                     friend3.setText(users.get(j).getName());
                     chatFriendList[2] = users.get(j).getID();
                 }
-                if (i == 3 && friendsIDs.get(i) == users.get(j).getID()) {
+                if (i == friendsIndex + 3 && friendsIDs.get(i).equals(users.get(j).getID())) {
                     friend4.setText(users.get(j).getName());
                     chatFriendList[3] = users.get(j).getID();
                 }
-                if (i == 4 && friendsIDs.get(i) == users.get(j).getID()) {
+                if (i == friendsIndex + 4 && friendsIDs.get(i).equals(users.get(j).getID())) {
                     friend5.setText(users.get(j).getName());
                     chatFriendList[4] = users.get(j).getID();
                 }
             }
         }
     }
-
+    public void displayfriendpro(){
+            int bound = Math.min(friendsIDs.size()-friendsIndex1, 5);
+            for (int i = friendsIndex1; i < friendsIndex1 + bound; i++) {
+                for (int j = 0; j < users.size(); j++) {
+                    if (i == 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                        profilefriend1.setText(users.get(j).getName());
+                    }
+                    if (i == 1 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                        profilefriend2.setText(users.get(j).getName());
+                    }
+                    if (i == 2 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                        profilefriend3.setText(users.get(j).getName());
+                    }
+                    if (i == 3 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                        profilefriend4.setText(users.get(j).getName());
+                    }
+                    if (i == 4 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                        profilefriend5.setText(users.get(j).getName());
+                    }
+                    if(bound <= 4){
+                        profilefriend5.setText("");
+                    }
+                    if(bound <= 3){
+                        profilefriend4.setText("");
+                    }
+                    if(bound <= 2){
+                        profilefriend3.setText("");
+                    }
+                    if(bound <= 1){
+                        profilefriend2.setText("");
+                    }
+                    if(bound <= 0){
+                        profilefriend1.setText("");
+                }
+                }
+            }
+        }
+        public void displayImage1(){
+            int bound = Math.min(favMoviesIDs.size()-friendsIndex2, 10);
+            CompletableFuture<String> ctitle = new CompletableFuture<>();
+            String title = "";
+            for (int i = friendsIndex2; i < friendsIndex2 + bound; i++) {
+                BufferedImage cposter = loadMoviePoster(favMoviesIDs.get(i));
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);                
+                ctitle = loadMovieName(favMoviesIDs.get(i));
+                title = ctitle.join();
+                if (i == friendsIndex2 + 0) {
+                    view1.setImage(posterImage);
+                    label1.setText(title);
+                }
+                if (i == friendsIndex2 + 1) {
+                    view2.setImage(posterImage);
+                    label2.setText(title);
+                }
+                if (i == friendsIndex2 + 2) {
+                    view3.setImage(posterImage);
+                    label3.setText(title);
+                }
+                if (i == friendsIndex2 + 3) {
+                    view4.setImage(posterImage);
+                    label4.setText(title);
+                }
+                if (i == friendsIndex2 + 4 ) {
+                    view5.setImage(posterImage);
+                    label5.setText(title);
+                }
+                if (i == friendsIndex + 5 ) {
+                    view6.setImage(posterImage);
+                    label6.setText(title);
+                }
+                if (i == friendsIndex2 + 6 ) {
+                    view7.setImage(posterImage);
+                    label7.setText(title);
+                }
+                if (i == friendsIndex2 + 7 ) {
+                    view8.setImage(posterImage);
+                    label8.setText(title);
+                    }
+                if (i == friendsIndex2 + 8) {
+                    view9.setImage(posterImage);
+                    label9.setText(title);
+                }
+                if (i == friendsIndex2 + 9) {
+                    view10.setImage(posterImage);
+                    label10.setText(title);
+                }
+            }
+        }
+        public void displayImage1Right(){
+            if (!(friendsIndex2 + 10 > favMoviesIDs.size())) {
+                friendsIndex2 += 10;
+            }
+            int bound = Math.min(favMoviesIDs.size() - friendsIndex2, 10);
+            CompletableFuture<String> ctitle = new CompletableFuture<>();
+            String title = "";
+            BufferedImage cposter1 = loadMoviePoster("000000");
+            Image posterImage1 = SwingFXUtils.toFXImage(cposter1, null);
+            for (int i = friendsIndex2; i < friendsIndex2 + bound; i++) {
+                BufferedImage cposter = loadMoviePoster(favMoviesIDs.get(i));
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);                
+                ctitle = loadMovieName(favMoviesIDs.get(i));
+                title = ctitle.join();
+                if (i == friendsIndex2 + 0) {
+                    view1.setImage(posterImage);
+                    label1.setText(title);
+                }
+                if (i == friendsIndex2 + 1) {
+                    view2.setImage(posterImage);
+                    label2.setText(title);
+                }
+                if (i == friendsIndex2 + 2) {
+                    view3.setImage(posterImage);
+                    label3.setText(title);
+                }
+                if (i == friendsIndex2 + 3) {
+                    view4.setImage(posterImage);
+                    label4.setText(title);
+                }
+                if (i == friendsIndex2 + 4 ) {
+                    view5.setImage(posterImage);
+                    label5.setText(title);
+                }
+                if (i == friendsIndex2 + 5 ) {
+                    view6.setImage(posterImage);
+                    label6.setText(title);
+                }
+                if (i == friendsIndex2 + 6 ) {
+                    view7.setImage(posterImage);
+                    label7.setText(title);
+                }
+                if (i == friendsIndex2 + 7 ) {
+                    view8.setImage(posterImage);
+                    label8.setText(title);
+                    }
+                if (i == friendsIndex2 + 8) {
+                    view9.setImage(posterImage);
+                    label9.setText(title);
+                }
+                if (i == friendsIndex2 + 9) {
+                    view10.setImage(posterImage);
+                    label10.setText(title);
+                }
+                if(bound <= 9){
+                    view10.setImage(posterImage1);
+                    label10.setText("");
+                }
+                if(bound <= 8){
+                    view9.setImage(posterImage1);
+                    label9.setText("");
+                }
+                if(bound <= 7){
+                    view8.setImage(posterImage1);
+                    label8.setText("");
+                }
+                if(bound <= 6){
+                    view7.setImage(posterImage1);
+                    label7.setText("");
+                }
+                if(bound <= 5){
+                    view6.setImage(posterImage1);
+                    label6.setText("");
+                }
+                if(bound <= 4){
+                    view5.setImage(posterImage1);
+                    label5.setText("");
+                }
+                if(bound <= 3){
+                    view4.setImage(posterImage1);
+                    label4.setText("");
+                }
+                if(bound <= 2){
+                    view3.setImage(posterImage1);
+                    label3.setText("");
+                }
+                if(bound <= 1){
+                    view2.setImage(posterImage1);
+                    label2.setText("");
+                }
+                if(bound <= 0){
+                    view1.setImage(posterImage1);
+                    label1.setText("");
+                }
+            }
+        }
+        public void displayImage1Left(){
+            if (!(friendsIndex2 - 10 < 0)) {
+                friendsIndex2 -= 10;
+            }
+            int bound = Math.min(favMoviesIDs.size() - friendsIndex2, 10);
+            CompletableFuture<String> ctitle = new CompletableFuture<>();
+            String title = "";
+            for (int i = friendsIndex2; i < friendsIndex2 + bound; i++) {
+                BufferedImage cposter = loadMoviePoster(favMoviesIDs.get(i));
+                Image posterImage = SwingFXUtils.toFXImage(cposter, null);                
+                ctitle = loadMovieName(favMoviesIDs.get(i));
+                title = ctitle.join();
+                if (i == friendsIndex2 + 0) {
+                    view1.setImage(posterImage);
+                    label1.setText(title);
+                }
+                if (i == friendsIndex2 + 1) {
+                    view2.setImage(posterImage);
+                    label2.setText(title);
+                }
+                if (i == friendsIndex2 + 2) {
+                    view3.setImage(posterImage);
+                    label3.setText(title);
+                }
+                if (i == friendsIndex2 + 3) {
+                    view4.setImage(posterImage);
+                    label4.setText(title);
+                }
+                if (i == friendsIndex2 + 4 ) {
+                    view5.setImage(posterImage);
+                    label5.setText(title);
+                }
+                if (i == friendsIndex2 + 5 ) {
+                    view6.setImage(posterImage);
+                    label6.setText(title);
+                }
+                if (i == friendsIndex2 + 6 ) {
+                    view7.setImage(posterImage);
+                    label7.setText(title);
+                }
+                if (i == friendsIndex2 + 7 ) {
+                    view8.setImage(posterImage);
+                    label8.setText(title);
+                    }
+                if (i == friendsIndex2 + 8) {
+                    view9.setImage(posterImage);
+                    label9.setText(title);
+                }
+                if (i == friendsIndex2 + 9) {
+                    view10.setImage(posterImage);
+                    label10.setText(title);
+                }
+            }
+        }
+    public void removeFriendFromProfile(ActionEvent e){
+        if(e.getSource() == r1){
+            removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+0));
+            friendsIDs.remove(friendsIndex1 + 0);
+            System.out.println(friendsIndex1+0);
+        }
+        if(e.getSource() == r2){
+            removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+1));
+            friendsIDs.remove(friendsIndex1 + 0);
+            System.out.println(friendsIndex1+1);
+        }
+        if(e.getSource() == r3){
+            removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+2));
+            friendsIDs.remove(friendsIndex1 + 2);
+            System.out.println(friendsIndex1+2);
+        }
+        if(e.getSource() == r4){
+            removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+3));
+            friendsIDs.remove(friendsIndex1 + 3);
+            System.out.println(friendsIndex1+3);
+        }
+        if(e.getSource() == r5){
+            removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+4));
+            friendsIDs.remove(friendsIndex1 + 4);
+            System.out.println(friendsIndex1 + 4);
+        }
+    }
+    public void removeFriend(String userID, String friendID) {
+            DatabaseReference userFriendsRef = fb.userDB.child(userID).child("Friends");
+            DatabaseReference friendFriendsRef = fb.userDB.child(friendID).child("Friends");
+            userFriendsRef.child(friendID).removeValueAsync();
+            friendFriendsRef.child(userID).removeValueAsync();
+    }
+    public void removeFilm(){
+        
+    }
+    public void removeFavoriteMovie(String userID, String movieIDToRemove) {
+        DatabaseReference userFavoritesRef = fb.userDB.child(userID).child("Fav_MovieIDs");
+        userFavoritesRef.child(movieIDToRemove).removeValueAsync();
+    }
+    public void displayFriendsRightpro(ActionEvent e) {
+        if (!(friendsIndex1 + 5 >= friendsIDs.size())) {
+            friendsIndex1 += 5;
+        }
+        int bound = Math.min(friendsIDs.size() - friendsIndex1, 5);
+        for (int i = friendsIndex1; i < friendsIndex1 + bound; i++) {
+            for (int j = friendsIndex1 + 0; j < users.size(); j++) {
+                if (i == friendsIndex1 + 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend1.setText(users.get(j).getName());
+                }
+                if(bound <= 4){
+                    profilefriend5.setText("");
+                }
+                if(bound <= 3){
+                    profilefriend4.setText("");
+                }
+                if(bound <= 2){
+                    profilefriend3.setText("");
+                }
+                if(bound <= 1){
+                    profilefriend2.setText("");
+                }
+                if(bound <= 0){
+                    profilefriend1.setText("");
+                }
+                if (i == friendsIndex1 + 1 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend2.setText(users.get(j).getName());
+                }
+                if (i ==  friendsIndex1 + 2 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend3.setText(users.get(j).getName());
+                }
+                if (i ==  friendsIndex1 + 3 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend4.setText(users.get(j).getName());
+                }
+                if (i ==  friendsIndex1 + 4 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend5.setText(users.get(j).getName());
+                }
+            }
+        }
+    }
+    public void displayFriendsLeftPro(ActionEvent e) {
+        if (!(friendsIndex1 - 5 < 0)) {
+            friendsIndex1 -= 5;
+        }
+        int bound = Math.min(friendsIDs.size() - friendsIndex1, 5);
+        for (int i = friendsIndex1; i < friendsIndex1 + bound; i++) {
+            for (int j = 0; j < users.size(); j++) {
+                if (i == friendsIndex1 + 0 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend1.setText(users.get(j).getName());
+                }
+                if (i == friendsIndex1 + 1 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend2.setText(users.get(j).getName());
+                }
+                if (i == friendsIndex1 + 2 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend3.setText(users.get(j).getName());
+                }
+                if (i == friendsIndex1 + 3 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend4.setText(users.get(j).getName());
+                }
+                if (i == friendsIndex1 + 4 && friendsIDs.get(i).equals(users.get(j).getID())) {
+                    profilefriend5.setText(users.get(j).getName());
+                }
+            }
+        }
+    }
     public ArrayList<String> callFavGenres(String ID) {
         ArrayList<String> ids = new ArrayList<>();
         for (int i = 0; i < users.size(); i++) {

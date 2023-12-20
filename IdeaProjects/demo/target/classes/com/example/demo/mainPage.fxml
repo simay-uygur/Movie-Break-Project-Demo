@@ -117,16 +117,16 @@
                            <children>
                               <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
                                  <children>
-                                    <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                                       <items>
-                                          <MenuItem fx:id="addToFav4" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
-                                          <MenuItem mnemonicParsing="false" text="Create Session" />
-                                       </items>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </MenuButton>
                                     <ImageView fx:id="view5" fitHeight="245.0" fitWidth="200.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Button fx:id="addToFav4" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                                       <graphic>
+                                          <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/heart_symbol.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
                                  <effect>
                                     <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -138,16 +138,16 @@
                               </Pane>
                               <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                  <children>
-                                    <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                                      <items>
-                                        <MenuItem fx:id="addToFav0" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
-                                          <MenuItem mnemonicParsing="false" text="Create Session" />
-                                      </items>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </MenuButton>
-                                    <ImageView fx:id="view1" fitHeight="245.0" fitWidth="200.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="view1" fitHeight="245.0" fitWidth="250.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Button fx:id="addToFav0" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                                       <graphic>
+                                          <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/heart_symbol.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
                                  <effect>
                                     <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -159,16 +159,16 @@
                               </Pane>
                               <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
                                  <children>
-                                    <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                                       <items>
-                                          <MenuItem fx:id="addToFav1" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
-                                          <MenuItem mnemonicParsing="false" text="Create Session" />
-                                       </items>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </MenuButton>
                                     <ImageView fx:id="view2" fitHeight="245.0" fitWidth="200.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Button fx:id="addToFav1" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                                       <graphic>
+                                          <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/heart_symbol.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
                                  <effect>
                                     <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -180,16 +180,16 @@
                               </Pane>
                               <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
                                  <children>
-                                    <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                                       <items>
-                                          <MenuItem fx:id="addToFav2" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
-                                          <MenuItem mnemonicParsing="false" text="Create Session" />
-                                       </items>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </MenuButton>
                                     <ImageView fx:id="view3" fitHeight="245.0" fitWidth="200.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Button fx:id="addToFav2" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                                       <graphic>
+                                          <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/heart_symbol.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
                                  <effect>
                                     <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -201,16 +201,16 @@
                               </Pane>
                               <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
                                  <children>
-                                    <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                                       <items>
-                                          <MenuItem fx:id="addToFav3" mnemonicParsing="false" onAction="#addMovie" text="Add to Favourites" />
-                                          <MenuItem mnemonicParsing="false" text="Create Session" />
-                                       </items>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </MenuButton>
                                     <ImageView fx:id="view4" fitHeight="245.0" fitWidth="200.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Button fx:id="addToFav3" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                                       <graphic>
+                                          <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/heart_symbol.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
                                  <effect>
                                     <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
@@ -508,7 +508,7 @@
          <items>
             <Pane onMouseEntered="#callSearchComboBox" prefHeight="88.0" prefWidth="1520.0">
                <children>
-                  <Button layoutX="240.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
+                  <Button layoutX="313.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0" onDragDetected="#changeMainPage">
                            <image>
@@ -540,22 +540,6 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button layoutX="340.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openCalender" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
-                     <graphic>
-                        <ImageView fitHeight="70.0" fitWidth="70.0">
-                           <image>
-                              <Image url="@images/calendar_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <effect>
-                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
-                           <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Button>
                   <Button fx:id="nicknamePage" layoutX="1068.0" layoutY="6.0" maxHeight="50.0" minHeight="70.0" mnemonicParsing="false" onAction="#openProfile1" prefHeight="70.0" prefWidth="332.0" style="-fx-background-color: FFD2E3;" text=" Nickname">
                      <font>
                         <Font name="Bookman Old Style" size="30.0" />
@@ -575,7 +559,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button layoutX="450.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openChat" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
+                  <Button layoutX="434.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openChat" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="70.0">
                            <image>
@@ -619,19 +603,19 @@
                         </DropShadow>
                      </effect>
                   </ComboBox>
-                  <ImageView fitHeight="97.0" fitWidth="200.0" layoutX="-6.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="104.0" fitWidth="118.0" layoutX="-12.0" layoutY="-11.0" pickOnBounds="true">
                      <image>
                         <Image url="@images/small_logo.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="BOTTOM_LEFT" layoutX="104.0" layoutY="-5.0" prefHeight="53.0" prefWidth="125.0" style="-fx-background-color: #901C31;" text=" Movie" textFill="WHITE">
+                  <Label alignment="BOTTOM_LEFT" layoutX="100.0" layoutY="-5.0" prefHeight="53.0" prefWidth="175.0" style="-fx-background-color: #901C31;" text=" Movie" textFill="WHITE">
                      <font>
-                        <Font name="Bookman Old Style Bold" size="24.0" />
+                        <Font size="33.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" layoutX="104.0" layoutY="47.0" prefHeight="45.0" prefWidth="125.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
+                  <Label alignment="TOP_LEFT" layoutX="100.0" layoutY="44.0" prefHeight="46.0" prefWidth="175.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
                      <font>
-                        <Font name="Bookman Old Style Bold" size="24.0" />
+                        <Font size="33.0" />
                      </font>
                   </Label>
                </children>

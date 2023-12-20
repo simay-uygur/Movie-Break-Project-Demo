@@ -1,6 +1,7 @@
 package com.example.demo;
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import com.google.firebase.database.ChildEventListener;
@@ -15,7 +16,7 @@ public class User {
     String password;
     String userID;
     Firebase fb ;
-    private static ArrayList<String> favMoviesIDs;
+    private ArrayList<String> favMoviesIDs;
     ArrayList<String> friendsIDs;
     ArrayList<String> recommendedFriendsIDs;    
     ArrayList<String> chatIDs;
@@ -144,7 +145,6 @@ public class User {
     {
         friendsIDs.remove(userID);
     }
-
     public ArrayList<String> setFavGenres(ArrayList<Movie> mo) {
         ArrayList<String> genres = new ArrayList<>();
         for (int i = 0; i < favMoviesIDs.size(); i++) {
@@ -156,40 +156,83 @@ public class User {
                 }
             }
         }
-        System.out.println(genres);
-
-        //findMaxes(genres);
-        return genres;
+        //System.out.println(genres);
+        return findMaxes(genres);
     }
-    
-    public void findMaxes(ArrayList<String> genres) 
+    public ArrayList<String> findMaxes(ArrayList<String> genres) 
     {
-        int max = 0 , temp = 0;
-        String g1 = "" , g2 = "" , g3 = ""; 
         Collections.sort(genres);
-        for (int i = 0 ; i < genres.size() - 1 ; i++) 
+        //System.out.println(genres);
+        int[] arr = new int[6];
+        String[] arrstr = new String[6];
+        arrstr[0] = "drama";
+        arrstr[1] = "adventure";
+        arrstr[2] = "crime";
+        arrstr[3] = "comedy";
+        arrstr[4] = "animation";
+        arrstr[5] = "action";
+        for (int i = 0 ; i < genres.size() ; i++) 
         {
-            if (genres.get(i).equals(genres.get(i+1))) 
-                temp ++ ;
-            else 
-            {
-                if (temp >= max) 
-                {
-                    max = temp ;
-                    g3 = g2 ;
-                    g2 = g1 ;
-                    g1 = genres.get(i+1) ;
+            if(genres.get(i).equals("drama")){
+                arr[0] += 1;
+            }
+            if(genres.get(i).equals("adventure")){
+                arr[1] += 1;
+            }
+            if(genres.get(i).equals("crime")){
+                arr[2] += 1;
+            }
+            if(genres.get(i).equals("comedy")){
+                arr[3] += 1;
+            }
+            if(genres.get(i).equals("animation")){
+                arr[4] += 1;
+            }
+            if(genres.get(i).equals("action")){
+                arr[5] += 1; 
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i+1; j < arr.length; j++) {
+                if(arr[i]<arr[j]){
+                    int temp1 = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp1;
+                    String temp2 = arrstr[i];
+                    arrstr[i] = arrstr[j];
+                    arrstr[j] = temp2;
                 }
-                temp = 0 ;
             }
         }
         ArrayList<String> g = new ArrayList<>() ;
-        g.add(g1) ;
-        g.add(g2) ;
-        g.add(g3) ;
+        for (int i = 0; i < 3; i++) {
+            if(!(arr[i]==0)){
+                g.add(arrstr[i]);
+            }
+        }
         favGenres = g ;
-        //recommendMovies();
+        return favGenres;
     }
+   /*  public ArrayList<String> setFavGenres(ArrayList<Movie> mo) {
+        ArrayList<String> genres = new ArrayList<>();
+        //System.out.println(favMoviesIDs);
+        for (int i = 0; i < favMoviesIDs.size(); i++) {
+            for (Movie m : mo) 
+            {
+                if (favMoviesIDs.get(i).equals(""+m.takeId())) 
+                {
+                    //System.out.println(m.takeId()+" "+favMoviesIDs.get(i) );
+                    genres.add(m.getGenre()) ;
+                }
+            }
+        }
+        //System.out.println(genres);
+
+        //findMaxes(genres);
+        return genres;
+    }*/
+    
+
     public ArrayList<String> getFavMoviesIDs()
     {
         return favMoviesIDs;

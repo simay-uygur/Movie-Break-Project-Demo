@@ -3,8 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
@@ -31,7 +29,7 @@
                   <ColorAdjust brightness="-0.3" />
                </effect>
             </Pane>
-            <Label layoutX="39.0" layoutY="13.0" prefHeight="126.0" prefWidth="355.0" text=" Nickname" textFill="WHITE">
+            <Label fx:id="nick" layoutX="39.0" layoutY="13.0" prefHeight="126.0" prefWidth="355.0" text=" Nickname" textFill="WHITE">
                <font>
                   <Font name="Bookman Old Style Bold" size="36.0" />
                </font>
@@ -128,7 +126,7 @@
          <items>
             <Pane prefHeight="88.0" prefWidth="1520.0">
                <children>
-                  <Button layoutX="240.0" layoutY="6.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
+                  <Button layoutX="297.0" layoutY="6.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="60.0" onDragDetected="#changeMainPage">
                            <image>
@@ -160,22 +158,6 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button layoutX="340.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openCalender" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
-                     <graphic>
-                        <ImageView fitHeight="70.0" fitWidth="70.0">
-                           <image>
-                              <Image url="@images/calendar_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <effect>
-                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
-                           <color>
-                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Button>
                   <Button fx:id="nicknamePage" layoutX="1068.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="70.0" prefWidth="332.0" style="-fx-background-color: FFD2E3;" text=" Nickname">
                      <font>
                         <Font name="Bookman Old Style" size="30.0" />
@@ -195,7 +177,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button layoutX="450.0" layoutY="6.0" mnemonicParsing="false" onAction="#openChat" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
+                  <Button layoutX="410.0" layoutY="6.0" mnemonicParsing="false" onAction="#openChat" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
                         <ImageView fitHeight="60.0" fitWidth="70.0">
                            <image>
@@ -238,6 +220,11 @@
                            </color>
                         </DropShadow>
                      </effect></ComboBox>
+                  <Label alignment="TOP_LEFT" layoutX="98.0" layoutY="44.0" prefHeight="46.0" prefWidth="164.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </items>
@@ -256,18 +243,6 @@
          </rowConstraints>
          <children>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="178.0" prefWidth="268.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view5" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -275,20 +250,37 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="addToFav09" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="addToFav010" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="delFavMov4" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="80.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view1" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -296,20 +288,19 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov0" layoutX="6.0" layoutY="6.0" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view2" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -317,20 +308,19 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov1" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view3" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -338,20 +328,19 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov2" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view4" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -359,6 +348,17 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov3" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Label fx:id="label1" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
                <font>
@@ -436,18 +436,6 @@
          </rowConstraints>
          <children>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="178.0" prefWidth="268.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view10" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -455,20 +443,19 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov9" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view6" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -476,20 +463,19 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov5" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view7" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -497,20 +483,19 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov6" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view8" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -518,20 +503,19 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov7" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
-               <children>
-                  <MenuButton alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="...">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-                  <ImageView fx:id="view9" fitHeight="195.0" fitWidth="160.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
                <effect>
                   <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
                      <color>
@@ -539,6 +523,17 @@
                      </color>
                   </DropShadow>
                </effect>
+               <children>
+                  <Button fx:id="delFavMov8" mnemonicParsing="false" onAction="#addMovie" prefHeight="43.0" prefWidth="51.0" style="-fx-background-radius: 35; -fx-border-radius: 35;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
             </Pane>
             <Label fx:id="label6" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="311.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
                <font>
@@ -602,14 +597,9 @@
             </Label>
          </children>
       </GridPane>
-      <Label alignment="TOP_LEFT" layoutX="104.0" layoutY="52.0" prefHeight="45.0" prefWidth="125.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
+      <Label alignment="BOTTOM_LEFT" layoutX="104.0" layoutY="-1.0" prefHeight="54.0" prefWidth="164.0" style="-fx-background-color: #901C31;" text=" Movie" textFill="WHITE">
          <font>
-            <Font name="Bookman Old Style Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label alignment="BOTTOM_LEFT" layoutX="104.0" layoutY="-1.0" prefHeight="53.0" prefWidth="125.0" style="-fx-background-color: #901C31;" text=" Movie" textFill="WHITE">
-         <font>
-            <Font name="Bookman Old Style Bold" size="24.0" />
+            <Font size="33.0" />
          </font>
       </Label>
       <ImageView fitHeight="98.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">

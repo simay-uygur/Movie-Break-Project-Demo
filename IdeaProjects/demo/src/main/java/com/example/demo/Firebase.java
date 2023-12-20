@@ -58,7 +58,7 @@ public class Firebase {
         void onDataLoaded(ArrayList<Movie> movies);
         void onUserLoaded(User user) ;
         void onFav_MoviesIDSloaded(ArrayList<String> fav_moviesDatas) ;
-        void onUsersLoaded(ArrayList<User> userIDs) ;
+        void onUsersLoaded(ArrayList<User> users) ;
         void onFriendsLoaded(ArrayList<String> friendIDs) ;
     }
 
@@ -84,11 +84,11 @@ public class Firebase {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                System.out.println("Something went wrong :(");
+                //System.out.println("Something went wrong :(");
             }
         });
     }
-    
+
     
     
 
@@ -97,17 +97,14 @@ public class Firebase {
     }
     public void takeAllData()
     {
-        userDB.addValueEventListener(new ValueEventListener() {
+        userDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot userSnapshot : snapshot.getChildren())
                 {
-                    if (!userSnapshot.getKey().equals("ID-Counter"))
-                    {
-                        User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
-                        
-                        users.add(setUser(u)) ;
-                    }
+                    User u = new User(""+userSnapshot.child("Username").getValue(), ""+userSnapshot.child("Password").getValue(), userSnapshot.getKey(), Firebase.this) ;
+                    users.add(setUser(u));
+                    //System.out.println(users);
                 }
                 
 
@@ -171,14 +168,6 @@ public class Firebase {
             if (toCheck.getName().equals(name)) return true ;
         }
         return false ;
-    }
-
-    public void chatPush()
-    {
-        DatabaseReference chat = chatDB.child(c.getID());
-        chat.child("messages").setValueAsync(c.getMessages());
-        DatabaseReference chatIDs = chatDB.child("ID-Counter");
-        chatIDs.setValueAsync(Integer.parseInt(c.getID()) + 1);
     }
 
     public boolean hasAcc(String name, String pass)
@@ -342,7 +331,7 @@ public class Firebase {
             }
             break ;
             case "Fav_MovieIDs" : user = userDB.child(userId).child(path) ; user.child(id).setValueAsync("") ; break ;
-        }
+            }
     }
 
     public User setUser(User u) 
@@ -357,9 +346,10 @@ public class Firebase {
                     ids.add(m.getKey()) ;
                 }
                 u.setFavMovies(ids);
-                
+                //u.setFavGenres();
+
             }
-            
+
             @Override
             public void onCancelled(DatabaseError error) {
             }
@@ -367,7 +357,7 @@ public class Firebase {
         });
         return u ;
     }
-
+    
         
     /*public void setUser(User u, Consumer<User> callback) {
         ArrayList<String> ids = new ArrayList<>();

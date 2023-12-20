@@ -787,132 +787,108 @@ public void addMovie(ActionEvent e)
     {
         if (e.getSource() == addToFav0) 
         {
-            //System.out.println(x[0]);
             currentUser.addMovie(x[0]) ;
         }
         else if (e.getSource() == addToFav1) 
         {
-            //System.out.println(x[1]);
             currentUser.addMovie(x[1]) ;
         }
         else if (e.getSource() == addToFav2) 
         {
-            //System.out.println(x[2]);
             currentUser.addMovie(x[2]) ;
         }
         else if (e.getSource() == addToFav3) 
         {
-            //System.out.println(x[3]);
             currentUser.addMovie(x[3]) ;
         }
         else if( e.getSource() == addToFav4)
         {
-            //System.out.println(x[4]);
             currentUser.addMovie(x[4]) ;
         }
         else if( e.getSource() == addToFav5)
         {
-            //System.out.println(y[0]);
             currentUser.addMovie(y[0]) ;
         }
         else if (e.getSource() == addToFav6) 
         {
-            //System.out.println(y[1]);
             currentUser.addMovie(y[1]) ;
         }
         else if (e.getSource() == addToFav7) 
         {
-            //System.out.println(y[2]);
             currentUser.addMovie(y[2]) ;
         }
         else if (e.getSource() == addToFav8) 
         {
-            //System.out.println(y[3]);
             currentUser.addMovie(y[3]) ;
         }
         else
         {
-            //System.out.println(y[4]);
             currentUser.addMovie(y[4]) ;
         }
 
     }
 
-
-
     public void addUserAsFriend(ActionEvent e){
 
         if (e.getSource() == b1) 
         {
-            //ystem.out.println(k[0]);
             currentUser.addFriend(k[0]);
         }
         else if (e.getSource() == b2) 
         {
-            //System.out.println(k[1]);
             currentUser.addFriend(k[1]);
         }
         else if (e.getSource() == b3) 
         {
-            //System.out.println(k[2]);
             currentUser.addFriend(k[2]);
         }
         else if (e.getSource() == b4) 
         {
-            //System.out.println(k[3]);
             currentUser.addFriend(k[3]);
         }
         else if(e.getSource() == b5)
         {
-            //System.out.println(k[4]);
             currentUser.addFriend(k[4]);
         }
         else if (e.getSource() == b6)
         {
-            //System.out.println(l[0]);
             currentUser.addFriend(l[0]);
         }
         else if (e.getSource() == b7)
         {
-            //System.out.println(l[1]);
             currentUser.addFriend(l[1]);
         }
         else if (e.getSource() == b8)
         {
-            //System.out.println(l[2]);
             currentUser.addFriend(l[2]);
         }
         else if (e.getSource() == b9)
         {
-            //System.out.println(l[3]);
             currentUser.addFriend(l[3]);
         }
         else{
-            //System.out.println(l[4]);
             currentUser.addFriend(l[4]);
         }
     }
 
-    public void changeNick (ActionEvent e)
+    public void changeNick(ActionEvent e)
     {
         String newNick = changeNick.getText();
         currentUser.setUserName(newNick);
     }
 
-    public void changePass (ActionEvent e)
+    public void changePass(ActionEvent e)
     {
         String newPass = changePass.getText();
         currentUser.setPassword(newPass);
     }
 
     public void changeIn(ActionEvent e) throws IOException {
-        //System.out.println(users);
         root = FXMLLoader.load(getClass().getResource("signIn.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        //System.out.println(moviesStore);
     }
 
     public void changeUp(ActionEvent e) throws IOException {
@@ -967,7 +943,6 @@ public void addMovie(ActionEvent e)
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        //stage.setFullScreen(true);
         stage.show();
     }
 
@@ -1113,7 +1088,6 @@ public void addMovie(ActionEvent e)
 
     public void createChat(ActionEvent e) 
     {
-        //
         if (e.getSource() == friend1) 
         {
             myChat.setText("");
@@ -1171,7 +1145,6 @@ public void addMovie(ActionEvent e)
 
         }
         textToSend.setText("");
-        //privateChat = new Chat(getChatID(currentUser.getID(), ""+friendID), currentUser.getID() , ""+friendID) ;
         privateChat.setMyMessages(myChat);
     }
 
@@ -1558,13 +1531,8 @@ public void addMovie(ActionEvent e)
                 ids = user.setFavGenres(moviesStore);
             }
         }
-        //ids = findMaxes(ids);
         return ids;
-    }
-        //Collections.sort(genres);
-    
-
- 
+    }    
 
     public ArrayList<String> recommendMovies() 
     {
@@ -1581,9 +1549,9 @@ public void addMovie(ActionEvent e)
     }
     
     public ArrayList<String> recommendUsers()
-     {
+    {
         ArrayList<String> current = new ArrayList<String>();
-     ArrayList<String> otherUsers = new ArrayList<>();
+        ArrayList<String> otherUsers = new ArrayList<>();
         ArrayList<String> recomUser = new ArrayList<>();
         current = callFavGenres(currentUser.getID());
         System.out.println("current" + current);
@@ -1597,6 +1565,7 @@ public void addMovie(ActionEvent e)
         }
         return recomUser;
     }
+
     public boolean similarPerson(ArrayList<String> current ,ArrayList<String> other){
         for (int i = 0; i < current.size(); i++) {
             for (int j = 0; j < other.size(); j++) {
@@ -1610,14 +1579,12 @@ public void addMovie(ActionEvent e)
     
     public static String findMostFrequent(ArrayList<String> list) {
         if (list.isEmpty()) {
-            // System.out.println("Null");
-            return null; // Liste boşsa null dönebilirsiniz veya istediğiniz bir değer döndürebilirsiniz.
+            return null; 
            
         }
         else{
-            //System.out.println("not null");
+            System.out.println("not null")
         }
-        // Elemanların tekrar sayılarını tutmak için bir HashMap oluşturun
         HashMap<String, Integer> frequencyMap = new HashMap<>();
 
         for (String element : list) {
@@ -1627,7 +1594,6 @@ public void addMovie(ActionEvent e)
         int maxFrequency = 0;
         ArrayList<String> mostFrequentElements = new ArrayList<>();
 
-        // En çok tekrar eden frekansı ve elemanları bulun
         for (String key : frequencyMap.keySet()) {
             int frequency = frequencyMap.get(key);
             if (frequency > maxFrequency) {
@@ -1638,11 +1604,10 @@ public void addMovie(ActionEvent e)
                 mostFrequentElements.add(key);
             }
         }
-            System.out.println("İn find Max"+ mostFrequentElements);
+        System.out.println("İn find Max"+ mostFrequentElements);
         if (mostFrequentElements.size() == 1) {
             return mostFrequentElements.get(0);
         } else {
-            // Eşit tekrar sayıları varsa rastgele birini seçin
             Random random = new Random();
             int randomIndex = random.nextInt(mostFrequentElements.size());
             return mostFrequentElements.get(randomIndex);
@@ -1652,7 +1617,6 @@ public void addMovie(ActionEvent e)
     public void findRecommendedFriends(){
      ArrayList<User> userForCompare = fb.getUsers();
      for (int num = 0; num < userForCompare.size(); num++) {
-     //System.out.println("hee"+userForCompare.get(num).getFavGenres());
      if (userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(0)) ||
      userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(1)) ||
      userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(2))) {
@@ -1699,9 +1663,8 @@ public void addMovie(ActionEvent e)
 }
 
 public void setAllgenres(){
-        for(int a=0; a<users.size()-1; a++){
-            callFavGenres(users.get(a).getID());
-            //System.out.println("user"+ users.get(a).getID() +users.get(a).getFavGenres());
+    for(int a=0; a<users.size()-1; a++){
+        callFavGenres(users.get(a).getID());
     }
 }    
 }

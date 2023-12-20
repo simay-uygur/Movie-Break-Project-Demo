@@ -17,11 +17,11 @@ import javafx.scene.control.TextArea;
 public class Chat {
     private static String counter = "1" ; 
     String chatID;
-    DatabaseReference chat ;
+    private static DatabaseReference chat ;
     private static String userID ;
     private static String userName ;
     private Timer timer ;
-    private static String friendID ;
+    private String friendID ;
     private TextArea friend ;
     public Chat (String ID , String userID , String friendID , TextArea friend)
     {
@@ -58,7 +58,7 @@ public class Chat {
                 });
             }
             
-        }, 0, 5000);
+        }, 0, 2000);
     }
     
     public String getID()

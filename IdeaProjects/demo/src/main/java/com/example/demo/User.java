@@ -278,27 +278,6 @@ public class User {
 
     }
 
-    public void takeMessages(ArrayList<Message> unknown , String path) 
-    {
-        chats.child(path).addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot message : snapshot.getChildren()) 
-                {
-                    
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'onCancelled'");
-            }
-            
-        });
-    }
-
     public void addForRec(String id) 
     {
         recommendedMovies.add(""+id) ;

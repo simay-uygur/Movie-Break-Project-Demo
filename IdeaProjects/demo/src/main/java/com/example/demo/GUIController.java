@@ -148,7 +148,7 @@ public class GUIController {
     @FXML private ListView<Movie> searchResultsListView; 
     @FXML private Button b1,b2,b3, b4,b5,b6,b7,b8,b9,b10;   
     @FXML private Button addToFav0,addToFav1,addToFav2,addToFav3,addToFav4 ; 
-    @FXML private MenuItem addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
+    @FXML private Button addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
     @FXML private Button delFavMov0 , delFavMov1 , delFavMov2 , delFavMov3 , delFavMov4 , delFavMov5 , delFavMov6 , delFavMov7 , delFavMov8 , delFavMov9 ;
     @FXML private TextArea friendChat , myChat ;
     @FXML private Button send ;
@@ -719,8 +719,8 @@ public void addMovie(ActionEvent e)
             if(!(favMoviesIDs.contains(movieIDs[0]))){
                 favMoviesIDs.add(movieIDs[0]);
                 currentUser.addMovie(movieIDs[0]) ;
+                System.out.println(favMoviesIDs);
             }
-            System.out.println(favMoviesIDs);
         }
         else if (e.getSource() == addToFav1) 
         {

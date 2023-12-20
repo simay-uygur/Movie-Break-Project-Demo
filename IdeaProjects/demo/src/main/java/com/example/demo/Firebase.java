@@ -278,7 +278,7 @@ public class Firebase {
     public ArrayList<String> takeIDS(String path , String id) 
     {
         ArrayList<String> ids = new ArrayList<>() ;
-        userDB.child(id).child(path).addValueEventListener(new ValueEventListener() {
+        userDB.child(id).child(path).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {

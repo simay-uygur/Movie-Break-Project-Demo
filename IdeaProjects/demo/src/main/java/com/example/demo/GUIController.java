@@ -755,33 +755,40 @@ public void addMovie(ActionEvent e)
         System.out.println(favMoviesIDs);
         if (e.getSource() == addToFav0) 
         {
-            //System.out.println(movieIDs[0]);
-            favMoviesIDs.add(movieIDs[0]);
-            currentUser.addMovie(movieIDs[0]) ;
+            if(!(favMoviesIDs.contains(movieIDs[0]))){
+                favMoviesIDs.add(movieIDs[0]);
+                currentUser.addMovie(movieIDs[0]) ;
+            }
+            System.out.println(favMoviesIDs);
         }
         else if (e.getSource() == addToFav1) 
         {
-            //System.out.println(movieIDs[1]);
-            favMoviesIDs.add(movieIDs[0]);
-            currentUser.addMovie(movieIDs[1]) ;
+            if(!(favMoviesIDs.contains(movieIDs[1]))){
+                favMoviesIDs.add(movieIDs[1]);
+                currentUser.addMovie(movieIDs[1]);
+            }
         }
         else if (e.getSource() == addToFav2) 
         {
-            //System.out.println(movieIDs[2]);
-            favMoviesIDs.add(movieIDs[0]);
-            currentUser.addMovie(movieIDs[2]) ;
+            if(!(favMoviesIDs.contains(movieIDs[2]))){
+                favMoviesIDs.add(movieIDs[2]);
+                currentUser.addMovie(movieIDs[2]) ;
+            }
         }
         else if (e.getSource() == addToFav3) 
         {
-            //System.out.println(movieIDs[3]);
-            favMoviesIDs.add(movieIDs[0]);
-            currentUser.addMovie(movieIDs[3]) ;
+            if(!(favMoviesIDs.contains(movieIDs[3]))){
+                favMoviesIDs.add(movieIDs[3]);
+                currentUser.addMovie(movieIDs[3]) ;
+            }
         }
         else 
         {
             //System.out.println(movieIDs[4]);
-            favMoviesIDs.add(movieIDs[0]);
-            currentUser.addMovie(movieIDs[4]) ;
+            if(!(favMoviesIDs.contains(movieIDs[4]))){
+                favMoviesIDs.add(movieIDs[4]);
+                currentUser.addMovie(movieIDs[4]) ;
+            }
         }
     }
     public void addMovie1(ActionEvent e) 

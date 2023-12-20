@@ -1304,21 +1304,27 @@ public void addMovie(ActionEvent e)
         public void displayfriendpro1(){
             ArrayList<String> arr = new ArrayList<>();
             arr = recommendUsers();
+
             int bound = Math.min(arr.size()-0, 5);
             for (int i = 0; i < 0 + bound; i++) {
                 if (i == 0 ) {
+                    k[0] = arr.get(i);
                     label6.setText(arr.get(i));
                 }
                 if (i == 1 ) {
+                    k[1] = arr.get(i);
                     label7.setText(arr.get(i));
                 }
                 if (i == 2 ) {
+                    k[2] = arr.get(i);
                     label8.setText(arr.get(i));
                 }
                 if (i == 3 ) {
+                    k[3] = arr.get(i);
                     label9.setText(arr.get(i));
                 }
                 if (i == 4 ) {
+                    k[4] = arr.get(i);
                     label10.setText(arr.get(i));
                 }
             }

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -58,234 +54,6 @@
             </ImageView>
          </children>
       </Pane>
-      <GridPane hgap="20.0" layoutX="573.0" layoutY="212.0" prefHeight="548.0" prefWidth="1520.0" vgap="10.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="220.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="332.79999389648435" minHeight="10.0" prefHeight="236.19998168945312" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="334.59998168945316" minHeight="8.199975585937466" prefHeight="52.20001831054685" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="316.80000000000007" minHeight="0.0" prefHeight="201.60001220703128" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="336.00000000000006" minHeight="-1.1368683772161603E-13" prefHeight="51.19998779296873" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav0" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view1" fitHeight="204.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav5" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view6" fitHeight="194.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav1" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view2" fitHeight="204.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav6" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view7" fitHeight="195.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav2" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view3" fitHeight="204.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-               <bottom>
-                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="298.0" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-               </bottom>
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="BOTTOM_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav3" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view4" fitHeight="179.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav7" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view8" fitHeight="194.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav9" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view10" fitHeight="201.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav4" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view5" fitHeight="203.0" fitWidth="218.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <top>
-                  <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="8.0" text="..." BorderPane.alignment="TOP_LEFT">
-                     <items>
-                        <MenuItem fx:id="addToFav8" mnemonicParsing="false" onAction="#addMovieInSearch" text="Add to Favourites" />
-                        <MenuItem mnemonicParsing="false" text="Create Session" />
-                     </items>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </MenuButton>
-               </top>
-               <center>
-                  <ImageView fx:id="view9" fitHeight="192.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-               </center></BorderPane>
-            <Label fx:id="label1" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label2" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label3" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label4" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label5" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label6" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.rowIndex="3">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label7" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label8" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label9" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="label10" alignment="CENTER" prefHeight="27.0" prefWidth="298.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
       <Button layoutX="1360.0" layoutY="780.0" mnemonicParsing="false" onAction="#moveBackwardMovieSearch">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0">
@@ -436,5 +204,365 @@
             </Pane>
          </items>
       </ToolBar>
+      <GridPane hgap="15.0" layoutX="29.0" layoutY="272.0" maxHeight="269.0" minHeight="250.0" prefHeight="269.0" prefWidth="1447.0" vgap="5.0" AnchorPane.bottomAnchor="375.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="220.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="322.399951171875" minHeight="10.0" prefHeight="190.4" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="179.8000244140625" minHeight="10.0" prefHeight="69.6" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
+               <children>
+                  <ImageView fx:id="view5" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav4" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <ImageView fx:id="view1" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav0" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fx:id="view2" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav1" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
+               <children>
+                  <ImageView fx:id="view3" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav2" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
+               <children>
+                  <ImageView fx:id="view4" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav3" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Label fx:id="label1" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label3" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label5" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label2" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label4" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane hgap="15.0" layoutX="27.0" layoutY="500.0" maxHeight="269.0" minHeight="250.0" prefHeight="269.0" prefWidth="1447.0" vgap="5.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="322.399951171875" minHeight="10.0" prefHeight="190.4" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="179.8000244140625" minHeight="10.0" prefHeight="69.6" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="4">
+               <children>
+                  <ImageView fx:id="view10" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav9" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <ImageView fx:id="view6" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav5" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fx:id="view7" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav6" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D9597A;" GridPane.columnIndex="2">
+               <children>
+                  <ImageView fx:id="view8" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav7" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A6032E;" GridPane.columnIndex="3">
+               <children>
+                  <ImageView fx:id="view9" fitHeight="195.0" fitWidth="180.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="addToFav8" mnemonicParsing="false" onAction="#addMovie" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/heart_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Pane>
+            <Label fx:id="label6" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label8" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label10" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #D9597A;" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label7" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Label fx:id="label9" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #A6032E;" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="22.0" />
+               </font>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.8509804010391235" green="0.3490196168422699" blue="0.47843137383461" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

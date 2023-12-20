@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
       <Button layoutX="45.0" layoutY="33.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="100.0" prefWidth="100.0">
          <graphic>
@@ -64,12 +64,12 @@
             </Label>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label layoutY="59.0" prefHeight="35.0" prefWidth="184.0" text=" Start Date:   ">
+                  <Label fx:id="start" layoutY="59.0" prefHeight="35.0" prefWidth="184.0" text=" Start Date:   ">
                      <font>
                         <Font name="Bookman Old Style Bold" size="24.0" />
                      </font>
                   </Label>
-                  <DatePicker editable="false" layoutX="180.0" layoutY="50.0" prefHeight="50.0" prefWidth="250.0">
+                  <DatePicker editable="false" layoutX="184.0" layoutY="52.0" prefHeight="50.0" prefWidth="250.0">
                      <effect>
                         <DropShadow height="30.0" radius="14.5" width="30.0">
                            <color>
@@ -82,7 +82,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label layoutY="32.0" prefHeight="35.0" prefWidth="189.0" text=" Finish Date:  ">
+                  <Label fx:id="finish" layoutY="32.0" prefHeight="35.0" prefWidth="189.0" text=" Finish Date:  ">
                      <font>
                         <Font name="Bookman Old Style Bold" size="24.0" />
                      </font>
@@ -105,7 +105,7 @@
                         <Font name="Bookman Old Style Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="180.0" layoutY="50.0" prefHeight="50.0" prefWidth="250.0" promptText="// Type hour like 10.15">
+                  <TextField fx:id="startHour" layoutX="180.0" layoutY="50.0" prefHeight="50.0" prefWidth="250.0" promptText="// Type hour like 10.15">
                      <font>
                         <Font name="Bookman Old Style" size="18.0" />
                      </font>
@@ -121,7 +121,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <TextField layoutX="180.0" layoutY="26.0" prefHeight="50.0" prefWidth="250.0" promptText="// Type hour like 10.15">
+                  <TextField fx:id="finishHour" layoutX="180.0" layoutY="26.0" prefHeight="50.0" prefWidth="250.0" promptText="// Type hour like 10.15">
                      <font>
                         <Font name="Bookman Old Style" size="18.0" />
                      </font>
@@ -142,7 +142,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <TextField layoutY="22.0" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="150.0" prefHeight="50.0" prefWidth="150.0">
+                  <TextField fx:id="quota" layoutY="22.0" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="150.0" prefHeight="50.0" prefWidth="150.0">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -156,7 +156,7 @@
                   </TextField>
                </children>
             </Pane>
-            <Label prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" GridPane.columnIndex="1">
+            <Label fx:id="sessionMovie" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: FFD2E3;" GridPane.columnIndex="1">
                <font>
                   <Font name="Bookman Old Style" size="24.0" />
                </font>
@@ -170,7 +170,7 @@
             </Label>
          </children>
       </GridPane>
-      <Button layoutX="1190.0" layoutY="697.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="258.0" style="-fx-background-color: D9597A;" text="Create Sesion" textFill="WHITE">
+      <Button layoutX="1190.0" layoutY="697.0" mnemonicParsing="false" onAction="#newSession" prefHeight="80.0" prefWidth="258.0" style="-fx-background-color: D9597A;" text="Create Sesion" textFill="WHITE">
          <font>
             <Font name="Bookman Old Style Bold" size="30.0" />
          </font>

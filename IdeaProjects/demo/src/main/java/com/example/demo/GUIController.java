@@ -64,6 +64,7 @@ public class GUIController {
     private Scene scene;
     private Stage stage;
     private Parent root;
+    private int friendID ;
     private static ArrayList<String> friendsIDs ;
     private static ArrayList<String> ChatIDs;
     private static ArrayList<String> favMoviesIDs ;
@@ -143,7 +144,9 @@ public class GUIController {
     @FXML private Text message;
     @FXML private ListView<Movie> searchResultsListView; 
     @FXML private Button b1,b2,b3, b4,b5,b6,b7,b8,b9,b10;   
-    @FXML private MenuItem addToFav0,addToFav1,addToFav2,addToFav3,addToFav4,addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
+    @FXML private Button addToFav0,addToFav1,addToFav2,addToFav3,addToFav4 ; 
+    @FXML private MenuItem addToFav5,addToFav6,addToFav7,addToFav8,addToFav9;
+    @FXML private Button delFavMov0 , delFavMov1 , delFavMov2 , delFavMov3 , delFavMov4 , delFavMov5 , delFavMov6 , delFavMov7 , delFavMov8 , delFavMov9 ;
     @FXML private TextArea friendChat , myChat ;
     @FXML private Button send ;
     @FXML private TextArea textToSend ;
@@ -502,7 +505,7 @@ public class GUIController {
         }
         helperChangeMovie1(movieIDs);
     }
-public void displayImage(){
+    public void displayImage(){
         //setUsers();
         setAllgenres();
         if (disp == 0) 
@@ -511,7 +514,7 @@ public void displayImage(){
 
             currentUser.setFavMovies(favMoviesIDs);
             //System.out.println("1111"+callFavGenres("1"));
-ArrayList<String> a = new ArrayList<>();
+            ArrayList<String> a = new ArrayList<>();
             a = recommendUsers();
             System.out.println("PRINT" + a);
             
@@ -534,10 +537,9 @@ ArrayList<String> a = new ArrayList<>();
                     for (int i = index ; i < c + index ; i++) 
                     {
                         movieIDs[i] = "000000";
-}
                     }
                 }
-        
+            }
             helperChangeMovie1(movieIDs);
             disp++;
         }
@@ -828,8 +830,8 @@ public void addMovie(ActionEvent e)
         }
     }
 
-    /*public void removeFriendFromProfile(ActionEvent e) {
-
+    public void removeFriendFromProfile(ActionEvent e) {
+/*
         if (e.getSource() == r1) {
             currentUser.removeFriend(friendsIDs.get(0));
         } else if (e.getSource() == r2) {
@@ -841,7 +843,8 @@ public void addMovie(ActionEvent e)
         } else if (e.getSource() == r5) {
             currentUser.removeFriend(friendsIDs.get(4));
         } 
-    }*/
+        */
+    }
 
     public void changeNick ()
     {
@@ -1064,27 +1067,38 @@ public void displayFriendsRight(ActionEvent e){
 
     public void createChat(ActionEvent e) 
     {
+        //
         if (e.getSource() == friend1) 
         {
-            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[0]) , currentUser.getID() , chatFriendList[0]) ;
+            myChat.setText("");
+            friendChat.setText("");
+            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[0]) , currentUser.getID() , chatFriendList[0] , friendChat) ;
         }
         else if (e.getSource() == friend2) 
         {
-            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[1]) , currentUser.getID() , chatFriendList[1]) ;
+            myChat.setText("");
+            friendChat.setText("");
+            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[1]) , currentUser.getID() , chatFriendList[1] , friendChat) ;
         }
         else if (e.getSource() == friend3) 
         {
-            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[2]) , currentUser.getID() , chatFriendList[2]) ;
+            myChat.setText("");
+            friendChat.setText("");
+            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[2]) , currentUser.getID() , chatFriendList[2] , friendChat) ;
         }
         else if (e.getSource() == friend4) 
         {
-            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[3]) , currentUser.getID() , chatFriendList[3]) ;
+            myChat.setText("");
+            friendChat.setText("");
+            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[3]) , currentUser.getID() , chatFriendList[3] , friendChat) ;
         }
         else 
         {
-            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[4]) , currentUser.getID() , chatFriendList[4]) ;
+            myChat.setText("");
+            friendChat.setText("");
+            privateChat = new Chat(getChatID(currentUser.getID(), chatFriendList[4]) , currentUser.getID() , chatFriendList[4] , friendChat) ;
         }
-        privateChat.setMessages(friendChat, myChat);
+        privateChat.setMessages(myChat);
     }
 
     public String getChatID(String userId , String friendId) 
@@ -1114,7 +1128,8 @@ public void displayFriendsRight(ActionEvent e){
 
         }
         textToSend.setText("");
-        privateChat.setMessages(friendChat, myChat);
+        //privateChat = new Chat(getChatID(currentUser.getID(), ""+friendID), currentUser.getID() , ""+friendID) ;
+        privateChat.setMyMessages(myChat);
     }
 
     public void displayFriendsLeft(ActionEvent e){
@@ -1150,6 +1165,7 @@ public void displayFriendsRight(ActionEvent e){
                 }
             }
         }
+        System.out.println(friendID);
     }
 public ArrayList<String> callFavGenres(String userID){
         ArrayList<String> ids = new ArrayList<>();
@@ -1305,6 +1321,4 @@ public void setAllgenres(){
             //System.out.println("user"+ users.get(a).getID() +users.get(a).getFavGenres());
     }
 }    
-
-   
 }

@@ -170,14 +170,6 @@ public class Firebase {
         return false ;
     }
 
-    public void chatPush()
-    {
-        DatabaseReference chat = chatDB.child(c.getID());
-        chat.child("messages").setValueAsync(c.getMessages());
-        DatabaseReference chatIDs = chatDB.child("ID-Counter");
-        chatIDs.setValueAsync(Integer.parseInt(c.getID()) + 1);
-    }
-
     public boolean hasAcc(String name, String pass)
     {
         int ID = indexOf(name, pass) ;

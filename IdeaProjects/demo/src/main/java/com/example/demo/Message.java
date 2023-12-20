@@ -30,7 +30,11 @@ public class Message {
     {
         int hour = time.getHour();
         int minute = time.getMinute();
-        return "Sent at: " + hour + ":" + minute + /*" by " + userID + */ "\n" + text;
+        if (minute < 10) 
+        {
+            return "Sent at: " + hour + ":0" + minute + "\n" + text;
+        }
+        return "Sent at: " + hour + ":" + minute + "\n" + text;
     }
 
     /*public String getUserID()

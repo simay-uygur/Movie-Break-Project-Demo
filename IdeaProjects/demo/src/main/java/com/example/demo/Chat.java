@@ -55,7 +55,6 @@ public class Chat {
                 @Override
                 public void onCancelled(DatabaseError error) {
                 }
-            
                 });
             }
             
@@ -94,6 +93,31 @@ public class Chat {
             }
             
         });
+        setFriendMessages();
+    }
+
+    public void setFriendMessages()
+    {
+        friend.setText("");
+                chat.child(friendID).addListenerForSingleValueEvent(new ValueEventListener() {
+
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    String frMsg = "" ;
+                    for (DataSnapshot mess : snapshot.getChildren())
+                    {
+                        if (!mess.getKey().equals("Counter"))
+                        {
+                            frMsg += "\n"+mess.getValue()+"\n" ;
+                        }
+                    }
+                    friend.appendText(frMsg);
+                }
+                
+                @Override
+                public void onCancelled(DatabaseError error) {
+                }
+                });
     }
 
     public void add(Message msg) 

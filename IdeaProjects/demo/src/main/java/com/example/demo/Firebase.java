@@ -29,7 +29,7 @@ public class Firebase {
     DatabaseReference userDB;
     DatabaseReference chatDB;
     Query userQ ;
-    private static String id ; 
+    private static String id;
     public Firebase()
     {
         films = FirebaseDatabase.getInstance().getReference("movies");

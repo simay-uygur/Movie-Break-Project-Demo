@@ -68,8 +68,7 @@ public class GUIController {
     private static ArrayList<String> friendsIDs ;
     private static ArrayList<String> recommovie  = new ArrayList<>();
     private static ArrayList<String> ChatIDs;
-    private static ArrayList<String> favMoviesIDs ;
-    private static ArrayList<String> favMoviesIDs1 ;
+    private static ArrayList<String> favMoviesIDs;
     private static ArrayList<User> users ;
     private static ArrayList<String> arr = new ArrayList<>();
     private ArrayList<Movie> moviesStore;
@@ -457,8 +456,14 @@ public class GUIController {
         String title = "";
 
         for (int i = 0; i < ids.length; i++) {
-            cUtitle = loadUserName(ids[i]);
-            title = cUtitle.join();
+            if(ids[i].equals("000000")){
+                title = "";
+            }
+
+            else{
+                cUtitle = loadUserName(ids[i]);
+                title = cUtitle.join();
+            }  
             if (i == 0) {
                 label6.setText(title);
             } else if (i == 1) {
@@ -959,7 +964,6 @@ public void addMovie(ActionEvent e)
 
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
-        favMoviesIDs1 = favMoviesIDs;
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -998,6 +1002,8 @@ public void addMovie(ActionEvent e)
 
     public void openChat(ActionEvent e) throws IOException {
         friendsIndex = 0;
+        System.out.println(friendID);
+        System.out.println(users);
         root = FXMLLoader.load(getClass().getResource("chat.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -1281,6 +1287,21 @@ public void addMovie(ActionEvent e)
                 }
                 if (i == 4 ) {
                     label10.setText(arr.get(i));
+                }
+                if(bound <= 4){
+                    label10.setText("");
+                }
+                if(bound <= 3){
+                    label9.setText("");
+                }
+                if(bound <= 2){
+                    label8.setText("");
+                }
+                if(bound <= 1){
+                    label7.setText("");
+                }
+                if(bound <= 0){
+                    label6.setText("");
                 }
             }
         }

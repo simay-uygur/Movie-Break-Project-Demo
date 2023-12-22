@@ -10,9 +10,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-//import io.grpc.netty.shaded.io.netty.util.internal.SystemPropertyUtil;
-//import io.grpc.netty.shaded.io.netty.util.internal.SystemPropertyUtil;
-//import io.grpc.netty.shaded.io.netty.util.internal.SystemPropertyUtil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,6 +55,7 @@ import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 
 public class GUIController {
+    ArrayList<String> recomMovie = new ArrayList<>();
     private static User currentUser ;
     private static Chat privateChat ;
     private static int id;
@@ -528,18 +526,15 @@ public class GUIController {
         helperChangeMovie1(movieIDs);
     }
     public void displayImage(){
-        //setUsers();
         displayfriendpro1();
-        setAllgenres();
+        //setUsers();
         if (disp == 0) 
         {
             //System.out.println("user"+ users.get(2).getFavGenres());
 
             currentUser.setFavMovies(favMoviesIDs);
             //System.out.println("1111"+callFavGenres("1"));
-            ArrayList<String> a = new ArrayList<>();
-            a = recommendUsers();
-            System.out.println("PRINT" + a);
+            System.out.println("PRINT" + recommovie);
             
             if(currentUser.getFavMoviesIDs().isEmpty()){
                 movieIDs = currentUser.recomIds();
@@ -882,42 +877,112 @@ public void addMovie(ActionEvent e)
 
         if (e.getSource() == b1) 
         {
-            currentUser.addFriend(k[0]);
+            for (int i = 0; i < users.size(); i++) {
+                if(k[0].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else if (e.getSource() == b2) 
         {
-            currentUser.addFriend(k[1]);
+            for (int i = 0; i < users.size(); i++) {
+                if(k[1].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else if (e.getSource() == b3) 
         {
-            currentUser.addFriend(k[2]);
+            for (int i = 0; i < users.size(); i++) {
+                if(k[2].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else if (e.getSource() == b4) 
         {
-            currentUser.addFriend(k[3]);
+            for (int i = 0; i < users.size(); i++) {
+                if(k[3].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else if(e.getSource() == b5)
         {
-            currentUser.addFriend(k[4]);
+            for (int i = 0; i < users.size(); i++) {
+                if(k[4].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else if (e.getSource() == b6)
         {
-            currentUser.addFriend(l[0]);
+            for (int i = 0; i < users.size(); i++) {
+                if(l[0].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else if (e.getSource() == b7)
         {
-            currentUser.addFriend(l[1]);
+            for (int i = 0; i < users.size(); i++) {
+                if(l[1].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else if (e.getSource() == b8)
         {
-            currentUser.addFriend(l[2]);
+            for (int i = 0; i < users.size(); i++) {
+                if(l[2].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else if (e.getSource() == b9)
         {
-            currentUser.addFriend(l[3]);
+            for (int i = 0; i < users.size(); i++) {
+                if(l[3].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
         else{
-            currentUser.addFriend(l[4]);
+            for (int i = 0; i < users.size(); i++) {
+                if(l[4].equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    currentUser.addFriend(users.get(i).getID());
+                    friendsIDs.add(users.get(i).getID());
+                    System.out.println(users.get(i).getID());
+                    System.out.println(friendsIDs);
+                }
+            }
         }
     }
 
@@ -1194,7 +1259,6 @@ public void addMovie(ActionEvent e)
     public void toSend(ActionEvent e) 
     {
         myChat.setText("");
-        friendChat.setText("");
         privateChat.add(new Message(textToSend.getText(), currentUser.getID()));
         
         textToSend.setText("");
@@ -1308,51 +1372,41 @@ public void addMovie(ActionEvent e)
         public void addfri(ActionEvent e){
             if(e.getSource() == b1){
                 for (int i = 0; i < users.size(); i++) {
-                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    if(arr.get(1).equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
                         currentUser.addFriend(users.get(i).getID());
                         friendsIDs.add(users.get(i).getID());
-                        System.out.println(users.get(i).getID());
-                        System.out.println(friendsIDs);
                     }
                 }
             }
             if(e.getSource() == b2){
                 for (int i = 0; i < users.size(); i++) {
-                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    if(arr.get(1).equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
                         currentUser.addFriend(users.get(i).getID());
                         friendsIDs.add(users.get(i).getID());
-                        System.out.println(users.get(i).getID());
-                        System.out.println(friendsIDs);
                     }
                 }
             }
             if(e.getSource() == b3){
                 for (int i = 0; i < users.size(); i++) {
-                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    if(arr.get(1).equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){      
                         currentUser.addFriend(users.get(i).getID());
                         friendsIDs.add(users.get(i).getID());
-                        System.out.println(users.get(i).getID());
-                        System.out.println(friendsIDs);
                     }
                 }
             }
             if(e.getSource() == b4){
                 for (int i = 0; i < users.size(); i++) {
-                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    if(arr.get(1).equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
                         currentUser.addFriend(users.get(i).getID());
                         friendsIDs.add(users.get(i).getID());
-                        System.out.println(users.get(i).getID());
-                        System.out.println(friendsIDs);
                     }
                 }
             }
             if(e.getSource() == b5){
                 for (int i = 0; i < users.size(); i++) {
-                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                    if(arr.get(1).equals(users.get(i).getID())&&!(friendsIDs.contains(users.get(i).getID()))){
                         currentUser.addFriend(users.get(i).getID());
                         friendsIDs.add(users.get(i).getID());
-                        System.out.println(users.get(i).getID());
-                        System.out.println(friendsIDs);
                     }
                 }
             }
@@ -1363,7 +1417,6 @@ public void addMovie(ActionEvent e)
             int bound = Math.min(favMoviesIDs.size()-friendsIndex2, 10);
             CompletableFuture<String> ctitle = new CompletableFuture<>();
             String title = "";
-            System.out.println(favMoviesIDs);
             for (int i = friendsIndex2; i < friendsIndex2 + bound; i++) {
                 BufferedImage cposter = loadMoviePoster(favMoviesIDs.get(i));
                 Image posterImage = SwingFXUtils.toFXImage(cposter, null);                
@@ -1605,27 +1658,22 @@ public void addMovie(ActionEvent e)
         if(e.getSource() == r1){
             removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+0));
             friendsIDs.remove(friendsIndex1 + 0);
-            System.out.println(friendsIndex1+0);
         }
         if(e.getSource() == r2){
             removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+1));
             friendsIDs.remove(friendsIndex1 + 0);
-            System.out.println(friendsIndex1+1);
         }
         if(e.getSource() == r3){
             removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+2));
             friendsIDs.remove(friendsIndex1 + 2);
-            System.out.println(friendsIndex1+2);
         }
         if(e.getSource() == r4){
             removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+3));
             friendsIDs.remove(friendsIndex1 + 3);
-            System.out.println(friendsIndex1+3);
         }
         if(e.getSource() == r5){
             removeFriend(currentUser.getID(), friendsIDs.get(friendsIndex1+4));
             friendsIDs.remove(friendsIndex1 + 4);
-            System.out.println(friendsIndex1 + 4);
         }
     }
     public void removeFriend(String userID, String friendID) {
@@ -1761,10 +1809,8 @@ public void addMovie(ActionEvent e)
     {
         for (Movie m : moviesStore) 
         {
-            System.out.println(callFavGenres(currentUser.getID()));
-            System.out.println(m.getGenre());
-            for (int i = 0; i < 3; i++) {
-                if(callFavGenres(currentUser.getID()).get(i).equals(m.getGenre())){
+            for (int i = 0; i < callFavGenres(currentUser.getID()).size(); i++) {
+                if(callFavGenres(currentUser.getID()).get(i).equals(m.getGenre())&&!(favMoviesIDs.contains(""+m.takeId()))){
                     recommovie.add(""+m.takeId()) ;
                 }
             }
@@ -1776,15 +1822,12 @@ public void addMovie(ActionEvent e)
     public ArrayList<String> recommendUsers()
     {
         ArrayList<String> current = new ArrayList<String>();
-    ArrayList<String> otherUsers = new ArrayList<>();
+        ArrayList<String> otherUsers = new ArrayList<>();
         ArrayList<String> recomUser = new ArrayList<>();
-        current = callFavGenres(currentUser.getID());
-        System.out.println("current" + current);
-        
+        current = callFavGenres(currentUser.getID());        
         for(int y=0; y< users.size(); y++){
-            System.out.println(callFavGenres(users.get(y).getID()));
             otherUsers = callFavGenres(users.get(y).getID());
-            if(similarPerson(current, otherUsers) && !(currentUser.getID().equals(users.get(y).getID()))) {
+            if(similarPerson(current, otherUsers) && !(currentUser.getID().equals(users.get(y).getID()))&& !(friendsIDs.contains(users.get(y).getID())) ) {
                 recomUser.add(users.get(y).getName());
             }
         }
@@ -1800,7 +1843,6 @@ public void addMovie(ActionEvent e)
                     return true;
                 }
             }
-            return false;
         }
         return false;
     }
@@ -1815,13 +1857,11 @@ public void addMovie(ActionEvent e)
                 }
             }
         }
-        //System.out.println(genres);
         return findMaxes2(genres);
     }
     public ArrayList<String> findMaxes2(ArrayList<String> genres) 
     {
         Collections.sort(genres);
-        //System.out.println(genres);
         int[] arr = new int[6];
         String[] arrstr = new String[6];
         arrstr[0] = "drama";
@@ -1872,103 +1912,38 @@ public void addMovie(ActionEvent e)
         favGenres = g ;
         return favGenres;
     }
-    /*public static String findMostFrequent(ArrayList<String> list) {
-        if (list.isEmpty()) {
-            return null; 
-           
-        }
-        else{
-            System.out.println("not null");
-        }
-        HashMap<String, Integer> frequencyMap = new HashMap<>();
-
-            for (String element : list) {
-                frequencyMap.put(element, frequencyMap.getOrDefault(element, 0) + 1);
-            }
-
-            int maxFrequency = 0;
-            ArrayList<String> mostFrequentElements = new ArrayList<>();
-
-        for (String key : frequencyMap.keySet()) {
-            int frequency = frequencyMap.get(key);
-            if (frequency > maxFrequency) {
-                maxFrequency = frequency;
-                mostFrequentElements.clear();
-                mostFrequentElements.add(key);
-            } else if (frequency == maxFrequency) {
-                mostFrequentElements.add(key);
-            }
-                System.out.println("İn find Max"+ mostFrequentElements);
-            if (mostFrequentElements.size() == 1) {
-                return mostFrequentElements.get(0);
-            } else {
-                // Eşit tekrar sayıları varsa rastgele birini seçin
-                Random random = new Random();
-                int randomIndex = random.nextInt(mostFrequentElements.size());
-                return mostFrequentElements.get(randomIndex);
-            }
-        } 
-    }  
-        /*public void findRecommendedFriends(){
-        ArrayList<User> userForCompare = fb.getUsers();
-        for (int num = 0; num < userForCompare.size(); num++) 
-        {
-        //System.out.println("hee"+userForCompare.get(num).getFavGenres());
-            if (userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(0)) ||
-            userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(1)) ||
-            userForCompare.get(num).getFavGenres().contains(currentUser.getFavGenres().get(2))) 
-            {
-                boolean check = true;
-                for (int n = 0; n < currentUser.friendsIDs.size(); n++) 
-                {
-                    if (userForCompare.get(num).getId().equals(friendsIDs.get(n))) {
-                    check = false;
-                    }
-                }
-                if (mostFrequentElements.size() == 1) {
-                    return mostFrequentElements.get(0);
-                } else {
-                    Random random = new Random();
-                    int randomIndex = random.nextInt(mostFrequentElements.size());
-                    return mostFrequentElements.get(randomIndex);
-                }
-            } 
-        }
-    }*/
-
     
-        public ArrayList<String> findMaxes(ArrayList<String> genres) 
+    public ArrayList<String> findMaxes(ArrayList<String> genres) 
+    {
+        int max = 0 , temp = 0;
+        String g1 = "" , g2 = "" , g3 = "";
+        Collections.sort(genres);
+        for (int i = 0 ; i < genres.size() - 1 ; i++) 
         {
-            int max = 0 , temp = 0;
-            String g1 = "" , g2 = "" , g3 = "";
-            Collections.sort(genres);
-            for (int i = 0 ; i < genres.size() - 1 ; i++) 
+            if (genres.get(i).equals(genres.get(i+1)))
+                temp ++ ;
+            else 
             {
-                if (genres.get(i).equals(genres.get(i+1)))
-                    temp ++ ;
-                else 
+                if (temp >= max) 
                 {
-                    if (temp >= max) 
-                    {
-                        max = temp ;
-                        g3 = g2 ;
-                        g2 = g1 ;
-                        g1 = genres.get(i+1) ;
-                    }
-                    temp = 0 ;
+                    max = temp ;
+                    g3 = g2 ;
+                    g2 = g1 ;
+                    g1 = genres.get(i+1) ;
                 }
+                temp = 0 ;
             }
-            ArrayList<String> g = new ArrayList<>() ;
-            g.add(g1) ;
-            g.add(g2) ;
-            g.add(g3) ;
-            return g;
+        }
+        ArrayList<String> g = new ArrayList<>() ;
+        g.add(g1) ;
+        g.add(g2) ;
+        g.add(g3) ;
+        return g;
     }
 
     public void setAllgenres(){
             for(int a=0; a<users.size()-1; a++){
                 callFavGenres(users.get(a).getID());
-                //System.out.println("user"+ users.get(a).getID() +users.get(a).getFavGenres());
         }
     }    
 }

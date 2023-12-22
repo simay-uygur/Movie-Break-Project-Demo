@@ -128,6 +128,7 @@ public class User {
         if (!friendsIDs.contains(friendID) && !friendID.equals("000000")) 
         {
             fb.add(userID, "Friends", friendID);
+            friendsIDs.add(friendID);
         }
     }
 

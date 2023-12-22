@@ -43,25 +43,24 @@ public class Chat {
                         String frMsg = "" ;
                         for (DataSnapshot mess : snapshot.getChildren())
                         {
-                        if (!mess.getKey().equals("Counter"))
-                        {
-                            frMsg += "\n"+mess.getValue()+"\n" ;
+                            if (!mess.getKey().equals("Counter"))
+                            {
+                                frMsg += "\n"+mess.getValue()+"\n" ;
+                            }
                         }
+                        if (friendMsg == null || frMsg.length() > friendMsg.length()) 
+                        {
+                            friend.setText("");
+                            friend.appendText(frMsg);
+                            friendMsg = frMsg ;
+                        }
+                    }   
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
                     }
-                    if (friendMsg == null || frMsg.length() > friendMsg.length()) 
-                    {
-                        friend.setText("");
-                        friend.appendText(frMsg);
-                        friendMsg = frMsg ;
-                    }
+                    });
                 }
-                
-                @Override
-                public void onCancelled(DatabaseError error) {
-                }
-                });
-            }
-            
         }, 0, 2000);
     }
     
@@ -97,30 +96,6 @@ public class Chat {
             }
             
         });
-    }
-
-    public void setFriendMessages()
-    {
-        friend.setText("");
-                chat.child(friendID).addListenerForSingleValueEvent(new ValueEventListener() {
-
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    String frMsg = "" ;
-                    for (DataSnapshot mess : snapshot.getChildren())
-                    {
-                        if (!mess.getKey().equals("Counter"))
-                        {
-                            frMsg += "\n"+mess.getValue()+"\n" ;
-                        }
-                    }
-                    friend.appendText(frMsg);
-                }
-                
-                @Override
-                public void onCancelled(DatabaseError error) {
-                }
-                });
     }
 
     public void add(Message msg) 

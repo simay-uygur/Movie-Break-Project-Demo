@@ -29,7 +29,7 @@
                   <ColorAdjust brightness="-0.3" />
                </effect>
             </Pane>
-            <Label fx:id="nick" layoutX="39.0" layoutY="13.0" prefHeight="126.0" prefWidth="355.0" text="Profile Page " textFill="WHITE">
+            <Label fx:id="nick" layoutX="39.0" layoutY="13.0" prefHeight="126.0" prefWidth="355.0" text=" Nickname" textFill="WHITE">
                <font>
                   <Font name="Bookman Old Style Bold" size="36.0" />
                </font>

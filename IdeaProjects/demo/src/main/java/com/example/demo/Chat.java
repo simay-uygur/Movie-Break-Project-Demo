@@ -16,10 +16,10 @@ import javafx.scene.control.TextArea;
 
 public class Chat {
     private static String counter = "1" ; 
+    private static String friendMsg ;
     String chatID;
     private static DatabaseReference chat ;
     private static String userID ;
-    private static String userName ;
     private Timer timer ;
     private String friendID ;
     private TextArea friend ;
@@ -36,20 +36,24 @@ public class Chat {
 
             @Override
             public void run() {
-                friend.setText("");
                 chat.child(friendID).addListenerForSingleValueEvent(new ValueEventListener() {
-
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    String frMsg = "" ;
-                    for (DataSnapshot mess : snapshot.getChildren())
-                    {
+                    
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        String frMsg = "" ;
+                        for (DataSnapshot mess : snapshot.getChildren())
+                        {
                         if (!mess.getKey().equals("Counter"))
                         {
                             frMsg += "\n"+mess.getValue()+"\n" ;
                         }
                     }
-                    friend.appendText(frMsg);
+                    if (friendMsg == null || frMsg.length() > friendMsg.length()) 
+                    {
+                        friend.setText("");
+                        friend.appendText(frMsg);
+                        friendMsg = frMsg ;
+                    }
                 }
                 
                 @Override
@@ -93,7 +97,6 @@ public class Chat {
             }
             
         });
-        setFriendMessages();
     }
 
     public void setFriendMessages()

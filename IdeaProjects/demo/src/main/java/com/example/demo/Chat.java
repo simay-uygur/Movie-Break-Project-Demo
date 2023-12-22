@@ -93,7 +93,6 @@ public class Chat {
             }
             
         });
-        setFriendMessages();
     }
 
     public void setFriendMessages()

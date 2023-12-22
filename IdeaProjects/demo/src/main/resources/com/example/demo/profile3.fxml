@@ -33,7 +33,7 @@
                   </DropShadow>
                </effect>
             </Pane>
-            <Label layoutX="39.0" layoutY="13.0" prefHeight="126.0" prefWidth="355.0" text=" Nickname" textFill="WHITE">
+            <Label layoutX="39.0" layoutY="13.0" prefHeight="126.0" prefWidth="355.0" text="Profile Page" textFill="WHITE">
                <font>
                   <Font name="Bookman Old Style Bold" size="36.0" />
                </font>
@@ -186,9 +186,9 @@
          <items>
             <Pane onMouseEntered="#callSearchComboBox" prefHeight="88.0" prefWidth="1520.0">
                <children>
-                  <Button layoutX="313.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
+                  <Button layoutX="313.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" onDragDetected="#changeMainPage">
+                        <ImageView fitHeight="60.0" fitWidth="60.0">
                            <image>
                               <Image url="@images/home_symbol.png" />
                            </image>

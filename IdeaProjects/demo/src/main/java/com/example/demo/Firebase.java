@@ -121,7 +121,7 @@ public class Firebase {
 
     public void takeFriends(String id)
     {
-        userDB.child(id).child("Friends").addValueEventListener(new ValueEventListener() {
+        userDB.child(id).child("Friends").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -337,7 +337,7 @@ public class Firebase {
     public User setUser(User u) 
     {
         ArrayList<String> ids = new ArrayList<>() ;
-        userDB.child(u.getID()).child("Fav_MovieIDs").addListenerForSingleValueEvent(new ValueEventListener() {
+        userDB.child(u.getID()).child("Fav_MovieIDs").addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {

@@ -66,9 +66,12 @@ public class GUIController {
     private Parent root;
     private int friendID ;
     private static ArrayList<String> friendsIDs ;
+    private static ArrayList<String> recommovie  = new ArrayList<>();
     private static ArrayList<String> ChatIDs;
     private static ArrayList<String> favMoviesIDs ;
+    private static ArrayList<String> favMoviesIDs1 ;
     private static ArrayList<User> users ;
+    private static ArrayList<String> arr = new ArrayList<>();
     private ArrayList<Movie> moviesStore;
     private static int openOnce1 = 0;
     private static int openOnce = 0;
@@ -501,16 +504,16 @@ public class GUIController {
         currentUser.setFavMovies(favMoviesIDs);
         favGenres=currentUser.setFavGenres(moviesStore);
 
-        ArrayList<String> a = recommendMovies();
-        int c = a.size()%5 ;
+        recommendMovies();
+        int c = recommovie.size()%5 ;
 
-        for (int i = index ; counter < 5 && i < a.size() ; i++) 
+        for (int i = index ; counter < 5 && i < recommovie.size() ; i++) 
         {
-            movieIDs[counter] = a.get(i) ;
+            movieIDs[counter] = recommovie.get(i) ;
             counter ++ ;
         }
         index += counter ;
-        if (index == a.size() - 1 && c > 0) 
+        if (index == recommovie.size() - 1 && c > 0) 
         {
             for (int i = index ; i < c + index ; i++) 
             {
@@ -538,16 +541,15 @@ public class GUIController {
             }
             else{
                 int counter = 0 ;
-                ArrayList<String> b = recommendMovies();
-
-                int c = b.size()%5 ;
-                for (int i = index ; counter < 5 && i < b.size() ; i++) 
+                recommendMovies();
+                int c = recommovie.size()%5 ;
+                for (int i = index ; counter < 5 && i < recommovie.size() ; i++) 
                 {
-                    movieIDs[counter] = b.get(i) ;
+                    movieIDs[counter] = recommovie.get(i) ;
                     counter ++ ;
                 }
                 index += counter ;
-                if (index == b.size() - 1 && c > 0) 
+                if (index == recommovie.size() - 1 && c > 0) 
                 {
                     for (int i = index ; i < c + index ; i++) 
                     {
@@ -820,42 +822,52 @@ public void addMovie(ActionEvent e)
     {
         if (e.getSource() == addToFav0) 
         {
+            favMoviesIDs.add(x[0]);
             currentUser.addMovie(x[0]) ;
         }
         else if (e.getSource() == addToFav1) 
         {
+            favMoviesIDs.add(x[1]);
             currentUser.addMovie(x[1]) ;
         }
         else if (e.getSource() == addToFav2) 
         {
+            favMoviesIDs.add(x[2]);
             currentUser.addMovie(x[2]) ;
         }
         else if (e.getSource() == addToFav3) 
         {
+            favMoviesIDs.add(x[3]);
             currentUser.addMovie(x[3]) ;
         }
         else if( e.getSource() == addToFav4)
         {
+            favMoviesIDs.add(x[4]);
             currentUser.addMovie(x[4]) ;
         }
         else if( e.getSource() == addToFav5)
         {
+            favMoviesIDs.add(y[0]);
             currentUser.addMovie(y[0]) ;
         }
         else if (e.getSource() == addToFav6) 
         {
+            favMoviesIDs.add(y[1]);
             currentUser.addMovie(y[1]) ;
         }
         else if (e.getSource() == addToFav7) 
         {
+            favMoviesIDs.add(y[2]);
             currentUser.addMovie(y[2]) ;
         }
         else if (e.getSource() == addToFav8) 
         {
+            favMoviesIDs.add(y[3]);
             currentUser.addMovie(y[3]) ;
         }
         else
         {
+            favMoviesIDs.add(y[4]);
             currentUser.addMovie(y[4]) ;
         }
 
@@ -947,6 +959,7 @@ public void addMovie(ActionEvent e)
 
     public void changeMainPage(ActionEvent e) throws IOException {
         disp = 0 ;
+        favMoviesIDs1 = favMoviesIDs;
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -1251,7 +1264,6 @@ public void addMovie(ActionEvent e)
             }
         }
         public void displayfriendpro1(){
-            ArrayList<String> arr = new ArrayList<>();
             arr = recommendUsers();
             int bound = Math.min(arr.size()-0, 5);
             for (int i = 0; i < 0 + bound; i++) {
@@ -1269,6 +1281,58 @@ public void addMovie(ActionEvent e)
                 }
                 if (i == 4 ) {
                     label10.setText(arr.get(i));
+                }
+            }
+        }
+        public void addfri(ActionEvent e){
+            if(e.getSource() == b1){
+                for (int i = 0; i < users.size(); i++) {
+                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                        currentUser.addFriend(users.get(i).getID());
+                        friendsIDs.add(users.get(i).getID());
+                        System.out.println(users.get(i).getID());
+                        System.out.println(friendsIDs);
+                    }
+                }
+            }
+            if(e.getSource() == b2){
+                for (int i = 0; i < users.size(); i++) {
+                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                        currentUser.addFriend(users.get(i).getID());
+                        friendsIDs.add(users.get(i).getID());
+                        System.out.println(users.get(i).getID());
+                        System.out.println(friendsIDs);
+                    }
+                }
+            }
+            if(e.getSource() == b3){
+                for (int i = 0; i < users.size(); i++) {
+                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                        currentUser.addFriend(users.get(i).getID());
+                        friendsIDs.add(users.get(i).getID());
+                        System.out.println(users.get(i).getID());
+                        System.out.println(friendsIDs);
+                    }
+                }
+            }
+            if(e.getSource() == b4){
+                for (int i = 0; i < users.size(); i++) {
+                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                        currentUser.addFriend(users.get(i).getID());
+                        friendsIDs.add(users.get(i).getID());
+                        System.out.println(users.get(i).getID());
+                        System.out.println(friendsIDs);
+                    }
+                }
+            }
+            if(e.getSource() == b5){
+                for (int i = 0; i < users.size(); i++) {
+                    if(arr.get(1).equals(users.get(i).getName())&&!(friendsIDs.contains(users.get(i).getID()))){
+                        currentUser.addFriend(users.get(i).getID());
+                        friendsIDs.add(users.get(i).getID());
+                        System.out.println(users.get(i).getID());
+                        System.out.println(friendsIDs);
+                    }
                 }
             }
         }
@@ -1667,24 +1731,23 @@ public void addMovie(ActionEvent e)
             if(user.getID().equals(ID)){
                 ids = user.setFavGenres(moviesStore);
             }
-            //ids = findMaxes(ids);
-            return ids;
+            ids = findMaxes2(ids);
         }
         return ids;
     }    
 
-    public ArrayList<String> recommendMovies() 
+    public void recommendMovies() 
     {
-
-        ArrayList<String> a = new ArrayList<String>();
         for (Movie m : moviesStore) 
         {
-            if ( callFavGenres(currentUser.getID()).contains(m.getGenre())
-                    &&
-                    !favMoviesIDs.contains(""+m.takeId()))
-                a.add(""+m.takeId()) ;
+            System.out.println(callFavGenres(currentUser.getID()));
+            System.out.println(m.getGenre());
+            for (int i = 0; i < 3; i++) {
+                if(callFavGenres(currentUser.getID()).get(i).equals(m.getGenre())){
+                    recommovie.add(""+m.takeId()) ;
+                }
+            }
         }
-        return a;
     }
     
     
@@ -1701,7 +1764,7 @@ public void addMovie(ActionEvent e)
             System.out.println(callFavGenres(users.get(y).getID()));
             otherUsers = callFavGenres(users.get(y).getID());
             if(similarPerson(current, otherUsers) && !(currentUser.getID().equals(users.get(y).getID()))) {
-                recomUser.add(users.get(y).getID());
+                recomUser.add(users.get(y).getName());
             }
         }
         return recomUser;
@@ -1720,7 +1783,74 @@ public void addMovie(ActionEvent e)
         }
         return false;
     }
-    
+    public ArrayList<String> setFavGenres(ArrayList<Movie> mo) {
+        ArrayList<String> genres = new ArrayList<>();
+        for (int i = 0; i < favMoviesIDs.size(); i++) {
+            for (Movie m : mo) 
+            {
+                if (favMoviesIDs.get(i).equals(""+m.takeId())) 
+                {
+                    genres.add(m.getGenre()) ;
+                }
+            }
+        }
+        //System.out.println(genres);
+        return findMaxes2(genres);
+    }
+    public ArrayList<String> findMaxes2(ArrayList<String> genres) 
+    {
+        Collections.sort(genres);
+        //System.out.println(genres);
+        int[] arr = new int[6];
+        String[] arrstr = new String[6];
+        arrstr[0] = "drama";
+        arrstr[1] = "adventure";
+        arrstr[2] = "crime";
+        arrstr[3] = "comedy";
+        arrstr[4] = "animation";
+        arrstr[5] = "action";
+        for (int i = 0 ; i < genres.size() ; i++) 
+        {
+            if(genres.get(i).equals("drama")){
+                arr[0] += 1;
+            }
+            if(genres.get(i).equals("adventure")){
+                arr[1] += 1;
+            }
+            if(genres.get(i).equals("crime")){
+                arr[2] += 1;
+            }
+            if(genres.get(i).equals("comedy")){
+                arr[3] += 1;
+            }
+            if(genres.get(i).equals("animation")){
+                arr[4] += 1;
+            }
+            if(genres.get(i).equals("action")){
+                arr[5] += 1; 
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i+1; j < arr.length; j++) {
+                if(arr[i]<arr[j]){
+                    int temp1 = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp1;
+                    String temp2 = arrstr[i];
+                    arrstr[i] = arrstr[j];
+                    arrstr[j] = temp2;
+                }
+            }
+        }
+        ArrayList<String> g = new ArrayList<>() ;
+        for (int i = 0; i < 3; i++) {
+            if(!(arr[i]==0)){
+                g.add(arrstr[i]);
+            }
+        }
+        favGenres = g ;
+        return favGenres;
+    }
     /*public static String findMostFrequent(ArrayList<String> list) {
         if (list.isEmpty()) {
             return null; 

@@ -334,7 +334,7 @@
                            <children>
                               <Pane maxWidth="300.0" minWidth="201.0" prefHeight="170.0" prefWidth="294.0">
                                  <children>
-                                    <Button fx:id="b1" alignment="TOP_LEFT" layoutX="50.0" maxWidth="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" prefWidth="50.0" style="-fx-background-color: #D9597A;">
+                                    <Button fx:id="b1" alignment="TOP_LEFT" layoutX="50.0" maxWidth="50.0" mnemonicParsing="false" onAction="#addfri" prefWidth="50.0" style="-fx-background-color: #D9597A;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -353,7 +353,7 @@
                                  </children></Pane>
                               <Pane maxWidth="362.0" minWidth="238.0" prefHeight="170.0" prefWidth="277.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                  <children>
-                                    <Button fx:id="b2" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" style="-fx-background-color: #A6032E;">
+                                    <Button fx:id="b2" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addfri" style="-fx-background-color: #A6032E;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -372,7 +372,7 @@
                                  </children></Pane>
                               <Pane maxWidth="300.0" minWidth="182.0" prefHeight="170.0" prefWidth="182.0" GridPane.columnIndex="2">
                                  <children>
-                                    <Button fx:id="b3" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" style="-fx-background-color: #D9597A;">
+                                    <Button fx:id="b3" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addfri" style="-fx-background-color: #D9597A;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -391,7 +391,7 @@
                                  </children></Pane>
                               <Pane maxWidth="489.0" minWidth="239.0" prefHeight="170.0" prefWidth="489.0" GridPane.columnIndex="3">
                                  <children>
-                                    <Button fx:id="b4" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" style="-fx-background-color: #A6032E;">
+                                    <Button fx:id="b4" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addfri" style="-fx-background-color: #A6032E;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>
@@ -410,7 +410,7 @@
                                  </children></Pane>
                               <Pane maxWidth="300.0" minWidth="243.0" prefHeight="170.0" prefWidth="243.0" GridPane.columnIndex="4">
                                  <children>
-                                    <Button fx:id="b5" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addUserAsFriend" style="-fx-background-color: #D9597A;">
+                                    <Button fx:id="b5" alignment="TOP_LEFT" layoutX="50.0" mnemonicParsing="false" onAction="#addfri" style="-fx-background-color: #D9597A;">
                                        <graphic>
                                           <ImageView fitHeight="160.0" fitWidth="170.0">
                                              <image>

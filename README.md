@@ -22,5 +22,6 @@ Pınar:
 Week 1: We worked on the GUI design and the GUI methods with Emiralp. Even though we had to make changes afterwards, we finished most of it in the first week.
 Week 2: We spent some time understanding the other classes and then started helping others. I usually worked on chat with Perhat.
 
-
+Everybody came every time we meet for writing the code.
+  
 How to execute: You should run the Welcome class to start the application and the dependencies are firebase and javafx. All infos are in moduleinfo class

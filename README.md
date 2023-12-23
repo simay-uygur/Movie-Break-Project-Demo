@@ -23,5 +23,6 @@ Week 1: We worked on the GUI design and the GUI methods with Emiralp. Even thoug
 Week 2: We spent some time understanding the other classes and then started helping others. I usually worked on chat with Perhat.
 
 Everybody came every time we meet for writing the code.
-  
-How to execute: You should run the Welcome class to start the application and the dependencies are firebase and javafx. All infos are in moduleinfo class
+
+How to execute: You should run the Welcome class to start the application and the dependencies are firebase and javafx. All infos are in moduleinfo class. 
+IMPORTANT: you should open the Movie-Break Project-Demo folder, otherwise the relative paths would not work. This was a common problem when we were writing the code.

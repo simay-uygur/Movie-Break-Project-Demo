@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -21,12 +20,10 @@ public class Welcome extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
     public static void initialize() {
         try{
             FileInputStream serviceAccount =
                     new FileInputStream("IdeaProjects\\demo\\serviceAccountKey.json");
-
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com")
@@ -36,7 +33,6 @@ public class Welcome extends Application {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) {
         initialize();
         launch();

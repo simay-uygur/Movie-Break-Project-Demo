@@ -6,8 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.OkHttpClient;
@@ -43,7 +47,7 @@ public class MovieService
         imageUrls = new ArrayList<String>();
         movieIds = new ArrayList<String>();
         initializeFirebase();
-        String genreId = "28"; // Aksiyon türünün ID'si
+        String genreId = "28"; //Action
         fetchAndStoreMovies(genreId);
         genreId = "12"; //Adventure
         fetchAndStoreMovies(genreId);
@@ -64,7 +68,6 @@ public class MovieService
         genreId = "99"; //docummentary
         fetchAndStoreMovies(genreId);
         */
-
         String saveDirectory = "IdeaProjects\\demo\\src\\main\\resources\\com\\example\\demo\\movieImages\\";
         for (int i = 0; i < imageUrls.size(); i++) {
             String imageUrl = imageUrls.get(i);
@@ -73,7 +76,6 @@ public class MovieService
             downloadImage(imageUrl, movieId, saveDirectory);
         }
     }
-
     public static void fetchAndStoreMovies(String genreId) throws IOException {
         String apiUrl = "https://api.themoviedb.org/3/discover/movie" +
         "?api_key=" + TMDB_API_KEY +
@@ -88,7 +90,6 @@ public class MovieService
             storeMovieInDatabase(movie);
         }
     }
-
     private static String makeHttpRequest(String apiUrl) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
@@ -96,19 +97,17 @@ public class MovieService
                 .url(apiUrl)
                 .get()
                 .build();
-
         try (Response response = client.newCall(request).execute()) {
             return response.body().string();
         }
     }
-
     private static void initializeFirebase() {
         try {
             FileInputStream serviceAccount = new FileInputStream("IdeaProjects\\demo\\serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com/")
+                    .setDatabaseUrl("https://movie-break-3650d-default-rtdb.firebaseio.com")
                     .build();
             FirebaseApp.initializeApp(options);
         } catch (Exception e) {
@@ -116,7 +115,6 @@ public class MovieService
             System.err.println("Failed to initialize Firebase: " + e.getMessage());
         }
     }
-
     private static void storeMovieInDatabase(Movie movie) {
         try {
             DatabaseReference moviesRef = FirebaseDatabase.getInstance().getReference("movies");
@@ -128,8 +126,6 @@ public class MovieService
             System.err.println("Failed to save movie data to Firebase: " + e.getMessage());
         }
     }
-
-
     public static List<Movie> parseSearchResults(String jsonResponse, String searchQ) {
         List<Movie> movies = new ArrayList<>();
 
@@ -145,12 +141,13 @@ public class MovieService
 
                 String genreName = mapGenreIdToName(searchQ); // Convert genre ID to name
 
-                Movie movie = new Movie(id, title, genreName, posterPath);
-                movies.add(movie);
-
-                movieIds.add(Integer.toString(id)); // Collect movie IDs
-                if (!posterPath.isEmpty())
-                    imageUrls.add(posterPath); // Collect image URLs if available
+                if(correctTitle(title)){
+                    Movie movie = new Movie(id, title, genreName, posterPath);
+                    movies.add(movie);
+                    movieIds.add(Integer.toString(id)); // Collect movie IDs
+                    if (!posterPath.isEmpty())
+                        imageUrls.add(posterPath);
+                    }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -158,7 +155,6 @@ public class MovieService
 
         return movies;
     }
-
     private static String mapGenreIdToName(String genreId) {
         switch (genreId) {
             case "28": return "action";
@@ -174,21 +170,17 @@ public class MovieService
             default: return genreId; // Return the original ID if it doesn't match
         }
     }
-
     private static String getFullImageUrl(String partialPath) {
         return "https://image.tmdb.org/t/p/w500" + partialPath;
     }
-
     public static void downloadImage(String imageUrl, String movieId, String saveDirectory) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(imageUrl))
                 .GET()
                 .build();
-
         try {
             HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
-
             if (response.statusCode() == 200) {
                 String fileName = movieId + ".jpg";
                 System.out.println("filename = "+ fileName);
@@ -202,7 +194,6 @@ public class MovieService
             e.printStackTrace();
         }
     }
-
     public static boolean correctTitle(String title) 
     {
         for (int i = 0 ; i < title.length() - 1 ; i++)

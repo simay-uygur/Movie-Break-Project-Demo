@@ -1,294 +1,312 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#displayFriends" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <ToolBar layoutX="10.0" layoutY="10.0" prefHeight="97.0" prefWidth="1536.0" AnchorPane.bottomAnchor="760.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ListView layoutY="102.0" prefHeight="762.0" prefWidth="330.0" />
-      <Button layoutX="253.0" layoutY="796.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="76.0">
-         <graphic>
-            <ImageView fitHeight="60.0" fitWidth="60.0">
-               <image>
-                  <Image url="@images/right_arrow.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="177.0" layoutY="796.0" mnemonicParsing="false">
-         <graphic>
-            <ImageView fitHeight="60.0" fitWidth="60.0">
-               <image>
-                  <Image url="@images/left_arrow.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutY="522.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="330.0">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="100.0" fitWidth="100.0">
-               <image>
-                  <Image url="@images/nickname_symbol.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutY="656.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="330.0">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="100.0" fitWidth="100.0">
-               <image>
-                  <Image url="@images/nickname_symbol.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutY="382.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="330.0">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="100.0" fitWidth="100.0">
-               <image>
-                  <Image url="@images/nickname_symbol.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutY="242.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="330.0">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="100.0" fitWidth="100.0">
-               <image>
-                  <Image url="@images/nickname_symbol.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="-2.0" layoutY="103.0" mnemonicParsing="false" prefHeight="139.0" prefWidth="330.0">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="100.0" fitWidth="100.0">
-               <image>
-                  <Image url="@images/nickname_symbol.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <GridPane layoutX="352.0" layoutY="124.0" prefHeight="630.0" prefWidth="1166.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="505.79998779296875" minWidth="10.0" prefWidth="505.79998779296875" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.20001220703125" minWidth="10.0" prefWidth="152.00007324218757" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="534.199951171875" minWidth="10.0" prefWidth="507.7999267578125" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="182.8" minHeight="0.0" prefHeight="37.399951171875" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="286.2" minHeight="0.0" prefHeight="128.40001220703127" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="257.80003967285154" minHeight="10.0" prefHeight="29.399993896484375" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="288.0000366210937" minHeight="10.0" prefHeight="123.39998168945311" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="233.39993896484373" minHeight="10.0" prefHeight="30.5999755859375" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="241.19992675781248" minHeight="10.0" prefHeight="123.60001220703128" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="159.79990234374998" minHeight="10.0" prefHeight="34.00001220703126" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="163.19992675781248" minHeight="10.0" prefHeight="133.9999877929688" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <Pane layoutY="97.0" prefHeight="767.0" prefWidth="350.0" style="-fx-background-color: #D9597A;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="486.9366455078125" GridPane.rowIndex="6">
+            <Button fx:id="friend1" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#createChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bookman Old Style" size="18.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="486.9366455078125" GridPane.rowIndex="2">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@images/nickname_symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="left" layoutX="79.0" layoutY="666.0" mnemonicParsing="false" onAction="#displayFriendsLeft" prefHeight="63.0" prefWidth="74.0">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0">
+                     <image>
+                        <Image url="@images/left_arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <Button fx:id="right" layoutX="175.0" layoutY="666.0" mnemonicParsing="false" onAction="#displayFriendsRight" prefHeight="63.0" prefWidth="76.0">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0">
+                     <image>
+                        <Image url="@images/right_arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <Button fx:id="friend2" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" onAction="#createChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bookman Old Style" size="18.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="486.9366455078125" GridPane.rowIndex="4">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@images/nickname_symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="friend3" layoutX="20.0" layoutY="320.0" mnemonicParsing="false" onAction="#createChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bookman Old Style" size="18.0" />
                </font>
-            </Text>
-            <Text nodeOrientation="RIGHT_TO_LEFT" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="486.9366455078125" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@images/nickname_symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="friend4" layoutX="20.0" layoutY="410.0" mnemonicParsing="false" onAction="#createChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bookman Old Style" size="18.0" />
                </font>
-            </Text>
-            <Text nodeOrientation="RIGHT_TO_LEFT" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="486.9366455078125" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@images/nickname_symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="friend5" layoutX="20.0" layoutY="500.0" mnemonicParsing="false" onAction="#createChat" prefHeight="73.0" prefWidth="307.0" style="-fx-background-color: pink;" textFill="WHITE">
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bookman Old Style" size="18.0" />
                </font>
-            </Text>
-            <Text nodeOrientation="RIGHT_TO_LEFT" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="486.9366455078125" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@images/nickname_symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="350.0" style="-fx-background-color: #A6032E;" text="  Friends" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Bookman Old Style Bold" size="36.0" />
                </font>
-            </Text>
-            <Text nodeOrientation="RIGHT_TO_LEFT" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="486.9366455078125" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="486.9366455078125">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextArea>
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextArea>
+               <effect>
+                  <DropShadow height="1.5" offsetY="2.0" radius="0.0" spread="1.0" width="0.0" />
+               </effect>
+            </Label>
          </children>
-      </GridPane>
-      <TextArea layoutX="358.0" layoutY="778.0" prefHeight="68.0" prefWidth="1052.0" promptText="//Type here" styleClass="rounded-text-area">
+      </Pane>
+      <TextArea fx:id="textToSend" layoutX="393.0" layoutY="778.0" prefHeight="68.0" prefWidth="1017.0" promptText="//Type here" styleClass="rounded-text-area">
          <font>
-            <Font size="18.0" />
+            <Font name="Bookman Old Style" size="22.0" />
          </font>
+         <effect>
+            <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+               <color>
+                  <Color red="1.0" green="0.7529411911964417" blue="0.7960784435272217" />
+               </color>
+            </DropShadow>
+         </effect>
       </TextArea>
-      <Button layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="89.0">
+      <Button fx:id="send" layoutX="1425.0" layoutY="778.0" mnemonicParsing="false" onAction="#toSend" prefHeight="68.0" prefWidth="89.0">
          <graphic>
-            <ImageView fitHeight="60.0" fitWidth="60.0">
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/send_symbol.png" />
                </image>
             </ImageView>
-         </graphic></Button>
-      <Line endX="-16.5" endY="-32.20001220703125" layoutX="1536.0" layoutY="320.0" startX="-16.5" startY="-157.8000030517578" />
-      <Line endX="-16.5" endY="-31.0" layoutX="1535.0" layoutY="622.0" startX="-16.5" startY="-150.19998168945312" />
-      <Line endX="-16.5" endY="-39.399993896484375" layoutX="1536.0" layoutY="476.0" startX="-16.5" startY="-158.60000610351562" />
-      <Line endX="-19.5999755859375" endY="-6.0" layoutX="1538.0" layoutY="765.0" startX="-19.5999755859375" startY="-137.199951171875" />
+         </graphic>
+         <effect>
+            <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="0.6" width="5.0">
+               <color>
+                  <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+               </color>
+            </DropShadow>
+         </effect></Button>
       <ToolBar prefHeight="97.0" prefWidth="1536.0">
          <items>
             <Pane prefHeight="88.0" prefWidth="1520.0">
                <children>
-                  <Button layoutX="8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                  <Button layoutX="356.0" layoutY="5.0" mnemonicParsing="false" onAction="#changeMainPage" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" onDragDetected="#changeMainPage">
                            <image>
                               <Image url="@images/home_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <effect>
+                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
-                  <Button layoutX="1418.0" layoutY="1.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="96.0">
+                  <Button layoutX="1424.0" layoutY="6.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="60.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
-                        <ImageView fitHeight="75.0" fitWidth="80.0">
+                        <ImageView fitHeight="60.0" fitWidth="60.0">
                            <image>
                               <Image url="@images/logout_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <effect>
+                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
-                  <Button layoutX="125.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
+                  <Button fx:id="nicknamePage" layoutX="1074.0" layoutY="9.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="70.0" prefWidth="332.0" style="-fx-background-color: FFD2E3;" text="Profile">
+                     <font>
+                        <Font name="Bookman Old Style" size="30.0" />
+                     </font>
                      <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="100.0">
+                        <ImageView fitHeight="60.0" fitWidth="60.0">
                            <image>
-                              <Image url="@images/calendar_symbol.png" />
+                              <Image url="@images/nickname_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <effect>
+                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
-                  <Button layoutX="512.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="414.0" text="   Go to Search Pages">
+                  <Button layoutX="450.0" layoutY="6.0" mnemonicParsing="false" onAction="#openChat" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: FFD2E3;">
                      <graphic>
-                        <ImageView fitHeight="54.0" fitWidth="60.0">
+                        <ImageView fitHeight="60.0" fitWidth="70.0">
+                           <image>
+                              <Image url="@images/chat_symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <effect>
+                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button layoutX="560.0" layoutY="6.0" maxHeight="70.0" minHeight="70.0" mnemonicParsing="false" onAction="#openSearchPage" prefHeight="70.0" prefWidth="320.0" style="-fx-background-color: FFD2E3;" text=" Go to Search Page">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0">
                            <image>
                               <Image url="@images/search_symbol.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Bookman Old Style" size="24.0" />
                      </font>
+                     <effect>
+                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
-                  <Button fx:id="nicknamePage" layoutX="1063.0" layoutY="1.0" mnemonicParsing="false" onAction="#openProfileSettings" prefHeight="89.0" prefWidth="332.0" text="Nickname">
+                  <ComboBox fx:id="menu" layoutX="877.0" layoutY="6.0" onShowing="#callSearchComboBox" prefHeight="70.0" prefWidth="150.0" promptText="Select Search Type" style="-fx-background-color: FFD2E3;">
+                     <effect>
+                        <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                           </color>
+                        </DropShadow>
+                     </effect></ComboBox>
+                  <Label alignment="TOP_LEFT" layoutX="104.0" layoutY="44.0" prefHeight="49.0" prefWidth="240.0" style="-fx-background-color: #901C31;" text=" Break" textFill="WHITE">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="33.0" />
                      </font>
-                     <graphic>
-                        <ImageView fitHeight="68.0" fitWidth="68.0">
-                           <image>
-                              <Image url="@images/nickname_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="265.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@images/chat_symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <MenuButton layoutX="926.0" layoutY="9.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="35.0">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Friend Search" />
-                        <MenuItem mnemonicParsing="false" text="Movie Search" />
-                        <MenuItem mnemonicParsing="false" text="Session Search" />
-                     </items>
-                  </MenuButton>
+                  </Label>
+                  <Label alignment="BOTTOM_LEFT" layoutX="104.0" layoutY="-10.0" prefHeight="54.0" prefWidth="240.0" style="-fx-background-color: #901C31;" text=" Movie" textFill="WHITE">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </items>
       </ToolBar>
+      <ImageView fitHeight="99.0" fitWidth="113.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/small_logo.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="friendChat" editable="false" layoutX="359.0" layoutY="111.0" prefHeight="650.0" prefWidth="550.0" style="-fx-alignment: bottom-left;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextArea>
+      <TextArea fx:id="myChat" editable="false" layoutX="909.0" layoutY="111.0" prefHeight="650.0" prefWidth="550.0" style="-fx-alignment: bottom-left; -fx-background-color: transparent;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextArea>
    </children>
 </AnchorPane>

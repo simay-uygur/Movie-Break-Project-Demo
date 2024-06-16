@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #901C32;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GUIController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="518.0" layoutX="66.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/logo_backround.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="up" layoutX="306.0" layoutY="22.0" mnemonicParsing="false" onAction="#changeUp" prefHeight="42.0" prefWidth="74.0" text="Sign Up" />
-      <Button fx:id="in" layoutX="393.0" layoutY="22.0" mnemonicParsing="false" onAction="#changeIn" prefHeight="42.0" prefWidth="74.0" text="Sign In" />
+      <Pane prefHeight="362.0" prefWidth="481.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpeg" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-0.5" />
+               </effect>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="6.0" prefHeight="105.0" prefWidth="470.0" text="Movie Break" textFill="#ffbbcd">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="72.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="1.0" height="1.0" offsetX="1.0" offsetY="4.0" radius="0.0" width="0.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Label>
+            <Button fx:id="up" layoutX="195.0" layoutY="105.0" mnemonicParsing="false" onAction="#changeUp" prefHeight="42.0" prefWidth="82.0" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-background-color: #D9597A; -fx-border-width: 2;" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <Button fx:id="in" layoutX="196.0" layoutY="159.0" mnemonicParsing="false" onAction="#changeIn" prefHeight="42.0" prefWidth="82.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #D9597A; -fx-border-width: 2;" text="Sign In" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow height="5.0" offsetX="5.0" offsetY="5.0" radius="2.0" spread="1.0" width="5.0">
+                     <color>
+                        <Color red="0.6509804129600525" green="0.0117647061124444" blue="0.18039216101169586" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
